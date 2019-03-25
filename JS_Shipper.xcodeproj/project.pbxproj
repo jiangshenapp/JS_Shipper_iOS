@@ -37,7 +37,7 @@
 		20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD737C2248BE430020EA5D /* JSMessageVC.m */; };
 		20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD737F2248BE430020EA5D /* JSMineVC.m */; };
 		20BD73C22248BE440020EA5D /* JSServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73812248BE430020EA5D /* JSServiceVC.m */; };
-		20BD73C32248BE440020EA5D /* JSLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73842248BE430020EA5D /* JSLoginVC.m */; };
+		20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */; };
 		20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73872248BE440020EA5D /* WKDelegateController.m */; };
 		20BD73C52248BE440020EA5D /* BaseTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD738A2248BE440020EA5D /* BaseTabBarVC.m */; };
 		20BD73C62248BE440020EA5D /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD738F2248BE440020EA5D /* BaseVC.m */; };
@@ -58,6 +58,10 @@
 		20BD74042248BEB00020EA5D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73FD2248BEAF0020EA5D /* Login.storyboard */; };
 		20BD74052248BEB00020EA5D /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73FF2248BEB00020EA5D /* Route.storyboard */; };
 		20BD74082248BEC80020EA5D /* FindGoods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD74062248BEC80020EA5D /* FindGoods.storyboard */; };
+		20BD74122248C1FC0020EA5D /* JSRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74112248C1FC0020EA5D /* JSRegisterVC.m */; };
+		20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */; };
+		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
+		20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSRessetPswVC.m */; };
 		C2906EBDB1A940D92FBD8960 /* libPods-JS_Shipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */; };
 /* End PBXBuildFile section */
 
@@ -121,8 +125,8 @@
 		20BD737F2248BE430020EA5D /* JSMineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMineVC.m; sourceTree = "<group>"; };
 		20BD73812248BE430020EA5D /* JSServiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSServiceVC.m; sourceTree = "<group>"; };
 		20BD73822248BE430020EA5D /* JSServiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSServiceVC.h; sourceTree = "<group>"; };
-		20BD73842248BE430020EA5D /* JSLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSLoginVC.m; sourceTree = "<group>"; };
-		20BD73852248BE430020EA5D /* JSLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLoginVC.h; sourceTree = "<group>"; };
+		20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSPaswdLoginVC.m; sourceTree = "<group>"; };
+		20BD73852248BE430020EA5D /* JSPaswdLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSPaswdLoginVC.h; sourceTree = "<group>"; };
 		20BD73872248BE440020EA5D /* WKDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKDelegateController.m; sourceTree = "<group>"; };
 		20BD73882248BE440020EA5D /* BaseScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScrollView.h; sourceTree = "<group>"; };
 		20BD73892248BE440020EA5D /* BaseNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavBar.h; sourceTree = "<group>"; };
@@ -158,6 +162,14 @@
 		20BD74002248BEB00020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Route.storyboard; sourceTree = "<group>"; };
 		20BD74072248BEC80020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FindGoods.storyboard; sourceTree = "<group>"; };
 		20BD74092248BF010020EA5D /* JS.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JS.pch; sourceTree = "<group>"; };
+		20BD74102248C1FC0020EA5D /* JSRegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRegisterVC.h; sourceTree = "<group>"; };
+		20BD74112248C1FC0020EA5D /* JSRegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRegisterVC.m; sourceTree = "<group>"; };
+		20BD74132248C5B70020EA5D /* JSCodeLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCodeLoginVC.h; sourceTree = "<group>"; };
+		20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCodeLoginVC.m; sourceTree = "<group>"; };
+		20BD74162248C6D70020EA5D /* JSForgetPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSForgetPwdVC.h; sourceTree = "<group>"; };
+		20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPwdVC.m; sourceTree = "<group>"; };
+		20BD74192248C8230020EA5D /* JSRessetPswVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRessetPswVC.h; sourceTree = "<group>"; };
+		20BD741A2248C8230020EA5D /* JSRessetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRessetPswVC.m; sourceTree = "<group>"; };
 		3F4AE2CD97BD2F091F4F87FD /* Pods-JS_Shipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.release.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.release.xcconfig"; sourceTree = "<group>"; };
 		9B67392921C6C16FAB28EC6A /* Pods-JS_Shipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.debug.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.debug.xcconfig"; sourceTree = "<group>"; };
 		F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JS_Shipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -448,8 +460,16 @@
 		20BD73832248BE430020EA5D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73842248BE430020EA5D /* JSLoginVC.m */,
-				20BD73852248BE430020EA5D /* JSLoginVC.h */,
+				20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */,
+				20BD73852248BE430020EA5D /* JSPaswdLoginVC.h */,
+				20BD74102248C1FC0020EA5D /* JSRegisterVC.h */,
+				20BD74112248C1FC0020EA5D /* JSRegisterVC.m */,
+				20BD74132248C5B70020EA5D /* JSCodeLoginVC.h */,
+				20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */,
+				20BD74162248C6D70020EA5D /* JSForgetPwdVC.h */,
+				20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */,
+				20BD74192248C8230020EA5D /* JSRessetPswVC.h */,
+				20BD741A2248C8230020EA5D /* JSRessetPswVC.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -675,7 +695,9 @@
 				20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */,
 				20BD73D02248BE440020EA5D /* XLGLogVC.m in Sources */,
 				20BD73C52248BE440020EA5D /* BaseTabBarVC.m in Sources */,
-				20BD73C32248BE440020EA5D /* JSLoginVC.m in Sources */,
+				20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */,
+				20BD74122248C1FC0020EA5D /* JSRegisterVC.m in Sources */,
+				20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */,
 				20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */,
 				20BD73B72248BE440020EA5D /* Config.m in Sources */,
 				20BD73BA2248BE440020EA5D /* CZUpdateView.m in Sources */,
@@ -698,7 +720,9 @@
 				20BD73C92248BE440020EA5D /* BaseScrollView.m in Sources */,
 				20BD73CB2248BE440020EA5D /* XLGInternalDemoVC.m in Sources */,
 				20BD73C82248BE440020EA5D /* BaseNavBar.m in Sources */,
+				20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */,
 				20BD73CD2248BE440020EA5D /* XLGChangeServerCell.m in Sources */,
+				20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */,
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,

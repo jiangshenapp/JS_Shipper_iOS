@@ -1,18 +1,18 @@
 //
-//  JSLoginVC.m
+//  JSPaswdLoginVC.m
 //  JS_Driver
 //
 //  Created by Jason_zyl on 2019/3/6.
 //  Copyright © 2019 Jason_zyl. All rights reserved.
 //
 
-#import "JSLoginVC.h"
+#import "JSPaswdLoginVC.h"
 
-@interface JSLoginVC ()
+@interface JSPaswdLoginVC ()
 
 @end
 
-@implementation JSLoginVC
+@implementation JSPaswdLoginVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

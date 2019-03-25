@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "BaseTabBarVC.h"
-#import "JSLoginVC.h"
 
 @interface AppDelegate ()
 
@@ -20,8 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[BaseTabBarVC alloc] init];
-    JSLoginVC *loginVC = [Utils getViewController:@"Login" WithVCName:@"JSLoginVC"];
-    self.window.rootViewController = loginVC;
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[Utils getViewController:@"Login" WithVCName:@"JSPaswdLoginVC"]];
     [self.window makeKeyAndVisible];
     return YES;
 }
