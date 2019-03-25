@@ -1,13 +1,14 @@
 //
 //  AppDelegate.m
-//  JS_Driver
+//  JS_Shipper
 //
-//  Created by Jason_zyl on 2019/3/5.
-//  Copyright © 2019 Jason_zyl. All rights reserved.
+//  Created by zhanbing han on 2019/3/25.
+//  Copyright © 2019年 zhanbing han. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "BaseTabBarVC.h"
+#import "JSLoginVC.h"
 
 @interface AppDelegate ()
 
@@ -17,11 +18,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[BaseTabBarVC alloc] init];
+    JSLoginVC *loginVC = [Utils getViewController:@"Login" WithVCName:@"JSLoginVC"];
+    self.window.rootViewController = loginVC;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

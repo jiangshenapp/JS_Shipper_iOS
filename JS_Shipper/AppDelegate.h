@@ -1,9 +1,9 @@
 //
 //  AppDelegate.h
-//  JS_Driver
+//  JS_Shipper
 //
-//  Created by Jason_zyl on 2019/3/5.
-//  Copyright © 2019 Jason_zyl. All rights reserved.
+//  Created by zhanbing han on 2019/3/25.
+//  Copyright © 2019年 zhanbing han. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
