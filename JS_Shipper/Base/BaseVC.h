@@ -23,6 +23,7 @@
 
 @property (nonatomic,retain) UITableView *tableView;
 @property (nonatomic,assign) CGRect tableFrame;
+@property (weak, nonatomic) IBOutlet UITableView *baseTabView;
 
 /*!
  *  @brief 无网络

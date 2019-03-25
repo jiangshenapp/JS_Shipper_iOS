@@ -1,18 +1,18 @@
 //
-//  JSServiceVC.m
+//  JSCommunityVC.m
 //  JS_Driver
 //
 //  Created by Jason_zyl on 2019/3/6.
 //  Copyright © 2019 Jason_zyl. All rights reserved.
 //
 
-#import "JSServiceVC.h"
+#import "JSCommunityVC.h"
 
-@interface JSServiceVC ()
+@interface JSCommunityVC ()
 
 @end
 
-@implementation JSServiceVC
+@implementation JSCommunityVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

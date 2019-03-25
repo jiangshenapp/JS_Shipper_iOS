@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Find GoodsVC-->
+        <!--Deliver GoodsVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="JSFindGoodsVC" id="BYZ-38-t0r" customClass="JSFindGoodsVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JSDeliverGoodsVC" id="BYZ-38-t0r" customClass="JSDeliverGoodsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="89B-Ys-Htp"/>
                         <viewControllerLayoutGuide type="bottom" id="26S-xd-kJz"/>

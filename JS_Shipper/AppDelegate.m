@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[BaseTabBarVC alloc] init];
-    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[Utils getViewController:@"Login" WithVCName:@"JSPaswdLoginVC"]];
+//    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[Utils getViewController:@"Login" WithVCName:@"JSPaswdLoginVC"]];
     [self.window makeKeyAndVisible];
     return YES;
 }

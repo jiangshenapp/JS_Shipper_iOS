@@ -1,18 +1,18 @@
 //
-//  JSFindGoodsVC.m
+//  JSDeliverGoodsVC.m
 //  JS_Driver
 //
 //  Created by Jason_zyl on 2019/3/6.
 //  Copyright © 2019 Jason_zyl. All rights reserved.
 //
 
-#import "JSFindGoodsVC.h"
+#import "JSDeliverGoodsVC.h"
 
-@interface JSFindGoodsVC ()
+@interface JSDeliverGoodsVC ()
 
 @end
 
-@implementation JSFindGoodsVC
+@implementation JSDeliverGoodsVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

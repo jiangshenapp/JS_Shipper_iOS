@@ -32,11 +32,11 @@
 		20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73682248BE420020EA5D /* CZNotDataView.m */; };
 		20BD73BC2248BE440020EA5D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD736E2248BE430020EA5D /* Reachability.m */; };
 		20BD73BD2248BE440020EA5D /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73712248BE430020EA5D /* UserInfo.m */; };
-		20BD73BE2248BE440020EA5D /* JSRouteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73762248BE430020EA5D /* JSRouteVC.m */; };
-		20BD73BF2248BE440020EA5D /* JSFindGoodsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73792248BE430020EA5D /* JSFindGoodsVC.m */; };
+		20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73762248BE430020EA5D /* JSCommunityVC.m */; };
+		20BD73BF2248BE440020EA5D /* JSDeliverGoodsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73792248BE430020EA5D /* JSDeliverGoodsVC.m */; };
 		20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD737C2248BE430020EA5D /* JSMessageVC.m */; };
 		20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD737F2248BE430020EA5D /* JSMineVC.m */; };
-		20BD73C22248BE440020EA5D /* JSServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73812248BE430020EA5D /* JSServiceVC.m */; };
+		20BD73C22248BE440020EA5D /* JSGardenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73812248BE430020EA5D /* JSGardenVC.m */; };
 		20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */; };
 		20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73872248BE440020EA5D /* WKDelegateController.m */; };
 		20BD73C52248BE440020EA5D /* BaseTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD738A2248BE440020EA5D /* BaseTabBarVC.m */; };
@@ -53,11 +53,11 @@
 		20BD73D02248BE440020EA5D /* XLGLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73A62248BE440020EA5D /* XLGLogVC.m */; };
 		20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73A82248BE440020EA5D /* XLGExternalTestTool.m */; };
 		20BD74012248BEB00020EA5D /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73F72248BEAF0020EA5D /* Mine.storyboard */; };
-		20BD74022248BEB00020EA5D /* Service.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73F92248BEAF0020EA5D /* Service.storyboard */; };
+		20BD74022248BEB00020EA5D /* Garden.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73F92248BEAF0020EA5D /* Garden.storyboard */; };
 		20BD74032248BEB00020EA5D /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73FB2248BEAF0020EA5D /* Message.storyboard */; };
 		20BD74042248BEB00020EA5D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73FD2248BEAF0020EA5D /* Login.storyboard */; };
-		20BD74052248BEB00020EA5D /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73FF2248BEB00020EA5D /* Route.storyboard */; };
-		20BD74082248BEC80020EA5D /* FindGoods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD74062248BEC80020EA5D /* FindGoods.storyboard */; };
+		20BD74052248BEB00020EA5D /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD73FF2248BEB00020EA5D /* Community.storyboard */; };
+		20BD74082248BEC80020EA5D /* DeliverGoods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD74062248BEC80020EA5D /* DeliverGoods.storyboard */; };
 		20BD74122248C1FC0020EA5D /* JSRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74112248C1FC0020EA5D /* JSRegisterVC.m */; };
 		20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */; };
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
@@ -115,16 +115,16 @@
 		20BD736F2248BE430020EA5D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		20BD73712248BE430020EA5D /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		20BD73722248BE430020EA5D /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
-		20BD73752248BE430020EA5D /* JSRouteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSRouteVC.h; sourceTree = "<group>"; };
-		20BD73762248BE430020EA5D /* JSRouteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSRouteVC.m; sourceTree = "<group>"; };
-		20BD73782248BE430020EA5D /* JSFindGoodsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSFindGoodsVC.h; sourceTree = "<group>"; };
-		20BD73792248BE430020EA5D /* JSFindGoodsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSFindGoodsVC.m; sourceTree = "<group>"; };
+		20BD73752248BE430020EA5D /* JSCommunityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCommunityVC.h; sourceTree = "<group>"; };
+		20BD73762248BE430020EA5D /* JSCommunityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCommunityVC.m; sourceTree = "<group>"; };
+		20BD73782248BE430020EA5D /* JSDeliverGoodsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDeliverGoodsVC.h; sourceTree = "<group>"; };
+		20BD73792248BE430020EA5D /* JSDeliverGoodsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDeliverGoodsVC.m; sourceTree = "<group>"; };
 		20BD737B2248BE430020EA5D /* JSMessageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMessageVC.h; sourceTree = "<group>"; };
 		20BD737C2248BE430020EA5D /* JSMessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageVC.m; sourceTree = "<group>"; };
 		20BD737E2248BE430020EA5D /* JSMineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMineVC.h; sourceTree = "<group>"; };
 		20BD737F2248BE430020EA5D /* JSMineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMineVC.m; sourceTree = "<group>"; };
-		20BD73812248BE430020EA5D /* JSServiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSServiceVC.m; sourceTree = "<group>"; };
-		20BD73822248BE430020EA5D /* JSServiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSServiceVC.h; sourceTree = "<group>"; };
+		20BD73812248BE430020EA5D /* JSGardenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSGardenVC.m; sourceTree = "<group>"; };
+		20BD73822248BE430020EA5D /* JSGardenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSGardenVC.h; sourceTree = "<group>"; };
 		20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSPaswdLoginVC.m; sourceTree = "<group>"; };
 		20BD73852248BE430020EA5D /* JSPaswdLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSPaswdLoginVC.h; sourceTree = "<group>"; };
 		20BD73872248BE440020EA5D /* WKDelegateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKDelegateController.m; sourceTree = "<group>"; };
@@ -156,11 +156,11 @@
 		20BD73A72248BE440020EA5D /* XLGExternalTestTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLGExternalTestTool.h; sourceTree = "<group>"; };
 		20BD73A82248BE440020EA5D /* XLGExternalTestTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLGExternalTestTool.m; sourceTree = "<group>"; };
 		20BD73F82248BEAF0020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Mine.storyboard; sourceTree = "<group>"; };
-		20BD73FA2248BEAF0020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Service.storyboard; sourceTree = "<group>"; };
+		20BD73FA2248BEAF0020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Garden.storyboard; sourceTree = "<group>"; };
 		20BD73FC2248BEAF0020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Message.storyboard; sourceTree = "<group>"; };
 		20BD73FE2248BEAF0020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
-		20BD74002248BEB00020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Route.storyboard; sourceTree = "<group>"; };
-		20BD74072248BEC80020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FindGoods.storyboard; sourceTree = "<group>"; };
+		20BD74002248BEB00020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Community.storyboard; sourceTree = "<group>"; };
+		20BD74072248BEC80020EA5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/DeliverGoods.storyboard; sourceTree = "<group>"; };
 		20BD74092248BF010020EA5D /* JS.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JS.pch; sourceTree = "<group>"; };
 		20BD74102248C1FC0020EA5D /* JSRegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRegisterVC.h; sourceTree = "<group>"; };
 		20BD74112248C1FC0020EA5D /* JSRegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRegisterVC.m; sourceTree = "<group>"; };
@@ -219,12 +219,12 @@
 			children = (
 				20BD73242248BDC20020EA5D /* AppDelegate.h */,
 				20BD73252248BDC20020EA5D /* AppDelegate.m */,
-				20BD74062248BEC80020EA5D /* FindGoods.storyboard */,
 				20BD73FD2248BEAF0020EA5D /* Login.storyboard */,
+				20BD73F92248BEAF0020EA5D /* Garden.storyboard */,
+				20BD74062248BEC80020EA5D /* DeliverGoods.storyboard */,
 				20BD73FB2248BEAF0020EA5D /* Message.storyboard */,
+				20BD73FF2248BEB00020EA5D /* Community.storyboard */,
 				20BD73F72248BEAF0020EA5D /* Mine.storyboard */,
-				20BD73FF2248BEB00020EA5D /* Route.storyboard */,
-				20BD73F92248BEAF0020EA5D /* Service.storyboard */,
 				20BD73862248BE440020EA5D /* Base */,
 				20BD73702248BE430020EA5D /* Model */,
 				20BD73732248BE430020EA5D /* ViewController */,
@@ -402,32 +402,32 @@
 		20BD73732248BE430020EA5D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73742248BE430020EA5D /* Route */,
-				20BD73772248BE430020EA5D /* FindGoods */,
+				20BD73802248BE430020EA5D /* Garden */,
+				20BD73742248BE430020EA5D /* Community */,
+				20BD73772248BE430020EA5D /* DeliverGoods */,
 				20BD737A2248BE430020EA5D /* Message */,
 				20BD737D2248BE430020EA5D /* Mine */,
-				20BD73802248BE430020EA5D /* Service */,
 				20BD73832248BE430020EA5D /* Login */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		20BD73742248BE430020EA5D /* Route */ = {
+		20BD73742248BE430020EA5D /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73752248BE430020EA5D /* JSRouteVC.h */,
-				20BD73762248BE430020EA5D /* JSRouteVC.m */,
+				20BD73752248BE430020EA5D /* JSCommunityVC.h */,
+				20BD73762248BE430020EA5D /* JSCommunityVC.m */,
 			);
-			path = Route;
+			path = Community;
 			sourceTree = "<group>";
 		};
-		20BD73772248BE430020EA5D /* FindGoods */ = {
+		20BD73772248BE430020EA5D /* DeliverGoods */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73782248BE430020EA5D /* JSFindGoodsVC.h */,
-				20BD73792248BE430020EA5D /* JSFindGoodsVC.m */,
+				20BD73782248BE430020EA5D /* JSDeliverGoodsVC.h */,
+				20BD73792248BE430020EA5D /* JSDeliverGoodsVC.m */,
 			);
-			path = FindGoods;
+			path = DeliverGoods;
 			sourceTree = "<group>";
 		};
 		20BD737A2248BE430020EA5D /* Message */ = {
@@ -448,13 +448,13 @@
 			path = Mine;
 			sourceTree = "<group>";
 		};
-		20BD73802248BE430020EA5D /* Service */ = {
+		20BD73802248BE430020EA5D /* Garden */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73812248BE430020EA5D /* JSServiceVC.m */,
-				20BD73822248BE430020EA5D /* JSServiceVC.h */,
+				20BD73822248BE430020EA5D /* JSGardenVC.h */,
+				20BD73812248BE430020EA5D /* JSGardenVC.m */,
 			);
-			path = Service;
+			path = Garden;
 			sourceTree = "<group>";
 		};
 		20BD73832248BE430020EA5D /* Login */ = {
@@ -624,12 +624,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */,
-				20BD74082248BEC80020EA5D /* FindGoods.storyboard in Resources */,
-				20BD74022248BEB00020EA5D /* Service.storyboard in Resources */,
+				20BD74082248BEC80020EA5D /* DeliverGoods.storyboard in Resources */,
+				20BD74022248BEB00020EA5D /* Garden.storyboard in Resources */,
 				20BD74042248BEB00020EA5D /* Login.storyboard in Resources */,
 				20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */,
 				20BD74032248BEB00020EA5D /* Message.storyboard in Resources */,
-				20BD74052248BEB00020EA5D /* Route.storyboard in Resources */,
+				20BD74052248BEB00020EA5D /* Community.storyboard in Resources */,
 				20BD74012248BEB00020EA5D /* Mine.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,7 +685,7 @@
 			files = (
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
-				20BD73BE2248BE440020EA5D /* JSRouteVC.m in Sources */,
+				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
 				20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */,
 				20BD73AA2248BE440020EA5D /* CacheUtil.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
@@ -728,8 +728,8 @@
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,
-				20BD73BF2248BE440020EA5D /* JSFindGoodsVC.m in Sources */,
-				20BD73C22248BE440020EA5D /* JSServiceVC.m in Sources */,
+				20BD73BF2248BE440020EA5D /* JSDeliverGoodsVC.m in Sources */,
+				20BD73C22248BE440020EA5D /* JSGardenVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,12 +752,12 @@
 			name = Mine.storyboard;
 			sourceTree = "<group>";
 		};
-		20BD73F92248BEAF0020EA5D /* Service.storyboard */ = {
+		20BD73F92248BEAF0020EA5D /* Garden.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				20BD73FA2248BEAF0020EA5D /* Base */,
 			);
-			name = Service.storyboard;
+			name = Garden.storyboard;
 			sourceTree = "<group>";
 		};
 		20BD73FB2248BEAF0020EA5D /* Message.storyboard */ = {
@@ -776,20 +776,20 @@
 			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
-		20BD73FF2248BEB00020EA5D /* Route.storyboard */ = {
+		20BD73FF2248BEB00020EA5D /* Community.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				20BD74002248BEB00020EA5D /* Base */,
 			);
-			name = Route.storyboard;
+			name = Community.storyboard;
 			sourceTree = "<group>";
 		};
-		20BD74062248BEC80020EA5D /* FindGoods.storyboard */ = {
+		20BD74062248BEC80020EA5D /* DeliverGoods.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				20BD74072248BEC80020EA5D /* Base */,
 			);
-			name = FindGoods.storyboard;
+			name = DeliverGoods.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

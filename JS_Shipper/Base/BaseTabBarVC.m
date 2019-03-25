@@ -23,13 +23,14 @@
 
 - (void)createTabBar {
     //视图数组
-    NSArray *controllerArr = @[@"JSFindGoodsVC",@"JSRouteVC",@"JSMessageVC",@"JSServiceVC",@"JSMineVC"];
+    NSArray *controllerArr = @[@"JSGardenVC",@"JSDeliverGoodsVC",@"JSMessageVC",@"JSCommunityVC",@"JSMineVC"];
     //标题数组
-    NSArray *titleArr = @[@"找货",@"路线",@"消息",@"服务",@"我的"];
+    NSArray *titleArr = @[@"园区",@"发货",@"消息",@"社区",@"我的"];
     //图片数组
-    NSArray *picArr = @[@"nav_home",@"nav_chat",@"nav_search",@"nav_mine",@"nav_mine"];
+    NSArray *picArr = @[@"app_menubar_icon_searchcar_black",@"app_menubar_icon_goods_black",@"app_menubar_icon_news_black",@"app_menubar_icon_community_black",@"app_menubar_icon_my_black"];
+    
     //storyboard name 数组
-    NSArray *storyArr = @[@"FindGoods",@"Route",@"Message",@"Service",@"Mine"];
+    NSArray *storyArr = @[@"Garden",@"DeliverGoods",@"Message",@"Community",@"Mine"];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
@@ -39,8 +40,9 @@
         
         BaseNC *nv = [[BaseNC alloc] initWithRootViewController:controller];
         nv.tabBarItem.title = titleArr[i];
-        nv.tabBarItem.image = [[UIImage imageNamed:[NSString stringWithFormat:@"%@",picArr[i]]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        nv.tabBarItem.selectedImage = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_pre",picArr[i]]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        NSString *norName = picArr[i];
+        nv.tabBarItem.image = [[UIImage imageNamed:norName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        nv.tabBarItem.selectedImage = [[UIImage imageNamed:[NSString stringWithFormat:@"%@",[norName stringByReplacingOccurrencesOfString:@"black" withString:@"yellow"]]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         [array addObject:nv];
     }
     
