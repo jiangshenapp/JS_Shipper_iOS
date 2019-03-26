@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20306C6F224A52D1004D6762 /* JSWithdrawCashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20306C6E224A52D1004D6762 /* JSWithdrawCashVC.m */; };
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
@@ -68,6 +69,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20306C6D224A52D1004D6762 /* JSWithdrawCashVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawCashVC.h; sourceTree = "<group>"; };
+		20306C6E224A52D1004D6762 /* JSWithdrawCashVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawCashVC.m; sourceTree = "<group>"; };
 		20781E6D224A054F00F0767D /* JSAuthenticationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAuthenticationVC.h; sourceTree = "<group>"; };
 		20781E6E224A054F00F0767D /* JSAuthenticationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAuthenticationVC.m; sourceTree = "<group>"; };
 		20781E73224A257A00F0767D /* JSMyWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletVC.h; sourceTree = "<group>"; };
@@ -200,6 +203,17 @@
 				3F4AE2CD97BD2F091F4F87FD /* Pods-JS_Shipper.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		20306C6C224A5253004D6762 /* 钱包 */ = {
+			isa = PBXGroup;
+			children = (
+				20781E73224A257A00F0767D /* JSMyWalletVC.h */,
+				20781E74224A257A00F0767D /* JSMyWalletVC.m */,
+				20306C6D224A52D1004D6762 /* JSWithdrawCashVC.h */,
+				20306C6E224A52D1004D6762 /* JSWithdrawCashVC.m */,
+			);
+			path = "钱包";
 			sourceTree = "<group>";
 		};
 		20BD73182248BDC20020EA5D = {
@@ -450,10 +464,9 @@
 			children = (
 				20BD737E2248BE430020EA5D /* JSMineVC.h */,
 				20BD737F2248BE430020EA5D /* JSMineVC.m */,
+				20306C6C224A5253004D6762 /* 钱包 */,
 				20781E6D224A054F00F0767D /* JSAuthenticationVC.h */,
 				20781E6E224A054F00F0767D /* JSAuthenticationVC.m */,
-				20781E73224A257A00F0767D /* JSMyWalletVC.h */,
-				20781E74224A257A00F0767D /* JSMyWalletVC.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -737,6 +750,7 @@
 				20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */,
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
+				20306C6F224A52D1004D6762 /* JSWithdrawCashVC.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,
