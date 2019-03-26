@@ -571,6 +571,11 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KUX-BE-FeF">
                                 <rect key="frame" x="68" y="74" width="240" height="30"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JZb-N4-iYr">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKE-ef-5Jg">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
@@ -901,6 +906,7 @@
                         <outlet property="baseTabView" destination="y7c-b2-SdQ" id="I2n-KB-U71"/>
                         <outlet property="companyTabHeadView" destination="M73-Sa-3M1" id="5pR-1j-aPL"/>
                         <outlet property="personTabHeadView" destination="rjG-EL-uUc" id="61L-uh-eo4"/>
+                        <outlet property="titleBgView" destination="JZb-N4-iYr" id="y3K-Np-1Lg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zv4-bd-QTl" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)titleViewAction:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIView *personTabHeadView;
 @property (weak, nonatomic) IBOutlet UIView *companyTabHeadView;
+@property (weak, nonatomic) IBOutlet UIView *titleBgView;
 
 @end
 
