@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
+		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
 		20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */; };
@@ -69,6 +70,8 @@
 /* Begin PBXFileReference section */
 		20781E6D224A054F00F0767D /* JSAuthenticationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAuthenticationVC.h; sourceTree = "<group>"; };
 		20781E6E224A054F00F0767D /* JSAuthenticationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAuthenticationVC.m; sourceTree = "<group>"; };
+		20781E73224A257A00F0767D /* JSMyWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletVC.h; sourceTree = "<group>"; };
+		20781E74224A257A00F0767D /* JSMyWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletVC.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BD73242248BDC20020EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20BD73252248BDC20020EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 				20BD737F2248BE430020EA5D /* JSMineVC.m */,
 				20781E6D224A054F00F0767D /* JSAuthenticationVC.h */,
 				20781E6E224A054F00F0767D /* JSAuthenticationVC.m */,
+				20781E73224A257A00F0767D /* JSMyWalletVC.h */,
+				20781E74224A257A00F0767D /* JSMyWalletVC.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -728,6 +733,7 @@
 				20BD73C82248BE440020EA5D /* BaseNavBar.m in Sources */,
 				20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */,
 				20BD73CD2248BE440020EA5D /* XLGChangeServerCell.m in Sources */,
+				20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */,
 				20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */,
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
