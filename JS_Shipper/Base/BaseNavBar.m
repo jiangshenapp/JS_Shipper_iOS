@@ -27,10 +27,14 @@
     
     self.translucent = NO;
     self.barTintColor = kWhiteColor;
-    [self setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor blackColor], NSForegroundColorAttributeName,
-      [UIFont systemFontOfSize:17], NSFontAttributeName, nil]];
+    if (@available(iOS 8.2, *)) {
+        [self setTitleTextAttributes:
+         [NSDictionary dictionaryWithObjectsAndKeys:
+          [UIColor blackColor], NSForegroundColorAttributeName,
+          [UIFont systemFontOfSize:17 weight:UIFontWeightMedium], NSFontAttributeName, nil]];
+    } else {
+        // Fallback on earlier versions
+    }
     //将导航条默认黑线改成阴影
     [self setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
 //    self.shadowImage = [UIImage imageNamed:@"NavbarShadow"]; //阴影图片

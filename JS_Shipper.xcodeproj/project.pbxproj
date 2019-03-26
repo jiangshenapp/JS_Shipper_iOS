@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
 		20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */; };
@@ -66,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20781E6D224A054F00F0767D /* JSAuthenticationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAuthenticationVC.h; sourceTree = "<group>"; };
+		20781E6E224A054F00F0767D /* JSAuthenticationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAuthenticationVC.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BD73242248BDC20020EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20BD73252248BDC20020EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 			children = (
 				20BD737E2248BE430020EA5D /* JSMineVC.h */,
 				20BD737F2248BE430020EA5D /* JSMineVC.m */,
+				20781E6D224A054F00F0767D /* JSAuthenticationVC.h */,
+				20781E6E224A054F00F0767D /* JSAuthenticationVC.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -688,6 +693,7 @@
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
 				20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */,
 				20BD73AA2248BE440020EA5D /* CacheUtil.m in Sources */,
+				20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
 				20BD73342248BDC30020EA5D /* main.m in Sources */,
