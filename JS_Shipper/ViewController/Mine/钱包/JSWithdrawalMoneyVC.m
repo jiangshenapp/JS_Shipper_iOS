@@ -1,18 +1,18 @@
 //
-//  JSWithdrawCashVC.m
+//  JSWithdrawalMoneyVC.m
 //  JS_Shipper
 //
-//  Created by zhanbing han on 2019/3/26.
+//  Created by zhanbing han on 2019/3/27.
 //  Copyright © 2019年 zhanbing han. All rights reserved.
 //
 
-#import "JSWithdrawCashVC.h"
+#import "JSWithdrawalMoneyVC.h"
 
-@interface JSWithdrawCashVC ()
+@interface JSWithdrawalMoneyVC ()
 
 @end
 
-@implementation JSWithdrawCashVC
+@implementation JSWithdrawalMoneyVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

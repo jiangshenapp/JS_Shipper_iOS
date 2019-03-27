@@ -1,8 +1,8 @@
 //
-//  JSWithdrawCashVC.h
+//  JSRechargeVC.h
 //  JS_Shipper
 //
-//  Created by zhanbing han on 2019/3/26.
+//  Created by zhanbing han on 2019/3/27.
 //  Copyright © 2019年 zhanbing han. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSWithdrawCashVC : BaseVC
+@interface JSRechargeVC : BaseVC
 
 @end
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		20306C6F224A52D1004D6762 /* JSWithdrawCashVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20306C6E224A52D1004D6762 /* JSWithdrawCashVC.m */; };
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
@@ -65,12 +64,13 @@
 		20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */; };
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
 		20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSRessetPswVC.m */; };
+		20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934DF224B18B4008C80DB /* JSRechargeVC.m */; };
+		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
+		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
 		C2906EBDB1A940D92FBD8960 /* libPods-JS_Shipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		20306C6D224A52D1004D6762 /* JSWithdrawCashVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawCashVC.h; sourceTree = "<group>"; };
-		20306C6E224A52D1004D6762 /* JSWithdrawCashVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawCashVC.m; sourceTree = "<group>"; };
 		20781E6D224A054F00F0767D /* JSAuthenticationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAuthenticationVC.h; sourceTree = "<group>"; };
 		20781E6E224A054F00F0767D /* JSAuthenticationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAuthenticationVC.m; sourceTree = "<group>"; };
 		20781E73224A257A00F0767D /* JSMyWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletVC.h; sourceTree = "<group>"; };
@@ -179,6 +179,12 @@
 		20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPwdVC.m; sourceTree = "<group>"; };
 		20BD74192248C8230020EA5D /* JSRessetPswVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRessetPswVC.h; sourceTree = "<group>"; };
 		20BD741A2248C8230020EA5D /* JSRessetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRessetPswVC.m; sourceTree = "<group>"; };
+		20F934DE224B18B4008C80DB /* JSRechargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRechargeVC.h; sourceTree = "<group>"; };
+		20F934DF224B18B4008C80DB /* JSRechargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRechargeVC.m; sourceTree = "<group>"; };
+		20F934E1224B1C95008C80DB /* JSWithdrawalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawalMoneyVC.h; sourceTree = "<group>"; };
+		20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSWithdrawalMoneyVC.m; sourceTree = "<group>"; };
+		20F934E4224B2469008C80DB /* JSBillDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBillDetailsVC.h; sourceTree = "<group>"; };
+		20F934E5224B2469008C80DB /* JSBillDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBillDetailsVC.m; sourceTree = "<group>"; };
 		3F4AE2CD97BD2F091F4F87FD /* Pods-JS_Shipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.release.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.release.xcconfig"; sourceTree = "<group>"; };
 		9B67392921C6C16FAB28EC6A /* Pods-JS_Shipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.debug.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.debug.xcconfig"; sourceTree = "<group>"; };
 		F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JS_Shipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,8 +216,12 @@
 			children = (
 				20781E73224A257A00F0767D /* JSMyWalletVC.h */,
 				20781E74224A257A00F0767D /* JSMyWalletVC.m */,
-				20306C6D224A52D1004D6762 /* JSWithdrawCashVC.h */,
-				20306C6E224A52D1004D6762 /* JSWithdrawCashVC.m */,
+				20F934E1224B1C95008C80DB /* JSWithdrawalMoneyVC.h */,
+				20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */,
+				20F934DE224B18B4008C80DB /* JSRechargeVC.h */,
+				20F934DF224B18B4008C80DB /* JSRechargeVC.m */,
+				20F934E4224B2469008C80DB /* JSBillDetailsVC.h */,
+				20F934E5224B2469008C80DB /* JSBillDetailsVC.m */,
 			);
 			path = "钱包";
 			sourceTree = "<group>";
@@ -720,6 +730,7 @@
 				20BD73D02248BE440020EA5D /* XLGLogVC.m in Sources */,
 				20BD73C52248BE440020EA5D /* BaseTabBarVC.m in Sources */,
 				20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */,
+				20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */,
 				20BD74122248C1FC0020EA5D /* JSRegisterVC.m in Sources */,
 				20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */,
 				20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */,
@@ -744,14 +755,15 @@
 				20BD73C92248BE440020EA5D /* BaseScrollView.m in Sources */,
 				20BD73CB2248BE440020EA5D /* XLGInternalDemoVC.m in Sources */,
 				20BD73C82248BE440020EA5D /* BaseNavBar.m in Sources */,
+				20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */,
 				20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */,
 				20BD73CD2248BE440020EA5D /* XLGChangeServerCell.m in Sources */,
 				20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */,
 				20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */,
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
-				20306C6F224A52D1004D6762 /* JSWithdrawCashVC.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
+				20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,
 				20BD73BF2248BE440020EA5D /* JSDeliverGoodsVC.m in Sources */,
