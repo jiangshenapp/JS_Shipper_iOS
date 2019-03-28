@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSOrderReleasingVC : BaseVC
+@property (weak, nonatomic) IBOutlet UIScrollView *bgScroView;
 
 @end
 

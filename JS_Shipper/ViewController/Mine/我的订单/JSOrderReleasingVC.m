@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _bgScroView.contentSize = CGSizeMake(0, 1000);
+    self.title = @"发布中";
     // Do any additional setup after loading the view.
 }
 
