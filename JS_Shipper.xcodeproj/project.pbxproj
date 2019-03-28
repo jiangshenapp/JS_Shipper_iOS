@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
+		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
 		20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */; };
@@ -75,6 +76,8 @@
 		20781E6E224A054F00F0767D /* JSAuthenticationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAuthenticationVC.m; sourceTree = "<group>"; };
 		20781E73224A257A00F0767D /* JSMyWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletVC.h; sourceTree = "<group>"; };
 		20781E74224A257A00F0767D /* JSMyWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletVC.m; sourceTree = "<group>"; };
+		209D7DED224C617D00409EA2 /* JSAllOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAllOrderVC.h; sourceTree = "<group>"; };
+		209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAllOrderVC.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BD73242248BDC20020EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20BD73252248BDC20020EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -224,6 +227,15 @@
 				20F934E5224B2469008C80DB /* JSBillDetailsVC.m */,
 			);
 			path = "钱包";
+			sourceTree = "<group>";
+		};
+		209D7DEC224C615F00409EA2 /* 我的订单 */ = {
+			isa = PBXGroup;
+			children = (
+				209D7DED224C617D00409EA2 /* JSAllOrderVC.h */,
+				209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */,
+			);
+			path = "我的订单";
 			sourceTree = "<group>";
 		};
 		20BD73182248BDC20020EA5D = {
@@ -474,9 +486,10 @@
 			children = (
 				20BD737E2248BE430020EA5D /* JSMineVC.h */,
 				20BD737F2248BE430020EA5D /* JSMineVC.m */,
-				20306C6C224A5253004D6762 /* 钱包 */,
 				20781E6D224A054F00F0767D /* JSAuthenticationVC.h */,
 				20781E6E224A054F00F0767D /* JSAuthenticationVC.m */,
+				209D7DEC224C615F00409EA2 /* 我的订单 */,
+				20306C6C224A5253004D6762 /* 钱包 */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -763,6 +776,7 @@
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
+				209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */,
 				20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,

@@ -35,26 +35,20 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京 朝阳区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9I-Fb-vdy">
                                                     <rect key="frame" x="12" y="14" width="91" height="24"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="aeX-65-HxE"/>
+                                                        <constraint firstAttribute="height" constant="24" id="CMK-gR-IU5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天津 北城区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCH-2G-A3F">
-                                                    <rect key="frame" x="188" y="14" width="91" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="KMA-TL-tBx"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="130" y="15.5" width="91" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9tc-jB-wrL">
-                                                    <rect key="frame" x="105" y="14" width="81" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="3yr-Dw-Row"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="home_lite_icon_going" translatesAutoresizingMaskIntoConstraints="NO" id="9tc-jB-wrL">
+                                                    <rect key="frame" x="105" y="19" width="24" height="14"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3分钟前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTe-Q7-2wd">
                                                     <rect key="frame" x="319" y="14" width="44" height="24"/>
@@ -84,45 +78,41 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7n-Ym-hQk">
-                                                    <rect key="frame" x="327" y="73" width="36" height="36"/>
+                                                    <rect key="frame" x="327" y="73.5" width="36" height="36"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="36" id="BKH-MV-Dqq"/>
-                                                        <constraint firstAttribute="height" constant="36" id="nsP-6i-sfw"/>
+                                                        <constraint firstAttribute="width" constant="36" id="IyE-fP-wUw"/>
+                                                        <constraint firstAttribute="height" constant="36" id="tlQ-Wp-r9g"/>
                                                     </constraints>
-                                                    <state key="normal" image="app_tips_icon_fail"/>
+                                                    <state key="normal" image="home_list_btn_chat"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUM-hX-wZ2">
-                                                    <rect key="frame" x="276" y="76" width="36" height="36"/>
-                                                    <state key="normal" image="app_tips_icon_success"/>
+                                                    <rect key="frame" x="276" y="73.5" width="36" height="36"/>
+                                                    <state key="normal" image="home_list_btn_phone"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="3X7-Sl-H6d" secondAttribute="trailing" constant="12" id="0Ef-g9-YpH"/>
                                                 <constraint firstItem="PLN-d9-fo0" firstAttribute="top" secondItem="3X7-Sl-H6d" secondAttribute="bottom" constant="13" id="4x0-ZN-Ik5"/>
-                                                <constraint firstItem="G9I-Fb-vdy" firstAttribute="top" secondItem="Cao-5e-fQz" secondAttribute="top" constant="14" id="5TO-rY-ncV"/>
-                                                <constraint firstItem="3X7-Sl-H6d" firstAttribute="top" secondItem="9tc-jB-wrL" secondAttribute="bottom" constant="10" id="7WD-iT-M9e"/>
-                                                <constraint firstItem="KCH-2G-A3F" firstAttribute="leading" secondItem="9tc-jB-wrL" secondAttribute="trailing" constant="2" id="8ho-nT-83c"/>
+                                                <constraint firstAttribute="bottom" secondItem="k7n-Ym-hQk" secondAttribute="bottom" constant="10" id="5iM-h9-iLk"/>
+                                                <constraint firstItem="3X7-Sl-H6d" firstAttribute="top" secondItem="G9I-Fb-vdy" secondAttribute="bottom" constant="10" id="8NV-G2-tpU"/>
                                                 <constraint firstItem="3X7-Sl-H6d" firstAttribute="leading" secondItem="Cao-5e-fQz" secondAttribute="leading" constant="12" id="C55-nq-2BZ"/>
-                                                <constraint firstItem="3X7-Sl-H6d" firstAttribute="top" secondItem="G9I-Fb-vdy" secondAttribute="bottom" constant="10" id="DMw-1O-L8j"/>
+                                                <constraint firstItem="VUM-hX-wZ2" firstAttribute="centerY" secondItem="k7n-Ym-hQk" secondAttribute="centerY" id="Cqo-oD-hNC"/>
+                                                <constraint firstItem="KCH-2G-A3F" firstAttribute="leading" secondItem="9tc-jB-wrL" secondAttribute="trailing" constant="1" id="DDL-jl-hNc"/>
                                                 <constraint firstItem="3X7-Sl-H6d" firstAttribute="top" secondItem="XTe-Q7-2wd" secondAttribute="bottom" constant="10" id="ES0-GB-8IM"/>
-                                                <constraint firstItem="9tc-jB-wrL" firstAttribute="top" secondItem="Cao-5e-fQz" secondAttribute="top" constant="14" id="Eym-Ak-BcO"/>
+                                                <constraint firstItem="KCH-2G-A3F" firstAttribute="leading" secondItem="9tc-jB-wrL" secondAttribute="trailing" constant="1" id="G8O-OK-DJl"/>
+                                                <constraint firstItem="KCH-2G-A3F" firstAttribute="centerY" secondItem="G9I-Fb-vdy" secondAttribute="centerY" id="HqO-0b-gSm"/>
+                                                <constraint firstItem="G9I-Fb-vdy" firstAttribute="leading" secondItem="Cao-5e-fQz" secondAttribute="leading" constant="12" id="HrR-TQ-Wkb"/>
+                                                <constraint firstItem="k7n-Ym-hQk" firstAttribute="height" secondItem="VUM-hX-wZ2" secondAttribute="height" id="Ikb-qb-Kpb"/>
                                                 <constraint firstItem="PLN-d9-fo0" firstAttribute="leading" secondItem="Cao-5e-fQz" secondAttribute="leading" constant="12" id="IuW-af-M2q"/>
-                                                <constraint firstItem="k7n-Ym-hQk" firstAttribute="height" secondItem="VUM-hX-wZ2" secondAttribute="height" id="L5W-M6-1jw"/>
-                                                <constraint firstItem="k7n-Ym-hQk" firstAttribute="leading" secondItem="VUM-hX-wZ2" secondAttribute="trailing" constant="15" id="OdP-Pv-sS5"/>
-                                                <constraint firstItem="9tc-jB-wrL" firstAttribute="leading" secondItem="G9I-Fb-vdy" secondAttribute="trailing" constant="2" id="P8v-4B-fA4"/>
-                                                <constraint firstItem="VUM-hX-wZ2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PLN-d9-fo0" secondAttribute="trailing" constant="8" symbolic="YES" id="SkR-5Q-D07"/>
-                                                <constraint firstItem="KCH-2G-A3F" firstAttribute="leading" secondItem="9tc-jB-wrL" secondAttribute="trailing" constant="2" id="YBc-Q6-kX3"/>
-                                                <constraint firstItem="G9I-Fb-vdy" firstAttribute="leading" secondItem="Cao-5e-fQz" secondAttribute="leading" constant="12" id="bGD-fU-jxp"/>
-                                                <constraint firstItem="KCH-2G-A3F" firstAttribute="top" secondItem="Cao-5e-fQz" secondAttribute="top" constant="14" id="dnc-Z7-vnb"/>
-                                                <constraint firstItem="k7n-Ym-hQk" firstAttribute="top" secondItem="3X7-Sl-H6d" secondAttribute="bottom" constant="5" id="gV6-lb-UCX"/>
+                                                <constraint firstItem="9tc-jB-wrL" firstAttribute="leading" secondItem="G9I-Fb-vdy" secondAttribute="trailing" constant="2" id="QO1-45-txT"/>
+                                                <constraint firstItem="k7n-Ym-hQk" firstAttribute="leading" secondItem="VUM-hX-wZ2" secondAttribute="trailing" constant="15" id="eh8-7S-6w3"/>
                                                 <constraint firstAttribute="trailing" secondItem="XTe-Q7-2wd" secondAttribute="trailing" constant="12" id="gjG-jC-Hqb"/>
-                                                <constraint firstItem="3X7-Sl-H6d" firstAttribute="top" secondItem="KCH-2G-A3F" secondAttribute="bottom" constant="10" id="mcp-vA-7wB"/>
-                                                <constraint firstItem="k7n-Ym-hQk" firstAttribute="width" secondItem="VUM-hX-wZ2" secondAttribute="width" id="myh-dz-RJW"/>
-                                                <constraint firstItem="VUM-hX-wZ2" firstAttribute="top" secondItem="3X7-Sl-H6d" secondAttribute="bottom" constant="8" id="pfv-gn-adg"/>
+                                                <constraint firstItem="G9I-Fb-vdy" firstAttribute="top" secondItem="Cao-5e-fQz" secondAttribute="top" constant="14" id="hng-FX-uGT"/>
                                                 <constraint firstItem="XTe-Q7-2wd" firstAttribute="top" secondItem="Cao-5e-fQz" secondAttribute="top" constant="14" id="q0T-bC-m9s"/>
-                                                <constraint firstAttribute="trailing" secondItem="k7n-Ym-hQk" secondAttribute="trailing" constant="12" id="sL0-AA-bFd"/>
-                                                <constraint firstItem="3X7-Sl-H6d" firstAttribute="top" secondItem="G9I-Fb-vdy" secondAttribute="bottom" constant="10" id="vcC-3G-VTH"/>
-                                                <constraint firstItem="XTe-Q7-2wd" firstAttribute="leading" secondItem="KCH-2G-A3F" secondAttribute="trailing" constant="40" id="wAc-fQ-56Y"/>
+                                                <constraint firstAttribute="trailing" secondItem="k7n-Ym-hQk" secondAttribute="trailing" constant="12" id="rAj-oa-RZq"/>
+                                                <constraint firstItem="9tc-jB-wrL" firstAttribute="centerY" secondItem="G9I-Fb-vdy" secondAttribute="centerY" id="rD4-cc-Ru3"/>
+                                                <constraint firstItem="k7n-Ym-hQk" firstAttribute="width" secondItem="VUM-hX-wZ2" secondAttribute="width" id="unb-de-aV9"/>
+                                                <constraint firstItem="9tc-jB-wrL" firstAttribute="leading" secondItem="G9I-Fb-vdy" secondAttribute="trailing" constant="2" id="w9Q-NB-8V5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -208,7 +198,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="app_tips_icon_fail" width="100" height="100"/>
-        <image name="app_tips_icon_success" width="100" height="100"/>
+        <image name="home_list_btn_chat" width="32" height="32"/>
+        <image name="home_list_btn_phone" width="32" height="32"/>
+        <image name="home_lite_icon_going" width="24" height="14"/>
     </resources>
 </document>
