@@ -10,6 +10,7 @@
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
+		209D7DF2224C739A00409EA2 /* JSOrderReleasingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DF1224C739A00409EA2 /* JSOrderReleasingVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
 		20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */; };
@@ -78,6 +79,8 @@
 		20781E74224A257A00F0767D /* JSMyWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletVC.m; sourceTree = "<group>"; };
 		209D7DED224C617D00409EA2 /* JSAllOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAllOrderVC.h; sourceTree = "<group>"; };
 		209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAllOrderVC.m; sourceTree = "<group>"; };
+		209D7DF0224C739A00409EA2 /* JSOrderReleasingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOrderReleasingVC.h; sourceTree = "<group>"; };
+		209D7DF1224C739A00409EA2 /* JSOrderReleasingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOrderReleasingVC.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BD73242248BDC20020EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20BD73252248BDC20020EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 			children = (
 				209D7DED224C617D00409EA2 /* JSAllOrderVC.h */,
 				209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */,
+				209D7DF0224C739A00409EA2 /* JSOrderReleasingVC.h */,
+				209D7DF1224C739A00409EA2 /* JSOrderReleasingVC.m */,
 			);
 			path = "我的订单";
 			sourceTree = "<group>";
@@ -730,6 +735,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
+				209D7DF2224C739A00409EA2 /* JSOrderReleasingVC.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
 				20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */,
