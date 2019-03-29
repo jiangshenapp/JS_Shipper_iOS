@@ -10,7 +10,6 @@
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
-		209D7DF2224C739A00409EA2 /* JSOrderReleasingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DF1224C739A00409EA2 /* JSOrderReleasingVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
 		20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */; };
@@ -66,6 +65,14 @@
 		20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */; };
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
 		20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSRessetPswVC.m */; };
+		20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */; };
+		20F89D58224DC0DF00D2DC2D /* JSReleaseOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */; };
+		20F89D5B224DC10A00D2DC2D /* JSConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */; };
+		20F89D5E224DC14E00D2DC2D /* JSDeliveryOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */; };
+		20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */; };
+		20F89D64224DC2F400D2DC2D /* JSTransportOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */; };
+		20F89D67224DC32A00D2DC2D /* JSFinishOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */; };
+		20F89D6A224DC34D00D2DC2D /* JSCancleOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */; };
 		20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934DF224B18B4008C80DB /* JSRechargeVC.m */; };
 		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
 		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
@@ -79,8 +86,6 @@
 		20781E74224A257A00F0767D /* JSMyWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletVC.m; sourceTree = "<group>"; };
 		209D7DED224C617D00409EA2 /* JSAllOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAllOrderVC.h; sourceTree = "<group>"; };
 		209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAllOrderVC.m; sourceTree = "<group>"; };
-		209D7DF0224C739A00409EA2 /* JSOrderReleasingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOrderReleasingVC.h; sourceTree = "<group>"; };
-		209D7DF1224C739A00409EA2 /* JSOrderReleasingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOrderReleasingVC.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BD73242248BDC20020EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20BD73252248BDC20020EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -185,6 +190,22 @@
 		20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPwdVC.m; sourceTree = "<group>"; };
 		20BD74192248C8230020EA5D /* JSRessetPswVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRessetPswVC.h; sourceTree = "<group>"; };
 		20BD741A2248C8230020EA5D /* JSRessetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRessetPswVC.m; sourceTree = "<group>"; };
+		20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBaseOrderDetailsVC.h; sourceTree = "<group>"; };
+		20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBaseOrderDetailsVC.m; sourceTree = "<group>"; };
+		20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSReleaseOrderVC.h; sourceTree = "<group>"; };
+		20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSReleaseOrderVC.m; sourceTree = "<group>"; };
+		20F89D59224DC10A00D2DC2D /* JSConfirmOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSConfirmOrderVC.h; sourceTree = "<group>"; };
+		20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSConfirmOrderVC.m; sourceTree = "<group>"; };
+		20F89D5C224DC14E00D2DC2D /* JSDeliveryOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDeliveryOrderVC.h; sourceTree = "<group>"; };
+		20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDeliveryOrderVC.m; sourceTree = "<group>"; };
+		20F89D5F224DC2B200D2DC2D /* JSCommentOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCommentOrderVC.h; sourceTree = "<group>"; };
+		20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCommentOrderVC.m; sourceTree = "<group>"; };
+		20F89D62224DC2F300D2DC2D /* JSTransportOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSTransportOrderVC.h; sourceTree = "<group>"; };
+		20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSTransportOrderVC.m; sourceTree = "<group>"; };
+		20F89D65224DC32A00D2DC2D /* JSFinishOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFinishOrderVC.h; sourceTree = "<group>"; };
+		20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSFinishOrderVC.m; sourceTree = "<group>"; };
+		20F89D68224DC34D00D2DC2D /* JSCancleOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCancleOrderVC.h; sourceTree = "<group>"; };
+		20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCancleOrderVC.m; sourceTree = "<group>"; };
 		20F934DE224B18B4008C80DB /* JSRechargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRechargeVC.h; sourceTree = "<group>"; };
 		20F934DF224B18B4008C80DB /* JSRechargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRechargeVC.m; sourceTree = "<group>"; };
 		20F934E1224B1C95008C80DB /* JSWithdrawalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawalMoneyVC.h; sourceTree = "<group>"; };
@@ -237,8 +258,22 @@
 			children = (
 				209D7DED224C617D00409EA2 /* JSAllOrderVC.h */,
 				209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */,
-				209D7DF0224C739A00409EA2 /* JSOrderReleasingVC.h */,
-				209D7DF1224C739A00409EA2 /* JSOrderReleasingVC.m */,
+				20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */,
+				20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */,
+				20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */,
+				20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */,
+				20F89D59224DC10A00D2DC2D /* JSConfirmOrderVC.h */,
+				20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */,
+				20F89D5C224DC14E00D2DC2D /* JSDeliveryOrderVC.h */,
+				20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */,
+				20F89D5F224DC2B200D2DC2D /* JSCommentOrderVC.h */,
+				20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */,
+				20F89D62224DC2F300D2DC2D /* JSTransportOrderVC.h */,
+				20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */,
+				20F89D65224DC32A00D2DC2D /* JSFinishOrderVC.h */,
+				20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */,
+				20F89D68224DC34D00D2DC2D /* JSCancleOrderVC.h */,
+				20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */,
 			);
 			path = "我的订单";
 			sourceTree = "<group>";
@@ -735,17 +770,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
-				209D7DF2224C739A00409EA2 /* JSOrderReleasingVC.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
 				20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */,
 				20BD73AA2248BE440020EA5D /* CacheUtil.m in Sources */,
 				20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
+				20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */,
+				20F89D67224DC32A00D2DC2D /* JSFinishOrderVC.m in Sources */,
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
 				20BD73342248BDC30020EA5D /* main.m in Sources */,
 				20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */,
 				20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */,
+				20F89D58224DC0DF00D2DC2D /* JSReleaseOrderVC.m in Sources */,
 				20BD73D02248BE440020EA5D /* XLGLogVC.m in Sources */,
 				20BD73C52248BE440020EA5D /* BaseTabBarVC.m in Sources */,
 				20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */,
@@ -757,6 +794,7 @@
 				20BD73BA2248BE440020EA5D /* CZUpdateView.m in Sources */,
 				20BD73A92248BE440020EA5D /* KeyChainUtil.m in Sources */,
 				20BD73C72248BE440020EA5D /* BaseNC.m in Sources */,
+				20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */,
 				20BD73B42248BE440020EA5D /* RegularPhoneTF.m in Sources */,
 				20BD73B32248BE440020EA5D /* XLGLottie.m in Sources */,
 				20BD73AC2248BE440020EA5D /* Toast.m in Sources */,
@@ -764,12 +802,15 @@
 				20BD73B82248BE440020EA5D /* NetworkManager.m in Sources */,
 				20BD73B62248BE440020EA5D /* NetworkUtil.m in Sources */,
 				20BD73C62248BE440020EA5D /* BaseVC.m in Sources */,
+				20F89D6A224DC34D00D2DC2D /* JSCancleOrderVC.m in Sources */,
 				20BD73BD2248BE440020EA5D /* UserInfo.m in Sources */,
 				20BD73CF2248BE440020EA5D /* XLGChangeServerVC.m in Sources */,
+				20F89D64224DC2F400D2DC2D /* JSTransportOrderVC.m in Sources */,
 				20BD73B92248BE440020EA5D /* CZNotNetAvailableVC.m in Sources */,
 				20BD73BC2248BE440020EA5D /* Reachability.m in Sources */,
 				20BD73AE2248BE440020EA5D /* JHHJView.m in Sources */,
 				20BD73B52248BE440020EA5D /* ProgressLoadView.m in Sources */,
+				20F89D5E224DC14E00D2DC2D /* JSDeliveryOrderVC.m in Sources */,
 				20BD73CA2248BE440020EA5D /* BaseWebVC.m in Sources */,
 				20BD73C92248BE440020EA5D /* BaseScrollView.m in Sources */,
 				20BD73CB2248BE440020EA5D /* XLGInternalDemoVC.m in Sources */,
@@ -783,6 +824,7 @@
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
 				209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */,
+				20F89D5B224DC10A00D2DC2D /* JSConfirmOrderVC.m in Sources */,
 				20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,

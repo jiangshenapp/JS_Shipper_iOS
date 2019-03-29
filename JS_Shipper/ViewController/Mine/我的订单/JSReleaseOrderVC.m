@@ -1,23 +1,21 @@
 //
-//  JSOrderReleasingVC.m
+//  JSReleaseOrderDetailsVC.m
 //  JS_Shipper
 //
-//  Created by zhanbing han on 2019/3/28.
+//  Created by zhanbing han on 2019/3/29.
 //  Copyright © 2019年 zhanbing han. All rights reserved.
 //
 
-#import "JSOrderReleasingVC.h"
+#import "JSReleaseOrderVC.h"
 
-@interface JSOrderReleasingVC ()
+@interface JSReleaseOrderVC ()
 
 @end
 
-@implementation JSOrderReleasingVC
+@implementation JSReleaseOrderVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _bgScroView.contentSize = CGSizeMake(0, 1000);
-    self.title = @"发布中";
     // Do any additional setup after loading the view.
 }
 
