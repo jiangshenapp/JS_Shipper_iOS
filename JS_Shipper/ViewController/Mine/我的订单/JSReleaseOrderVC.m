@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tileView1.hidden = NO;
+    self.titleView2.hidden = YES;
+    self.orderStatusLab.text = @"发布中";
 }
 
 /*

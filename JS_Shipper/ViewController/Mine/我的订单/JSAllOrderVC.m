@@ -7,9 +7,13 @@
 //
 
 #import "JSAllOrderVC.h"
+#import "JSBaseOrderDetailsVC.h"
+#import "JSReleaseOrderVC.h"
 
 @interface JSAllOrderVC ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    NSArray *classNameArr;
+}
 @end
 
 @implementation JSAllOrderVC
@@ -17,16 +21,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的订单";
+    classNameArr = @[@"JSReleaseOrderVC",@"JSConfirmOrderVC",@"JSDeliveryOrderVC",@"JSCommentOrderVC",@"JSTransportOrderVC",@"JSFinishOrderVC",@"JSCancleOrderVC"];
     // Do any additional setup after loading the view.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return classNameArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyOrderTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyOrderTabCell"];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    JSBaseOrderDetailsVC *vc = (JSBaseOrderDetailsVC *)[Utils getViewController:@"Mine" WithVCName:@"JSBaseOrderDetailsVC"];;
+//    JSReleaseOrderVC *vc = [UIViewController alloc]initw;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

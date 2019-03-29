@@ -16,7 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.orderStatusLab.text  = @"车主已确认";
+    self.bottomLeftBtn.hidden =YES;
+    self.bottomRightBtn.hidden = YES;
+    [self.bottomBtn setTitle:@"重新发货" forState:UIControlStateNormal];
 }
 
 /*

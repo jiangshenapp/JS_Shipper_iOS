@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.orderStatusLab.text = @"待确认";
+    [self.bottomRightBtn setTitle:@"立即支付" forState:UIControlStateNormal];
+    
     // Do any additional setup after loading the view.
 }
 

@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.orderStatusLab.text = @"车主待接货";
+    self.bottomRightBtn.hidden = YES;
+    self.bottomLeftBtn.hidden = YES;
     // Do any additional setup after loading the view.
 }
 

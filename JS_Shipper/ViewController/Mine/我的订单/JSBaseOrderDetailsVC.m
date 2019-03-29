@@ -16,8 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _bgScroView.contentSize = CGSizeMake(0, 1000);
-    self.title = @"发布中";
+    _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+50);
+    self.title = @"我的订单";
+    self.tileView1.hidden = YES;
+    self.titleView2.hidden = NO;
     // Do any additional setup after loading the view.
 }
 
@@ -35,6 +37,9 @@
 }
 
 - (IBAction)bottomRightBtnAction:(UIButton *)sender {
+}
+
+- (IBAction)bottomBtnAction:(UIButton *)sender {
 }
 
 @end

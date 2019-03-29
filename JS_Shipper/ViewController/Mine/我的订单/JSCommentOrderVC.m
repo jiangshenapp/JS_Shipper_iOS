@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.orderStatusLab.text = @"运输中";
+    [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
+    [self.bottomRightBtn setTitle:@"评价" forState:UIControlStateNormal];
 }
 
 /*
