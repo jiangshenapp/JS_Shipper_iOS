@@ -337,11 +337,11 @@
 			isa = PBXGroup;
 			children = (
 				20BD733B2248BE420020EA5D /* Utils.h */,
+				20BD73512248BE420020EA5D /* Utils.m */,
 				20BD733C2248BE420020EA5D /* Cache */,
 				20BD73412248BE420020EA5D /* StarView */,
 				20BD73442248BE420020EA5D /* Toast */,
 				20BD73472248BE420020EA5D /* Indicator(指示器) */,
-				20BD73512248BE420020EA5D /* Utils.m */,
 				20BD73522248BE420020EA5D /* AlertView */,
 				20BD73552248BE420020EA5D /* Lottie */,
 				20BD73582248BE420020EA5D /* RegularPhone */,
@@ -353,10 +353,10 @@
 		20BD733C2248BE420020EA5D /* Cache */ = {
 			isa = PBXGroup;
 			children = (
-				20BD733D2248BE420020EA5D /* KeyChainUtil.h */,
 				20BD733E2248BE420020EA5D /* CacheUtil.h */,
-				20BD733F2248BE420020EA5D /* KeyChainUtil.m */,
 				20BD73402248BE420020EA5D /* CacheUtil.m */,
+				20BD733D2248BE420020EA5D /* KeyChainUtil.h */,
+				20BD733F2248BE420020EA5D /* KeyChainUtil.m */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -364,8 +364,8 @@
 		20BD73412248BE420020EA5D /* StarView */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73422248BE420020EA5D /* CZStarView.m */,
 				20BD73432248BE420020EA5D /* CZStarView.h */,
+				20BD73422248BE420020EA5D /* CZStarView.m */,
 			);
 			path = StarView;
 			sourceTree = "<group>";
@@ -373,8 +373,8 @@
 		20BD73442248BE420020EA5D /* Toast */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73452248BE420020EA5D /* Toast.m */,
 				20BD73462248BE420020EA5D /* Toast.h */,
+				20BD73452248BE420020EA5D /* Toast.m */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -393,11 +393,11 @@
 			isa = PBXGroup;
 			children = (
 				20BD73492248BE420020EA5D /* JHHJView.h */,
-				20BD734A2248BE420020EA5D /* JHHJCenterBGView.m */,
-				20BD734B2248BE420020EA5D /* JHHJAnimation.h */,
 				20BD734C2248BE420020EA5D /* JHHJView.m */,
+				20BD734B2248BE420020EA5D /* JHHJAnimation.h */,
 				20BD734D2248BE420020EA5D /* JHHJAnimation.m */,
 				20BD734E2248BE420020EA5D /* JHHJCenterBGView.h */,
+				20BD734A2248BE420020EA5D /* JHHJCenterBGView.m */,
 			);
 			path = JHLoadingForHJ;
 			sourceTree = "<group>";
@@ -405,8 +405,8 @@
 		20BD73522248BE420020EA5D /* AlertView */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73532248BE420020EA5D /* XLGAlertView.m */,
 				20BD73542248BE420020EA5D /* XLGAlertView.h */,
+				20BD73532248BE420020EA5D /* XLGAlertView.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -414,8 +414,8 @@
 		20BD73552248BE420020EA5D /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73562248BE420020EA5D /* XLGLottie.m */,
 				20BD73572248BE420020EA5D /* XLGLottie.h */,
+				20BD73562248BE420020EA5D /* XLGLottie.m */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -423,8 +423,8 @@
 		20BD73582248BE420020EA5D /* RegularPhone */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73592248BE420020EA5D /* RegularPhoneTF.m */,
 				20BD735A2248BE420020EA5D /* RegularPhoneTF.h */,
+				20BD73592248BE420020EA5D /* RegularPhoneTF.m */,
 			);
 			path = RegularPhone;
 			sourceTree = "<group>";
@@ -432,8 +432,8 @@
 		20BD735B2248BE420020EA5D /* ProgressView */ = {
 			isa = PBXGroup;
 			children = (
-				20BD735C2248BE420020EA5D /* ProgressLoadView.m */,
 				20BD735D2248BE420020EA5D /* ProgressLoadView.h */,
+				20BD735C2248BE420020EA5D /* ProgressLoadView.m */,
 			);
 			path = ProgressView;
 			sourceTree = "<group>";
@@ -441,11 +441,11 @@
 		20BD735E2248BE420020EA5D /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				20BD735F2248BE420020EA5D /* NetworkUtil.m */,
 				20BD73602248BE420020EA5D /* Config.h */,
-				20BD73612248BE420020EA5D /* NetworkManager.h */,
 				20BD73622248BE420020EA5D /* Config.m */,
 				20BD73632248BE420020EA5D /* NetworkUtil.h */,
+				20BD735F2248BE420020EA5D /* NetworkUtil.m */,
+				20BD73612248BE420020EA5D /* NetworkManager.h */,
 				20BD73642248BE420020EA5D /* NetworkManager.m */,
 			);
 			path = Network;
@@ -454,12 +454,12 @@
 		20BD73652248BE420020EA5D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73662248BE420020EA5D /* CZNotNetAvailableVC.m */,
-				20BD73672248BE420020EA5D /* CZUpdateView.m */,
-				20BD73682248BE420020EA5D /* CZNotDataView.m */,
 				20BD73692248BE420020EA5D /* CZUpdateView.h */,
-				20BD736A2248BE420020EA5D /* CZNotNetAvailableVC.h */,
+				20BD73672248BE420020EA5D /* CZUpdateView.m */,
 				20BD736B2248BE420020EA5D /* CZNotDataView.h */,
+				20BD73682248BE420020EA5D /* CZNotDataView.m */,
+				20BD736A2248BE420020EA5D /* CZNotNetAvailableVC.h */,
+				20BD73662248BE420020EA5D /* CZNotNetAvailableVC.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -475,8 +475,8 @@
 		20BD736D2248BE430020EA5D /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				20BD736E2248BE430020EA5D /* Reachability.m */,
 				20BD736F2248BE430020EA5D /* Reachability.h */,
+				20BD736E2248BE430020EA5D /* Reachability.m */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -484,8 +484,8 @@
 		20BD73702248BE430020EA5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73712248BE430020EA5D /* UserInfo.m */,
 				20BD73722248BE430020EA5D /* UserInfo.h */,
+				20BD73712248BE430020EA5D /* UserInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -533,14 +533,14 @@
 		20BD737D2248BE430020EA5D /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				20BD737E2248BE430020EA5D /* JSMineVC.h */,
-				20BD737F2248BE430020EA5D /* JSMineVC.m */,
-				20781E6D224A054F00F0767D /* JSAuthenticationVC.h */,
-				20781E6E224A054F00F0767D /* JSAuthenticationVC.m */,
 				203D8EF4224DFC460066333A /* JSPayVC.h */,
 				203D8EF5224DFC460066333A /* JSPayVC.m */,
+				20BD737E2248BE430020EA5D /* JSMineVC.h */,
+				20BD737F2248BE430020EA5D /* JSMineVC.m */,
 				203D8EF7224DFDE10066333A /* JSMyInfoVC.h */,
 				203D8EF8224DFDE10066333A /* JSMyInfoVC.m */,
+				20781E6D224A054F00F0767D /* JSAuthenticationVC.h */,
+				20781E6E224A054F00F0767D /* JSAuthenticationVC.m */,
 				209D7DEC224C615F00409EA2 /* 我的订单 */,
 				20306C6C224A5253004D6762 /* 钱包 */,
 			);
@@ -561,12 +561,12 @@
 		20BD73832248BE430020EA5D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */,
-				20BD73852248BE430020EA5D /* JSPaswdLoginVC.h */,
 				20BD74102248C1FC0020EA5D /* JSRegisterVC.h */,
 				20BD74112248C1FC0020EA5D /* JSRegisterVC.m */,
 				20BD74132248C5B70020EA5D /* JSCodeLoginVC.h */,
 				20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */,
+				20BD73852248BE430020EA5D /* JSPaswdLoginVC.h */,
+				20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */,
 				20BD74162248C6D70020EA5D /* JSForgetPwdVC.h */,
 				20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */,
 				20BD74192248C8230020EA5D /* JSRessetPswVC.h */,
@@ -578,20 +578,20 @@
 		20BD73862248BE440020EA5D /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73872248BE440020EA5D /* WKDelegateController.m */,
-				20BD73882248BE440020EA5D /* BaseScrollView.h */,
-				20BD73902248BE440020EA5D /* BaseTabBarVC.h */,
-				20BD738A2248BE440020EA5D /* BaseTabBarVC.m */,
-				20BD738B2248BE440020EA5D /* BaseNC.h */,
-				20BD73912248BE440020EA5D /* BaseNC.m */,
-				20BD738D2248BE440020EA5D /* BaseWebVC.h */,
-				20BD738E2248BE440020EA5D /* WKDelegateController.h */,
 				20BD738C2248BE440020EA5D /* BaseVC.h */,
 				20BD738F2248BE440020EA5D /* BaseVC.m */,
+				20BD738B2248BE440020EA5D /* BaseNC.h */,
+				20BD73912248BE440020EA5D /* BaseNC.m */,
 				20BD73892248BE440020EA5D /* BaseNavBar.h */,
 				20BD73922248BE440020EA5D /* BaseNavBar.m */,
+				20BD73902248BE440020EA5D /* BaseTabBarVC.h */,
+				20BD738A2248BE440020EA5D /* BaseTabBarVC.m */,
+				20BD73882248BE440020EA5D /* BaseScrollView.h */,
 				20BD73932248BE440020EA5D /* BaseScrollView.m */,
+				20BD738D2248BE440020EA5D /* BaseWebVC.h */,
 				20BD73942248BE440020EA5D /* BaseWebVC.m */,
+				20BD738E2248BE440020EA5D /* WKDelegateController.h */,
+				20BD73872248BE440020EA5D /* WKDelegateController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -608,9 +608,9 @@
 		20BD73962248BE440020EA5D /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				20BD73972248BE440020EA5D /* Demo */,
-				20BD739A2248BE440020EA5D /* XLGInternalTestVC.m */,
 				20BD739B2248BE440020EA5D /* XLGInternalTestVC.h */,
+				20BD739A2248BE440020EA5D /* XLGInternalTestVC.m */,
+				20BD73972248BE440020EA5D /* Demo */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -638,12 +638,12 @@
 		20BD739D2248BE440020EA5D /* 环境切换 */ = {
 			isa = PBXGroup;
 			children = (
-				20BD739E2248BE440020EA5D /* XLGChangeServerModel.h */,
-				20BD739F2248BE440020EA5D /* XLGChangeServerCell.m */,
 				20BD73A02248BE440020EA5D /* XLGChangeServerVC.h */,
-				20BD73A12248BE440020EA5D /* XLGChangeServerModel.m */,
 				20BD73A22248BE440020EA5D /* XLGChangeServerVC.m */,
 				20BD73A32248BE440020EA5D /* XLGChangeServerCell.h */,
+				20BD739F2248BE440020EA5D /* XLGChangeServerCell.m */,
+				20BD739E2248BE440020EA5D /* XLGChangeServerModel.h */,
+				20BD73A12248BE440020EA5D /* XLGChangeServerModel.m */,
 			);
 			path = "环境切换";
 			sourceTree = "<group>";
@@ -1030,6 +1030,7 @@
 			baseConfigurationReference = 9B67392921C6C16FAB28EC6A /* Pods-JS_Shipper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K3A6XD8P7R;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JS_Shipper/JS.pch";
@@ -1039,8 +1040,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xlgcx.Shipper.JS-Shipper";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xlgcx.Shipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1050,6 +1052,7 @@
 			baseConfigurationReference = 3F4AE2CD97BD2F091F4F87FD /* Pods-JS_Shipper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K3A6XD8P7R;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JS_Shipper/JS.pch";
@@ -1059,8 +1062,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.xlgcx.Shipper.JS-Shipper";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xlgcx.Shipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
