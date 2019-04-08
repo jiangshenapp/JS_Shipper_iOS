@@ -494,9 +494,9 @@
 			isa = PBXGroup;
 			children = (
 				20BD73802248BE430020EA5D /* Garden */,
-				20BD73742248BE430020EA5D /* Community */,
 				20BD73772248BE430020EA5D /* DeliverGoods */,
 				20BD737A2248BE430020EA5D /* Message */,
+				20BD73742248BE430020EA5D /* Community */,
 				20BD737D2248BE430020EA5D /* Mine */,
 				20BD73832248BE430020EA5D /* Login */,
 			);
