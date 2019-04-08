@@ -16,9 +16,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initView];
+}
+
+-(void)initView {
     _titleView.top = 7+kStatusBarH;
     _titleView.centerX = WIDTH/2.0;
     [self.navBar addSubview:_titleView];
+    CGFloat btW = WIDTH/4.0;
+    for (NSInteger index = 0; index<4; index++) {
+        FilterButton *sender = [[FilterButton alloc]initWithFrame:CGRectMake(index*btW, 0, btW, self.filterView.height)];
+//        [sender setImage:[UIImage imageNamed:@"app_tab_arrow_down"] forState:UIControlStateNormal];
+        [sender setTitle:@"起嘎嘎嘎g哈哈" forState:UIControlStateNormal];
+        [self.filterView addSubview:sender];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -54,7 +65,38 @@
         }
     }
 }
+
 @end
 @implementation JSGardenTabCell
+
+@end
+
+@implementation FilterButton
+-(instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initView];
+    }
+    return self;
+}
+
+- (void)initView {
+    _titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.width-20, self.height)];
+    _titleLab.textAlignment = NSTextAlignmentRight;
+    _titleLab.font = [UIFont systemFontOfSize:14];
+    _titleLab.minimumScaleFactor = 0.5;
+    _titleLab.adjustsFontSizeToFitWidth=YES;
+    [self addSubview:_titleLab];
+    
+    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(self.width-20, (self.height-8)/2.0, 12, 8)];
+    _imgView.image = [UIImage imageNamed:@"app_tab_arrow_down"];
+    [self addSubview:_imgView];
+}
+
+- (void)setTitle:(NSString *)title forState:(UIControlState)state {
+    _titleLab.text = title;
+}
+
+
 
 @end

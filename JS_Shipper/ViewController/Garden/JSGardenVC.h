@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JSGardenVC : BaseVC
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 - (IBAction)titleBtnAction:(UIButton*)sender;
+@property (weak, nonatomic) IBOutlet UIView *filterView;
 
 @end
 
@@ -24,7 +25,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *countLab;
 @property (weak, nonatomic) IBOutlet UIButton *iphoneCallBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sendMsgBtn;
+@end
 
+@interface FilterButton : UIButton
+/** icon */
+@property (nonatomic,retain)  UIImageView *imgView;
+/** 文字 */
+@property (nonatomic,retain) UILabel *titleLab;
 @end
 
 NS_ASSUME_NONNULL_END

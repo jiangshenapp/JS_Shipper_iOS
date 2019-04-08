@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
 		203D8EF6224DFC460066333A /* JSPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF5224DFC460066333A /* JSPayVC.m */; };
 		203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF8224DFDE10066333A /* JSMyInfoVC.m */; };
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
@@ -82,6 +83,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		203C1980225AE02000AB5970 /* JSCarSourceDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCarSourceDetailVC.h; sourceTree = "<group>"; };
+		203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCarSourceDetailVC.m; sourceTree = "<group>"; };
 		203D8EF4224DFC460066333A /* JSPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSPayVC.h; sourceTree = "<group>"; };
 		203D8EF5224DFC460066333A /* JSPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPayVC.m; sourceTree = "<group>"; };
 		203D8EF7224DFDE10066333A /* JSMyInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyInfoVC.h; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 			children = (
 				20BD73822248BE430020EA5D /* JSGardenVC.h */,
 				20BD73812248BE430020EA5D /* JSGardenVC.m */,
+				203C1980225AE02000AB5970 /* JSCarSourceDetailVC.h */,
+				203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */,
 			);
 			path = Garden;
 			sourceTree = "<group>";
@@ -779,6 +784,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */,
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
