@@ -10,6 +10,7 @@
 		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
 		203D8EF6224DFC460066333A /* JSPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF5224DFC460066333A /* JSPayVC.m */; };
 		203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF8224DFDE10066333A /* JSMyInfoVC.m */; };
+		2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */; };
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
@@ -89,6 +90,8 @@
 		203D8EF5224DFC460066333A /* JSPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPayVC.m; sourceTree = "<group>"; };
 		203D8EF7224DFDE10066333A /* JSMyInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyInfoVC.h; sourceTree = "<group>"; };
 		203D8EF8224DFDE10066333A /* JSMyInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyInfoVC.m; sourceTree = "<group>"; };
+		2055C10F225C3B4D000E13C3 /* JSSystemMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSystemMessageVC.h; sourceTree = "<group>"; };
+		2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSSystemMessageVC.m; sourceTree = "<group>"; };
 		20781E6D224A054F00F0767D /* JSAuthenticationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAuthenticationVC.h; sourceTree = "<group>"; };
 		20781E6E224A054F00F0767D /* JSAuthenticationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAuthenticationVC.m; sourceTree = "<group>"; };
 		20781E73224A257A00F0767D /* JSMyWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletVC.h; sourceTree = "<group>"; };
@@ -526,6 +529,8 @@
 			children = (
 				20BD737B2248BE430020EA5D /* JSMessageVC.h */,
 				20BD737C2248BE430020EA5D /* JSMessageVC.m */,
+				2055C10F225C3B4D000E13C3 /* JSSystemMessageVC.h */,
+				2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */,
 				20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */,
 				20BD74122248C1FC0020EA5D /* JSRegisterVC.m in Sources */,
+				2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */,
 				20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */,
 				20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */,
 				203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */,
