@@ -9,7 +9,10 @@
 #import "JSGardenVC.h"
 
 @interface JSGardenVC ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    NSArray *titleArr1;
+    NSArray *titleArr2;
+}
 @end
 
 @implementation JSGardenVC
@@ -24,10 +27,11 @@
     _titleView.centerX = WIDTH/2.0;
     [self.navBar addSubview:_titleView];
     CGFloat btW = WIDTH/4.0;
+    titleArr1 = @[@"发货地",@"收货地",@"默认排序",@"筛选"];
     for (NSInteger index = 0; index<4; index++) {
         FilterButton *sender = [[FilterButton alloc]initWithFrame:CGRectMake(index*btW, 0, btW, self.filterView.height)];
 //        [sender setImage:[UIImage imageNamed:@"app_tab_arrow_down"] forState:UIControlStateNormal];
-        [sender setTitle:@"起嘎嘎嘎g哈哈" forState:UIControlStateNormal];
+        [sender setTitle:titleArr1[index] forState:UIControlStateNormal];
         [self.filterView addSubview:sender];
     }
 }
@@ -88,7 +92,7 @@
     _titleLab.adjustsFontSizeToFitWidth=YES;
     [self addSubview:_titleLab];
     
-    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(self.width-20, (self.height-8)/2.0, 12, 8)];
+    _imgView = [[UIImageView alloc]initWithFrame:CGRectMake(self.width-15, (self.height-4)/2.0, 6, 4)];
     _imgView.image = [UIImage imageNamed:@"app_tab_arrow_down"];
     [self addSubview:_imgView];
 }
