@@ -7,6 +7,7 @@
 //
 
 #import "JSForgetPwdVC.h"
+#import "JSResetPswVC.h"
 
 @interface JSForgetPwdVC ()
 
@@ -17,6 +18,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - methods
+/* 获取验证码 */
+- (IBAction)codeAction:(id)sender {
+    
+    if ([NSString isEmpty:self.phoneTF.text]
+        || ![Utils validateMobile:self.phoneTF.text]) {
+        [Utils showToast:@"请输入11位有效手机号"];
+        return;
+    }
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         self.phoneTF.text, @"mobile",
+                         nil];
+    [[NetworkManager sharedManager] postJSON:URL_SendSmsCode parameters:dic imageDataArr:nil imageName:nil  completion:^(id responseData, RequestState status, NSError *error) {
+        
+        if (status == Request_Success) {
+            [Utils showToast:@"验证码发送成功"];
+            [self startTimeCount:self.codeBtn];
+        }
+    }];
+}
+
+/* 下一步 */
+- (IBAction)nextAction:(id)sender {
+    
+    if ([NSString isEmpty:self.phoneTF.text]) {
+        [Utils showToast:@"请输入手机号"];
+        return;
+    }
+    
+    if (![Utils validateMobile:self.phoneTF.text]) {
+        [Utils showToast:@"请输入正确的手机号"];
+        return;
+    }
+    
+    if ([NSString isEmpty:self.codeTF.text]) {
+        [Utils showToast:@"请输入验证码"];
+        return;
+    }
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         self.phoneTF.text, @"mobile",
+                         self.codeTF.text, @"code",
+                         nil];
+    [[NetworkManager sharedManager] postJSON:URL_ResetPwdStep1 parameters:dic imageDataArr:nil imageName:nil  completion:^(id responseData, RequestState status, NSError *error) {
+        
+        if (status == Request_Success) {
+            JSResetPswVC *vc = (JSResetPswVC *)[Utils getViewController:@"Login" WithVCName:@"JSResetPswVC"];
+            vc.phoneStr = self.phoneTF.text;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
 }
 
 /*
