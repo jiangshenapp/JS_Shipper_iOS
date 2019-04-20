@@ -28,7 +28,7 @@
         return;
     }
     
-    if (![Utils validateMobile:self.pswAgainTF.text]) {
+    if ([NSString isEmpty:self.pswAgainTF.text]) {
         [Utils showToast:@"再次输入新密码"];
         return;
     }

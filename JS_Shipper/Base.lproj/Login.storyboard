@@ -39,7 +39,7 @@
                                             <rect key="frame" x="28" y="120" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0Z-D5-zwf">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15737936517" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0Z-D5-zwf">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,7 +101,6 @@
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="nextAction:" destination="xoQ-xE-mmA" eventType="touchUpInside" id="lDU-Ch-es7"/>
-                                                <segue destination="9h3-7q-pRr" kind="push" id="wfx-AP-byn"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -120,7 +119,7 @@
                     <navigationItem key="navigationItem" id="YPJ-In-PO5"/>
                     <connections>
                         <outlet property="codeBtn" destination="oUO-Lz-gK6" id="chI-dD-4Sh"/>
-                        <outlet property="codeTF" destination="RTa-Mu-pOD" id="02N-Hl-l3k"/>
+                        <outlet property="codeTF" destination="RTa-Mu-pOD" id="TcE-UK-sYI"/>
                         <outlet property="phoneTF" destination="i0Z-D5-zwf" id="YvL-Sl-fry"/>
                     </connections>
                 </viewController>
@@ -234,8 +233,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="yJY-o7-mLc"/>
                     <connections>
-                        <outlet property="newPswTF" destination="8Mt-7M-xVp" id="xdx-HE-wd2"/>
                         <outlet property="pswAgainTF" destination="oVx-P5-Ty7" id="Rr5-PM-X7u"/>
+                        <outlet property="pswTF" destination="8Mt-7M-xVp" id="ZYh-aD-9M9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7X-Pf-qV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,7 +786,7 @@
         <image name="app_agreement_icon_selected" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pYs-Tj-eKZ"/>
-        <segue reference="H4R-Tg-bmJ"/>
+        <segue reference="xsX-l8-PKl"/>
+        <segue reference="rSx-mF-Hwa"/>
     </inferredMetricsTieBreakers>
 </document>
