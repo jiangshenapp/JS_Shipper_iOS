@@ -150,7 +150,7 @@ static Utils *_utils = nil;
     } else {
         if (isJump==YES) {
             //跳转到登录页面
-            UIViewController *vc = [Utils getViewController:@"Main" WithVCName:@"CZLoginVC"];
+            UIViewController *vc = [Utils getViewController:@"Login" WithVCName:@"JSPaswdLoginVC"];
             vc.hidesBottomBarWhenPushed = YES;
             [[self getCurrentVC].navigationController pushViewController:vc animated:YES];
         }
@@ -168,8 +168,7 @@ static Utils *_utils = nil;
     [[UserInfo share] setUserInfo:nil]; //清除用户信息
     
     if (isJumpLoginVC==YES) {
-        //跳转到登录页面
-        UIViewController *vc = [Utils getViewController:@"Main" WithVCName:@"CZLoginVC"];
+        UIViewController *vc = [Utils getViewController:@"Login" WithVCName:@"JSPaswdLoginVC"];
         vc.hidesBottomBarWhenPushed = YES;
         [[self getCurrentVC].navigationController pushViewController:vc animated:YES];
     }

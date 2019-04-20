@@ -72,13 +72,16 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUO-Lz-gK6">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUO-Lz-gK6">
                                                     <rect key="frame" x="210" y="10" width="96" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="获取验证码">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="codeAction:" destination="xoQ-xE-mmA" eventType="touchUpInside" id="31J-aI-acF"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,6 +100,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
+                                                <action selector="nextAction:" destination="xoQ-xE-mmA" eventType="touchUpInside" id="lDU-Ch-es7"/>
                                                 <segue destination="9h3-7q-pRr" kind="push" id="wfx-AP-byn"/>
                                             </connections>
                                         </button>
@@ -114,6 +118,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YPJ-In-PO5"/>
+                    <connections>
+                        <outlet property="codeBtn" destination="oUO-Lz-gK6" id="chI-dD-4Sh"/>
+                        <outlet property="codeTF" destination="RTa-Mu-pOD" id="02N-Hl-l3k"/>
+                        <outlet property="phoneTF" destination="i0Z-D5-zwf" id="YvL-Sl-fry"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbB-Jh-6Qm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,7 +131,7 @@
         <!--设置密码-->
         <scene sceneID="7pt-gA-sqs">
             <objects>
-                <viewController storyboardIdentifier="JSRessetPswVC" title="设置密码" id="9h3-7q-pRr" customClass="JSRessetPswVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JSResetPswVC" title="设置密码" id="9h3-7q-pRr" customClass="JSResetPswVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ihz-gT-sOd"/>
                         <viewControllerLayoutGuide type="bottom" id="O3O-0i-h8r"/>
@@ -198,6 +207,9 @@
                                                     <integer key="value" value="22"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="resetAction:" destination="9h3-7q-pRr" eventType="touchUpInside" id="mm0-1B-WEg"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOB-Xa-lRh">
                                             <rect key="frame" x="28" y="50" width="254" height="30"/>
@@ -221,6 +233,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yJY-o7-mLc"/>
+                    <connections>
+                        <outlet property="newPswTF" destination="8Mt-7M-xVp" id="xdx-HE-wd2"/>
+                        <outlet property="pswAgainTF" destination="oVx-P5-Ty7" id="Rr5-PM-X7u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7X-Pf-qV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -279,7 +295,7 @@
                                             <rect key="frame" x="28" y="120" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZt-HU-SUm">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15737936517" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZt-HU-SUm">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -299,13 +315,13 @@
                                             <rect key="frame" x="27" y="180" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-n8-1Md">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="abc000000" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-n8-1Md">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eML-5v-8lY">
                                                     <rect key="frame" x="0.0" y="49" width="320" height="1"/>
@@ -329,6 +345,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84J-SU-LTp">
                                             <rect key="frame" x="99" y="279" width="177" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <gestureRecognizers/>
                                             <attributedString key="attributedText">
                                                 <fragment content="登录即代表您同意">
                                                     <attributes>
@@ -347,6 +364,13 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJg-Af-DKx">
+                                            <rect key="frame" x="182" y="275" width="100" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="protocalAction:" destination="OxN-dF-jhC" eventType="touchUpInside" id="MfM-Tw-vzR"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiY-IO-8cF">
                                             <rect key="frame" x="28" y="310" width="319" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -360,6 +384,9 @@
                                                     <integer key="value" value="22"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="loginAction:" destination="OxN-dF-jhC" eventType="touchUpInside" id="mwF-du-ENK"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXv-1d-Uqp">
                                             <rect key="frame" x="88" y="375" width="197" height="30"/>
@@ -386,6 +413,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TyH-q3-N7C"/>
+                    <connections>
+                        <outlet property="phoneTF" destination="sZt-HU-SUm" id="qDE-oV-NqL"/>
+                        <outlet property="pswTF" destination="ICA-n8-1Md" id="6fO-M5-rbR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bG-NS-Mqc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -421,7 +452,7 @@
                                             <rect key="frame" x="28" y="77" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入11位有效手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UN3-W4-gNf">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15737936517" placeholder="请输入11位有效手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UN3-W4-gNf">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -441,13 +472,13 @@
                                             <rect key="frame" x="27" y="137" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请设置6-16位密码（字母、数字）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rDy-iv-iUF">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="abc000000" placeholder="请设置6-16位密码（字母、数字）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rDy-iv-iUF">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="tintColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXI-wE-bJq">
                                                     <rect key="frame" x="0.0" y="49" width="320" height="1"/>
@@ -474,13 +505,16 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goh-q1-BFJ">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goh-q1-BFJ">
                                                     <rect key="frame" x="224" y="10" width="96" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="获取验证码">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="codeAction:" destination="iiU-tv-fz7" eventType="touchUpInside" id="F5X-Fo-19N"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -508,6 +542,13 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4lu-0z-NDz">
+                                            <rect key="frame" x="190" y="366" width="100" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="protocalAction:" destination="iiU-tv-fz7" eventType="touchUpInside" id="ibR-eT-6P6"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmV-4y-mQm">
                                             <rect key="frame" x="28" y="310" width="319" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -521,12 +562,18 @@
                                                     <integer key="value" value="22"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="registerAction:" destination="iiU-tv-fz7" eventType="touchUpInside" id="VOg-xR-EBN"/>
+                                            </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYB-Yq-pNe">
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYB-Yq-pNe">
                                             <rect key="frame" x="91" y="366" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="app_agreement_icon_default"/>
                                             <state key="selected" image="app_agreement_icon_selected"/>
+                                            <connections>
+                                                <action selector="selectAction:" destination="iiU-tv-fz7" eventType="touchUpInside" id="kWL-oa-SWS"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -542,6 +589,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P5Z-h7-Hia"/>
+                    <connections>
+                        <outlet property="codeBtn" destination="Goh-q1-BFJ" id="xZc-kJ-2OA"/>
+                        <outlet property="codeTF" destination="hua-dw-LzZ" id="n6b-yW-eFo"/>
+                        <outlet property="phoneTF" destination="UN3-W4-gNf" id="30q-oj-jX4"/>
+                        <outlet property="pswTF" destination="rDy-iv-iUF" id="4s6-nw-Sid"/>
+                        <outlet property="selectBtn" destination="OYB-Yq-pNe" id="xm2-mT-xkU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tae-Io-4FU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -633,13 +687,16 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-FB-z2V">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNW-FB-z2V">
                                                     <rect key="frame" x="216" y="10" width="96" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="获取验证码">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="codeAction:" destination="0dg-5R-c1U" eventType="touchUpInside" id="u0B-ao-Pdp"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -665,6 +722,13 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cii-FV-zxr">
+                                            <rect key="frame" x="182" y="275" width="100" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="protocalAction:" destination="0dg-5R-c1U" eventType="touchUpInside" id="tea-4a-RzQ"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYm-lW-rzh">
                                             <rect key="frame" x="28" y="310" width="319" height="44"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -678,6 +742,9 @@
                                                     <integer key="value" value="22"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="loginAction:" destination="0dg-5R-c1U" eventType="touchUpInside" id="keg-fU-2Th"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skt-Ch-MPC">
                                             <rect key="frame" x="88" y="375" width="197" height="30"/>
@@ -704,6 +771,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gqm-17-1e2"/>
+                    <connections>
+                        <outlet property="codeBtn" destination="YNW-FB-z2V" id="dC0-fI-Nxp"/>
+                        <outlet property="codeTF" destination="fZg-bK-ALE" id="bTe-5V-Y3J"/>
+                        <outlet property="phoneTF" destination="6GW-YR-HtR" id="bzU-eH-WmD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGJ-0x-W4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -715,7 +787,7 @@
         <image name="app_agreement_icon_selected" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xsX-l8-PKl"/>
-        <segue reference="rSx-mF-Hwa"/>
+        <segue reference="pYs-Tj-eKZ"/>
+        <segue reference="H4R-Tg-bmJ"/>
     </inferredMetricsTieBreakers>
 </document>

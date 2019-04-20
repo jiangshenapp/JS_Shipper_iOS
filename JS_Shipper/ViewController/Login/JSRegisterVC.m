@@ -7,6 +7,7 @@
 //
 
 #import "JSRegisterVC.h"
+#import "JSPaswdLoginVC.h"
 
 @interface JSRegisterVC ()
 
@@ -17,6 +18,77 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - methods
+/* 注册 */
+- (IBAction)registerAction:(id)sender {
+    
+    if ([NSString isEmpty:self.phoneTF.text]
+        || ![Utils validateMobile:self.phoneTF.text]) {
+        [Utils showToast:@"请输入11位有效手机号"];
+        return;
+    }
+    
+    if (self.pswTF.text.length<6 || self.pswTF.text.length>16) {
+        [Utils showToast:@"请设置6-16位密码（字母、数字）"];
+        return;
+    }
+    
+    if ([NSString isEmpty:self.codeTF.text]) {
+        [Utils showToast:@"请输入验证码"];
+        return;
+    }
+    
+    if (self.selectBtn.isSelected == NO) {
+        [Utils showToast:@"请勾选用户协议"];
+        return;
+    }
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         self.phoneTF.text, @"mobile",
+                         self.codeTF.text, @"code",
+                         self.pswTF.text, @"password",
+                         nil];
+    
+    [[NetworkManager sharedManager] postJSON:URL_Registry parameters:dic imageDataArr:nil imageName:nil completion:^(id responseData, RequestState status, NSError *error) {
+
+        if (status == Request_Success) {
+            [Utils showToast:@"注册成功"];
+            [Utils isLoginWithJump:YES];
+        }
+    }];
+}
+
+/* 获取验证码 */
+- (IBAction)codeAction:(id)sender {
+    
+    if ([NSString isEmpty:self.phoneTF.text]
+        || ![Utils validateMobile:self.phoneTF.text]) {
+        [Utils showToast:@"请输入11位有效手机号"];
+        return;
+    }
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         self.phoneTF.text, @"mobile",
+                         nil];
+    [[NetworkManager sharedManager] postJSON:URL_SendSmsCode parameters:dic imageDataArr:nil imageName:nil  completion:^(id responseData, RequestState status, NSError *error) {
+        
+        if (status == Request_Success) {
+            [Utils showToast:@"验证码发送成功"];
+            [self startTimeCount:self.codeBtn];
+        }
+    }];
+}
+
+/* 勾选协议 */
+- (IBAction)selectAction:(id)sender {
+    self.selectBtn.selected = !self.selectBtn.isSelected;
+}
+
+/* 用户协议 */
+- (IBAction)protocalAction:(id)sender {
+    
 }
 
 /*

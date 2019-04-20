@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "BaseTabBarVC.h"
+#import <IQKeyboardManager.h>
+#import "NetworkUtil.h"
 
 @interface AppDelegate ()
 
@@ -17,14 +19,48 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[UITabBar appearance] setTranslucent:NO];//解决tabbar上移
+    
+    //监测网络
+    [[NetworkUtil sharedInstance] listening];
+    
+    //键盘事件
+    [self processKeyBoard];
+    
+    //解决tabbar上移
+    [[UITabBar appearance] setTranslucent:NO];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[BaseTabBarVC alloc] init];
-//    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[Utils getViewController:@"Login" WithVCName:@"JSPaswdLoginVC"]];
+    BaseTabBarVC *tabBarVC = [[BaseTabBarVC alloc] init];
+    tabBarVC.delegate = self;
+    self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
+- (void)processKeyBoard {
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    
+    //这里我判断的是当前点击的tabBarItem的标题
+    NSString *tabBarTitle = viewController.tabBarItem.title;
+    if ([tabBarTitle isEqualToString:@"我的"]) {
+        if ([Utils isLoginWithJump:YES]) {
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    else {
+        return YES;
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
