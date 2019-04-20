@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202D3FE2226B0E16001B3353 /* CityCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202D3FE1226B0E16001B3353 /* CityCustomView.m */; };
 		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
 		203D8EF6224DFC460066333A /* JSPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF5224DFC460066333A /* JSPayVC.m */; };
 		203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF8224DFDE10066333A /* JSMyInfoVC.m */; };
@@ -69,6 +70,7 @@
 		20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */; };
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
 		20BD741B2248C8230020EA5D /* JSRessetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSRessetPswVC.m */; };
+		20E9D3E0226B12E500ED8F06 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E9D3DF226B12E500ED8F06 /* Address.plist */; };
 		20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */; };
 		20F89D58224DC0DF00D2DC2D /* JSReleaseOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */; };
 		20F89D5B224DC10A00D2DC2D /* JSConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */; };
@@ -84,6 +86,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202D3FE0226B0E16001B3353 /* CityCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityCustomView.h; sourceTree = "<group>"; };
+		202D3FE1226B0E16001B3353 /* CityCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityCustomView.m; sourceTree = "<group>"; };
 		203C1980225AE02000AB5970 /* JSCarSourceDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCarSourceDetailVC.h; sourceTree = "<group>"; };
 		203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCarSourceDetailVC.m; sourceTree = "<group>"; };
 		203D8EF4224DFC460066333A /* JSPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSPayVC.h; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 		20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPwdVC.m; sourceTree = "<group>"; };
 		20BD74192248C8230020EA5D /* JSRessetPswVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRessetPswVC.h; sourceTree = "<group>"; };
 		20BD741A2248C8230020EA5D /* JSRessetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRessetPswVC.m; sourceTree = "<group>"; };
+		20E9D3DF226B12E500ED8F06 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBaseOrderDetailsVC.h; sourceTree = "<group>"; };
 		20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBaseOrderDetailsVC.m; sourceTree = "<group>"; };
 		20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSReleaseOrderVC.h; sourceTree = "<group>"; };
@@ -248,6 +253,16 @@
 				3F4AE2CD97BD2F091F4F87FD /* Pods-JS_Shipper.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		202D3FDF226B0D91001B3353 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				202D3FE0226B0E16001B3353 /* CityCustomView.h */,
+				202D3FE1226B0E16001B3353 /* CityCustomView.m */,
+				20E9D3DF226B12E500ED8F06 /* Address.plist */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		20306C6C224A5253004D6762 /* 钱包 */ = {
@@ -559,6 +574,7 @@
 				20BD73812248BE430020EA5D /* JSGardenVC.m */,
 				203C1980225AE02000AB5970 /* JSCarSourceDetailVC.h */,
 				203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */,
+				202D3FDF226B0D91001B3353 /* View */,
 			);
 			path = Garden;
 			sourceTree = "<group>";
@@ -732,6 +748,7 @@
 				20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */,
 				20BD74082248BEC80020EA5D /* DeliverGoods.storyboard in Resources */,
 				20BD74022248BEB00020EA5D /* Garden.storyboard in Resources */,
+				20E9D3E0226B12E500ED8F06 /* Address.plist in Resources */,
 				20BD74042248BEB00020EA5D /* Login.storyboard in Resources */,
 				20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */,
 				20BD74032248BEB00020EA5D /* Message.storyboard in Resources */,
@@ -795,6 +812,7 @@
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
 				20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */,
 				20BD73AA2248BE440020EA5D /* CacheUtil.m in Sources */,
+				202D3FE2226B0E16001B3353 /* CityCustomView.m in Sources */,
 				20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
 				20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */,

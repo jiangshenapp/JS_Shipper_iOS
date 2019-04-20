@@ -7,11 +7,13 @@
 //
 
 #import "JSGardenVC.h"
+#import "CityCustomView.h"
 
 @interface JSGardenVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *titleArr1;
     NSArray *titleArr2;
+    CityCustomView *cityView;
 }
 @end
 
@@ -31,9 +33,14 @@
     for (NSInteger index = 0; index<4; index++) {
         FilterButton *sender = [[FilterButton alloc]initWithFrame:CGRectMake(index*btW, 0, btW, self.filterView.height)];
 //        [sender setImage:[UIImage imageNamed:@"app_tab_arrow_down"] forState:UIControlStateNormal];
+        sender.tag = 2000+index;
         [sender setTitle:titleArr1[index] forState:UIControlStateNormal];
+        [sender addTarget:self action:@selector(showViewAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.filterView addSubview:sender];
     }
+    
+    cityView = [[CityCustomView alloc]init];
+    [self.view addSubview:cityView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -43,6 +50,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     JSGardenTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSGardenTabCell"];
     return cell;
+}
+
+#pragma mark - 筛选按钮选择
+/** 筛选按钮选择 */
+- (void)showViewAction:(UIButton *)sender {
+    switch (sender.tag) {
+        case 2000:
+        {
+            cityView = [[CityCustomView alloc]init];
+            [self.view addSubview:cityView];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 /*
