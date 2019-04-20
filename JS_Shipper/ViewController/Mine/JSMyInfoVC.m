@@ -20,6 +20,12 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - methods
+/* 安全退出 */
+- (IBAction)logoutAction:(id)sender {
+    [Utils logout:YES];
+}
+
 /*
 #pragma mark - Navigation
 

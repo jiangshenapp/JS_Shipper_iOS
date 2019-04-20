@@ -213,12 +213,32 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opk-Rr-Tp2">
+                                <rect key="frame" x="28" y="603" width="319" height="44"/>
+                                <color key="backgroundColor" red="0.92549019607843142" green="0.65490196078431373" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4PJ-OH-61m"/>
+                                </constraints>
+                                <state key="normal" title="安全退出"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logoutAction:" destination="aLk-Sd-aWx" eventType="touchUpInside" id="uVT-Bf-yTx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="IFX-cF-jCJ" firstAttribute="top" secondItem="jz4-gV-YiF" secondAttribute="bottom" constant="44" id="8h1-uw-TCS"/>
                             <constraint firstItem="IFX-cF-jCJ" firstAttribute="leading" secondItem="Jvm-2I-vjD" secondAttribute="leading" id="C1H-y0-M7g"/>
+                            <constraint firstItem="E9Z-IW-gjg" firstAttribute="top" secondItem="Opk-Rr-Tp2" secondAttribute="bottom" constant="20" id="TEL-RN-dxe"/>
+                            <constraint firstAttribute="trailing" secondItem="Opk-Rr-Tp2" secondAttribute="trailing" constant="28" id="Ytu-Tf-w4z"/>
                             <constraint firstItem="E9Z-IW-gjg" firstAttribute="top" secondItem="IFX-cF-jCJ" secondAttribute="bottom" id="e4z-Jw-h0G"/>
+                            <constraint firstItem="Opk-Rr-Tp2" firstAttribute="leading" secondItem="Jvm-2I-vjD" secondAttribute="leading" constant="28" id="kJu-61-5a9"/>
                             <constraint firstAttribute="trailing" secondItem="IFX-cF-jCJ" secondAttribute="trailing" id="t0E-s1-HBu"/>
                         </constraints>
                     </view>
