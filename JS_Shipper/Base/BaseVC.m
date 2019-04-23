@@ -265,7 +265,7 @@
             dispatch_source_cancel(_timer);
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
-                [l_timeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+                [l_timeButton setTitle:@"重新获取" forState:UIControlStateNormal];
                 l_timeButton.userInteractionEnabled = YES;
                 l_timeButton.enabled = YES;
             });
@@ -275,7 +275,7 @@
             NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
-                [l_timeButton setTitle:[NSString stringWithFormat:@"%@秒后重发",strTime] forState:UIControlStateNormal];
+                [l_timeButton setTitle:[NSString stringWithFormat:@"%@秒",strTime] forState:UIControlStateNormal];
                 l_timeButton.userInteractionEnabled = NO;
                 
             });
