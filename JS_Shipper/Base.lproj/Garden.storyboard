@@ -22,14 +22,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFa-Qg-qc2">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ph2-tS-rY0"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aqP-a0-7N3">
-                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JSGardenTabCell" rowHeight="120" id="HNP-Rr-9N8" customClass="JSGardenTabCell">
@@ -189,13 +189,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="aqP-a0-7N3" secondAttribute="trailing" id="0N2-vE-rqJ"/>
                             <constraint firstItem="aqP-a0-7N3" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="1Yo-HC-Asc"/>
                             <constraint firstItem="GFa-Qg-qc2" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="Szn-ou-pd7"/>
-                            <constraint firstItem="aqP-a0-7N3" firstAttribute="top" secondItem="GFa-Qg-qc2" secondAttribute="bottom" id="Ts5-1x-rQp"/>
-                            <constraint firstItem="GFa-Qg-qc2" firstAttribute="top" secondItem="5L1-Vw-ec4" secondAttribute="bottom" constant="44" id="bVv-Ou-4xq"/>
+                            <constraint firstItem="aqP-a0-7N3" firstAttribute="top" secondItem="GFa-Qg-qc2" secondAttribute="bottom" constant="1" id="Ts5-1x-rQp"/>
+                            <constraint firstItem="GFa-Qg-qc2" firstAttribute="top" secondItem="5L1-Vw-ec4" secondAttribute="bottom" constant="45" id="bVv-Ou-4xq"/>
                             <constraint firstAttribute="trailing" secondItem="GFa-Qg-qc2" secondAttribute="trailing" id="mR7-Vo-sW0"/>
                             <constraint firstAttribute="bottom" secondItem="aqP-a0-7N3" secondAttribute="bottom" id="ycK-Iq-uGw"/>
                         </constraints>

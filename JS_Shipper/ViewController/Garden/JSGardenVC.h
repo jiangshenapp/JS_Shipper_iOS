@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface FilterButton : UIButton
+/** 是否选中 */
+@property (nonatomic,assign) BOOL isSelect;
 /** icon */
 @property (nonatomic,retain)  UIImageView *imgView;
 /** 文字 */

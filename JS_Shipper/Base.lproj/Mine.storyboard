@@ -9,6 +9,84 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--意见反馈-->
+        <scene sceneID="jjd-aP-Lbh">
+            <objects>
+                <viewController storyboardIdentifier="JSFeedBackVC" title="意见反馈" id="dFq-S8-287" customClass="JSFeedBackVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="29J-li-Lau"/>
+                        <viewControllerLayoutGuide type="bottom" id="37W-RK-kMg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lw2-dV-u7J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pew-nY-mpk">
+                                <rect key="frame" x="0.0" y="74" width="375" height="160"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s9c-7t-cpb">
+                                        <rect key="frame" x="8" y="8" width="359" height="144"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="s9c-7t-cpb" firstAttribute="top" secondItem="pew-nY-mpk" secondAttribute="top" constant="8" id="ARj-mf-asW"/>
+                                    <constraint firstAttribute="bottom" secondItem="s9c-7t-cpb" secondAttribute="bottom" constant="8" id="CYL-pC-goN"/>
+                                    <constraint firstItem="s9c-7t-cpb" firstAttribute="leading" secondItem="pew-nY-mpk" secondAttribute="leading" constant="8" id="DfP-D3-Zzf"/>
+                                    <constraint firstAttribute="trailing" secondItem="s9c-7t-cpb" secondAttribute="trailing" constant="8" id="U7g-Nf-4RN"/>
+                                    <constraint firstAttribute="height" constant="160" id="dAn-al-kqy"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bOL-Ju-QBh">
+                                <rect key="frame" x="28" y="254" width="319" height="44"/>
+                                <color key="backgroundColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UYK-ga-FiE"/>
+                                </constraints>
+                                <state key="normal" title="提交"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="bOL-Ju-QBh" firstAttribute="top" secondItem="pew-nY-mpk" secondAttribute="bottom" constant="20" id="6xy-03-Afx"/>
+                            <constraint firstItem="pew-nY-mpk" firstAttribute="top" secondItem="29J-li-Lau" secondAttribute="bottom" constant="54" id="8a8-MO-UOq"/>
+                            <constraint firstAttribute="trailing" secondItem="pew-nY-mpk" secondAttribute="trailing" id="IbJ-SG-9Po"/>
+                            <constraint firstAttribute="trailing" secondItem="bOL-Ju-QBh" secondAttribute="trailing" constant="28" id="Kak-SV-xG7"/>
+                            <constraint firstItem="bOL-Ju-QBh" firstAttribute="top" secondItem="pew-nY-mpk" secondAttribute="bottom" constant="20" id="abf-1p-bjD"/>
+                            <constraint firstItem="bOL-Ju-QBh" firstAttribute="leading" secondItem="Lw2-dV-u7J" secondAttribute="leading" constant="28" id="kNZ-74-wz3"/>
+                            <constraint firstItem="pew-nY-mpk" firstAttribute="leading" secondItem="Lw2-dV-u7J" secondAttribute="leading" id="xTP-nW-vcZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nhJ-jC-sND"/>
+                    <connections>
+                        <outlet property="contentTV" destination="s9c-7t-cpb" id="TTx-kY-X8K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gjO-wV-4w9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1586" y="62"/>
+        </scene>
         <!--My InfoVC-->
         <scene sceneID="EIW-HI-a3W">
             <objects>
@@ -127,6 +205,9 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                     <state key="normal" image="app_list_arrow_black"/>
+                                                    <connections>
+                                                        <segue destination="dFq-S8-287" kind="push" id="I2D-Y3-14R"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

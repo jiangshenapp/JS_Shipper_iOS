@@ -12,10 +12,9 @@
 
 @interface CityCustomView()
 {
-    UIImageView *shadowView;
+//    UIImageView *shadowView;
     UILabel *currentCityLab;
     UIButton *backBtn;
-    UIScrollView *bgScro;
     
     NSArray *provinceArr;
     NSArray *cityNameArr;
@@ -28,26 +27,33 @@
     
     CGFloat btnW;
     CGFloat btnH;
+   
+    CGFloat viewH;
 }
 /** 白背景 */
 @property (nonatomic,retain) UIButton *backGroundBtn;
+/** scrollView */
+@property (nonatomic,retain)  UIScrollView *bgScro;;
 @end
 
 @implementation CityCustomView
 
 -(instancetype)initWithFrame:(CGRect)frame {
-    CGRect frame1 = CGRectMake(0, kNavBarH+44, WIDTH, HEIGHT-kNavBarH-44);
+     CGRect frame1 = CGRectMake(0, kNavBarH+46, WIDTH, HEIGHT-kNavBarH-46);
     self = [super initWithFrame:frame1];
     if (self) {
+        viewH = HEIGHT-kNavBarH-44;
         [self setupView];
+       
     }
     return self;
 }
 
 - (void)setupView {
-    shadowView = [[UIImageView alloc]initWithFrame:self.bounds];
-    shadowView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.1];
-    [self addSubview:shadowView];
+    self.clipsToBounds = YES;
+    UIWindow *myWindow= [[[UIApplication sharedApplication] delegate] window];
+    [myWindow addSubview:self];
+    self.hidden = YES;
     
     _backGroundBtn = [[UIButton alloc] initWithFrame:self.bounds];
     _backGroundBtn.backgroundColor = [UIColor whiteColor];
@@ -57,7 +63,7 @@
     currentCityLab = [[UILabel alloc]initWithFrame:CGRectMake(12, 5, WIDTH/2.0, 20)];
     currentCityLab.text = @"选择:全国";
     currentCityLab.font = [UIFont systemFontOfSize:14];
-    [_backGroundBtn addSubview:currentCityLab];
+    [self addSubview:currentCityLab];
     
     backBtn = [[UIButton alloc]initWithFrame:CGRectMake(WIDTH-100, 0, 88, 30)];
     [backBtn setTitle:@"返回上一级" forState:UIControlStateNormal];
@@ -66,10 +72,10 @@
     backBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     backBtn.hidden = YES;
     [backBtn addTarget:self action:@selector(backPage) forControlEvents:UIControlEventTouchUpInside];
-    [_backGroundBtn addSubview:backBtn];
+    [self addSubview:backBtn];
     
-    bgScro = [[UIScrollView alloc]initWithFrame:CGRectMake(0, backBtn.bottom, WIDTH, _backGroundBtn.height-backBtn.bottom)];
-    [_backGroundBtn addSubview:bgScro];
+    _bgScro = [[UIScrollView alloc]initWithFrame:CGRectMake(0, backBtn.bottom, WIDTH, _backGroundBtn.height-backBtn.bottom)];
+    [self addSubview:_bgScro];
     
     btnW = (WIDTH-12*5)/LineCount;
     btnH = btnW/2.2;;
@@ -81,7 +87,7 @@
 }
 
 - (void)initProvinceView {
-    [bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     backBtn.hidden = YES;
     cityNameArr = nil;
     districtArr = nil;
@@ -110,11 +116,11 @@
                 sender.borderColor = kWhiteColor;
                 [sender setBackgroundColor:AppThemeColor];
             }
-            [bgScro addSubview:sender];
+            [_bgScro addSubview:sender];
             index++;
         }
     }
-    bgScro.contentSize = CGSizeMake(0, MAX(bgScro.height+1, line*(btnH+12)));
+    _bgScro.contentSize = CGSizeMake(0, MAX(_bgScro.height+1, line*(btnH+12)));
 }
 
 
@@ -137,7 +143,7 @@
 
 - (void)initCityView {
     districtArr = nil;
-    [bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSInteger index = 0;
     NSInteger line = cityNameArr.count%LineCount==0?cityNameArr.count/LineCount:cityNameArr.count/LineCount+1;
     for (NSInteger i = 0; i<line; i++) {
@@ -162,11 +168,11 @@
                 sender.borderColor = kWhiteColor;
                 [sender setBackgroundColor:AppThemeColor];
             }
-            [bgScro addSubview:sender];
+            [_bgScro addSubview:sender];
             index++;
         }
     }
-    bgScro.contentSize = CGSizeMake(0, MAX(bgScro.height+1, line*(btnH+12)));
+    _bgScro.contentSize = CGSizeMake(0, MAX(_bgScro.height+1, line*(btnH+12)));
 }
 
 - (void)getDistrictAction:(UIButton *)sender {
@@ -184,7 +190,7 @@
 }
 
 - (void)initDistrictView {
-    [bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSInteger index = 0;
     NSInteger line = districtArr.count%LineCount==0?districtArr.count/LineCount:districtArr.count/LineCount+1;
     for (NSInteger i = 0; i<line; i++) {
@@ -204,11 +210,11 @@
             [sender setTitle:title forState:UIControlStateNormal];
             [sender addTarget:self action:@selector(getNameAction:) forControlEvents:UIControlEventTouchUpInside];
             sender.tag = 4000+index;
-            [bgScro addSubview:sender];
+            [_bgScro addSubview:sender];
             index++;
         }
     }
-    bgScro.contentSize = CGSizeMake(0, MAX(bgScro.height+1, line*(btnH+12)));
+    _bgScro.contentSize = CGSizeMake(0, MAX(_bgScro.height+1, line*(btnH+12)));
 }
 
 - (void)getNameAction:(UIButton *)sender {
@@ -247,14 +253,23 @@
     return sender;
 }
 
+- (void)showView {
+    __weak typeof(self) weakSelf = self;
+    weakSelf.height = 0;
+    self.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.height = self->viewH;
+    } completion:^(BOOL finished) {
+    }];
+}
 
 
 - (void)hiddenView {
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.backGroundBtn.top = -HEIGHT;
+        weakSelf.height = 0;
     } completion:^(BOOL finished) {
-        [self removeFromSuperview];
+        weakSelf.hidden = YES;
     }];
 }
 
