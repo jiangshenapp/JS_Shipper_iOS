@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */; };
 		202845E9226FF9C70087BCF6 /* SortView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202845E8226FF9C70087BCF6 /* SortView.m */; };
 		202D3FE2226B0E16001B3353 /* CityCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202D3FE1226B0E16001B3353 /* CityCustomView.m */; };
 		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
@@ -16,6 +17,8 @@
 		2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */; };
 		20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E6E224A054F00F0767D /* JSAuthenticationVC.m */; };
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
+		207D144022714E5900594520 /* JSAboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207D143F22714E5900594520 /* JSAboutVC.m */; };
+		207D1443227153E300594520 /* JSDeliverConfirmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207D1442227153E300594520 /* JSDeliverConfirmVC.m */; };
 		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
@@ -89,6 +92,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200E96972271B7F800498E78 /* JSConfirmAddressMapVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSConfirmAddressMapVC.h; sourceTree = "<group>"; };
+		200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSConfirmAddressMapVC.m; sourceTree = "<group>"; };
 		202845E7226FF9C70087BCF6 /* SortView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortView.h; sourceTree = "<group>"; };
 		202845E8226FF9C70087BCF6 /* SortView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortView.m; sourceTree = "<group>"; };
 		202D3FE0226B0E16001B3353 /* CityCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityCustomView.h; sourceTree = "<group>"; };
@@ -107,6 +112,10 @@
 		20781E6E224A054F00F0767D /* JSAuthenticationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAuthenticationVC.m; sourceTree = "<group>"; };
 		20781E73224A257A00F0767D /* JSMyWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyWalletVC.h; sourceTree = "<group>"; };
 		20781E74224A257A00F0767D /* JSMyWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyWalletVC.m; sourceTree = "<group>"; };
+		207D143E22714E5900594520 /* JSAboutVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAboutVC.h; sourceTree = "<group>"; };
+		207D143F22714E5900594520 /* JSAboutVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAboutVC.m; sourceTree = "<group>"; };
+		207D1441227153E300594520 /* JSDeliverConfirmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDeliverConfirmVC.h; sourceTree = "<group>"; };
+		207D1442227153E300594520 /* JSDeliverConfirmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDeliverConfirmVC.m; sourceTree = "<group>"; };
 		209D7DED224C617D00409EA2 /* JSAllOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAllOrderVC.h; sourceTree = "<group>"; };
 		209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAllOrderVC.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -548,6 +557,10 @@
 			children = (
 				20BD73782248BE430020EA5D /* JSDeliverGoodsVC.h */,
 				20BD73792248BE430020EA5D /* JSDeliverGoodsVC.m */,
+				207D1441227153E300594520 /* JSDeliverConfirmVC.h */,
+				207D1442227153E300594520 /* JSDeliverConfirmVC.m */,
+				200E96972271B7F800498E78 /* JSConfirmAddressMapVC.h */,
+				200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */,
 			);
 			path = DeliverGoods;
 			sourceTree = "<group>";
@@ -576,6 +589,8 @@
 				20781E6E224A054F00F0767D /* JSAuthenticationVC.m */,
 				204E5297227068E600DE65A8 /* JSFeedBackVC.h */,
 				204E5298227068E600DE65A8 /* JSFeedBackVC.m */,
+				207D143E22714E5900594520 /* JSAboutVC.h */,
+				207D143F22714E5900594520 /* JSAboutVC.m */,
 				209D7DEC224C615F00409EA2 /* 我的订单 */,
 				20306C6C224A5253004D6762 /* 钱包 */,
 			);
@@ -823,6 +838,7 @@
 			files = (
 				203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */,
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
+				200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
 				20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */,
@@ -834,6 +850,7 @@
 				20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */,
 				20F89D67224DC32A00D2DC2D /* JSFinishOrderVC.m in Sources */,
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
+				207D144022714E5900594520 /* JSAboutVC.m in Sources */,
 				20BD73342248BDC30020EA5D /* main.m in Sources */,
 				20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */,
 				20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */,
@@ -850,6 +867,7 @@
 				20BD73B72248BE440020EA5D /* Config.m in Sources */,
 				20BD73BA2248BE440020EA5D /* CZUpdateView.m in Sources */,
 				204E5299227068E600DE65A8 /* JSFeedBackVC.m in Sources */,
+				207D1443227153E300594520 /* JSDeliverConfirmVC.m in Sources */,
 				20BD73A92248BE440020EA5D /* KeyChainUtil.m in Sources */,
 				20BD73C72248BE440020EA5D /* BaseNC.m in Sources */,
 				20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */,

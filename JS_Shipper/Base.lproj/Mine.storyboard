@@ -87,10 +87,58 @@
             </objects>
             <point key="canvasLocation" x="-1586" y="62"/>
         </scene>
-        <!--My InfoVC-->
+        <!--关于我们-->
+        <scene sceneID="gwH-T6-gnh">
+            <objects>
+                <viewController storyboardIdentifier="JSAboutVC" title="关于我们" id="jXZ-gi-cOo" customClass="JSAboutVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2pz-Cf-Edo"/>
+                        <viewControllerLayoutGuide type="bottom" id="fpN-XV-B4R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V48-qY-leN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_abutus_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-5y-NXj">
+                                <rect key="frame" x="119" y="98" width="137" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jm7-5y-NXj" secondAttribute="height" multiplier="137:128" id="GXF-Gl-inN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOg-kI-Stb">
+                                <rect key="frame" x="28" y="260" width="319" height="58"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".PingFangSC-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jOg-kI-Stb" secondAttribute="trailing" constant="28" id="6ZJ-xj-OmM"/>
+                            <constraint firstItem="jOg-kI-Stb" firstAttribute="leading" secondItem="V48-qY-leN" secondAttribute="leading" constant="28" id="Brx-zL-Lnz"/>
+                            <constraint firstItem="jOg-kI-Stb" firstAttribute="top" secondItem="Jm7-5y-NXj" secondAttribute="bottom" constant="34" id="C0q-yp-D1N"/>
+                            <constraint firstItem="jOg-kI-Stb" firstAttribute="centerX" secondItem="V48-qY-leN" secondAttribute="centerX" id="Ki5-AB-CDU"/>
+                            <constraint firstItem="Jm7-5y-NXj" firstAttribute="centerX" secondItem="V48-qY-leN" secondAttribute="centerX" id="lsg-yL-CXk"/>
+                            <constraint firstItem="Jm7-5y-NXj" firstAttribute="top" secondItem="2pz-Cf-Edo" secondAttribute="bottom" constant="78" id="mil-hv-322"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3dk-TR-O8v"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XoF-rc-cC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1586.4000000000001" y="727.28635682158927"/>
+        </scene>
+        <!--个人中心-->
         <scene sceneID="EIW-HI-a3W">
             <objects>
-                <viewController storyboardIdentifier="JSMyInfoVC" id="aLk-Sd-aWx" customClass="JSMyInfoVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JSMyInfoVC" title="个人中心" id="aLk-Sd-aWx" customClass="JSMyInfoVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jz4-gV-YiF"/>
                         <viewControllerLayoutGuide type="bottom" id="E9Z-IW-gjg"/>
@@ -178,6 +226,9 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                     <state key="normal" image="app_list_arrow_black"/>
+                                                    <connections>
+                                                        <segue destination="qan-oY-Ki6" kind="push" id="HOV-gv-YCb"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -260,6 +311,9 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                     <state key="normal" image="app_list_arrow_black"/>
+                                                    <connections>
+                                                        <segue destination="jXZ-gi-cOo" kind="push" id="aA6-aH-2HI"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1266,7 +1320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zv4-bd-QTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="544.79999999999995" y="37.331334332833585"/>
+            <point key="canvasLocation" x="545" y="-310"/>
         </scene>
         <!--我的钱包-->
         <scene sceneID="jH4-bw-zJD">
@@ -2456,7 +2510,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jg-a9-JWh">
-                                                        <rect key="frame" x="187" y="0.0" width="1" height="44"/>
+                                                        <rect key="frame" x="187" y="10" width="1" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </view>
@@ -2496,7 +2550,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Hw-f8-XJU">
-                                                        <rect key="frame" x="187" y="0.0" width="1" height="44"/>
+                                                        <rect key="frame" x="187" y="10" width="1" height="24"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </view>
@@ -2642,10 +2696,20 @@
                                             <action selector="bottomRightBtnAction:" destination="ULz-j3-HQB" eventType="touchUpInside" id="9md-G3-A67"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWs-vQ-1mH">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="q88-lw-ufe"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="IWs-vQ-1mH" firstAttribute="top" secondItem="egx-rp-ExA" secondAttribute="top" id="2Sz-n0-UVI"/>
+                                    <constraint firstAttribute="trailing" secondItem="IWs-vQ-1mH" secondAttribute="trailing" id="FsR-bk-vDL"/>
                                     <constraint firstAttribute="height" constant="50" id="WNW-S8-dh7"/>
+                                    <constraint firstItem="IWs-vQ-1mH" firstAttribute="leading" secondItem="egx-rp-ExA" secondAttribute="leading" id="o55-2c-Mgs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2697,6 +2761,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="app_abutus_logo" width="137" height="128"/>
         <image name="app_agreement_icon_default" width="16" height="16"/>
         <image name="app_agreement_icon_selected" width="16" height="16"/>
         <image name="app_checkbox_icon_default" width="22" height="22"/>
