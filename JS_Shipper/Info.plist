@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>匠神马帮</string>
 	<key>CFBundleExecutable</key>
@@ -46,5 +44,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>获取当前位置来进行发货</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>获取当前位置来进行发货</string>
+	<key>NSLocationUsageDescription</key>
+	<string>获取当前位置来进行发货</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>获取当前位置来进行发货</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh_CN</string>
 </dict>
 </plist>

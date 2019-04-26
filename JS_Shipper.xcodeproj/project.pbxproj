@@ -19,6 +19,9 @@
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		207D144022714E5900594520 /* JSAboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207D143F22714E5900594520 /* JSAboutVC.m */; };
 		207D1443227153E300594520 /* JSDeliverConfirmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207D1442227153E300594520 /* JSDeliverConfirmVC.m */; };
+		209B6ACC2272DCCF0060F509 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6ACA2272DCCE0060F509 /* MKMapView+ZoomLevel.m */; };
+		209B6ACF227300850060F509 /* JSSelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6ACE227300850060F509 /* JSSelectCityVC.m */; };
+		209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6AD12273097A0060F509 /* JSEditAddressVC.m */; };
 		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
@@ -116,6 +119,12 @@
 		207D143F22714E5900594520 /* JSAboutVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAboutVC.m; sourceTree = "<group>"; };
 		207D1441227153E300594520 /* JSDeliverConfirmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDeliverConfirmVC.h; sourceTree = "<group>"; };
 		207D1442227153E300594520 /* JSDeliverConfirmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDeliverConfirmVC.m; sourceTree = "<group>"; };
+		209B6ACA2272DCCE0060F509 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
+		209B6ACB2272DCCE0060F509 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		209B6ACD227300850060F509 /* JSSelectCityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSelectCityVC.h; sourceTree = "<group>"; };
+		209B6ACE227300850060F509 /* JSSelectCityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSSelectCityVC.m; sourceTree = "<group>"; };
+		209B6AD02273097A0060F509 /* JSEditAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSEditAddressVC.h; sourceTree = "<group>"; };
+		209B6AD12273097A0060F509 /* JSEditAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSEditAddressVC.m; sourceTree = "<group>"; };
 		209D7DED224C617D00409EA2 /* JSAllOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAllOrderVC.h; sourceTree = "<group>"; };
 		209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAllOrderVC.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +387,8 @@
 			children = (
 				20BD733B2248BE420020EA5D /* Utils.h */,
 				20BD73512248BE420020EA5D /* Utils.m */,
+				209B6ACB2272DCCE0060F509 /* MKMapView+ZoomLevel.h */,
+				209B6ACA2272DCCE0060F509 /* MKMapView+ZoomLevel.m */,
 				20BD733C2248BE420020EA5D /* Cache */,
 				20BD73412248BE420020EA5D /* StarView */,
 				20BD73442248BE420020EA5D /* Toast */,
@@ -561,6 +572,10 @@
 				207D1442227153E300594520 /* JSDeliverConfirmVC.m */,
 				200E96972271B7F800498E78 /* JSConfirmAddressMapVC.h */,
 				200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */,
+				209B6ACD227300850060F509 /* JSSelectCityVC.h */,
+				209B6ACE227300850060F509 /* JSSelectCityVC.m */,
+				209B6AD02273097A0060F509 /* JSEditAddressVC.h */,
+				209B6AD12273097A0060F509 /* JSEditAddressVC.m */,
 			);
 			path = DeliverGoods;
 			sourceTree = "<group>";
@@ -838,6 +853,7 @@
 			files = (
 				203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */,
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
+				209B6ACF227300850060F509 /* JSSelectCityVC.m in Sources */,
 				200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
@@ -847,6 +863,7 @@
 				202845E9226FF9C70087BCF6 /* SortView.m in Sources */,
 				20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
+				209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */,
 				20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */,
 				20F89D67224DC32A00D2DC2D /* JSFinishOrderVC.m in Sources */,
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
@@ -870,6 +887,7 @@
 				207D1443227153E300594520 /* JSDeliverConfirmVC.m in Sources */,
 				20BD73A92248BE440020EA5D /* KeyChainUtil.m in Sources */,
 				20BD73C72248BE440020EA5D /* BaseNC.m in Sources */,
+				209B6ACC2272DCCF0060F509 /* MKMapView+ZoomLevel.m in Sources */,
 				20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */,
 				20BD73B42248BE440020EA5D /* RegularPhoneTF.m in Sources */,
 				20BD73B32248BE440020EA5D /* XLGLottie.m in Sources */,
