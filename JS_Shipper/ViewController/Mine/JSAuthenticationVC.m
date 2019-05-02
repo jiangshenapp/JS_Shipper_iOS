@@ -20,8 +20,13 @@
     [super viewDidLoad];
     self.title = @"货主身份认证";
     isPerson = YES;
-    self.baseTabView.tableHeaderView = _personTabHeadView;
-//    [self.baseTabView addSubview:_personTabHeadView];
+//    self.baseTabView.tableHeaderView = _personTabHeadView;
+    [self.baseTabView addSubview:_personTabHeadView];
+    [self.baseTabView addSubview:_companyTabHeadView];
+    _personTabHeadView.width = self.baseTabView.width;
+    _companyTabHeadView.width = self.baseTabView.width;
+    self.baseTabView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, _personTabHeadView.height)];
+    self.baseTabView.tableHeaderView.userInteractionEnabled = NO;
 }
 
 /*
@@ -50,11 +55,14 @@
     _personTabHeadView.hidden = !isPerson;
     _companyTabHeadView.hidden = isPerson;
     if (isPerson) {
-        [self.baseTabView addSubview:_personTabHeadView];
+        self.baseTabView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, _personTabHeadView.height)];
+
     }
     else {
-        [self.baseTabView addSubview:_companyTabHeadView];
+        self.baseTabView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, _companyTabHeadView.height)];
+
     }
     [self.baseTabView setContentOffset:CGPointMake(0, 0)];
+    self.baseTabView.tableHeaderView.userInteractionEnabled = NO;
 }
 @end

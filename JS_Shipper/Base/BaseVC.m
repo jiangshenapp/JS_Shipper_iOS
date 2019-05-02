@@ -91,7 +91,9 @@
     
     __weak id weakSelf = self;
     self.navigationController.interactivePopGestureRecognizer.delegate = weakSelf;
-    self.baseTabView.tableFooterView = [[UIView alloc]init];
+    if (self.baseTabView.tableFooterView==nil) {
+        self.baseTabView.tableFooterView = [[UIView alloc]init];
+    }
     
     //无网络通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netWorkDisappear) name:@"kNetDisAppear" object:nil];
