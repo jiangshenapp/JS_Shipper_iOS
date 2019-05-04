@@ -18,7 +18,8 @@ def pods
   pod 'SDCycleScrollView'
   pod 'JPush-iOS-SDK'
   pod 'UMengAnalytics-NO-IDFA'
-#  pod 'FXToast'
+  pod 'FXToast'
+  pod 'JSONModel'
 end
  target 'JS_Shipper' do
 

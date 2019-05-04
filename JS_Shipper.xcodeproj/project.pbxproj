@@ -93,6 +93,11 @@
 		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
 		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
 		A04CB3C3227B1C6E00ED6979 /* BaseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A04CB3C1227B1C6E00ED6979 /* BaseItem.m */; };
+		A0751909227D17710032A974 /* Area.txt in Resources */ = {isa = PBXBuildFile; fileRef = A0751901227D176F0032A974 /* Area.txt */; };
+		A075190A227D17710032A974 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751902227D17700032A974 /* UIView+Extension.m */; };
+		A075190B227D17710032A974 /* HmAddressCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751903227D17700032A974 /* HmAddressCityModel.m */; };
+		A075190C227D17710032A974 /* HmAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751904227D17700032A974 /* HmAddressModel.m */; };
+		A075190D227D17710032A974 /* HmSelectAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751906227D17710032A974 /* HmSelectAdView.m */; };
 		C2906EBDB1A940D92FBD8960 /* libPods-JS_Shipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */; };
 /* End PBXBuildFile section */
 
@@ -265,6 +270,15 @@
 		9B67392921C6C16FAB28EC6A /* Pods-JS_Shipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.debug.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.debug.xcconfig"; sourceTree = "<group>"; };
 		A04CB3C1227B1C6E00ED6979 /* BaseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseItem.m; sourceTree = "<group>"; };
 		A04CB3C2227B1C6E00ED6979 /* BaseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseItem.h; sourceTree = "<group>"; };
+		A0751900227D176F0032A974 /* HmAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmAddressModel.h; sourceTree = "<group>"; };
+		A0751901227D176F0032A974 /* Area.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Area.txt; sourceTree = "<group>"; };
+		A0751902227D17700032A974 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		A0751903227D17700032A974 /* HmAddressCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmAddressCityModel.m; sourceTree = "<group>"; };
+		A0751904227D17700032A974 /* HmAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmAddressModel.m; sourceTree = "<group>"; };
+		A0751905227D17710032A974 /* HmSelectAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmSelectAdView.h; sourceTree = "<group>"; };
+		A0751906227D17710032A974 /* HmSelectAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectAdView.m; sourceTree = "<group>"; };
+		A0751907227D17710032A974 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		A0751908227D17710032A974 /* HmAddressCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmAddressCityModel.h; sourceTree = "<group>"; };
 		F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JS_Shipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9A20BD52D80F462075489F /* Pods-JS_Shipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -371,6 +385,7 @@
 			children = (
 				20BD73242248BDC20020EA5D /* AppDelegate.h */,
 				20BD73252248BDC20020EA5D /* AppDelegate.m */,
+				20BD74092248BF010020EA5D /* JS.pch */,
 				20BD73FD2248BEAF0020EA5D /* Login.storyboard */,
 				20BD73F92248BEAF0020EA5D /* Garden.storyboard */,
 				20BD74062248BEC80020EA5D /* DeliverGoods.storyboard */,
@@ -388,7 +403,6 @@
 				20BD732D2248BDC30020EA5D /* Assets.xcassets */,
 				20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */,
 				20BD73322248BDC30020EA5D /* Info.plist */,
-				20BD74092248BF010020EA5D /* JS.pch */,
 				20BD73332248BDC30020EA5D /* main.m */,
 			);
 			path = JS_Shipper;
@@ -409,6 +423,7 @@
 				20BD73552248BE420020EA5D /* Lottie */,
 				20BD73582248BE420020EA5D /* RegularPhone */,
 				20BD735B2248BE420020EA5D /* ProgressView */,
+				A07518FF227D16E90032A974 /* AddressSelect */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -737,6 +752,22 @@
 			path = "接口日志";
 			sourceTree = "<group>";
 		};
+		A07518FF227D16E90032A974 /* AddressSelect */ = {
+			isa = PBXGroup;
+			children = (
+				A0751901227D176F0032A974 /* Area.txt */,
+				A0751905227D17710032A974 /* HmSelectAdView.h */,
+				A0751906227D17710032A974 /* HmSelectAdView.m */,
+				A0751908227D17710032A974 /* HmAddressCityModel.h */,
+				A0751903227D17700032A974 /* HmAddressCityModel.m */,
+				A0751900227D176F0032A974 /* HmAddressModel.h */,
+				A0751904227D17700032A974 /* HmAddressModel.m */,
+				A0751907227D17710032A974 /* UIView+Extension.h */,
+				A0751902227D17700032A974 /* UIView+Extension.m */,
+			);
+			path = AddressSelect;
+			sourceTree = "<group>";
+		};
 		BC6FE1E952040C63C0F9E829 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +844,7 @@
 				20BD74032248BEB00020EA5D /* Message.storyboard in Resources */,
 				20BD74052248BEB00020EA5D /* Community.storyboard in Resources */,
 				20BD74012248BEB00020EA5D /* Mine.storyboard in Resources */,
+				A0751909227D17710032A974 /* Area.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,6 +906,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A075190B227D17710032A974 /* HmAddressCityModel.m in Sources */,
 				203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */,
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
 				209B6ACF227300850060F509 /* JSSelectCityVC.m in Sources */,
@@ -896,6 +929,7 @@
 				20BD73342248BDC30020EA5D /* main.m in Sources */,
 				20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */,
 				20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */,
+				A075190C227D17710032A974 /* HmAddressModel.m in Sources */,
 				20F89D58224DC0DF00D2DC2D /* JSReleaseOrderVC.m in Sources */,
 				20BD73D02248BE440020EA5D /* XLGLogVC.m in Sources */,
 				20BD73C52248BE440020EA5D /* BaseTabBarVC.m in Sources */,
@@ -928,6 +962,7 @@
 				20F89D64224DC2F400D2DC2D /* JSTransportOrderVC.m in Sources */,
 				20BD73B92248BE440020EA5D /* CZNotNetAvailableVC.m in Sources */,
 				20BD73BC2248BE440020EA5D /* Reachability.m in Sources */,
+				A075190A227D17710032A974 /* UIView+Extension.m in Sources */,
 				20BD73AE2248BE440020EA5D /* JHHJView.m in Sources */,
 				20BD73B52248BE440020EA5D /* ProgressLoadView.m in Sources */,
 				20F89D5E224DC14E00D2DC2D /* JSDeliveryOrderVC.m in Sources */,
@@ -949,6 +984,7 @@
 				20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,
+				A075190D227D17710032A974 /* HmSelectAdView.m in Sources */,
 				20BD73BF2248BE440020EA5D /* JSDeliverGoodsVC.m in Sources */,
 				20BD73C22248BE440020EA5D /* JSGardenVC.m in Sources */,
 			);

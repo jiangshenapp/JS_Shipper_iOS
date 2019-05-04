@@ -7,16 +7,21 @@
 //
 
 #import "JSAuthenticationVC.h"
+#import "HmSelectAdView.h"
 
 @interface JSAuthenticationVC ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     BOOL isPerson;//判断是个人还是公司
 }
 
-@property (nonatomic,assign) NSInteger photoType; //1、身份证正面 2、身份证反面 3、手持身份证
-@property (nonatomic,copy) NSString *idCardFrontPhoto;
-@property (nonatomic,copy) NSString *idCardBehindPhoto;
-@property (nonatomic,copy) NSString *idCardHandPhoto;
+@property (nonatomic, assign) NSInteger photoType; //1、身份证正面 2、身份证反面 3、手持身份证
+@property (nonatomic, copy) NSString *idCardFrontPhoto;
+@property (nonatomic, copy) NSString *idCardBehindPhoto;
+@property (nonatomic, copy) NSString *idCardHandPhoto;
+
+@property (nonatomic, copy) NSString *currentProvince;
+@property (nonatomic, copy) NSString *currentCity;
+@property (nonatomic, copy) NSString *currentArea;
 
 @end
 
@@ -144,14 +149,14 @@
         [self.idCardHandBtn setImage:iconImage forState:UIControlStateNormal];
     }
     
-    [picker dismissViewControllerAnimated:YES completion:^{
+    [picker dismissViewControllerAnimated:NO completion:^{
         NSData *imageData = UIImageJPEGRepresentation(iconImage, 0.01);
         NSMutableArray *imageDataArr = [NSMutableArray arrayWithObjects:imageData, nil];
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"pigx",@"resourceId", nil];
         [[NetworkManager sharedManager] postJSON:URL_FileUpload parameters:dic imageDataArr:imageDataArr imageName:@"file" completion:^(id responseData, RequestState status, NSError *error) {
-            
+
             if (status == Request_Success) {
-                
+
                 NSString *photo = responseData;
                 if (self.photoType == 1) {
                     self.idCardFrontPhoto = photo;
@@ -169,19 +174,29 @@
 
 /* 选择区域 */
 - (IBAction)selectAddressAction:(id)sender {
-    
+    /// 这里传进去的self.currentProvince 等等的都是本页面的存储值
+    HmSelectAdView *selectV = [[HmSelectAdView alloc] initWithLastContent:self.currentProvince ? @[self.currentProvince, self.currentCity, self.currentArea] : nil];
+    selectV.confirmSelect = ^(NSArray *address) {
+        self.currentProvince = address[0];
+        self.currentCity = address[1];
+        self.currentArea = address[2];
+        self.addressTF.text = [NSString stringWithFormat:@"%@ %@ %@", self.currentProvince, self.currentCity, self.currentArea];
+    };
+    [selectV show];
 }
 
 /* 提交审核 */
 - (IBAction)commitAction:(id)sender {
+    
     if (isPerson == YES) { //个人
         if ([NSString isEmpty:self.idCardFrontPhoto]) {
             [Utils showToast:@"请上传货主本人真实身份证正面"];
-//            [FXToast ];
+            NSLog(@"请上传货主本人真实身份证正面");
             return;
         }
         if ([NSString isEmpty:self.idCardBehindPhoto]) {
             [Utils showToast:@"请上传货主本人真实身份证反面"];
+            NSLog(@"请上传货主本人真实身份证反面");
             return;
         }
         if ([NSString isEmpty:self.idCardHandPhoto]) {
