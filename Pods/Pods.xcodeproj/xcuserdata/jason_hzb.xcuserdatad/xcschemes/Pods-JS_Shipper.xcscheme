@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D0A385A0388EF6ACA6CB555DD9F40DF4"
-               BuildableName = "JPush-iOS-SDK"
-               BlueprintName = "JPush-iOS-SDK"
+               BlueprintIdentifier = "8BF940C96376A0C5453773A550584B04"
+               BuildableName = "libPods-JS_Shipper.a"
+               BlueprintName = "Pods-JS_Shipper"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

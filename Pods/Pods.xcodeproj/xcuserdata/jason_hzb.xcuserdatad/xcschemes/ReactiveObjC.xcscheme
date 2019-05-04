@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04ED6C6241C8F12CC94A96E7DDCEEAA4"
-               BuildableName = "libPods-JS_Shipper.a"
-               BlueprintName = "Pods-JS_Shipper"
+               BlueprintIdentifier = "637EF8E2773161EB6C633BB11CF436DE"
+               BuildableName = "libReactiveObjC.a"
+               BlueprintName = "ReactiveObjC"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

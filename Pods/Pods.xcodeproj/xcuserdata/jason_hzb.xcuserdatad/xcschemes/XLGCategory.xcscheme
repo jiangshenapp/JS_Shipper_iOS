@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "796531B66EA1E8FC8D94C8A6835B4A5D"
-               BuildableName = "UMengAnalytics-NO-IDFA"
-               BlueprintName = "UMengAnalytics-NO-IDFA"
+               BlueprintIdentifier = "16A60FEC87C5FD03C1E6BD9B02C427E7"
+               BuildableName = "libXLGCategory.a"
+               BlueprintName = "XLGCategory"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

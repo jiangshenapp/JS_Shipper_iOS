@@ -11,6 +11,8 @@
 #import "Toast.h"
 #import "NetworkUtil.h"
 #import "BaseNC.h"
+#import "TZImageManager.h"
+#import <AddressBook/AddressBook.h>
 
 @interface Utils ()
 {
@@ -295,9 +297,89 @@ static Utils *_utils = nil;
     return image;
 }
 
-+(UIViewController *)getViewController:(NSString *)stordyName WithVCName:(NSString *)name{
++ (UIViewController *)getViewController:(NSString *)stordyName WithVCName:(NSString *)name{
     UIStoryboard *story = [UIStoryboard storyboardWithName:stordyName bundle:nil];
     return [story instantiateViewControllerWithIdentifier:name];
+}
+
+#pragma mark - 系统权限判断
+
++ (BOOL)isCameraPermissionOn {
+    //相机
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSString *mediaType = AVMediaTypeVideo;
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];
+        if(authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied){
+            [self permissionSetup:@"“匠神马帮”想访问您的相机"];
+            return NO;
+        } else {
+            return YES;
+        }
+    } else {
+        [Toast showBottomWithText:@"没有相机功能" bottomOffset:100.0 duration:1.2];
+        return NO;
+    }
+}
+
++ (BOOL)isPhotoPermissionOn {
+    if (![[TZImageManager manager] authorizationStatusAuthorized]) {
+        [self permissionSetup:@"“匠神马帮”想访问您的相册"];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
++ (void)checkAddressBookAuthorization:(void (^)(bool isAuthorized))block {
+    
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    ABAuthorizationStatus authStatus = ABAddressBookGetAuthorizationStatus();
+    
+    if (authStatus != kABAuthorizationStatusAuthorized) {
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    NSLog(@"Error：%@",(__bridge NSError *)error);
+                } else if (!granted) {
+                    [self permissionSetup:@"“匠神马帮”想访问您的通讯录"];
+                    block(NO);
+                } else {
+                    block(YES);
+                }
+            });
+        });
+    } else {
+        block(YES);
+    }
+}
+
++ (void)checkMicrophoneAuthorization:(void (^)(bool isAuthorized))block {
+    [[AVAudioSession sharedInstance]requestRecordPermission:^(BOOL granted) {
+        if (!granted){
+            [self permissionSetup:@"“匠神马帮”想访问您的麦克风"];
+            block(NO);
+        } else {
+            block(YES);
+        }
+    }];
+}
+
+//跳转到系统权限设置页面
++ (void)permissionSetup:(NSString *)title {
+    //初始化提示框；
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle: UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"不允许" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //跳转到系统设置
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }]];
+    //弹出提示框；
+    [[Utils getCurrentVC] presentViewController:alert animated:true completion:nil];
 }
 
 @end
