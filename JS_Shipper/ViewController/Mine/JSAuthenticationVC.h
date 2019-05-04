@@ -26,6 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *idCardTF;
 @property (weak, nonatomic) IBOutlet UITextField *addressTF;
 
+/* 公司 */
+@property (weak, nonatomic) IBOutlet UITextField *companyNameTF;
+@property (weak, nonatomic) IBOutlet UITextField *companyNoTF;
+@property (weak, nonatomic) IBOutlet UILabel *companyAddressLab;
+@property (weak, nonatomic) IBOutlet UITextField *companyDetailAddressTF;
+@property (weak, nonatomic) IBOutlet UIButton *companyPhotoBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *selectBtn;
+
 @end
 
 NS_ASSUME_NONNULL_END

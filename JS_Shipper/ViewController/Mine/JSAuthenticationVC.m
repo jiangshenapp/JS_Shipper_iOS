@@ -14,10 +14,11 @@
     BOOL isPerson;//判断是个人还是公司
 }
 
-@property (nonatomic, assign) NSInteger photoType; //1、身份证正面 2、身份证反面 3、手持身份证
+@property (nonatomic, assign) NSInteger photoType; //1、身份证正面 2、身份证反面 3、手持身份证 4、公司营业执照
 @property (nonatomic, copy) NSString *idCardFrontPhoto;
 @property (nonatomic, copy) NSString *idCardBehindPhoto;
 @property (nonatomic, copy) NSString *idCardHandPhoto;
+@property (nonatomic, copy) NSString *companyPhoto;
 
 @property (nonatomic, copy) NSString *currentProvince;
 @property (nonatomic, copy) NSString *currentCity;
@@ -148,6 +149,9 @@
     if (self.photoType == 3) {
         [self.idCardHandBtn setImage:iconImage forState:UIControlStateNormal];
     }
+    if (self.photoType == 4) {
+        [self.companyPhotoBtn setImage:iconImage forState:UIControlStateNormal];
+    }
     
     [picker dismissViewControllerAnimated:NO completion:^{
         NSData *imageData = UIImageJPEGRepresentation(iconImage, 0.01);
@@ -167,6 +171,9 @@
                 if (self.photoType == 3) {
                     self.idCardHandPhoto = photo;
                 }
+                if (self.photoType == 4) {
+                    self.companyPhoto = photo;
+                }
             }
         }];
     }];
@@ -174,29 +181,58 @@
 
 /* 选择区域 */
 - (IBAction)selectAddressAction:(id)sender {
-    /// 这里传进去的self.currentProvince 等等的都是本页面的存储值
+    // 这里传进去的self.currentProvince 等等的都是本页面的存储值
     HmSelectAdView *selectV = [[HmSelectAdView alloc] initWithLastContent:self.currentProvince ? @[self.currentProvince, self.currentCity, self.currentArea] : nil];
     selectV.confirmSelect = ^(NSArray *address) {
         self.currentProvince = address[0];
         self.currentCity = address[1];
         self.currentArea = address[2];
-        self.addressTF.text = [NSString stringWithFormat:@"%@ %@ %@", self.currentProvince, self.currentCity, self.currentArea];
+        self.addressTF.text = [NSString stringWithFormat:@"%@%@%@", self.currentProvince, self.currentCity, self.currentArea];
     };
     [selectV show];
+}
+
+/* 公司选择所在地 */
+- (IBAction)selectCompanyAddressAction:(id)sender {
+    // 这里传进去的self.currentProvince 等等的都是本页面的存储值
+    HmSelectAdView *selectV = [[HmSelectAdView alloc] initWithLastContent:self.currentProvince ? @[self.currentProvince, self.currentCity, self.currentArea] : nil];
+    selectV.confirmSelect = ^(NSArray *address) {
+        self.currentProvince = address[0];
+        self.currentCity = address[1];
+        self.currentArea = address[2];
+        self.companyAddressLab.text = [NSString stringWithFormat:@"%@%@%@", self.currentProvince, self.currentCity, self.currentArea];
+    };
+    [selectV show];
+}
+
+/* 上传公司营业执照 */
+- (IBAction)uploadCompanyPhotoAction:(id)sender {
+    self.photoType = 4;
+    [self selectPhoto];
+}
+
+/* 勾选协议 */
+- (IBAction)selectAction:(id)sender {
+    self.selectBtn.selected = !self.selectBtn.isSelected;
+}
+
+/* 用户协议 */
+- (IBAction)protocalAction:(id)sender {
+    [Utils showToast:@"用户协议"];
 }
 
 /* 提交审核 */
 - (IBAction)commitAction:(id)sender {
     
+    [self.view endEditing:YES];
+    
     if (isPerson == YES) { //个人
         if ([NSString isEmpty:self.idCardFrontPhoto]) {
             [Utils showToast:@"请上传货主本人真实身份证正面"];
-            NSLog(@"请上传货主本人真实身份证正面");
             return;
         }
         if ([NSString isEmpty:self.idCardBehindPhoto]) {
             [Utils showToast:@"请上传货主本人真实身份证反面"];
-            NSLog(@"请上传货主本人真实身份证反面");
             return;
         }
         if ([NSString isEmpty:self.idCardHandPhoto]) {
@@ -207,17 +243,80 @@
             [Utils showToast:@"请输入姓名"];
             return;
         }
-        if ([NSString isEmpty:self.idCardTF]) {
+        if ([NSString isEmpty:self.idCardTF.text]) {
             [Utils showToast:@"请输入身份证号"];
             return;
         }
-        if ([NSString isEmpty:self.addressTF]) {
+        if ([NSString isEmpty:self.addressTF.text]) {
             [Utils showToast:@"请选择所在区域"];
             return;
         }
+        if (self.selectBtn.isSelected == NO) {
+            [Utils showToast:@"请勾选用户协议"];
+            return;
+        }
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                             _idCardFrontPhoto, @"idImage",
+                             _idCardBehindPhoto, @"idBackImage",
+                             _idCardHandPhoto, @"idHandImage",
+                             self.nameTF.text, @"personName",
+                             self.idCardTF.text, @"idCode",
+                             self.addressTF.text, @"address",
+                             nil];
+        NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:[dic jsonStringEncoded], @"personVerifiedInfo", nil];
+        [[NetworkManager sharedManager] postJSON:URL_PersonConsignorVerified parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                [Utils showToast:@"提交审核成功"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoChangeNotification object:nil];
+                // 跳转到首页
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+        }];
+    } else {
+        if ([NSString isEmpty:self.companyNameTF.text]) {
+            [Utils showToast:@"请输入公司名称"];
+            return;
+        }
+        if ([NSString isEmpty:self.companyNoTF.text]) {
+            [Utils showToast:@"请输入企业信用代码/注册号"];
+            return;
+        }
+        if ([NSString isEmpty:self.companyAddressLab.text]) {
+            [Utils showToast:@"请选择所在地"];
+            return;
+        }
+        if ([NSString isEmpty:self.companyDetailAddressTF.text]) {
+            [Utils showToast:@"请输入详细地址"];
+            return;
+        }
+        if ([NSString isEmpty:self.companyPhoto]) {
+            [Utils showToast:@"请上传公司营业执照"];
+            return;
+        }
+        if (self.selectBtn.isSelected == NO) {
+            [Utils showToast:@"请勾选用户协议"];
+            return;
+        }
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                             self.companyNameTF.text, @"companyName",
+                             self.companyNoTF.text, @"registrationNumber",
+                             self.companyAddressLab.text, @"address",
+                             self.companyDetailAddressTF.text, @"detailAddress",
+                             _companyPhoto, @"businessLicenceImage",
+                             nil];
+        NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:[dic jsonStringEncoded], @"consignorCompanyVerifiedInfo", nil];
+        [[NetworkManager sharedManager] postJSON:URL_CompanyConsignorVerified parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                [Utils showToast:@"提交审核成功"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoChangeNotification object:nil];
+                // 跳转到首页
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+        }];
     }
 }
-
 
 /*
  #pragma mark - Navigation

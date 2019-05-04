@@ -440,7 +440,7 @@
                                         <rect key="frame" x="20" y="40" width="355" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personalcenter_shipper_icon_head_landing" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-mo-I5r">
-                                                <rect key="frame" x="0.0" y="0.0" width="16" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="61" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
@@ -450,7 +450,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李玉林" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oO-Tm-4yz">
-                                                <rect key="frame" x="26" y="8" width="61.5" height="20"/>
+                                                <rect key="frame" x="71" y="8" width="61.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="yKu-wR-3mW"/>
                                                 </constraints>
@@ -459,7 +459,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wza-DX-GGT">
-                                                <rect key="frame" x="92.5" y="10" width="49.5" height="16"/>
+                                                <rect key="frame" x="137.5" y="10" width="49.5" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="xxG-RC-HQv"/>
                                                 </constraints>
@@ -487,7 +487,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="188 2834 2834" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQP-wc-Nog">
-                                                <rect key="frame" x="26" y="36" width="101" height="20"/>
+                                                <rect key="frame" x="71" y="36" width="101" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="ZSK-nK-gxU"/>
                                                 </constraints>
@@ -1030,7 +1030,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ff" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNJ-AZ-uyC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNJ-AZ-uyC">
                                                 <rect key="frame" x="140" y="0.0" width="206" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1041,6 +1041,9 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                 <state key="normal" image="app_list_arrow_black"/>
+                                                <connections>
+                                                    <action selector="selectCompanyAddressAction:" destination="qan-oY-Ki6" eventType="touchUpInside" id="fbT-eE-raP"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1082,6 +1085,9 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="Authentication_img_id"/>
                                                 <state key="highlighted" image="Authentication_img_id"/>
+                                                <connections>
+                                                    <action selector="uploadCompanyPhotoAction:" destination="qan-oY-Ki6" eventType="touchUpInside" id="Let-Mv-bJc"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhK-CS-FTw">
                                                 <rect key="frame" x="254" y="46" width="80" height="98"/>
@@ -1332,6 +1338,16 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAc-b8-KGn">
+                                        <rect key="frame" x="200" y="7" width="90" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="Owg-AI-jBG"/>
+                                            <constraint firstAttribute="height" constant="30" id="h8K-Ap-kBZ"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="protocalAction:" destination="qan-oY-Ki6" eventType="touchUpInside" id="BUL-8J-C7n"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4a-l0-5Hf">
                                         <rect key="frame" x="92.5" y="7" width="30" height="30"/>
                                         <constraints>
@@ -1340,6 +1356,9 @@
                                         </constraints>
                                         <state key="normal" image="app_agreement_icon_default"/>
                                         <state key="selected" image="app_agreement_icon_selected"/>
+                                        <connections>
+                                            <action selector="selectAction:" destination="qan-oY-Ki6" eventType="touchUpInside" id="W1p-pw-1QG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1354,7 +1373,9 @@
                                     <constraint firstItem="Qli-PV-nsB" firstAttribute="leading" secondItem="HKZ-ii-igf" secondAttribute="leading" constant="28" id="bZ3-L2-gqF"/>
                                     <constraint firstAttribute="trailing" secondItem="Qli-PV-nsB" secondAttribute="trailing" constant="28" id="h7h-9A-QUB"/>
                                     <constraint firstItem="BWt-sx-Fo6" firstAttribute="centerX" secondItem="HKZ-ii-igf" secondAttribute="centerX" constant="16" id="l7B-1H-bEk"/>
+                                    <constraint firstItem="wAc-b8-KGn" firstAttribute="leading" secondItem="O4a-l0-5Hf" secondAttribute="trailing" constant="77.5" id="ngO-WZ-cmx"/>
                                     <constraint firstItem="O4a-l0-5Hf" firstAttribute="top" secondItem="HKZ-ii-igf" secondAttribute="top" constant="7" id="oC2-dN-bA0"/>
+                                    <constraint firstItem="wAc-b8-KGn" firstAttribute="top" secondItem="HKZ-ii-igf" secondAttribute="top" constant="7" id="yOu-p1-AZf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1377,6 +1398,11 @@
                     <connections>
                         <outlet property="addressTF" destination="GYu-9u-w7W" id="M5y-QM-8uY"/>
                         <outlet property="baseTabView" destination="y7c-b2-SdQ" id="I2n-KB-U71"/>
+                        <outlet property="companyAddressLab" destination="CNJ-AZ-uyC" id="74g-il-E2x"/>
+                        <outlet property="companyDetailAddressTF" destination="MeU-mk-isv" id="N8z-cY-iTA"/>
+                        <outlet property="companyNameTF" destination="ib6-Nh-aLQ" id="D8W-sU-H7M"/>
+                        <outlet property="companyNoTF" destination="x7N-mJ-J7w" id="cPD-mh-HIc"/>
+                        <outlet property="companyPhotoBtn" destination="feD-M3-Zwf" id="O19-jb-fZg"/>
                         <outlet property="companyTabHeadView" destination="M73-Sa-3M1" id="5pR-1j-aPL"/>
                         <outlet property="idCardBehindBtn" destination="oUh-Db-FX2" id="eub-Rv-ISG"/>
                         <outlet property="idCardFrontBtn" destination="EYe-n4-rBE" id="Ttf-yV-bOv"/>
@@ -1384,6 +1410,7 @@
                         <outlet property="idCardTF" destination="xTt-sL-m5Z" id="2jZ-Fk-q4f"/>
                         <outlet property="nameTF" destination="2ne-eJ-7zO" id="iJU-sR-2zQ"/>
                         <outlet property="personTabHeadView" destination="rjG-EL-uUc" id="61L-uh-eo4"/>
+                        <outlet property="selectBtn" destination="O4a-l0-5Hf" id="BCC-IQ-Jhe"/>
                         <outlet property="titleBgView" destination="JZb-N4-iYr" id="y3K-Np-1Lg"/>
                     </connections>
                 </viewController>

@@ -1,7 +1,7 @@
 //
 //  Config.h
 //  Chaozhi
-//  Notes：接口地址【文档：http://192.168.199.4:9999/swagger-ui.html】
+//  Notes：接口地址【文档：http://47.96.122.74:9999/swagger-ui.html】
 //
 //  Created by Jason_hzb on 2018/5/29.
 //  Copyright © 2018年 小灵狗出行. All rights reserved.
@@ -38,7 +38,7 @@ NSString *PIC_URL(void);
 
 #pragma mark - APP会员认证接口
 
-#define URL_CompanyConsignorVerifiedC @"/app/subscriber/verify/companyConsignorVerified" //企业货主认证
+#define URL_CompanyConsignorVerified @"/app/subscriber/verify/companyConsignorVerified" //企业货主认证
 #define URL_DriverVerified @"/app/subscriber/verify/driverVerified" //个人司机认证
 #define URL_GetCompanyConsignorVerifiedInfo @"/app/subscriber/verify/getCompanyConsignorVerifiedInfo" //获取企业货主认证信息
 #define URL_GetDriverVerifiedInfo @"/app/subscriber/verify/getDriverVerifiedInfo" //获取司机认证信息
