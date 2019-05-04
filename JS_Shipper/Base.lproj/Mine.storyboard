@@ -238,7 +238,7 @@
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                     <state key="normal" image="app_list_arrow_black"/>
                                                     <connections>
-                                                        <segue destination="qan-oY-Ki6" kind="push" id="HOV-gv-YCb"/>
+                                                        <action selector="authAction:" destination="aLk-Sd-aWx" eventType="touchUpInside" id="duW-50-jfJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -458,18 +458,27 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请认证" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wza-DX-GGT">
-                                                <rect key="frame" x="137.5" y="10" width="49.5" height="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" layoutMarginsFollowReadableWidth="YES" text="申请认证" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wza-DX-GGT">
+                                                <rect key="frame" x="137.5" y="10" width="60" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="xxG-RC-HQv"/>
+                                                    <constraint firstAttribute="height" constant="20" id="xxG-RC-HQv"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
@@ -503,7 +512,6 @@
                                             <constraint firstItem="wza-DX-GGT" firstAttribute="top" secondItem="Ttx-JI-MGC" secondAttribute="top" constant="10" id="Ros-zp-LoM"/>
                                             <constraint firstItem="wza-DX-GGT" firstAttribute="leading" secondItem="4oO-Tm-4yz" secondAttribute="trailing" constant="5" id="SIf-Ex-Jfm"/>
                                             <constraint firstItem="ca4-mo-I5r" firstAttribute="leading" secondItem="Ttx-JI-MGC" secondAttribute="leading" id="T7A-w3-q5b"/>
-                                            <constraint firstItem="wza-DX-GGT" firstAttribute="leading" secondItem="4oO-Tm-4yz" secondAttribute="trailing" constant="5" id="V8T-r3-5it"/>
                                             <constraint firstItem="gQP-wc-Nog" firstAttribute="leading" secondItem="ca4-mo-I5r" secondAttribute="trailing" constant="10" id="X0a-Ms-1bt"/>
                                             <constraint firstAttribute="height" constant="60" id="YC7-qy-yJl"/>
                                             <constraint firstItem="4oO-Tm-4yz" firstAttribute="top" secondItem="Ttx-JI-MGC" secondAttribute="top" constant="8" id="Z5L-GL-5WK"/>
@@ -956,6 +964,12 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
+                    <connections>
+                        <outlet property="headImgView" destination="ca4-mo-I5r" id="yXF-Ph-Bm5"/>
+                        <outlet property="nameLab" destination="4oO-Tm-4yz" id="ZBG-Vn-Kmd"/>
+                        <outlet property="phoneLab" destination="gQP-wc-Nog" id="5lB-ch-dV1"/>
+                        <outlet property="stateLab" destination="wza-DX-GGT" id="2Oc-xZ-9Bx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKN-le-MRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

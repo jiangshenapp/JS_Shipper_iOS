@@ -267,8 +267,9 @@
         NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:[dic jsonStringEncoded], @"personVerifiedInfo", nil];
         [[NetworkManager sharedManager] postJSON:URL_PersonConsignorVerified parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
             if (status == Request_Success) {
-                [Utils showToast:@"提交审核成功"];
+                [Utils showToast:@"提交成功，前耐心等待审核"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoChangeNotification object:nil];
+                self.tabBarController.selectedIndex = 4;
                 // 跳转到首页
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
@@ -309,8 +310,9 @@
         NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:[dic jsonStringEncoded], @"consignorCompanyVerifiedInfo", nil];
         [[NetworkManager sharedManager] postJSON:URL_CompanyConsignorVerified parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
             if (status == Request_Success) {
-                [Utils showToast:@"提交审核成功"];
+                [Utils showToast:@"提交成功，前耐心等待审核"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoChangeNotification object:nil];
+                self.tabBarController.selectedIndex = 4;
                 // 跳转到首页
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }

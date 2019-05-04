@@ -7,6 +7,7 @@
 //
 
 #import "JSMyInfoVC.h"
+#import "JSAuthenticationVC.h"
 
 @interface JSMyInfoVC ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -19,6 +20,17 @@
     
     self.title = @"用户中心";
 
+    self.nickNameLab.text = [UserInfo share].nickName;
+    
+    if ([[UserInfo share].personConsignorVerified integerValue] == 0
+        && [[UserInfo share].companyConsignorVerified integerValue] == 0) {
+        self.authStateLab.text = @"未认证";
+    }
+    
+    if ([[UserInfo share].personConsignorVerified integerValue] == 1
+        || [[UserInfo share].companyConsignorVerified integerValue] == 1) {
+        self.authStateLab.text = @"审核中";
+    }
 }
 
 #pragma mark - methods
@@ -89,6 +101,14 @@
 /* 修改昵称 */
 - (IBAction)changeNickNameAction:(id)sender {
     
+}
+
+/* 认证 */
+- (IBAction)authAction:(id)sender {
+    if ([self.authStateLab.text isEqualToString:@"未认证"]) {
+        UIViewController *vc = [Utils getViewController:@"Mine" WithVCName:@"JSAuthenticationVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 /* 清除缓存 */

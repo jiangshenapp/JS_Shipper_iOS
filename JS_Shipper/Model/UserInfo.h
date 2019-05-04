@@ -19,8 +19,8 @@
 @property (nonatomic,copy) NSString *lastPositionTime; //
 @property (nonatomic,copy) NSString *driverVerified; //
 @property (nonatomic,copy) NSString *parkVerified; //
-@property (nonatomic,copy) NSString *personConsignorVerified; //
-@property (nonatomic,copy) NSString *companyConsignorVerified; //
+@property (nonatomic,copy) NSString *personConsignorVerified; //个人货主认证状态
+@property (nonatomic,copy) NSString *companyConsignorVerified; //公司货主认证状态
 
 + (UserInfo *)share;
 
