@@ -28,8 +28,18 @@
         return;
     }
     
+    if (self.pswTF.text.length<6 || self.pswTF.text.length>16) {
+        [Utils showToast:@"请输入6-16位新密码（字母、数字）"];
+        return;
+    }
+    
     if ([NSString isEmpty:self.pswAgainTF.text]) {
-        [Utils showToast:@"再次输入新密码"];
+        [Utils showToast:@"请再次输入新密码"];
+        return;
+    }
+    
+    if (![self.pswTF.text isEqualToString:self.pswAgainTF.text]) {
+        [Utils showToast:@"前后密码不一致，请检查"];
         return;
     }
     

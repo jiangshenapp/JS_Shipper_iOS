@@ -43,7 +43,7 @@
                          self.phoneTF.text, @"mobile",
                          self.pswTF.text, @"password",
                          nil];
-    [[NetworkManager sharedManager] postJSON:URL_Login parameters:dic imageDataArr:nil imageName:nil  completion:^(id responseData, RequestState status, NSError *error) {
+    [[NetworkManager sharedManager] postJSON:URL_Login parameters:dic imageDataArr:nil imageName:nil completion:^(id responseData, RequestState status, NSError *error) {
         
         if (status == Request_Success) {
             [Utils showToast:@"登录成功"];
@@ -52,7 +52,7 @@
             [CacheUtil saveCacher:@"token" withValue:token];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccNotification object:nil];
-            
+
             // 跳转到首页
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
