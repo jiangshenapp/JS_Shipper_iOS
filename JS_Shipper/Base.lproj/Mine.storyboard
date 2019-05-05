@@ -613,7 +613,7 @@
                                                             <color key="titleColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="aPM-nS-UfU" kind="push" id="OtW-4v-aci"/>
+                                                            <segue destination="aPM-nS-UfU" kind="push" identifier="allOrder" id="OtW-4v-aci"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -636,7 +636,7 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="ULz-j3-HQB" kind="push" id="ART-VL-hWj"/>
+                                                            <segue destination="aPM-nS-UfU" kind="push" identifier="ingOrder" id="myh-d9-dFU"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -658,6 +658,9 @@
                                                         <state key="normal" title="待支付">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="aPM-nS-UfU" kind="push" identifier="payOrder" id="BQd-g1-tkP"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -678,6 +681,9 @@
                                                         <state key="normal" title="待发布">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="aPM-nS-UfU" kind="push" identifier="publishOrder" id="ZSD-RC-3Yr"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -698,6 +704,9 @@
                                                         <state key="normal" title="待收货">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="aPM-nS-UfU" kind="push" identifier="getGoodsOrder" id="4Ig-2n-RSk"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2423,7 +2432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8t-lh-3JG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="544.79999999999995" y="689.5052473763119"/>
+            <point key="canvasLocation" x="1002" y="364"/>
         </scene>
         <!--查看路线-->
         <scene sceneID="Rpr-qi-qMU">
@@ -3163,4 +3172,7 @@ Cg
         <image name="personalcenter_shipper_icon_head_land" width="60" height="60"/>
         <image name="personalcenter_shipper_icon_head_landing" width="61" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OtW-4v-aci"/>
+    </inferredMetricsTieBreakers>
 </document>

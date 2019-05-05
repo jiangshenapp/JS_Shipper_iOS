@@ -7,6 +7,7 @@
 //
 
 #import "JSMineVC.h"
+#import "JSAllOrderVC.h"
 
 @interface JSMineVC ()
 
@@ -64,14 +65,31 @@
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    JSAllOrderVC *orderVc = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"ingOrder"]) {
+        orderVc.typeFlage = 1;
+    }
+    else  if ([segue.identifier isEqualToString:@"payOrder"]) {
+        orderVc.typeFlage = 2;
+    }
+    else  if ([segue.identifier isEqualToString:@"publishOrder"]) {
+        orderVc.typeFlage = 3;
+    }
+    else  if ([segue.identifier isEqualToString:@"getGoodsOrder"]) {
+        orderVc.typeFlage = 4;
+    }
+    else  if ([segue.identifier isEqualToString:@"allOrder"]) {
+        orderVc.typeFlage = 0;
+    }
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
