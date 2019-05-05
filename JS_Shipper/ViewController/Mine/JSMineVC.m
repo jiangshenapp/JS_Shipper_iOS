@@ -51,12 +51,12 @@
             
             if ([userInfo.personConsignorVerified integerValue] == 0
                 && [userInfo.companyConsignorVerified integerValue] == 0) {
-                self.stateLab.text = @"申请认证";
+                self.stateLab.text = @" 申请认证 ";
             }
             
             if ([userInfo.personConsignorVerified integerValue] == 1
                 || [userInfo.companyConsignorVerified integerValue] == 1) {
-                self.stateLab.text = @"审核中";
+                self.stateLab.text = @" 审核中 ";
             }
            
             NSLog(@"用户手机号：%@，用户昵称：%@", userInfo.mobile, userInfo.nickName);
