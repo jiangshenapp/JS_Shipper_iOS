@@ -19,7 +19,10 @@
      CityCustomView *cityView2;
     SortView *mySortView;
     FilterCustomView *filteView;
+    NSMutableArray *showFlagArr;
 }
+/** 0车源  1城市配送 2精品路线 */
+@property (nonatomic,assign) NSInteger pageFlag;
 @end
 
 @implementation JSGardenVC
@@ -30,11 +33,13 @@
 }
 
 -(void)initView {
+    _pageFlag = 0;
     _titleView.top = 7+kStatusBarH;
     _titleView.centerX = WIDTH/2.0;
     [self.navBar addSubview:_titleView];
     CGFloat btW = WIDTH/4.0;
     titleArr1 = @[@"发货地",@"收货地",@"默认排序",@"筛选"];
+    showFlagArr = [NSMutableArray arrayWithArray:@[@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0"]];
     for (NSInteger index = 0; index<4; index++) {
         FilterButton *sender = [[FilterButton alloc]initWithFrame:CGRectMake(index*btW, 0, btW, self.filterView.height)];
 //        [sender setImage:[UIImage imageNamed:@"app_tab_arrow_down"] forState:UIControlStateNormal];
@@ -49,13 +54,66 @@
     filteView = [[FilterCustomView alloc]init];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 10;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    JSGardenTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSGardenTabCell"];
-    return cell;
+    if (_pageFlag==0||_pageFlag==2) {
+        JSGardenTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSGardenTabCell"];
+        cell.countBtn.hidden = _pageFlag;
+        return cell;
+    }
+    else if (_pageFlag==1) {
+        CityDeliveryTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityDeliveryTabCell"];
+        [cell.serviceBtn addTarget:self action:@selector(showDevileryText:) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
+    }
+    return nil;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, autoScaleW(80))];
+    view.backgroundColor = PageColor;
+    view.clipsToBounds = YES;
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(12, 12, view.width-24, view.height-20)];
+    label.font = [UIFont systemFontOfSize:12];
+    label.numberOfLines = 0;
+    label.text = @"哈达款到发货静安寺开发的哈快递费哈卡士大夫哈速度快放假";
+    [label sizeToFit];
+    label.width = view.width-24;
+    [view addSubview:label];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (_pageFlag==1) {
+        NSInteger isShow = [showFlagArr[section] integerValue];
+        if (isShow) {
+            return autoScaleW(80);
+        }
+    }
+    return 0.01;
+}
+
+
+
+- (void)showDevileryText:(UIButton*)sender {
+    sender.selected = !sender.selected;
+    NSString *flag = [NSString stringWithFormat:@"%d",sender.selected];
+    CityDeliveryTabCell *cell = (CityDeliveryTabCell *)sender.superview.superview;
+    cell.isShowImgView.image = sender.selected?[UIImage imageNamed:@"app_list_arrow_up"]:[UIImage imageNamed:@"app_list_arrow_down"];
+    NSIndexPath *indexPath = [self.baseTabView indexPathForCell:cell];
+    [showFlagArr replaceObjectAtIndex:indexPath.section withObject:flag];
+    [self.baseTabView reloadData];
 }
 
 #pragma mark - 筛选按钮选择
@@ -150,7 +208,7 @@
 */
 
 - (IBAction)titleBtnAction:(UIButton*)sender {
-    
+    _pageFlag = sender.tag-100;
     for (NSInteger tag = 100; tag<103; tag++) {
         UIButton *btn = [self.view viewWithTag:tag];
         if ([btn isEqual:sender]) {
@@ -162,6 +220,7 @@
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
     }
+    [self.baseTabView reloadData];
 }
 
 @end
@@ -209,4 +268,15 @@
 }
 
 
+@end
+
+
+@implementation CityDeliveryTabCell
+-(void)awakeFromNib {
+    [super awakeFromNib];
+    _navBtn.layer.borderColor = _navBtn.currentTitleColor.CGColor;
+    _navBtn.layer.borderWidth = 1;
+    _navBtn.layer.cornerRadius = 12;
+    _navBtn.layer.masksToBounds = YES;
+}
 @end

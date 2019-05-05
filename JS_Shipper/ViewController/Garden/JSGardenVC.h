@@ -22,9 +22,22 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *endAddressLab;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UILabel *contentLab;
-@property (weak, nonatomic) IBOutlet UILabel *countLab;
+@property (weak, nonatomic) IBOutlet UIButton *countBtn;
 @property (weak, nonatomic) IBOutlet UIButton *iphoneCallBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sendMsgBtn;
+@end
+
+
+@interface CityDeliveryTabCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *dotNameLab;
+@property (weak, nonatomic) IBOutlet UILabel *dustanceLab;
+@property (weak, nonatomic) IBOutlet UILabel *addressLab;
+@property (weak, nonatomic) IBOutlet UIButton *navBtn;
+@property (weak, nonatomic) IBOutlet UIButton *serviceBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *isShowImgView;
+@property (weak, nonatomic) IBOutlet UIButton *iphoneCallBtn;
+@property (weak, nonatomic) IBOutlet UIButton *sendMsgBtn;
+
 @end
 
 @interface FilterButton : UIButton
