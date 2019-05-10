@@ -505,7 +505,7 @@
                                                     <segue destination="aLk-Sd-aWx" kind="push" id="aWK-OW-q3v"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="188 2834 2834" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQP-wc-Nog">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="188 2834 2834" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQP-wc-Nog">
                                                 <rect key="frame" x="71" y="40" width="101" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="ZSK-nK-gxU"/>
@@ -525,6 +525,7 @@
                                             <constraint firstItem="gQP-wc-Nog" firstAttribute="leading" secondItem="ca4-mo-I5r" secondAttribute="trailing" constant="10" id="X0a-Ms-1bt"/>
                                             <constraint firstAttribute="height" constant="60" id="YC7-qy-yJl"/>
                                             <constraint firstAttribute="bottom" secondItem="ca4-mo-I5r" secondAttribute="bottom" id="fRl-L1-knO"/>
+                                            <constraint firstItem="gQP-wc-Nog" firstAttribute="top" secondItem="4oO-Tm-4yz" secondAttribute="bottom" constant="12" id="hhi-Yo-HJO"/>
                                             <constraint firstItem="ca4-mo-I5r" firstAttribute="top" secondItem="Ttx-JI-MGC" secondAttribute="top" id="icW-Xv-lue"/>
                                         </constraints>
                                     </view>
