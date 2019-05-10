@@ -440,7 +440,7 @@
                                         <rect key="frame" x="20" y="40" width="355" height="60"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personalcenter_shipper_icon_head_landing" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-mo-I5r">
-                                                <rect key="frame" x="0.0" y="0.0" width="16" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="61" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
@@ -450,22 +450,32 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李玉林" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oO-Tm-4yz">
-                                                <rect key="frame" x="26" y="8" width="61.5" height="20"/>
+                                                <rect key="frame" x="71" y="8" width="61.5" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="yKu-wR-3mW"/>
+                                                    <constraint firstAttribute="height" constant="20" id="h4U-bf-Ija"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" layoutMarginsFollowReadableWidth="YES" text="申请认证" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wza-DX-GGT">
-                                                <rect key="frame" x="137.5" y="10" width="60" height="20"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-pz-ADS">
+                                                <rect key="frame" x="142.5" y="8" width="51" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" text="申请认证" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wza-DX-GGT">
+                                                        <rect key="frame" x="5" y="0.0" width="41" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="xxG-RC-HQv"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wza-DX-GGT" secondAttribute="bottom" id="Qee-08-MAU"/>
+                                                    <constraint firstItem="wza-DX-GGT" firstAttribute="leading" secondItem="Maz-pz-ADS" secondAttribute="leading" constant="5" id="W7c-5R-sNG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wza-DX-GGT" secondAttribute="trailing" constant="5" id="Xap-vp-Lby"/>
+                                                    <constraint firstItem="wza-DX-GGT" firstAttribute="top" secondItem="Maz-pz-ADS" secondAttribute="top" id="hxM-hG-RbG"/>
+                                                    <constraint firstAttribute="height" constant="20" id="us1-vf-m3Y"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -481,7 +491,7 @@
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </label>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQd-gz-czx">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -495,8 +505,8 @@
                                                     <segue destination="aLk-Sd-aWx" kind="push" id="aWK-OW-q3v"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="188 2834 2834" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQP-wc-Nog">
-                                                <rect key="frame" x="26" y="36" width="101" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="188 2834 2834" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQP-wc-Nog">
+                                                <rect key="frame" x="71" y="40" width="101" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="ZSK-nK-gxU"/>
                                                 </constraints>
@@ -507,18 +517,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="4oO-Tm-4yz" firstAttribute="leading" secondItem="ca4-mo-I5r" secondAttribute="trailing" constant="10" id="1l4-KU-z5G"/>
-                                            <constraint firstItem="gQP-wc-Nog" firstAttribute="top" secondItem="4oO-Tm-4yz" secondAttribute="bottom" constant="8" id="N5m-Oy-OOu"/>
-                                            <constraint firstItem="wza-DX-GGT" firstAttribute="top" secondItem="Ttx-JI-MGC" secondAttribute="top" constant="10" id="Ros-zp-LoM"/>
-                                            <constraint firstItem="wza-DX-GGT" firstAttribute="leading" secondItem="4oO-Tm-4yz" secondAttribute="trailing" constant="5" id="SIf-Ex-Jfm"/>
+                                            <constraint firstItem="4oO-Tm-4yz" firstAttribute="leading" secondItem="ca4-mo-I5r" secondAttribute="trailing" constant="10" id="Cug-IL-sOw"/>
+                                            <constraint firstItem="Maz-pz-ADS" firstAttribute="leading" secondItem="4oO-Tm-4yz" secondAttribute="trailing" constant="10" id="CzE-9T-ozs"/>
+                                            <constraint firstItem="Maz-pz-ADS" firstAttribute="centerY" secondItem="4oO-Tm-4yz" secondAttribute="centerY" id="RnH-hB-7Zy"/>
                                             <constraint firstItem="ca4-mo-I5r" firstAttribute="leading" secondItem="Ttx-JI-MGC" secondAttribute="leading" id="T7A-w3-q5b"/>
+                                            <constraint firstItem="4oO-Tm-4yz" firstAttribute="top" secondItem="Ttx-JI-MGC" secondAttribute="top" constant="8" id="U5A-mU-1Tm"/>
                                             <constraint firstItem="gQP-wc-Nog" firstAttribute="leading" secondItem="ca4-mo-I5r" secondAttribute="trailing" constant="10" id="X0a-Ms-1bt"/>
                                             <constraint firstAttribute="height" constant="60" id="YC7-qy-yJl"/>
-                                            <constraint firstItem="4oO-Tm-4yz" firstAttribute="top" secondItem="Ttx-JI-MGC" secondAttribute="top" constant="8" id="Z5L-GL-5WK"/>
-                                            <constraint firstItem="4oO-Tm-4yz" firstAttribute="leading" secondItem="ca4-mo-I5r" secondAttribute="trailing" constant="10" id="ZMq-1V-fxL"/>
                                             <constraint firstAttribute="bottom" secondItem="ca4-mo-I5r" secondAttribute="bottom" id="fRl-L1-knO"/>
                                             <constraint firstItem="ca4-mo-I5r" firstAttribute="top" secondItem="Ttx-JI-MGC" secondAttribute="top" id="icW-Xv-lue"/>
-                                            <constraint firstItem="gQP-wc-Nog" firstAttribute="top" secondItem="wza-DX-GGT" secondAttribute="bottom" constant="10" id="vyb-R6-Cu3"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3j-M6-Amv">
@@ -974,6 +981,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="authstateView" destination="Maz-pz-ADS" id="atV-84-nUa"/>
                         <outlet property="headImgView" destination="ca4-mo-I5r" id="yXF-Ph-Bm5"/>
                         <outlet property="nameLab" destination="4oO-Tm-4yz" id="ZBG-Vn-Kmd"/>
                         <outlet property="phoneLab" destination="gQP-wc-Nog" id="5lB-ch-dV1"/>
