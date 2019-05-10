@@ -11,11 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSAuthenticationVC : BaseVC
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *authStateH;
+@property (weak, nonatomic) IBOutlet UILabel *authStateLab;
+@property (weak, nonatomic) IBOutlet UITableView *personTabView;
+@property (weak, nonatomic) IBOutlet UITableView *companyTabView;
 
 - (IBAction)titleViewAction:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UIView *personTabHeadView;
-@property (weak, nonatomic) IBOutlet UIView *companyTabHeadView;
 @property (weak, nonatomic) IBOutlet UIView *titleBgView;
 
 /* 个人 */

@@ -108,10 +108,10 @@
 
 /* 认证 */
 - (IBAction)authAction:(id)sender {
-    if ([self.authStateLab.text isEqualToString:@"未认证"]) {
+//    if ([self.authStateLab.text isEqualToString:@"未认证"]) {
         UIViewController *vc = [Utils getViewController:@"Mine" WithVCName:@"JSAuthenticationVC"];
         [self.navigationController pushViewController:vc animated:YES];
-    }
+//    }
 }
 
 /* 清除缓存 */

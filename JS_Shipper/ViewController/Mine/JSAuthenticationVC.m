@@ -37,13 +37,9 @@
     self.idCardFrontPhoto = @"";
     self.idCardBehindPhoto = @"";
     self.idCardHandPhoto = @"";
-
-    [self.baseTabView addSubview:_personTabHeadView];
-    [self.baseTabView addSubview:_companyTabHeadView];
-    _personTabHeadView.width = self.baseTabView.width;
-    _companyTabHeadView.width = self.baseTabView.width;
-    self.baseTabView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, _personTabHeadView.height)];
-    self.baseTabView.tableHeaderView.userInteractionEnabled = NO;
+    self.companyTabView.hidden = YES;
+    self.personTabView.tableFooterView = [[UIView alloc]init];
+    self.companyTabView.tableFooterView = [[UIView alloc]init];
 }
 
 #pragma mark - methods
@@ -62,16 +58,8 @@
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
     }
-    _personTabHeadView.hidden = !isPerson;
-    _companyTabHeadView.hidden = isPerson;
-    if (isPerson) {
-        self.baseTabView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, _personTabHeadView.height)];
-    }
-    else {
-        self.baseTabView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, _companyTabHeadView.height)];
-    }
-    [self.baseTabView setContentOffset:CGPointMake(0, 0)];
-    self.baseTabView.tableHeaderView.userInteractionEnabled = NO;
+    _personTabView.hidden = !isPerson;
+    _companyTabView.hidden = isPerson;
 }
 
 /* 上传身份证正面 */
