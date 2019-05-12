@@ -50,17 +50,27 @@
             self.phoneLab.text = userInfo.mobile;
             self.nameLab.text = userInfo.nickName;
             
-            if ([userInfo.personConsignorVerified integerValue] == 0
-                && [userInfo.companyConsignorVerified integerValue] == 0) {
-                self.stateLab.text = @" 申请认证 ";
+            //失败》已审核〉审核中》未提交
+            if ([[UserInfo share].personConsignorVerified integerValue] == 3
+                || [[UserInfo share].companyConsignorVerified integerValue] == 3) {
+                self.stateLab.text = @"认证失败";
+                return;
             }
-            
-            if ([userInfo.personConsignorVerified integerValue] == 1
-                || [userInfo.companyConsignorVerified integerValue] == 1) {
-                self.stateLab.text = @" 审核中 ";
+            if ([[UserInfo share].personConsignorVerified integerValue] == 2
+                || [[UserInfo share].companyConsignorVerified integerValue] == 2) {
+                self.stateLab.text = @"已认证";
+                return;
             }
-           
-            NSLog(@"用户手机号：%@，用户昵称：%@", userInfo.mobile, userInfo.nickName);
+            if ([[UserInfo share].personConsignorVerified integerValue] == 1
+                || [[UserInfo share].companyConsignorVerified integerValue] == 1) {
+                self.stateLab.text = @"认证中";
+                return;
+            }
+            if ([[UserInfo share].personConsignorVerified integerValue] == 0
+                && [[UserInfo share].companyConsignorVerified integerValue] == 0) {
+                self.stateLab.text = @"未提交";
+                return;
+            }
         }
     }];
 }

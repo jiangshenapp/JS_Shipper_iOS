@@ -98,6 +98,7 @@
 		A075190B227D17710032A974 /* HmAddressCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751903227D17700032A974 /* HmAddressCityModel.m */; };
 		A075190C227D17710032A974 /* HmAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751904227D17700032A974 /* HmAddressModel.m */; };
 		A075190D227D17710032A974 /* HmSelectAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751906227D17710032A974 /* HmSelectAdView.m */; };
+		A0773E8E22885B1000C74D69 /* AuthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A0773E8D22885B1000C74D69 /* AuthInfo.m */; };
 		A0E9270522852C9C00D07C58 /* AEFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E9270422852C9C00D07C58 /* AEFilePath.m */; };
 		C2906EBDB1A940D92FBD8960 /* libPods-JS_Shipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */; };
 /* End PBXBuildFile section */
@@ -280,6 +281,8 @@
 		A0751906227D17710032A974 /* HmSelectAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmSelectAdView.m; sourceTree = "<group>"; };
 		A0751907227D17710032A974 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		A0751908227D17710032A974 /* HmAddressCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmAddressCityModel.h; sourceTree = "<group>"; };
+		A0773E8C22885B1000C74D69 /* AuthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthInfo.h; sourceTree = "<group>"; };
+		A0773E8D22885B1000C74D69 /* AuthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthInfo.m; sourceTree = "<group>"; };
 		A0E9270322852C9C00D07C58 /* AEFilePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFilePath.h; sourceTree = "<group>"; };
 		A0E9270422852C9C00D07C58 /* AEFilePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFilePath.m; sourceTree = "<group>"; };
 		F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JS_Shipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -571,6 +574,8 @@
 				A04CB3C1227B1C6E00ED6979 /* BaseItem.m */,
 				20BD73722248BE430020EA5D /* UserInfo.h */,
 				20BD73712248BE430020EA5D /* UserInfo.m */,
+				A0773E8C22885B1000C74D69 /* AuthInfo.h */,
+				A0773E8D22885B1000C74D69 /* AuthInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -915,6 +920,7 @@
 				203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */,
 				20BD73B22248BE440020EA5D /* XLGAlertView.m in Sources */,
 				209B6ACF227300850060F509 /* JSSelectCityVC.m in Sources */,
+				A0773E8E22885B1000C74D69 /* AuthInfo.m in Sources */,
 				200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,

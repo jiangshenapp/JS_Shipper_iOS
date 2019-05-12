@@ -8,12 +8,14 @@
 
 #import "JSAuthenticationVC.h"
 #import "HmSelectAdView.h"
+#import "AuthInfo.h"
 
 @interface JSAuthenticationVC ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     BOOL isPerson;//判断是个人还是公司
 }
 
+@property (nonatomic, assign) NSInteger authState; //0未认证，1审核中，2已认证，3认证失败
 @property (nonatomic, assign) NSInteger photoType; //1、身份证正面 2、身份证反面 3、手持身份证 4、公司营业执照
 @property (nonatomic, copy) NSString *idCardFrontPhoto;
 @property (nonatomic, copy) NSString *idCardBehindPhoto;
@@ -33,13 +35,63 @@
     
     self.title = @"货主身份认证";
     isPerson = YES;
+    _authState = [[UserInfo share].personConsignorVerified integerValue];
+    if (_authState == 0) { //未认证
+        self.authStateH.constant = 0;
+    } else {
+        self.authStateH.constant = 40;
+        [self initAuthData];
+        self.authStateLab.text = kAuthStateStrDic[@(_authState)];
+        self.authStateLab.textColor = kAuthStateColorDic[@(_authState)];
+        if (_authState != 3) { //认证失败
+            [self initAuthView];
+        }
+    }
     self.photoType = 0;
-    self.idCardFrontPhoto = @"";
-    self.idCardBehindPhoto = @"";
-    self.idCardHandPhoto = @"";
     self.companyTabView.hidden = YES;
-    self.personTabView.tableFooterView = [[UIView alloc]init];
-    self.companyTabView.tableFooterView = [[UIView alloc]init];
+    self.personTabView.tableFooterView = [[UIView alloc] init];
+    self.companyTabView.tableFooterView = [[UIView alloc] init];
+}
+
+#pragma mark - 认证信息初始化
+- (void)initAuthData {
+    if (isPerson) { //个人认证
+        NSDictionary *paramDic = [NSDictionary dictionary];
+        [[NetworkManager sharedManager] postJSON:URL_GetPersonConsignorVerifiedInfo parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                AuthInfo *authInfo = [AuthInfo mj_objectWithKeyValues:(NSDictionary *)responseData];
+                [self.idCardFrontBtn sd_setImageWithURL:[NSURL URLWithString:authInfo.idImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"Authentication_img_idpositive"]];
+                [self.idCardBehindBtn sd_setImageWithURL:[NSURL URLWithString:authInfo.idBackImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"Authentication_img_id"]];
+                [self.idCardHandBtn sd_setImageWithURL:[NSURL URLWithString:authInfo.idHandImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"authentication_img_body"]];
+                self.nameTF.text = authInfo.personName;
+                self.idCardTF.text = authInfo.idCode;
+                self.addressTF.text = authInfo.address;
+            }
+        }];
+    } else { //公司认证
+        NSDictionary *paramDic = [NSDictionary dictionary];
+        [[NetworkManager sharedManager] postJSON:URL_GetCompanyConsignorVerifiedInfo parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                AuthInfo *authInfo = [AuthInfo mj_objectWithKeyValues:(NSDictionary *)responseData];
+                self.companyNameTF.text = authInfo.companyName;
+                self.companyNoTF.text = authInfo.registrationNumber;
+                self.companyAddressLab.text = authInfo.address;
+                self.companyDetailAddressTF.text = authInfo.detailAddress;
+                [self.companyPhotoBtn sd_setImageWithURL:[NSURL URLWithString:authInfo.businessLicenceImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"Authentication_img_id"]];
+            }
+        }];
+    }
+}
+
+- (void)initAuthView {
+    self.bottomViewH.constant = 0;
+    if (isPerson) { //个人认证
+        self.personTabHeadView.userInteractionEnabled = NO;
+        [self.addressBtn setImage:nil forState:UIControlStateNormal];
+    } else { //公司认证
+        self.companyTabHeadView.userInteractionEnabled = NO;
+        [self.companyAddressBtn setImage:nil forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - methods
@@ -60,6 +112,23 @@
     }
     _personTabView.hidden = !isPerson;
     _companyTabView.hidden = isPerson;
+    if (isPerson) {
+        _authState = [[UserInfo share].personConsignorVerified integerValue];
+    }
+    else {
+        _authState = [[UserInfo share].companyConsignorVerified integerValue];
+    }
+    if (_authState == 0) { //未认证
+        self.authStateH.constant = 0;
+    } else {
+        self.authStateH.constant = 40;
+        [self initAuthData];
+        self.authStateLab.text = kAuthStateStrDic[@(_authState)];
+        self.authStateLab.textColor = kAuthStateColorDic[@(_authState)];
+        if (_authState != 3) { //认证失败
+            [self initAuthView];
+        }
+    }
 }
 
 /* 上传身份证正面 */

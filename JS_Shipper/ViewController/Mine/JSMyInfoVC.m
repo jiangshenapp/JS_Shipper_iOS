@@ -23,17 +23,29 @@
 
     self.nickNameLab.text = [UserInfo share].nickName;
     
-    if ([[UserInfo share].personConsignorVerified integerValue] == 0
-        && [[UserInfo share].companyConsignorVerified integerValue] == 0) {
-        self.authStateLab.text = @"未认证";
-    }
+    self.cacheLab.text = [AEFilePath folderSizeAtPath:kCachePath];
     
+    //失败》已审核〉审核中》未提交
+    if ([[UserInfo share].personConsignorVerified integerValue] == 3
+        || [[UserInfo share].companyConsignorVerified integerValue] == 3) {
+        self.authStateLab.text = @"认证失败";
+        return;
+    }
+    if ([[UserInfo share].personConsignorVerified integerValue] == 2
+        || [[UserInfo share].companyConsignorVerified integerValue] == 2) {
+        self.authStateLab.text = @"已认证";
+        return;
+    }
     if ([[UserInfo share].personConsignorVerified integerValue] == 1
         || [[UserInfo share].companyConsignorVerified integerValue] == 1) {
-        self.authStateLab.text = @"审核中";
+        self.authStateLab.text = @"认证中";
+        return;
     }
-    
-    self.cacheLab.text = [AEFilePath folderSizeAtPath:kCachePath];
+    if ([[UserInfo share].personConsignorVerified integerValue] == 0
+        && [[UserInfo share].companyConsignorVerified integerValue] == 0) {
+        self.authStateLab.text = @"未提交";
+        return;
+    }
 }
 
 #pragma mark - methods
@@ -95,7 +107,13 @@
         [[NetworkManager sharedManager] postJSON:URL_FileUpload parameters:dic imageDataArr:imageDataArr imageName:@"file" completion:^(id responseData, RequestState status, NSError *error) {
             
             if (status == Request_Success) {
-                
+                NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:responseData,@"avatar", nil];
+                [[NetworkManager sharedManager] postJSON:URL_ChangeAvatar parameters:dic imageDataArr:nil imageName:nil completion:^(id responseData, RequestState status, NSError *error) {
+                    
+                    if (status == Request_Success) {
+                        //修改头像成功
+                    }
+                }];
             }
         }];
     }];
@@ -108,10 +126,8 @@
 
 /* 认证 */
 - (IBAction)authAction:(id)sender {
-    if ([self.authStateLab.text isEqualToString:@"未认证"]) {
-        UIViewController *vc = [Utils getViewController:@"Mine" WithVCName:@"JSAuthenticationVC"];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+    UIViewController *vc = [Utils getViewController:@"Mine" WithVCName:@"JSAuthenticationVC"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /* 清除缓存 */
