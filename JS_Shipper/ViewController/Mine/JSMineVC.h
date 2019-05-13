@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *stateLab;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLab;
 @property (weak, nonatomic) IBOutlet UIView *authstateView;
-
+@property (weak, nonatomic) IBOutlet UIView *bottomVIew;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewH;
 @end
 
 NS_ASSUME_NONNULL_END
