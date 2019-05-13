@@ -21,6 +21,7 @@
     
     self.title = @"用户中心";
 
+    [self.headImgView sd_setImageWithURL:[NSURL URLWithString:[UserInfo share].avatar] placeholderImage:[UIImage imageNamed:@"personalcenter_shipper_icon_head_land"]];
     self.nickNameLab.text = [UserInfo share].nickName;
     
     self.cacheLab.text = [AEFilePath folderSizeAtPath:kCachePath];
@@ -112,6 +113,8 @@
                     
                     if (status == Request_Success) {
                         //修改头像成功
+                        [Utils showToast:@"头像修改成功"];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoChangeNotification object:nil];
                     }
                 }];
             }
