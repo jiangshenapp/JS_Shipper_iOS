@@ -15,11 +15,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *authStateLab;
 @property (weak, nonatomic) IBOutlet UITableView *personTabView;
 @property (weak, nonatomic) IBOutlet UITableView *companyTabView;
+@property (weak, nonatomic) IBOutlet UIView *personTabHeadView;
+@property (weak, nonatomic) IBOutlet UIView *companyTabHeadView;
+
+@property (weak, nonatomic) IBOutlet UIView *titleBgView;
 
 - (IBAction)titleViewAction:(UIButton *)sender;
-
-@property (weak, nonatomic) IBOutlet UIView *personTabHeadView;
-@property (weak, nonatomic) IBOutlet UIView *titleBgView;
 
 /* 个人 */
 @property (weak, nonatomic) IBOutlet UIButton *idCardFrontBtn;
@@ -28,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UITextField *idCardTF;
 @property (weak, nonatomic) IBOutlet UITextField *addressTF;
+@property (weak, nonatomic) IBOutlet UIButton *addressBtn;
 
 /* 公司 */
 @property (weak, nonatomic) IBOutlet UITextField *companyNameTF;
@@ -35,7 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *companyAddressLab;
 @property (weak, nonatomic) IBOutlet UITextField *companyDetailAddressTF;
 @property (weak, nonatomic) IBOutlet UIButton *companyPhotoBtn;
+@property (weak, nonatomic) IBOutlet UIButton *companyAddressBtn;
 
+/* 选择协议 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewH;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
 @end
