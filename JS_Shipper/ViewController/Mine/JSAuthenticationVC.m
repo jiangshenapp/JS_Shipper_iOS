@@ -36,6 +36,7 @@
     self.title = @"货主身份认证";
     isPerson = YES;
     _authState = [[UserInfo share].personConsignorVerified integerValue];
+    self.bottomViewH.constant = 100;
     if (_authState == 0) { //未认证
         self.authStateH.constant = 0;
     } else {
@@ -118,6 +119,7 @@
     else {
         _authState = [[UserInfo share].companyConsignorVerified integerValue];
     }
+    self.bottomViewH.constant = 100;
     if (_authState == 0) { //未认证
         self.authStateH.constant = 0;
     } else {
@@ -313,7 +315,7 @@
             return;
         }
         
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+        NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:
                              _idCardFrontPhoto, @"idImage",
                              _idCardBehindPhoto, @"idBackImage",
                              _idCardHandPhoto, @"idHandImage",
@@ -321,7 +323,6 @@
                              self.idCardTF.text, @"idCode",
                              self.addressTF.text, @"address",
                              nil];
-        NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:[dic jsonStringEncoded], @"personVerifiedInfo", nil];
         [[NetworkManager sharedManager] postJSON:URL_PersonConsignorVerified parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
             if (status == Request_Success) {
                 [Utils showToast:@"提交成功，前耐心等待审核"];
@@ -357,14 +358,13 @@
             return;
         }
         
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+        NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:
                              self.companyNameTF.text, @"companyName",
                              self.companyNoTF.text, @"registrationNumber",
                              self.companyAddressLab.text, @"address",
                              self.companyDetailAddressTF.text, @"detailAddress",
                              _companyPhoto, @"businessLicenceImage",
                              nil];
-        NSDictionary *paramDic = [NSDictionary dictionaryWithObjectsAndKeys:[dic jsonStringEncoded], @"consignorCompanyVerifiedInfo", nil];
         [[NetworkManager sharedManager] postJSON:URL_CompanyConsignorVerified parameters:paramDic completion:^(id responseData, RequestState status, NSError *error) {
             if (status == Request_Success) {
                 [Utils showToast:@"提交成功，前耐心等待审核"];

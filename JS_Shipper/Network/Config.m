@@ -32,11 +32,11 @@ NSString *ROOT_URL(void) {
 
 NSString *PIC_URL(void) {
     
-    if (KOnline || [Utils getServer] == 1) {
-        return @"http://gateway.jskj.com/logistic-biz"; //正式地址
-    } else {
+//    if (KOnline || [Utils getServer] == 1) {
+//        return @"http://gateway.jskj.com/logistic-biz"; //正式地址
+//    } else {
         return @"http://47.96.122.74:9999/admin/file/download?fileName="; //阿里云地址
-    }
+//    }
 }
 
 @end
