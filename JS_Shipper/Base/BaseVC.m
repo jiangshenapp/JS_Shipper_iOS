@@ -75,6 +75,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = PageColor;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationController.automaticallyAdjustsScrollViewInsets = NO;
     [self.navigationController setNavigationBarHidden:YES];
