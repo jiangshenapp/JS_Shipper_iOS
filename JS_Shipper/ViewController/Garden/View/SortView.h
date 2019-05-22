@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCustomView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SortView : UIView
-- (void)showView ;
-- (void)hiddenView ;
+@interface SortView : BaseCustomView
+
 @end
 
 NS_ASSUME_NONNULL_END

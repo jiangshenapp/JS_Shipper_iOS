@@ -13,6 +13,8 @@
 		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
 		203D8EF6224DFC460066333A /* JSPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF5224DFC460066333A /* JSPayVC.m */; };
 		203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF8224DFDE10066333A /* JSMyInfoVC.m */; };
+		2044521A2295522500FBF0C9 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 204452192295522500FBF0C9 /* Address.json */; };
+		2044521D2295523000FBF0C9 /* BaseCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044521B2295523000FBF0C9 /* BaseCustomView.m */; };
 		204E5299227068E600DE65A8 /* JSFeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 204E5298227068E600DE65A8 /* JSFeedBackVC.m */; };
 		2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */; };
 		205F20362276A254000A8967 /* JSOrderDetailMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 205F20352276A254000A8967 /* JSOrderDetailMapVC.m */; };
@@ -80,7 +82,6 @@
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
 		20BD741B2248C8230020EA5D /* JSResetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSResetPswVC.m */; };
 		20D64C49227010C9001F6172 /* FilterCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D64C48227010C9001F6172 /* FilterCustomView.m */; };
-		20E9D3E0226B12E500ED8F06 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20E9D3DF226B12E500ED8F06 /* Address.plist */; };
 		20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */; };
 		20F89D58224DC0DF00D2DC2D /* JSReleaseOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */; };
 		20F89D5B224DC10A00D2DC2D /* JSConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */; };
@@ -151,6 +152,9 @@
 		203D8EF5224DFC460066333A /* JSPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPayVC.m; sourceTree = "<group>"; };
 		203D8EF7224DFDE10066333A /* JSMyInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyInfoVC.h; sourceTree = "<group>"; };
 		203D8EF8224DFDE10066333A /* JSMyInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyInfoVC.m; sourceTree = "<group>"; };
+		204452192295522500FBF0C9 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
+		2044521B2295523000FBF0C9 /* BaseCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCustomView.m; sourceTree = "<group>"; };
+		2044521C2295523000FBF0C9 /* BaseCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCustomView.h; sourceTree = "<group>"; };
 		204E5297227068E600DE65A8 /* JSFeedBackVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFeedBackVC.h; sourceTree = "<group>"; };
 		204E5298227068E600DE65A8 /* JSFeedBackVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSFeedBackVC.m; sourceTree = "<group>"; };
 		2055C10F225C3B4D000E13C3 /* JSSystemMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSystemMessageVC.h; sourceTree = "<group>"; };
@@ -279,7 +283,6 @@
 		20BD741A2248C8230020EA5D /* JSResetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSResetPswVC.m; sourceTree = "<group>"; };
 		20D64C47227010C9001F6172 /* FilterCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCustomView.h; sourceTree = "<group>"; };
 		20D64C48227010C9001F6172 /* FilterCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCustomView.m; sourceTree = "<group>"; };
-		20E9D3DF226B12E500ED8F06 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBaseOrderDetailsVC.h; sourceTree = "<group>"; };
 		20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBaseOrderDetailsVC.m; sourceTree = "<group>"; };
 		20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSReleaseOrderVC.h; sourceTree = "<group>"; };
@@ -385,9 +388,11 @@
 		202D3FDF226B0D91001B3353 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2044521C2295523000FBF0C9 /* BaseCustomView.h */,
+				2044521B2295523000FBF0C9 /* BaseCustomView.m */,
 				202D3FE0226B0E16001B3353 /* CityCustomView.h */,
 				202D3FE1226B0E16001B3353 /* CityCustomView.m */,
-				20E9D3DF226B12E500ED8F06 /* Address.plist */,
+				204452192295522500FBF0C9 /* Address.json */,
 				202845E7226FF9C70087BCF6 /* SortView.h */,
 				202845E8226FF9C70087BCF6 /* SortView.m */,
 				20D64C47227010C9001F6172 /* FilterCustomView.h */,
@@ -984,6 +989,7 @@
 				A026350E228C234900C924E2 /* ic_refresh_image_029@2x.png in Resources */,
 				A026352A228C234900C924E2 /* ic_refresh_image_014@2x.png in Resources */,
 				A0263517228C234900C924E2 /* ic_refresh_image_023@2x.png in Resources */,
+				2044521A2295522500FBF0C9 /* Address.json in Resources */,
 				A0263524228C234900C924E2 /* ic_refresh_image_034@2x.png in Resources */,
 				A0263521228C234900C924E2 /* ic_refresh_image_028@2x.png in Resources */,
 				A026352B228C234900C924E2 /* ic_refresh_image_032@2x.png in Resources */,
@@ -993,7 +999,6 @@
 				A0263512228C234900C924E2 /* ic_refresh_image_011@2x.png in Resources */,
 				A0263514228C234900C924E2 /* ic_refresh_image_007@2x.png in Resources */,
 				A0263510228C234900C924E2 /* ic_refresh_image_013@2x.png in Resources */,
-				20E9D3E0226B12E500ED8F06 /* Address.plist in Resources */,
 				20BD74042248BEB00020EA5D /* Login.storyboard in Resources */,
 				20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */,
 				20BD74032248BEB00020EA5D /* Message.storyboard in Resources */,
@@ -1116,6 +1121,7 @@
 				20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */,
 				20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */,
 				203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */,
+				2044521D2295523000FBF0C9 /* BaseCustomView.m in Sources */,
 				20BD73B72248BE440020EA5D /* Config.m in Sources */,
 				20BD73BA2248BE440020EA5D /* CZUpdateView.m in Sources */,
 				204E5299227068E600DE65A8 /* JSFeedBackVC.m in Sources */,

@@ -10,41 +10,48 @@
 
 #define LineCount 4
 
+@interface CityNameButton : UIButton
+/** 是否选中 */
+@property (nonatomic,assign) BOOL isSelect;
+/**  数据源 */
+@property (nonatomic,retain) NSDictionary *dataDic;
+@end
+
 @interface CityCustomView()
 {
-//    UIImageView *shadowView;
+    //    UIImageView *shadowView;
     UILabel *currentCityLab;
     UIButton *backBtn;
     
     NSArray *provinceArr;
-    NSArray *cityNameArr;
-    NSDictionary *cityDic;
-
+    NSArray *cityArr;
     NSArray *districtArr;
     
     NSInteger provinceIndex;
     NSInteger cityIndex;
+    NSInteger districtIndex;
     
     CGFloat btnW;
     CGFloat btnH;
-   
     CGFloat viewH;
 }
 /** 白背景 */
 @property (nonatomic,retain) UIButton *backGroundBtn;
 /** scrollView */
 @property (nonatomic,retain)  UIScrollView *bgScro;;
+/** 0全国   1全省   2全市 */
+@property (nonatomic,assign) NSInteger currentPage;
 @end
 
 @implementation CityCustomView
 
 -(instancetype)initWithFrame:(CGRect)frame {
-     CGRect frame1 = CGRectMake(0, kNavBarH+46, WIDTH, HEIGHT-kNavBarH-46);
+    CGRect frame1 = CGRectMake(0, kNavBarH+46, WIDTH, HEIGHT-kNavBarH-46);
     self = [super initWithFrame:frame1];
     if (self) {
         viewH = HEIGHT-kNavBarH-44;
         [self setupView];
-       
+        
     }
     return self;
 }
@@ -57,7 +64,6 @@
     
     _backGroundBtn = [[UIButton alloc] initWithFrame:self.bounds];
     _backGroundBtn.backgroundColor = [UIColor whiteColor];
-//    [bgView addTarget:self action:@selector(hiddenView) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_backGroundBtn];
     
     currentCityLab = [[UILabel alloc]initWithFrame:CGRectMake(12, 5, WIDTH/2.0, 20)];
@@ -79,179 +85,125 @@
     
     btnW = (WIDTH-12*5)/LineCount;
     btnH = btnW/2.2;;
-    
-    provinceArr = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Address" ofType:@"plist"]];
-    NSLog(@"%@",provinceArr);
-    [self initProvinceView];
-    
-}
-
-- (void)initProvinceView {
-    [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    provinceArr = [Utils readLocalFileWithName:@"Address"][@"data"];
+    provinceIndex = 2000;
+    cityIndex = 3000;
+    districtIndex = 4000;
+    _currentPage = 0;
     backBtn.hidden = YES;
-    cityNameArr = nil;
-    districtArr = nil;
-    NSInteger index = 0;
-    NSInteger line = provinceArr.count%LineCount==0?provinceArr.count/LineCount:provinceArr.count/LineCount+1;
-    for (NSInteger i = 0; i<line; i++) {
-        for (NSInteger j = 0; j<4; j++) {
-            if (index>=provinceArr.count+1) {
-                break;
-            }
-            NSString *title;
-            if (index==0) {
-                title = @"全国";
-            }
-            else {
-                NSDictionary *dataDic = provinceArr[index-1];
-                title = [dataDic.allKeys firstObject];
-            }
-            UIButton *sender = [self createButton];
-            sender.frame = CGRectMake(12+j*(btnW+12), 12+i*(btnH+12), btnW, btnH);
-            [sender setTitle:title forState:UIControlStateNormal];
-            [sender addTarget:self action:@selector(getCityAction:) forControlEvents:UIControlEventTouchUpInside];
-            sender.tag = 2000+index;
-            if (sender.tag==provinceIndex) {
-                sender.selected = YES;
-                sender.borderColor = kWhiteColor;
-                [sender setBackgroundColor:AppThemeColor];
-            }
-            [_bgScro addSubview:sender];
-            index++;
-        }
-    }
-    _bgScro.contentSize = CGSizeMake(0, MAX(_bgScro.height+1, line*(btnH+12)));
+    [self createCityBtnView:provinceArr baseTag:2000];
 }
 
-
-- (void)getCityAction:(UIButton *)sender {
-    sender.selected = YES;
-    sender.backgroundColor = AppThemeColor;
-    if (sender.tag==2000) {
-        return;
-    }
-    currentCityLab.text = [NSString stringWithFormat:@"选择：%@",sender.currentTitle];
-    backBtn.hidden = NO;
-    provinceIndex = sender.tag;
-    cityIndex = 0;
-    NSDictionary *dic = provinceArr[sender.tag-2000-1];
-    cityDic = dic[sender.currentTitle];
-    cityNameArr = cityDic.allKeys;
-    NSLog(@"%@",cityNameArr);
-    [self initCityView];
-}
-
-- (void)initCityView {
-    districtArr = nil;
-    [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    NSInteger index = 0;
-    NSInteger line = cityNameArr.count%LineCount==0?cityNameArr.count/LineCount:cityNameArr.count/LineCount+1;
-    for (NSInteger i = 0; i<line; i++) {
-        for (NSInteger j = 0; j<4; j++) {
-            if (index>=cityNameArr.count+1) {
-                break;
-            }
-            NSString *title;
-            if (index==0) {
-                title = @"全省";
-            }
-            else {
-                title = cityNameArr[index-1];
-            }
-            UIButton *sender = [self createButton];
-            sender.frame = CGRectMake(12+j*(btnW+12), 12+i*(btnH+12), btnW, btnH);
-            [sender setTitle:title forState:UIControlStateNormal];
-            [sender addTarget:self action:@selector(getDistrictAction:) forControlEvents:UIControlEventTouchUpInside];
-            sender.tag = 3000+index;
-            if (sender.tag==cityIndex) {
-                sender.selected = YES;
-                sender.borderColor = kWhiteColor;
-                [sender setBackgroundColor:AppThemeColor];
-            }
-            [_bgScro addSubview:sender];
-            index++;
-        }
-    }
-    _bgScro.contentSize = CGSizeMake(0, MAX(_bgScro.height+1, line*(btnH+12)));
-}
-
-- (void)getDistrictAction:(UIButton *)sender {
-    sender.selected = YES;
-    sender.backgroundColor = AppThemeColor;
-    if (sender.tag==3000) {
-        [self hiddenView];
-        return;
-    }
-    currentCityLab.text = [NSString stringWithFormat:@"选择：%@",sender.currentTitle];
-    backBtn.hidden = NO;
-    cityIndex = sender.tag;
-    districtArr = cityDic[sender.currentTitle];
-    [self initDistrictView];
-}
-
-- (void)initDistrictView {
-    [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    NSInteger index = 0;
-    NSInteger line = districtArr.count%LineCount==0?districtArr.count/LineCount:districtArr.count/LineCount+1;
-    for (NSInteger i = 0; i<line; i++) {
-        for (NSInteger j = 0; j<4; j++) {
-            if (index>=districtArr.count+1) {
-                break;
-            }
-            NSString *title;
-            if (index==0) {
-                title = @"全市";
-            }
-            else {
-                title = districtArr[index-1];
-            }
-            UIButton *sender = [self createButton];
-            sender.frame = CGRectMake(12+j*(btnW+12), 12+i*(btnH+12), btnW, btnH);
-            [sender setTitle:title forState:UIControlStateNormal];
-            [sender addTarget:self action:@selector(getNameAction:) forControlEvents:UIControlEventTouchUpInside];
-            sender.tag = 4000+index;
-            [_bgScro addSubview:sender];
-            index++;
-        }
-    }
-    _bgScro.contentSize = CGSizeMake(0, MAX(_bgScro.height+1, line*(btnH+12)));
-}
-
-- (void)getNameAction:(UIButton *)sender {
-    if (sender.tag==4000) {
-        [self hiddenView];
-        return;
-    }
-    sender.selected = YES;
-    sender.backgroundColor = AppThemeColor;
-    sender.borderColor = kWhiteColor;
-    currentCityLab.text = [NSString stringWithFormat:@"选择：%@",sender.currentTitle];
-    [self hiddenView];
-}
 
 - (void)backPage {
-    if (districtArr.count==0&&cityNameArr.count>0) {//当前城市级别
-        [self initProvinceView];
+    if (_currentPage==1) {
+        [self createCityBtnView:provinceArr baseTag:2000];
     }
-    else if (districtArr.count>0&&cityNameArr.count>0) {
-        [self initCityView];
+    else if (_currentPage==2){
+        [self createCityBtnView:cityArr baseTag:3000];
+    }
+}
+
+- (void)createCityBtnView:(NSArray *)dataSource baseTag:(NSInteger)baseTag {
+    NSString *firstName  = @"全国";
+    _currentPage = 0;
+    if (baseTag==3000) {
+        firstName = @"全省";
+        _currentPage = 1;
+    }
+    else if (baseTag==4000) {
+        firstName = @"全市";
+        _currentPage = 2;
+    }
+    [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    NSInteger index = 0;
+    NSInteger line = dataSource.count%LineCount==0?dataSource.count/LineCount:dataSource.count/LineCount+1;
+    for (NSInteger i = 0; i<line; i++) {
+        for (NSInteger j = 0; j<4; j++) {
+            if (index>=dataSource.count+1) {
+                break;
+            }
+            NSString *title;
+            NSDictionary *dataDic;
+            if (index==0) {
+                title = firstName;
+                dataDic = @{@"address":firstName,@"code":@"77777"};
+            }
+            else {
+                NSDictionary *privonceDic = dataSource[index-1];
+                dataDic = privonceDic[@"sysArea"];
+                title = dataDic[@"address"];
+            }
+            CityNameButton *sender = [[CityNameButton alloc]initWithFrame:CGRectMake(12+j*(btnW+12), 12+i*(btnH+12), btnW, btnH)];
+            [sender setTitle:title forState:UIControlStateNormal];
+            [sender addTarget:self action:@selector(cityButtonTouchAction:) forControlEvents:UIControlEventTouchUpInside];
+            sender.tag = baseTag+index;
+            sender.dataDic = dataDic;
+            if (sender.tag==provinceIndex||sender.tag==cityIndex||sender.tag==districtIndex) {
+                sender.isSelect = YES;
+            }
+            [_bgScro addSubview:sender];
+            index++;
+        }
+    }
+    _bgScro.contentSize = CGSizeMake(0, MAX(_bgScro.height+1, line*(btnH+12)));
+    backBtn.hidden = !_currentPage;
+}
+
+- (void)cityButtonTouchAction:(CityNameButton *)sender {
+    sender.isSelect = YES;
+    currentCityLab.text = [NSString stringWithFormat:@"选择：%@",sender.currentTitle];
+    if (sender.tag>=2000&&sender.tag<3000) {//省份
+        backBtn.hidden = NO;
+        CityNameButton *lastBtn = [self viewWithTag:provinceIndex];
+        lastBtn.isSelect = NO;
+        provinceIndex = sender.tag;
+        cityIndex = 3000;
+        districtIndex = 4000;
+        if (sender.tag==2000) {//全国
+            [self hiddenView];
+        }else {
+            NSDictionary *dic = provinceArr[sender.tag-2000-1];
+            cityArr = dic[@"children"];
+            if ([cityArr isKindOfClass:[NSArray class]]&&cityArr.count>0) {
+                [self createCityBtnView:cityArr baseTag:3000];
+            }
+            else {
+                [self hiddenView];
+            }
+        }
+    }
+    else if (sender.tag>=3000&&sender.tag<4000) {//市
+        CityNameButton *lastBtn = [self viewWithTag:cityIndex];
+        lastBtn.isSelect = NO;
+        backBtn.hidden = NO;
+        cityIndex = sender.tag;
+        if (sender.tag==3000) {
+            [self hiddenView];
+        }
+        else {
+            districtArr = cityArr[sender.tag-3000-1][@"children"];
+            districtIndex = 4000;
+            if ([districtArr isKindOfClass:[NSArray class]]&&districtArr.count>0) {
+                [self createCityBtnView:districtArr baseTag:4000];
+            }
+            else {
+                [self hiddenView];
+            }
+        }
+    }
+    else if (sender.tag>=4000) {
+        CityNameButton *lastBtn = [self viewWithTag:districtIndex];
+        lastBtn.isSelect = NO;
+        districtIndex = sender.tag;
+        [self hiddenView];
+    }
+    if (_getCityData) {
+        self.getCityData(sender.dataDic);
     }
 }
 
 
-
--(UIButton *)createButton{
-    UIButton *sender = [[UIButton alloc]init];
-    sender.layer.borderColor = [UIColor blackColor].CGColor;
-    sender.layer.borderWidth = 0.5;
-    sender.layer.cornerRadius =2;
-    sender.layer.masksToBounds = YES;
-    sender.titleLabel.font = [UIFont systemFontOfSize:14];
-    [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [sender setTitleColor:AppThemeColor forState:UIControlStateHighlighted];
-    return sender;
-}
 
 - (void)showView {
     __weak typeof(self) weakSelf = self;
@@ -274,11 +226,45 @@
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
+
+@end
+
+@implementation CityNameButton
+-(instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 0.5;
+        self.layer.cornerRadius =2;
+        self.layer.masksToBounds = YES;
+        self.titleLabel.font = [UIFont systemFontOfSize:14];
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [self setTitleColor:AppThemeColor forState:UIControlStateHighlighted];
+    }
+    return self;
 }
-*/
+
+-(void)setIsSelect:(BOOL)isSelect {
+    if (_isSelect!=isSelect) {
+        _isSelect=isSelect;
+    }
+    if (isSelect) {
+        self.backgroundColor = AppThemeColor;
+        self.borderColor = kWhiteColor;
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+    else {
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.backgroundColor = [UIColor clearColor];
+        self.borderColor = [UIColor blackColor];
+    }
+}
 
 @end

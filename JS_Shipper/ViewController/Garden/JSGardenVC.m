@@ -15,6 +15,7 @@
 {
     NSArray *titleArr1;
     NSArray *titleArr2;
+    NSArray *titleViewArr;
     CityCustomView *cityView1;
      CityCustomView *cityView2;
     SortView *mySortView;
@@ -23,6 +24,10 @@
 }
 /** 0车源  1城市配送 2精品路线 */
 @property (nonatomic,assign) NSInteger pageFlag;
+/** 区域编码1 */
+@property (nonatomic,copy) NSString *areaCode1;
+/** 区域编码2 */
+@property (nonatomic,copy) NSString *areaCode2;
 @end
 
 @implementation JSGardenVC
@@ -48,10 +53,23 @@
         [sender addTarget:self action:@selector(showViewAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.filterView addSubview:sender];
     }
-    cityView1 = [[CityCustomView alloc]init];
+    __weak typeof(self) weakSelf = self;
+    cityView1.getCityData = ^(NSDictionary * _Nonnull dataDic) {
+        FilterButton *tempBtn = [weakSelf.view viewWithTag:20000];
+        tempBtn.isSelect = NO;
+        [tempBtn setTitle:dataDic[@"address"] forState:UIControlStateNormal];
+        weakSelf.areaCode1 = dataDic[@"code"];
+    };
     cityView2 = [[CityCustomView alloc]init];
+    cityView2.getCityData = ^(NSDictionary * _Nonnull dataDic) {
+        FilterButton *tempBtn = [weakSelf.view viewWithTag:20001];
+        [tempBtn setTitle:dataDic[@"address"] forState:UIControlStateNormal];
+        weakSelf.areaCode2 = dataDic[@"code"];
+        tempBtn.isSelect = NO;
+    };
     mySortView = [[SortView alloc]init];
     filteView = [[FilterCustomView alloc]init];
+    titleViewArr = @[cityView1,cityView2,mySortView,filteView];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -104,8 +122,6 @@
     return 0.01;
 }
 
-
-
 - (void)showDevileryText:(UIButton*)sender {
     sender.selected = !sender.selected;
     NSString *flag = [NSString stringWithFormat:@"%d",sender.selected];
@@ -119,83 +135,28 @@
 #pragma mark - 筛选按钮选择
 /** 筛选按钮选择 */
 - (void)showViewAction:(FilterButton *)sender {
+    sender.userInteractionEnabled = NO;
+    sender.isSelect = !sender.isSelect;
     for (NSInteger index = 0; index<4; index++) {
         FilterButton *tempBtn = [self.view viewWithTag:20000+index];
-        if ([sender isEqual:tempBtn]) {
-            sender.isSelect = !sender.isSelect;
+        BaseCustomView *vv = titleViewArr[index];
+        if (![sender isEqual:tempBtn]) {
+            tempBtn.isSelect = NO;
+            [vv hiddenView];
         }
         else {
-            if (tempBtn.isSelect) {
-                [self hiddenAllView:index];
+            if (sender.isSelect) {
+                [vv showView];
             }
-         tempBtn.isSelect = NO;
+            else {
+                [vv hiddenView];
+            }
         }
     }
-    NSLog(@"%d",sender.isSelect);
-    if (sender.isSelect==NO) {
-        [self hiddenAllView:-1];
-        return;
-    }
-    switch (sender.tag-20000) {
-        case 0:
-        {
-            [cityView1 showView];
-        }
-            break;
-        case 1:
-        {
-            [cityView2 showView];
-           
-        }
-            break;
-        case 2:
-        {
-            [mySortView showView];
-        }
-            break;
-        case 3:
-        {
-            [filteView showView];
-        }
-            break;
-            
-        default:
-            break;
-    }
+    sender.userInteractionEnabled = YES;
 }
 
-- (void)hiddenAllView:(NSInteger)tag{
-    switch (tag) {
-        case 0:
-        {
-          [cityView1 hiddenView];
-            break;
-        }
-        case 1:
-        {
-           [cityView2 hiddenView];
-             break;
-        }
-        case 2:
-        {
-           [mySortView hiddenView];
-             break;
-        }
-        case 3:
-        {
-            [filteView hiddenView];
-             break;
-        }
-        default:
-        {
-            [cityView1 hiddenView];
-            [cityView2 hiddenView];
-            [mySortView hiddenView];
-            [filteView hiddenView];
-        }
-            break;
-    }
-}
+
 
 /*
 #pragma mark - Navigation

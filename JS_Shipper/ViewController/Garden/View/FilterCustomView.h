@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseCustomView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FilterCustomView : UIView
-- (void)showView ;
-- (void)hiddenView ;
+@interface FilterCustomView : BaseCustomView
+
 @end
 
 @interface MyCollectionCell : UICollectionViewCell
