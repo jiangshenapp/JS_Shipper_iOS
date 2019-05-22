@@ -54,6 +54,7 @@
         [self.filterView addSubview:sender];
     }
     __weak typeof(self) weakSelf = self;
+    cityView1 = [[CityCustomView alloc]init];
     cityView1.getCityData = ^(NSDictionary * _Nonnull dataDic) {
         FilterButton *tempBtn = [weakSelf.view viewWithTag:20000];
         tempBtn.isSelect = NO;
