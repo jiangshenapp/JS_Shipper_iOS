@@ -9,93 +9,119 @@
 #import "JSConfirmAddressMapVC.h"
 #import "MKMapView+ZoomLevel.h"
 
-@interface JSConfirmAddressMapVC ()<MKMapViewDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface JSConfirmAddressMapVC ()<BMKLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,BMKMapViewDelegate,BMKGeoCodeSearchDelegate>
 {
-  __block  NSDictionary *addreeDic;
   __block  NSArray *searchAddressArr;
 }
 /** 定位管理 */
-@property (nonatomic,retain) CLLocationManager *locationManager;
+@property (nonatomic,retain) BMKLocationManager *locationService;
 /** 用户当前位置 */
 @property (nonatomic,retain) MKUserLocation *myUserLoc;
+/** 反地理编码 */
+@property (nonatomic,retain) BMKReverseGeoCodeSearchResult *placemark;
 @end
 
 @implementation JSConfirmAddressMapVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:NO];
+    //当mapView即将被显示的时候调用，恢复之前存储的mapView状态
+    [_bdMapView viewWillAppear];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:NO];
+    //当mapView即将被隐藏的时候调用，存储当前mapView的状态
+    [_bdMapView viewWillDisappear];
+    //关闭个性化地图样式
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [self createTitleView];
     // Do any additional setup after loading the view.
 }
 
 - (void)initView {
-    self.locationManager=[[CLLocationManager alloc]init];;
+    _bdMapView.delegate = self;
+    _bdMapView.showsUserLocation = YES;
+    _bdMapView.zoomLevel = 15;
+   
     //判断当前设备定位服务是否打开
     if (![CLLocationManager locationServicesEnabled]) {
         NSLog(@"设备尚未打开定位服务");
     }
-    //判断当前设备版本大于iOS8以后的话执行里面的方法
-    if ([UIDevice currentDevice].systemVersion.floatValue >=8.0) {
-        //当用户使用的时候授权
-        [self.locationManager requestWhenInUseAuthorization];
-    }
+    [self.locationService startUpdatingLocation];
     if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied) {
         NSString *message = @"您的手机目前未开启定位服务，如欲开启定位服务，请至设定开启定位服务功能";
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法定位" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alertView show];
         
     }
-    _gdMapView.showsUserLocation = YES;
-    _gdMapView.delegate = self;
-    [_gdMapView setZoomLevel:13 animated:YES];
-    
-    [self.navBar addSubview:_titleView];
-    _titleView.top = kStatusBarH;
-    _titleView.centerX = self.navBar.width/2.0;
-    _titleView.cornerRadius = 2;
-    _titleView.borderColor = PageColor;
-    _titleView.borderWidth = 1;
-    
+  
     UIImage *image = [UIImage imageNamed:@"delivergoods_map_bg_location"];
     _centerView.layer.contents = (__bridge id)image.CGImage;
     self.baseTabView.hidden = YES;
+    
+    if (_sourceType==0) {
+        _getGoodBtnW.constant = 0;
+    }
 }
-/**
- *  跟踪到用户位置时会调用该方法
- *  @param mapView   地图
- *  @param userLocation 大头针模型
- */
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
-    [self.locationManager stopUpdatingLocation];
-    _myUserLoc = userLocation;
-    [self.gdMapView setCenterCoordinate:userLocation.coordinate animated:YES];
+
+- (void)BMKLocationManager:(BMKLocationManager *)manager didUpdateLocation:(BMKLocation *)location orError:(NSError *)error {
+    [self.locationService stopUpdatingLocation];
+    BMKUserLocation *loca = [[BMKUserLocation alloc]init];
+    loca.location = location.location;
+    [self.bdMapView updateLocationData:loca];
+    [self.bdMapView setCenterCoordinate:location.location.coordinate animated:YES];
+    [self fetchNearbyInfo:loca.location.coordinate.latitude andT:loca.location.coordinate.longitude];
 }
 
 - (void)fetchNearbyInfo:(CLLocationDegrees )latitude andT:(CLLocationDegrees )longitude {
-    __weak typeof(self) weakSelf = self;
-    //根据经纬度获取省份城市
-    CLGeocoder *clGeoCoder = [[CLGeocoder alloc] init];
-    CLLocation *newLocation = [[CLLocation alloc]initWithLatitude:latitude longitude:longitude];;
-    [clGeoCoder reverseGeocodeLocation:newLocation completionHandler: ^(NSArray *placemarks,NSError *error) {
-        if (placemarks.count>0) {
-                CLPlacemark *placemark = [placemarks firstObject];
-                self->addreeDic = placemark.addressDictionary;
-                [weakSelf refreshUI];
-        }
-        
-    }];
+    BMKGeoCodeSearch *geocodesearch  = [[BMKGeoCodeSearch alloc] init];
+    geocodesearch.delegate =self;
+    NSMutableArray
+    *userDefaultLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+    // 强制 成 简体中文
+    [[NSUserDefaults
+      standardUserDefaults] setObject:[NSArray arrayWithObjects:@"zh-hans", nil] forKey:@"AppleLanguages"];
+    // 显示所有信息
+    BMKReverseGeoCodeSearchOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeSearchOption alloc]init];
+    reverseGeocodeSearchOption.location = CLLocationCoordinate2DMake(latitude, longitude);
+    BOOL flag = [geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
+    if(flag) {
+        NSLog(@"反geo检索发送成功");
+    }
+    else {
+        NSLog(@"反geo检索发送失败");
+    }
 }
 
-
-- (void)refreshUI {
-    NSLog(@"%@",addreeDic);
-   _ceterAddressLab.text =[NSString stringWithFormat:@"%@",addreeDic[@"Name"]];
-    _addressNameLab.text =[NSString stringWithFormat:@"%@",addreeDic[@"Name"]];
-    NSString *street = addreeDic[@"Street"];
-    if ([NSString isEmpty:street]) {
-        street = @"";
+/**
+ *返回反地理编码搜索结果
+ *@param searcher 搜索对象
+ *@param result 搜索结果
+ *@param error 错误号，@see BMKSearchErrorCode
+ */
+- (void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeSearchResult *)result errorCode:(BMKSearchErrorCode)error {
+    NSLog(@"%@    %@   %@    %@    ",result.addressDetail.streetName,result.addressDetail.streetNumber,result.addressDetail.streetNumber,result.addressDetail.distance);
+    if (error==0&&result!=nil) {
+        NSString *businessCircle = result.businessCircle;
+        if (businessCircle.length==0) {
+            if (result.poiList.count) {
+                BMKPoiInfo *info = [result.poiList firstObject];
+                businessCircle = info.name;
+            }
+            if (businessCircle.length==0) {
+                businessCircle = result.address;
+            }
+        }
+        _ceterAddressLab.text =[NSString stringWithFormat:@"%@",businessCircle];
+        _addressNameLab.text =[NSString stringWithFormat:@"%@",businessCircle];
+        _addressInfoLab.text =[NSString stringWithFormat:@"%@",result.address];
+        [_cityBtn setTitle:result.addressDetail.city forState:UIControlStateNormal];
+        _placemark = result;
     }
-    _addressInfoLab.text =[NSString stringWithFormat:@"%@%@",addreeDic[@"SubLocality"],street];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -159,6 +185,33 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)selectCityBtn:(UIButton *)sender {
+    
+}
+
+
+- (void)createTitleView {
+    _titleView = [[UIView alloc]initWithFrame:CGRectMake(50, kStatusBarH+2, WIDTH-100, 40)];
+    _titleView.cornerRadius = 2;
+    _titleView.borderColor = PageColor;
+    _titleView.borderWidth = 1;
+    [self.navBar addSubview:_titleView];
+    
+    _cityBtn = [[UIButton alloc]initWithFrame:CGRectMake(3, 0, 80, _titleView.height)];
+    [_cityBtn setTitle:@"宁波市" forState:UIControlStateNormal];
+    [_cityBtn addTarget:self action:@selector(selectCityBtn:) forControlEvents:UIControlEventTouchUpInside];
+    _cityBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_cityBtn setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [_titleView addSubview:_cityBtn];
+    
+    _iconImgView = [[UIImageView alloc]initWithFrame:CGRectMake(_cityBtn.right, (_titleView.height-5)/2.0, 5, 5)];
+    _iconImgView.image = [UIImage imageNamed:@"app_more_city_arrow_black"];
+    [_titleView addSubview:_iconImgView];
+    
+    _searchTF = [[UITextField alloc]initWithFrame:CGRectMake(_iconImgView.right+5, 0, _titleView.width-_iconImgView.right-5, _titleView.height)];
+    [_titleView addSubview:_searchTF];
+    
+}
 
 /*
 #pragma mark - Navigation
@@ -170,6 +223,46 @@
 }
 */
 
+- (IBAction)getAddressInfoAction:(UIButton *)sender {
+    if (_getAddressinfo) {
+        self.getAddressinfo(_placemark);
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Lazy loading
+- (BMKLocationManager *)locationService {
+    if (!_locationService) {
+        //初始化BMKLocationManager类的实例
+        _locationService = [[BMKLocationManager alloc] init];
+        //设置定位管理类实例的代理
+        _locationService.delegate = self;
+        //设定定位坐标系类型，默认为 BMKLocationCoordinateTypeGCJ02
+        _locationService.coordinateType = BMKLocationCoordinateTypeBMK09LL;
+        //设定定位精度，默认为 kCLLocationAccuracyBest
+        _locationService.desiredAccuracy = kCLLocationAccuracyBest;
+        //设定定位类型，默认为 CLActivityTypeAutomotiveNavigation
+        _locationService.activityType = CLActivityTypeAutomotiveNavigation;
+        //指定定位是否会被系统自动暂停，默认为NO
+        _locationService.pausesLocationUpdatesAutomatically = NO;
+        /**
+         是否允许后台定位，默认为NO。只在iOS 9.0及之后起作用。
+         设置为YES的时候必须保证 Background Modes 中的 Location updates 处于选中状态，否则会抛出异常。
+         由于iOS系统限制，需要在定位未开始之前或定位停止之后，修改该属性的值才会有效果。
+         */
+        _locationService.allowsBackgroundLocationUpdates = NO;
+        /**
+         指定单次定位超时时间,默认为10s，最小值是2s。注意单次定位请求前设置。
+         注意: 单次定位超时时间从确定了定位权限(非kCLAuthorizationStatusNotDetermined状态)
+         后开始计算。
+         */
+        _locationService.locationTimeout = 10;
+        _locationService.reGeocodeTimeout = 10;
+        _locationService.distanceFilter=50;
+        _locationService.locatingWithReGeocode = YES;
+    }
+    return _locationService;
+}
 @end
 
 

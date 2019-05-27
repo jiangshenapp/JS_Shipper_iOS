@@ -30,6 +30,7 @@
     NSInteger provinceIndex;
     NSInteger cityIndex;
     NSInteger districtIndex;
+    NSDictionary *lastCityDic;//记录全国全市区
     
     CGFloat btnW;
     CGFloat btnH;
@@ -105,8 +106,15 @@
 }
 
 - (void)createCityBtnView:(NSArray *)dataSource baseTag:(NSInteger)baseTag {
+    NSDictionary *firstDic = [dataSource firstObject];
     NSString *firstName  = @"全国";
     _currentPage = 0;
+    NSLog(@"第一个：%@\n",firstDic[@"sysArea"]);
+
+    NSString *lastCode = firstDic[@"sysArea"][@"parentCode"];;
+    if (lastCode.length==0) {
+        lastCode = @"0";
+    }
     if (baseTag==3000) {
         firstName = @"全省";
         _currentPage = 1;
@@ -127,7 +135,7 @@
             NSDictionary *dataDic;
             if (index==0) {
                 title = firstName;
-                dataDic = @{@"address":firstName,@"code":@"77777"};
+                dataDic = @{@"address":firstName,@"code":lastCode,@"parentCode":lastCode};
             }
             else {
                 NSDictionary *privonceDic = dataSource[index-1];
@@ -151,7 +159,6 @@
 }
 
 - (void)cityButtonTouchAction:(CityNameButton *)sender {
-    sender.isSelect = YES;
     currentCityLab.text = [NSString stringWithFormat:@"选择：%@",sender.currentTitle];
     if (sender.tag>=2000&&sender.tag<3000) {//省份
         backBtn.hidden = NO;
@@ -201,6 +208,7 @@
     if (_getCityData) {
         self.getCityData(sender.dataDic);
     }
+    sender.isSelect = YES;
 }
 
 

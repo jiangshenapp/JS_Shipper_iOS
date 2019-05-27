@@ -7,18 +7,29 @@
 //
 
 #import "BaseVC.h"
-#import <MapKit/MapKit.h>
+#import <BaiduMapAPI_Map/BMKMapView.h>
+#import <BMKLocationKit/BMKLocationManager.h>
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSConfirmAddressMapVC : BaseVC
-@property (weak, nonatomic) IBOutlet MKMapView *gdMapView;
-@property (weak, nonatomic) IBOutlet UIView *titleView;
+/** 0装货  1卸货 */
+@property (nonatomic,assign) NSInteger sourceType;
+/** <#object#> */
+@property (nonatomic,copy) void (^getAddressinfo)(BMKReverseGeoCodeSearchResult *info);
+@property (weak, nonatomic) IBOutlet BMKMapView *bdMapView;
+@property (retain, nonatomic)  UIView *titleView;
+@property (retain, nonatomic)  UITextField *searchTF;
+@property (retain, nonatomic)  UIButton *cityBtn;
+@property (retain, nonatomic)  UIImageView *iconImgView;
 @property (weak, nonatomic) IBOutlet UILabel *ceterAddressLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressNameLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressInfoLab;
 @property (weak, nonatomic) IBOutlet UIView *centerView;
-@property (weak, nonatomic) IBOutlet UITextField *searchTF;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *getGoodBtnW;
+- (IBAction)getAddressInfoAction:(UIButton *)sender;
 
 @end
 

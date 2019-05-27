@@ -23,14 +23,35 @@
     // Do any additional setup after loading the view.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    __weak typeof(self) weakSelf = self;
+    JSConfirmAddressMapVC *vc = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"start"]) {
+        vc.sourceType = 0;
+        vc.getAddressinfo = ^(BMKReverseGeoCodeSearchResult * _Nonnull info) {
+            NSString *infoStr  =[NSString stringWithFormat:@"%@",info.address];
+            [weakSelf.startAddressBtn setTitle:infoStr forState:UIControlStateNormal];
+        };
+    }
+    else if ([segue.identifier isEqualToString:@"end"]) {
+        vc.sourceType = 1;
+        vc.getAddressinfo = ^(BMKReverseGeoCodeSearchResult * _Nonnull info) {
+            NSString *infoStr  =[NSString stringWithFormat:@"%@",info.address];
+            [weakSelf.endAddressBtn setTitle:infoStr forState:UIControlStateNormal];
+        };
+    }
 }
-*/
 
+
+- (IBAction)startAddressAction:(UIButton *)sender {
+}
+
+- (IBAction)endAddressAction:(id)sender {
+}
 @end

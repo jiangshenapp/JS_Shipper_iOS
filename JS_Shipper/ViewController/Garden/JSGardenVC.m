@@ -24,10 +24,16 @@
 }
 /** 0车源  1城市配送 2精品路线 */
 @property (nonatomic,assign) NSInteger pageFlag;
+/** 传参字典 0 */
+@property (nonatomic,retain) NSDictionary *postUrlDic;
 /** 区域编码1 */
 @property (nonatomic,copy) NSString *areaCode1;
 /** 区域编码2 */
 @property (nonatomic,copy) NSString *areaCode2;
+/** 数据源 */
+@property (nonatomic,retain) NSMutableArray *dataSource;
+/** <#object#> */
+@property (nonatomic,retain) HomeDataModel *dataModels;
 @end
 
 @implementation JSGardenVC
@@ -35,6 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [self getNetData];
 }
 
 -(void)initView {
@@ -60,6 +67,7 @@
         tempBtn.isSelect = NO;
         [tempBtn setTitle:dataDic[@"address"] forState:UIControlStateNormal];
         weakSelf.areaCode1 = dataDic[@"code"];
+        [weakSelf getNetData];
     };
     cityView2 = [[CityCustomView alloc]init];
     cityView2.getCityData = ^(NSDictionary * _Nonnull dataDic) {
@@ -67,14 +75,34 @@
         [tempBtn setTitle:dataDic[@"address"] forState:UIControlStateNormal];
         weakSelf.areaCode2 = dataDic[@"code"];
         tempBtn.isSelect = NO;
+        [weakSelf getNetData];
     };
     mySortView = [[SortView alloc]init];
     filteView = [[FilterCustomView alloc]init];
     titleViewArr = @[cityView1,cityView2,mySortView,filteView];
+    _postUrlDic = @{@(0):URL_Find,@(1):URL_Find,@(2):URL_Classic};
+    _areaCode1 = @"";
+    _areaCode2 = @"";
+    _dataSource = [NSMutableArray array];
+}
+
+#pragma mark - 获取数据
+- (void)getNetData {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:_areaCode1 forKey:@"arriveAddressCode"];
+    [dic setObject:_areaCode2 forKey:@"startAddressCode"];
+    NSString *url = _postUrlDic[@(_pageFlag)];
+    [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            weakSelf.dataModels = [HomeDataModel mj_objectWithKeyValues:responseData];
+        }
+        [weakSelf.baseTabView reloadData];
+    }];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return self.dataModels.records.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -82,9 +110,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    RecordsModel *model =self.dataModels.records[indexPath.section];
     if (_pageFlag==0||_pageFlag==2) {
         JSGardenTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSGardenTabCell"];
         cell.countBtn.hidden = _pageFlag;
+        
         return cell;
     }
     else if (_pageFlag==1) {
@@ -171,6 +201,7 @@
 
 - (IBAction)titleBtnAction:(UIButton*)sender {
     _pageFlag = sender.tag-100;
+    [self getNetData];
     for (NSInteger tag = 100; tag<103; tag++) {
         UIButton *btn = [self.view viewWithTag:tag];
         if ([btn isEqual:sender]) {
@@ -240,5 +271,16 @@
     _navBtn.layer.borderWidth = 1;
     _navBtn.layer.cornerRadius = 12;
     _navBtn.layer.masksToBounds = YES;
+}
+@end
+
+@implementation RecordsModel
+
+
+@end
+
+@implementation HomeDataModel
++ (NSDictionary *)mj_objectClassInArray {
+    return @{@"records":[RecordsModel class]};
 }
 @end

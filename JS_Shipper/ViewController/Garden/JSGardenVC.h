@@ -49,4 +49,30 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,retain) UILabel *titleLab;
 @end
 
+@interface RecordsModel : BaseItem
+@property (nonatomic,copy) NSString *ID;
+@property (nonatomic,copy) NSString *state;
+@property (nonatomic,copy) NSString *cphm;
+@property (nonatomic,copy) NSString *driverPhone;
+@property (nonatomic,copy) NSString *classic;
+@property (nonatomic,copy) NSString *carModel;
+@property (nonatomic,copy) NSString *carLength;
+@property (nonatomic,copy) NSString *subscriberId;
+@property (nonatomic,copy) NSString *remark;
+@property (nonatomic,copy) NSString *driverName;
+@property (nonatomic,copy) NSString *arriveAddressCode;
+@property (nonatomic,copy) NSString *startAddressCode;
+@end
+
+@interface HomeDataModel : BaseItem
+/** 数据源 */
+@property (nonatomic,retain) NSArray<RecordsModel *> *records;
+@property (nonatomic,copy) NSString *size;
+@property (nonatomic,copy) NSString *current;
+@property (nonatomic,copy) NSString *searchCount;
+@property (nonatomic,copy) NSString *pages;
+@property (nonatomic,copy) NSString *total;
+@end
+
+
 NS_ASSUME_NONNULL_END
