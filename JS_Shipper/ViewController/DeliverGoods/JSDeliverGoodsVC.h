@@ -16,8 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *startAddressBtn;
 @property (weak, nonatomic) IBOutlet UIButton *endAddressBtn;
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *bannerView;
-- (IBAction)startAddressAction:(UIButton *)sender;
-- (IBAction)endAddressAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLab;
+
+- (IBAction)sendGoodsAction:(UIButton *)sender;
+- (IBAction)carLongAction:(UIButton *)sender;
+- (IBAction)carTypeAction:(id)sender;
 
 @end
 

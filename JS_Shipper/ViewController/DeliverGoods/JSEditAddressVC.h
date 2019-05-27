@@ -11,6 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSEditAddressVC : BaseVC
+/** 用户信息 */
+@property (nonatomic,retain) NSDictionary *addressInfo;
+@property (weak, nonatomic) IBOutlet UILabel *titleAddressLab;
+@property (weak, nonatomic) IBOutlet UILabel *addressLab;
+@property (weak, nonatomic) IBOutlet UITextField *detailAddressLab;
+@property (weak, nonatomic) IBOutlet UITextField *userNameLab;
+@property (weak, nonatomic) IBOutlet UITextField *iphoneLab;
 
 @end
 

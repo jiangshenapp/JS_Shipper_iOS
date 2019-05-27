@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"收货人";
+    _titleAddressLab.text = _addressInfo[@"title"];
+    _addressLab.text = _addressInfo[@"address"];
 }
 
 /*

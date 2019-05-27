@@ -8,6 +8,7 @@
 
 #import "JSConfirmAddressMapVC.h"
 #import "MKMapView+ZoomLevel.h"
+#import "JSEditAddressVC.h"
 
 @interface JSConfirmAddressMapVC ()<BMKLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,BMKMapViewDelegate,BMKGeoCodeSearchDelegate>
 {
@@ -209,19 +210,25 @@
     [_titleView addSubview:_iconImgView];
     
     _searchTF = [[UITextField alloc]initWithFrame:CGRectMake(_iconImgView.right+5, 0, _titleView.width-_iconImgView.right-5, _titleView.height)];
+    _searchTF.delegate = self;
+    _searchTF.font = [UIFont systemFontOfSize:14];
     [_titleView addSubview:_searchTF];
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"address"]) {
+        JSEditAddressVC *vc = segue.destinationViewController;
+        vc.addressInfo = @{@"title":_addressNameLab.text,@"address":_addressInfoLab.text};
+    }
 }
-*/
+
 
 - (IBAction)getAddressInfoAction:(UIButton *)sender {
     if (_getAddressinfo) {
