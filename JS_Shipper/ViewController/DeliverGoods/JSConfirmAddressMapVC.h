@@ -10,6 +10,7 @@
 #import <BaiduMapAPI_Map/BMKMapView.h>
 #import <BMKLocationKit/BMKLocationManager.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

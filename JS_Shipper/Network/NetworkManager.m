@@ -40,7 +40,9 @@ static NetworkManager *_manager = nil;
     NSString *urlStr = [NSString stringWithFormat:@"%@%@",ROOT_URL(),name];
     
     [JHHJView showLoadingOnTheKeyWindowWithType:JHHJViewTypeSingleLine]; //开始加载
-
+    if (![NSString isEmpty:[UserInfo share].token]) {
+        [parameters setValue:[UserInfo share].token forKey:@"token"];
+    }
     [self POST:urlStr parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [JHHJView hideLoading]; //结束加载

@@ -8,12 +8,15 @@
 
 #import "JSDeliverGoodsVC.h"
 #import <BaiduMapAPI_Utils/BMKGeometry.h>
+#import "FilterCustomView.h"
 
 @interface JSDeliverGoodsVC ()
 /** 起止点 */
 @property (nonatomic,retain) BMKReverseGeoCodeSearchResult *info1;
 /** 终止点 */
 @property (nonatomic,retain) BMKReverseGeoCodeSearchResult *info2;
+/** 车身车长 */
+@property (nonatomic,retain) FilterCustomView *customView;
 @end
 
 @implementation JSDeliverGoodsVC
@@ -31,8 +34,24 @@
     [sender setTitleColor:kBlackColor forState:UIControlStateNormal];
     sender.titleLabel.font = [UIFont systemFontOfSize:12];
     self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:sender];;
-    
+    _customView =  [[FilterCustomView alloc]init];
+    _customView.viewHeight = HEIGHT-kNavBarH-kTabBarSafeH;;
+    _customView.top = kNavBarH;
+//    _customView.backgroundColor = [UIColor redColor];
+    [self getCarInfo];
     // Do any additional setup after loading the view.
+}
+
+- (void)getCarInfo {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [[NetworkManager sharedManager] postJSON:@"/app/dict/getDictByType?type=carLength" parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        NSArray *arr = responseData;
+        if ([arr isKindOfClass:[NSArray class]]) {
+            weakSelf.customView.titleArr = @[@"车长"];
+            weakSelf.customView.dataArr = @[responseData];
+        }
+    }];
 }
 
 
@@ -91,8 +110,10 @@
 }
 
 - (IBAction)carLongAction:(UIButton *)sender {
+    [_customView showView];
 }
 
 - (IBAction)carTypeAction:(id)sender {
+//    [_customView showView];
 }
 @end

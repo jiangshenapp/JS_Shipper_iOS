@@ -35,6 +35,7 @@
 		209B6ACF227300850060F509 /* JSSelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6ACE227300850060F509 /* JSSelectCityVC.m */; };
 		209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6AD12273097A0060F509 /* JSEditAddressVC.m */; };
 		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
+		20A83ED5229CE01E001304A8 /* MyCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A83ED4229CE01E001304A8 /* MyCustomButton.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
 		20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */; };
@@ -195,6 +196,8 @@
 		209B6AD12273097A0060F509 /* JSEditAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSEditAddressVC.m; sourceTree = "<group>"; };
 		209D7DED224C617D00409EA2 /* JSAllOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSAllOrderVC.h; sourceTree = "<group>"; };
 		209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAllOrderVC.m; sourceTree = "<group>"; };
+		20A83ED3229CE01E001304A8 /* MyCustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCustomButton.h; sourceTree = "<group>"; };
+		20A83ED4229CE01E001304A8 /* MyCustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCustomButton.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BD73242248BDC20020EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20BD73252248BDC20020EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -671,6 +674,8 @@
 				20BD73682248BE420020EA5D /* CZNotDataView.m */,
 				20BD736A2248BE420020EA5D /* CZNotNetAvailableVC.h */,
 				20BD73662248BE420020EA5D /* CZNotNetAvailableVC.m */,
+				20A83ED3229CE01E001304A8 /* MyCustomButton.h */,
+				20A83ED4229CE01E001304A8 /* MyCustomButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1156,6 +1161,7 @@
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
 				209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */,
 				20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */,
+				20A83ED5229CE01E001304A8 /* MyCustomButton.m in Sources */,
 				20F89D67224DC32A00D2DC2D /* JSFinishOrderVC.m in Sources */,
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
 				207D144022714E5900594520 /* JSAboutVC.m in Sources */,

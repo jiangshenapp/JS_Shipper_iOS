@@ -10,13 +10,6 @@
 
 #define LineCount 4
 
-@interface CityNameButton : UIButton
-/** 是否选中 */
-@property (nonatomic,assign) BOOL isSelect;
-/**  数据源 */
-@property (nonatomic,retain) NSDictionary *dataDic;
-@end
-
 @interface CityCustomView()
 {
     //    UIImageView *shadowView;
@@ -142,7 +135,7 @@
                 dataDic = privonceDic[@"sysArea"];
                 title = dataDic[@"address"];
             }
-            CityNameButton *sender = [[CityNameButton alloc]initWithFrame:CGRectMake(12+j*(btnW+12), 12+i*(btnH+12), btnW, btnH)];
+            MyCustomButton *sender = [[MyCustomButton alloc]initWithFrame:CGRectMake(12+j*(btnW+12), 12+i*(btnH+12), btnW, btnH)];
             [sender setTitle:title forState:UIControlStateNormal];
             [sender addTarget:self action:@selector(cityButtonTouchAction:) forControlEvents:UIControlEventTouchUpInside];
             sender.tag = baseTag+index;
@@ -158,11 +151,11 @@
     backBtn.hidden = !_currentPage;
 }
 
-- (void)cityButtonTouchAction:(CityNameButton *)sender {
+- (void)cityButtonTouchAction:(MyCustomButton *)sender {
     currentCityLab.text = [NSString stringWithFormat:@"选择：%@",sender.currentTitle];
     if (sender.tag>=2000&&sender.tag<3000) {//省份
         backBtn.hidden = NO;
-        CityNameButton *lastBtn = [self viewWithTag:provinceIndex];
+        MyCustomButton *lastBtn = [self viewWithTag:provinceIndex];
         lastBtn.isSelect = NO;
         provinceIndex = sender.tag;
         cityIndex = 3000;
@@ -181,7 +174,7 @@
         }
     }
     else if (sender.tag>=3000&&sender.tag<4000) {//市
-        CityNameButton *lastBtn = [self viewWithTag:cityIndex];
+        MyCustomButton *lastBtn = [self viewWithTag:cityIndex];
         lastBtn.isSelect = NO;
         backBtn.hidden = NO;
         cityIndex = sender.tag;
@@ -200,7 +193,7 @@
         }
     }
     else if (sender.tag>=4000) {
-        CityNameButton *lastBtn = [self viewWithTag:districtIndex];
+        MyCustomButton *lastBtn = [self viewWithTag:districtIndex];
         lastBtn.isSelect = NO;
         districtIndex = sender.tag;
         [self hiddenView];
@@ -243,36 +236,4 @@
 
 @end
 
-@implementation CityNameButton
--(instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.layer.borderColor = [UIColor blackColor].CGColor;
-        self.layer.borderWidth = 0.5;
-        self.layer.cornerRadius =2;
-        self.layer.masksToBounds = YES;
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
-        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [self setTitleColor:AppThemeColor forState:UIControlStateHighlighted];
-    }
-    return self;
-}
 
--(void)setIsSelect:(BOOL)isSelect {
-    if (_isSelect!=isSelect) {
-        _isSelect=isSelect;
-    }
-    if (isSelect) {
-        self.backgroundColor = AppThemeColor;
-        self.borderColor = kWhiteColor;
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }
-    else {
-        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        self.backgroundColor = [UIColor clearColor];
-        self.borderColor = [UIColor blackColor];
-    }
-}
-
-@end

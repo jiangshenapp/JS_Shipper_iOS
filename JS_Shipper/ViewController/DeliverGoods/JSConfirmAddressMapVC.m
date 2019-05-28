@@ -10,16 +10,17 @@
 #import "MKMapView+ZoomLevel.h"
 #import "JSEditAddressVC.h"
 
-@interface JSConfirmAddressMapVC ()<BMKLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,BMKMapViewDelegate,BMKGeoCodeSearchDelegate>
-{
-  __block  NSArray *searchAddressArr;
-}
+@interface JSConfirmAddressMapVC ()<BMKLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,BMKMapViewDelegate,BMKGeoCodeSearchDelegate,BMKPoiSearchDelegate>
 /** 定位管理 */
 @property (nonatomic,retain) BMKLocationManager *locationService;
 /** 用户当前位置 */
 @property (nonatomic,retain) MKUserLocation *myUserLoc;
 /** 反地理编码 */
 @property (nonatomic,retain) BMKReverseGeoCodeSearchResult *placemark;
+/** 搜索对象 */
+@property (nonatomic,retain) BMKPoiSearch *poisearch;
+/** 搜索数据源 */
+@property (nonatomic,retain) NSMutableArray *searchAddressArr;
 @end
 
 @implementation JSConfirmAddressMapVC
@@ -34,7 +35,10 @@
     [super viewWillDisappear:NO];
     //当mapView即将被隐藏的时候调用，存储当前mapView的状态
     [_bdMapView viewWillDisappear];
-    //关闭个性化地图样式
+    _searchTF.text = @"";
+    [_searchTF endEditing:YES];
+    [_searchAddressArr removeAllObjects];
+    self.baseTabView.hidden = YES;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +48,7 @@
 }
 
 - (void)initView {
+    _searchAddressArr = [NSMutableArray array];
     _bdMapView.delegate = self;
     _bdMapView.showsUserLocation = YES;
     _bdMapView.zoomLevel = 15;
@@ -141,48 +146,70 @@
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString*)string{
     NSString *textStr = [textField.text stringByReplacingCharactersInRange:range withString:string];
     if (textStr.length==0) {
-        searchAddressArr = nil;
+        [_searchAddressArr removeAllObjects];
         self.baseTabView.hidden = YES;
         return YES;
     }
      self.baseTabView.hidden = NO;
+    _poisearch = [[BMKPoiSearch alloc]init];
+    _poisearch.delegate = self;
+    BMKPOICitySearchOption *boundSearchOption = [[BMKPOICitySearchOption alloc]init];
+    boundSearchOption.city = _cityBtn.currentTitle;;
+    //    boundSearchOption.pageCapacity = 20;
+    boundSearchOption.keyword = textStr;
+    BOOL flag = [_poisearch poiSearchInCity:boundSearchOption];
+    if(flag) {
+        NSLog(@"范围内检索发送成功");
+    }
+    else {
+        NSLog(@"范围内检索发送失败");
+    }
+    
+    
 //    CLLocationCoordinate2D location=CLLocationCoordinate2DMake(latitude, longitude);
-//    MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(location, 1 ,1 );
-    MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc] init];
-//    requst.region = region;
-    __weak typeof(self) weakSelf = self;
-    requst.naturalLanguageQuery = textStr; //想要的信息
-    MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:requst];
-    [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
-        if (!error){
-            self->searchAddressArr = response.mapItems;
-            [weakSelf.baseTabView reloadData];
-        }
-    }];
+    
+//    MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc] init];
+//    requst.region = _bdMapView.region;
+//    __weak typeof(self) weakSelf = self;
+//    requst.naturalLanguageQuery = textStr; //想要的信息
+//    MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:requst];
+//    [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
+//        if (!error){
+//            self->searchAddressArr = response.mapItems;
+//            [weakSelf.baseTabView reloadData];
+//        }
+//    }];
+    [self.baseTabView reloadData];
     return YES;
+}
+
+- (void)onGetPoiResult:(BMKPoiSearch*)searcher result:(BMKPOISearchResult*)poiResult errorCode:(BMKSearchErrorCode)errorCode {
+    _searchAddressArr = nil;
+    if (errorCode==0) {
+        _searchAddressArr = [NSMutableArray arrayWithArray:poiResult.poiInfoList];
+    }
+    [self.baseTabView reloadData];
 }
 
 
 #pragma mark - tablewView代理
 /**  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return searchAddressArr.count;
+    return _searchAddressArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SearchTabcell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchTabcell"];
-     MKMapItem *mapIm = searchAddressArr[indexPath.row];
-    cell.nameLab.text = mapIm.name;
-    NSString *street = mapIm.placemark.addressDictionary[@"Street"];
-    if ([NSString isEmpty:street]) {
-        street = @"";
-    }
-    cell.addressLab.text = [NSString stringWithFormat:@"%@%@",mapIm.placemark.addressDictionary[@"SubLocality"],street];;
+     BMKPoiInfo *poiInfo = _searchAddressArr[indexPath.row];
+    cell.nameLab.text = poiInfo.name;
+    cell.addressLab.text = poiInfo.address;
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIViewController *vc = [Utils getViewController:@"DeliverGoods" WithVCName:@"JSEditAddressVC"];
+    JSEditAddressVC *vc = (JSEditAddressVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSEditAddressVC"];
+    BMKPoiInfo *poiInfo = _searchAddressArr[indexPath.row];
+    vc.addressInfo = @{@"title":poiInfo.name,@"address":poiInfo.address};
     [self.navigationController pushViewController:vc animated:YES];
 }
 

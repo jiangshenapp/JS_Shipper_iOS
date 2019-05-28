@@ -24,6 +24,8 @@ NSString *PIC_URL(void);
 
 #define URL_FileUpload @"http://47.96.122.74:9999/admin/file/upload" //上传文件
 
+#define URL_GetDictByType @"/app/dict/getDictByType"//根据类型获取字典
+
 #pragma mark - APP会员注册登录接口
 
 #define URL_Login @"/app/subscriber/login" //密码登录
