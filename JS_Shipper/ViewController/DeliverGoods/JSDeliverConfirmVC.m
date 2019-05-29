@@ -8,8 +8,9 @@
 
 #import "JSDeliverConfirmVC.h"
 #import "ZHPickView.h"
+#import "TZImagePickerController.h"
 
-@interface JSDeliverConfirmVC ()
+@interface JSDeliverConfirmVC ()<TZImagePickerControllerDelegate>
 /** 运费 */
 @property (nonatomic,copy) NSString *fee;
 /** 运费类型，1自己出价，2电议 */
@@ -82,7 +83,13 @@
 }
 
 - (IBAction)selectPhotoAction1:(UIButton *)sender {
-    
+    TZImagePickerController *vc = [[TZImagePickerController alloc]initWithMaxImagesCount:1 delegate:self];;
+    vc.naviTitleColor = kBlackColor;
+    vc.barItemTextColor = AppThemeColor;
+    vc.didFinishPickingPhotosHandle = ^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
+        
+    };
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)selectPhotoAction2:(UIButton *)sender {
