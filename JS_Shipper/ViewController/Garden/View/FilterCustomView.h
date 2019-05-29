@@ -16,13 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,retain) NSArray *dataArr;
 /** 标题数组 */
 @property (nonatomic,retain) NSArray *titleArr;
+/** 单选多选数组  0多选选  1单选 */
+@property (nonatomic,retain) NSArray *singleArr;
+/** 获取到结果 */
+@property (nonatomic,copy) void (^getSelectResultArr)(NSMutableArray *resultArr);
 @end
 
-@interface MyFilterTabCell : UITableViewCell
+@interface MyCustomView : UIView
 {
     MyCustomButton *lastSelectBtn;
-    NSString *infoStr;
     NSMutableArray *allButtonArr;
+    NSMutableArray *selectDataDic;
 }
 /** 是否是单选 */
 @property (nonatomic,assign) BOOL isSingle;
@@ -31,7 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** 数据源 */
 @property (nonatomic,retain) NSArray *dataSource;
 /** 选中的id */
-@property (nonatomic,copy)  void (^getSlectInfo)(NSString *info);
+@property (nonatomic,copy)  void (^getSlectInfo)(NSMutableArray *info);
+- (instancetype)initWithdataSource:(NSArray *)dataSource andTilte:(NSString *)titleStr;
 @end
 
 

@@ -11,6 +11,7 @@
 #import <BMKLocationKit/BMKLocationManager.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
 #import <BaiduMapAPI_Search/BMKSearchComponent.h>
+#import "AddressInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 0装货  1卸货 */
 @property (nonatomic,assign) NSInteger sourceType;
 /** <#object#> */
-@property (nonatomic,copy) void (^getAddressinfo)(BMKReverseGeoCodeSearchResult *info);
+@property (nonatomic,copy) void (^getAddressinfo)(AddressInfoModel *info);
 @property (weak, nonatomic) IBOutlet BMKMapView *bdMapView;
 @property (retain, nonatomic)  UIView *titleView;
 @property (retain, nonatomic)  UITextField *searchTF;
@@ -28,8 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *addressNameLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressInfoLab;
 @property (weak, nonatomic) IBOutlet UIView *centerView;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *getGoodBtnW;
+@property (weak, nonatomic) IBOutlet UIButton *editGoodsInfoBtn;
 - (IBAction)getAddressInfoAction:(UIButton *)sender;
 
 @end

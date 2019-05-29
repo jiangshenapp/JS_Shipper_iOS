@@ -95,11 +95,16 @@
     if (self.baseTabView.tableFooterView==nil) {
         self.baseTabView.tableFooterView = [[UIView alloc]init];
     }
-    
+    [self setupView];
+
     //无网络通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netWorkDisappear) name:@"kNetDisAppear" object:nil];
     //有网络通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netWorkAppear) name:@"kNetAppear" object:nil];
+}
+
+- (void)setupView {
+    
 }
 
 //没有网络了
@@ -144,8 +149,22 @@
 //返回
 - (void)backAction {
     timeout = -1;
-    [self.navigationController popViewControllerAnimated:YES];
-}
+    if (_backPriority==0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if (_backPriority==-1) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else {
+        NSInteger count = self.navigationController.viewControllers.count;
+        if (count-_backPriority-2>0) {
+            UIViewController *vc = self.navigationController.viewControllers[count-_backPriority-2];
+            [self.navigationController popToViewController:vc animated:YES];
+        }
+        else {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }}
 
 //初始化页面
 - (void)initView {

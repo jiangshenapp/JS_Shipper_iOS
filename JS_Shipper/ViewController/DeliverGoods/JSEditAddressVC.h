@@ -18,7 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *detailAddressLab;
 @property (weak, nonatomic) IBOutlet UITextField *userNameLab;
 @property (weak, nonatomic) IBOutlet UITextField *iphoneLab;
-
+/** 获取到收货人信息 */
+@property (nonatomic,copy) void (^getAddressIgfo)(NSDictionary *getAddressIgfo);
+- (IBAction)confirmAddressAction:(UIButton *)sender;
 @end
 
 NS_ASSUME_NONNULL_END

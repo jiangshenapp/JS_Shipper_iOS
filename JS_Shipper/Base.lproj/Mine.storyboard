@@ -883,7 +883,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKN-le-MRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95.200000000000003" y="98.050974512743636"/>
+            <point key="canvasLocation" x="-231" y="101"/>
         </scene>
         <!--身份认证-->
         <scene sceneID="hL4-TU-cOD">

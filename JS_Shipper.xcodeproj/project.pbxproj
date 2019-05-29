@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */; };
+		201040BA229E662900B7B258 /* AddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 201040B9229E662900B7B258 /* AddressInfoModel.m */; };
+		201040BD229E7C6A00B7B258 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201040BC229E7C6A00B7B258 /* ZHPickView.m */; };
 		202845E9226FF9C70087BCF6 /* SortView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202845E8226FF9C70087BCF6 /* SortView.m */; };
 		202D3FE2226B0E16001B3353 /* CityCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202D3FE1226B0E16001B3353 /* CityCustomView.m */; };
 		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
@@ -152,6 +154,10 @@
 /* Begin PBXFileReference section */
 		200E96972271B7F800498E78 /* JSConfirmAddressMapVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSConfirmAddressMapVC.h; sourceTree = "<group>"; };
 		200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSConfirmAddressMapVC.m; sourceTree = "<group>"; };
+		201040B8229E662900B7B258 /* AddressInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressInfoModel.h; sourceTree = "<group>"; };
+		201040B9229E662900B7B258 /* AddressInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressInfoModel.m; sourceTree = "<group>"; };
+		201040BB229E7C6A00B7B258 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
+		201040BC229E7C6A00B7B258 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
 		202845E7226FF9C70087BCF6 /* SortView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortView.h; sourceTree = "<group>"; };
 		202845E8226FF9C70087BCF6 /* SortView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortView.m; sourceTree = "<group>"; };
 		202D3FE0226B0E16001B3353 /* CityCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityCustomView.h; sourceTree = "<group>"; };
@@ -668,6 +674,8 @@
 		20BD73652248BE420020EA5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				201040BB229E7C6A00B7B258 /* ZHPickView.h */,
+				201040BC229E7C6A00B7B258 /* ZHPickView.m */,
 				20BD73692248BE420020EA5D /* CZUpdateView.h */,
 				20BD73672248BE420020EA5D /* CZUpdateView.m */,
 				20BD736B2248BE420020EA5D /* CZNotDataView.h */,
@@ -707,6 +715,8 @@
 				20BD73712248BE430020EA5D /* UserInfo.m */,
 				A0773E8C22885B1000C74D69 /* AuthInfo.h */,
 				A0773E8D22885B1000C74D69 /* AuthInfo.m */,
+				201040B8229E662900B7B258 /* AddressInfoModel.h */,
+				201040B9229E662900B7B258 /* AddressInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1166,6 +1176,7 @@
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
 				207D144022714E5900594520 /* JSAboutVC.m in Sources */,
 				20BD73342248BDC30020EA5D /* main.m in Sources */,
+				201040BA229E662900B7B258 /* AddressInfoModel.m in Sources */,
 				20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */,
 				20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */,
 				A075190C227D17710032A974 /* HmAddressModel.m in Sources */,
@@ -1227,6 +1238,7 @@
 				A075190D227D17710032A974 /* HmSelectAdView.m in Sources */,
 				20BD73BF2248BE440020EA5D /* JSDeliverGoodsVC.m in Sources */,
 				20BD73C22248BE440020EA5D /* JSGardenVC.m in Sources */,
+				201040BD229E7C6A00B7B258 /* ZHPickView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

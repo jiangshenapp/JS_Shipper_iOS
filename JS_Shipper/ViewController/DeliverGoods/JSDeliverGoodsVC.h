@@ -9,6 +9,7 @@
 #import "BaseVC.h"
 #import "SDCycleScrollView.h"
 #import "JSConfirmAddressMapVC.h"
+#import "AddressInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,11 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *endAddressBtn;
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *bannerView;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLab;
+@property (weak, nonatomic) IBOutlet UIButton *carLenthBtn;
+@property (weak, nonatomic) IBOutlet UIButton *carModelBtn;
 
 - (IBAction)sendGoodsAction:(UIButton *)sender;
 - (IBAction)carLongAction:(UIButton *)sender;
 - (IBAction)carTypeAction:(id)sender;
 
 @end
+
 
 NS_ASSUME_NONNULL_END

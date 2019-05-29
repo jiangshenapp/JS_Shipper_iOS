@@ -31,4 +31,21 @@
 }
 */
 
+- (IBAction)confirmAddressAction:(UIButton *)sender {
+    if (_userNameLab.text.length==0) {
+        return;
+    }
+    if (_iphoneLab.text.length==0) {
+        return;
+    }
+    NSString *text = @"";
+    if (_detailAddressLab.text.length>0) {
+        text = _detailAddressLab.text;
+    }
+    NSDictionary *addressDic = @{@"mobel":_iphoneLab.text,@"userName":_userNameLab.text,@"detaileAddress":text};
+    if (self.getAddressIgfo) {
+        self.getAddressIgfo(addressDic);
+    }
+    [self backAction];
+}
 @end

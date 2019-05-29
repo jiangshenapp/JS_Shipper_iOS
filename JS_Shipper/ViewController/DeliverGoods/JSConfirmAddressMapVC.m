@@ -11,6 +11,12 @@
 #import "JSEditAddressVC.h"
 
 @interface JSConfirmAddressMapVC ()<BMKLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,BMKMapViewDelegate,BMKGeoCodeSearchDelegate,BMKPoiSearchDelegate>
+{
+    NSString *areaCode;
+    
+}
+/** 地址模型 */
+@property (nonatomic,retain) AddressInfoModel *dataModel;
 /** 定位管理 */
 @property (nonatomic,retain) BMKLocationManager *locationService;
 /** 用户当前位置 */
@@ -48,11 +54,12 @@
 }
 
 - (void)initView {
+    _dataModel = [[AddressInfoModel alloc]init];
     _searchAddressArr = [NSMutableArray array];
     _bdMapView.delegate = self;
     _bdMapView.showsUserLocation = YES;
     _bdMapView.zoomLevel = 15;
-   
+    areaCode = @"";
     //判断当前设备定位服务是否打开
     if (![CLLocationManager locationServicesEnabled]) {
         NSLog(@"设备尚未打开定位服务");
@@ -64,23 +71,23 @@
         [alertView show];
         
     }
-  
     UIImage *image = [UIImage imageNamed:@"delivergoods_map_bg_location"];
     _centerView.layer.contents = (__bridge id)image.CGImage;
     self.baseTabView.hidden = YES;
-    
     if (_sourceType==0) {
-        _getGoodBtnW.constant = 0;
+        [_editGoodsInfoBtn setTitle:@"发货人信息" forState:UIControlStateNormal];
     }
 }
 
 - (void)BMKLocationManager:(BMKLocationManager *)manager didUpdateLocation:(BMKLocation *)location orError:(NSError *)error {
-    [self.locationService stopUpdatingLocation];
-    BMKUserLocation *loca = [[BMKUserLocation alloc]init];
-    loca.location = location.location;
-    [self.bdMapView updateLocationData:loca];
-    [self.bdMapView setCenterCoordinate:location.location.coordinate animated:YES];
-    [self fetchNearbyInfo:loca.location.coordinate.latitude andT:loca.location.coordinate.longitude];
+    if (location.location.coordinate.latitude!=0) {
+        [self.locationService stopUpdatingLocation];
+        BMKUserLocation *loca = [[BMKUserLocation alloc]init];
+        loca.location = location.location;
+        [self.bdMapView updateLocationData:loca];
+        [self.bdMapView setCenterCoordinate:location.location.coordinate animated:YES];
+        [self fetchNearbyInfo:loca.location.coordinate.latitude andT:loca.location.coordinate.longitude];
+    }
 }
 
 - (void)fetchNearbyInfo:(CLLocationDegrees )latitude andT:(CLLocationDegrees )longitude {
@@ -127,6 +134,10 @@
         _addressInfoLab.text =[NSString stringWithFormat:@"%@",result.address];
         [_cityBtn setTitle:result.addressDetail.city forState:UIControlStateNormal];
         _placemark = result;
+        areaCode = result.addressDetail.adCode;
+        _dataModel.addressName = _addressNameLab.text;
+        _dataModel.address = _addressInfoLab.text;
+        _dataModel.pt = result.location;
     }
 }
 
@@ -164,21 +175,6 @@
     else {
         NSLog(@"范围内检索发送失败");
     }
-    
-    
-//    CLLocationCoordinate2D location=CLLocationCoordinate2DMake(latitude, longitude);
-    
-//    MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc] init];
-//    requst.region = _bdMapView.region;
-//    __weak typeof(self) weakSelf = self;
-//    requst.naturalLanguageQuery = textStr; //想要的信息
-//    MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:requst];
-//    [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
-//        if (!error){
-//            self->searchAddressArr = response.mapItems;
-//            [weakSelf.baseTabView reloadData];
-//        }
-//    }];
     [self.baseTabView reloadData];
     return YES;
 }
@@ -207,10 +203,16 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     JSEditAddressVC *vc = (JSEditAddressVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSEditAddressVC"];
     BMKPoiInfo *poiInfo = _searchAddressArr[indexPath.row];
     vc.addressInfo = @{@"title":poiInfo.name,@"address":poiInfo.address};
     [self.navigationController pushViewController:vc animated:YES];
+    _ceterAddressLab.text =[NSString stringWithFormat:@"%@",poiInfo.name];
+    _addressNameLab.text =[NSString stringWithFormat:@"%@",poiInfo.name];
+    _addressInfoLab.text =[NSString stringWithFormat:@"%@",poiInfo.address];
+    [_bdMapView setCenterCoordinate:poiInfo.pt animated:YES];
+    areaCode = @"";
 }
 
 - (void)selectCityBtn:(UIButton *)sender {
@@ -251,15 +253,24 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"address"]) {
+        __weak typeof(self) weakSelf = self;
         JSEditAddressVC *vc = segue.destinationViewController;
         vc.addressInfo = @{@"title":_addressNameLab.text,@"address":_addressInfoLab.text};
+        vc.getAddressIgfo = ^(NSDictionary * _Nonnull getAddressIgfo) {
+            weakSelf.dataModel.mobile = getAddressIgfo[@"mobel"];
+            weakSelf.dataModel.userName = getAddressIgfo[@"userName"];
+            weakSelf.dataModel.detailAddress = getAddressIgfo[@"detaileAddress"];
+        };
     }
 }
 
 
 - (IBAction)getAddressInfoAction:(UIButton *)sender {
     if (_getAddressinfo) {
-        self.getAddressinfo(_placemark);
+        if (_dataModel!=nil) {
+            _dataModel.areaCode = areaCode;
+            self.getAddressinfo(_dataModel);
+        }
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

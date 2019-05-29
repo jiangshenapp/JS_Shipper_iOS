@@ -102,14 +102,14 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="45" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                                            <state key="normal" title="4.2米/5米">
+                                                            <state key="normal" title="不限">
                                                                 <color key="titleColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="carLongAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nS0-dv-Wxa"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_list_arrow_black" translatesAutoresizingMaskIntoConstraints="NO" id="j8t-DY-YVz">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="app_list_arrow_black" translatesAutoresizingMaskIntoConstraints="NO" id="j8t-DY-YVz">
                                                             <rect key="frame" x="340" y="17" width="10" height="10"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -140,7 +140,7 @@
                                                                 <action selector="carTypeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3HW-dL-2fQ"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_list_arrow_black" translatesAutoresizingMaskIntoConstraints="NO" id="QHw-mP-Jeq">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="app_list_arrow_black" translatesAutoresizingMaskIntoConstraints="NO" id="QHw-mP-Jeq">
                                                             <rect key="frame" x="340" y="17" width="10" height="10"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
@@ -166,7 +166,6 @@
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="sendGoodsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UdC-D7-R1r"/>
-                                                <segue destination="Awa-zj-wG3" kind="push" id="X6h-YY-zHS"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -185,6 +184,8 @@
                     <connections>
                         <outlet property="bannerView" destination="aTG-MM-b7r" id="81M-uv-1bq"/>
                         <outlet property="baseTabView" destination="wBn-CY-N6a" id="Tzd-2q-la1"/>
+                        <outlet property="carLenthBtn" destination="Io3-Ts-lL4" id="7tY-iP-gwD"/>
+                        <outlet property="carModelBtn" destination="q9p-NP-xJ6" id="xn7-a5-hRp"/>
                         <outlet property="distanceLab" destination="wDi-K2-6a8" id="V4Z-eU-jJW"/>
                         <outlet property="endAddressBtn" destination="GbV-pD-vTg" id="k22-rY-HrQ"/>
                         <outlet property="startAddressBtn" destination="76V-Al-q8r" id="jVW-VP-6PA"/>
@@ -192,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37.600000000000001" y="26.53673163418291"/>
+            <point key="canvasLocation" x="-476" y="-104"/>
         </scene>
         <!--确认订单-->
         <scene sceneID="uPm-3b-eYv">
@@ -271,19 +272,13 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GD7-3E-aeQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                                            <state key="normal" image="app_list_arrow_black"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请选择货物类型" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cY6-fJ-rxj">
+                                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入货物类型" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7K0-Q1-7yZ">
                                                             <rect key="frame" x="80" y="0.0" width="256" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
@@ -308,6 +303,9 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                             <state key="normal" image="app_list_arrow_black"/>
+                                                            <connections>
+                                                                <action selector="selectGoodsTimeAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="dz4-wV-bkV"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请选择获取时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5er-Dh-rIW">
                                                             <rect key="frame" x="80" y="0.0" width="256" height="44"/>
@@ -323,7 +321,7 @@
                                                     <rect key="frame" x="0.0" y="142" width="375" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="货物类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mM-vo-Zdb">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用车类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mM-vo-Zdb">
                                                             <rect key="frame" x="14" y="0.0" width="63" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -340,8 +338,11 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                             <state key="normal" image="app_list_arrow_black"/>
+                                                            <connections>
+                                                                <action selector="selectUseCarTypeAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="Gtl-by-3Bq"/>
+                                                            </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请选择货物类型" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtH-hT-9Vn">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请选择用车类型" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtH-hT-9Vn">
                                                             <rect key="frame" x="80" y="0.0" width="256" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -370,12 +371,18 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" image="order_upload_icon_photo"/>
+                                                    <connections>
+                                                        <action selector="selectPhotoAction1:" destination="Awa-zj-wG3" eventType="touchUpInside" id="aIo-ea-gIQ"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zU-uz-F8w">
                                                     <rect key="frame" x="214" y="39" width="110" height="120"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" image="order_upload_icon_photo"/>
+                                                    <connections>
+                                                        <action selector="selectPhotoAction2:" destination="Awa-zj-wG3" eventType="touchUpInside" id="9PG-hf-UgR"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -384,7 +391,7 @@
                                             <rect key="frame" x="0.0" y="376" width="375" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ooh-qb-Gdr">
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ooh-qb-Gdr">
                                                     <rect key="frame" x="14" y="10" width="110" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -394,8 +401,11 @@
                                                     <state key="selected">
                                                         <color key="titleColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="needLoadGoodsType:" destination="Awa-zj-wG3" eventType="touchUpInside" id="oDF-Ls-fOF"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHK-sR-73L">
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHK-sR-73L">
                                                     <rect key="frame" x="134" y="10" width="110" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -405,6 +415,9 @@
                                                     <state key="selected">
                                                         <color key="titleColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="needLoadGoodsType:" destination="Awa-zj-wG3" eventType="touchUpInside" id="8s3-Fq-MYr"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="备注信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nd9-tE-lCd">
                                                     <rect key="frame" x="14" y="70" width="63" height="20"/>
@@ -463,6 +476,9 @@
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                             <state key="normal" image="app_checkbox_icon_default"/>
                                                             <state key="selected" image="app_checkbox_icon_selected"/>
+                                                            <connections>
+                                                                <action selector="feeSelectAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="Lxo-0s-4dN"/>
+                                                            </connections>
                                                         </button>
                                                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入价格" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yNT-rn-NF9">
                                                             <rect key="frame" x="80" y="0.0" width="223" height="50"/>
@@ -496,6 +512,9 @@
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                                                             <state key="normal" image="app_checkbox_icon_default"/>
                                                             <state key="selected" image="app_checkbox_icon_selected"/>
+                                                            <connections>
+                                                                <action selector="feeSelectAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="L6O-7H-4r1"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -507,7 +526,7 @@
                                             <rect key="frame" x="0.0" y="750" width="375" height="84"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="运费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IY-cU-4SN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IY-cU-4SN">
                                                     <rect key="frame" x="14" y="0.0" width="63" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
@@ -529,12 +548,15 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                                            <state key="normal" image="app_checkbox_icon_default">
+                                                            <state key="normal" title="到付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <state key="selected" title="在线支付" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="payTypeAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="il1-kZ-aaB"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AY3-h0-2WM">
                                                             <rect key="frame" x="135" y="0.0" width="104" height="50"/>
@@ -545,9 +567,12 @@
                                                             <state key="normal" title="线下支付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
-                                                            <state key="selected" title="在线支付" image="app_checkbox_icon_selected">
+                                                            <state key="selected" title="现付" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="payTypeAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="sKK-iO-rsY"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -559,7 +584,7 @@
                                             <rect key="frame" x="0.0" y="844" width="375" height="84"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="运费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk2-sj-1bS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="付款方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk2-sj-1bS">
                                                     <rect key="frame" x="14" y="0.0" width="63" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
@@ -581,12 +606,15 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                                            <state key="normal" image="app_checkbox_icon_default">
+                                                            <state key="normal" title="到付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
-                                                            <state key="selected" title="在线支付" image="app_checkbox_icon_selected">
+                                                            <state key="selected" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="payTypeAction2:" destination="Awa-zj-wG3" eventType="touchUpInside" id="T1A-Lo-6wc"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42R-Qb-Rw0">
                                                             <rect key="frame" x="135" y="0.0" width="104" height="50"/>
@@ -594,12 +622,15 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                                            <state key="normal" title="线下支付" image="app_checkbox_icon_default">
+                                                            <state key="normal" title="现付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
-                                                            <state key="selected" title="在线支付" image="app_checkbox_icon_selected">
+                                                            <state key="selected" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="payTypeAction2:" destination="Awa-zj-wG3" eventType="touchUpInside" id="Wkt-fM-QHh"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -618,16 +649,22 @@
                                         <rect key="frame" x="0.0" y="0.0" width="158" height="50"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="取消发布">
+                                        <state key="normal" title="指定发布">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="bottomLeftBtnAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="dIJ-bT-rIJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pc-rS-T4n">
                                         <rect key="frame" x="158" y="0.0" width="217" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <state key="normal" title="再发一次"/>
+                                        <state key="normal" title="下单"/>
+                                        <connections>
+                                            <action selector="bottomRightBtnAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="4rN-6N-5BC"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFc-Oe-XQK">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -655,6 +692,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="0Wi-aX-BX4"/>
                     <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="bottomLeftBtn" destination="Ax3-gj-2fA" id="D9z-B9-zkl"/>
+                        <outlet property="bottomRightBtn" destination="3pc-rS-T4n" id="8Rf-ka-NcL"/>
+                        <outlet property="goodAreaTF" destination="YVZ-Is-ZOH" id="PKI-Gt-Jm8"/>
+                        <outlet property="goodsTimeLab" destination="5er-Dh-rIW" id="Xdn-ce-gsa"/>
+                        <outlet property="goodsTypeTF" destination="7K0-Q1-7yZ" id="0Km-lY-o8u"/>
+                        <outlet property="markTF" destination="VTk-LQ-FSp" id="FYm-aD-sIV"/>
+                        <outlet property="useCarTypeLab" destination="gtH-hT-9Vn" id="Z1a-Fl-Pgq"/>
+                        <outlet property="weightTF" destination="igN-db-14O" id="mDN-tU-Fe6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cyx-Fs-bEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -862,7 +909,7 @@
                         <outlet property="bdMapView" destination="WJ8-pf-Za2" id="TgZ-b6-aY0"/>
                         <outlet property="centerView" destination="pPv-yB-B4K" id="pdc-Sj-8JS"/>
                         <outlet property="ceterAddressLab" destination="1b6-7T-FbM" id="gys-cn-n39"/>
-                        <outlet property="getGoodBtnW" destination="RIK-fu-xcK" id="KEa-tK-d25"/>
+                        <outlet property="editGoodsInfoBtn" destination="qD7-E4-6Wf" id="nxf-90-wCL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="moZ-50-EfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1054,6 +1101,9 @@
                                         <integer key="value" value="22"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="confirmAddressAction:" destination="9jY-yx-f5L" eventType="touchUpInside" id="rmm-4u-agv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>

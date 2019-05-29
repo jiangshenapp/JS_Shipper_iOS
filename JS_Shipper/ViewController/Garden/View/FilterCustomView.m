@@ -8,15 +8,19 @@
 
 #import "FilterCustomView.h"
 
+#define HeaderHeight 30
 #define LineCount 4
 #define WorkSpace  10
 #define ButtonWidth (WIDTH -WorkSpace*(LineCount+1))/LineCount
 
-@interface FilterCustomView ()<UITableViewDataSource,UITableViewDelegate>
+@interface FilterCustomView ()
 {
-    UITableView *bgTabView;
     BOOL isClearAll;
+    UIScrollView *bgScrollView;
+    NSMutableArray *allCellViewArr;
 }
+/** 所选择的数组 */
+@property (nonatomic,retain) NSMutableArray *selectArr;
 @end
 
 @implementation FilterCustomView
@@ -30,6 +34,7 @@
 }
 
 - (void)setupView {
+    _selectArr = [NSMutableArray array];
     self.frame = CGRectMake(0, kNavBarH+46, WIDTH, HEIGHT-kNavBarH-46-kTabBarSafeH);
     self.backgroundColor = [UIColor whiteColor];
     self.clipsToBounds = YES;
@@ -37,25 +42,21 @@
     [myWindow addSubview:self];
     self.hidden = YES;
     self.viewHeight = self.height;
-    bgTabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.width-12, self.height-autoScaleW(50)) style:UITableViewStyleGrouped];
-    bgTabView.separatorStyle =  UITableViewCellSeparatorStyleNone;
-    bgTabView.backgroundColor = [UIColor whiteColor];
-    bgTabView.delegate = self;
-    bgTabView.dataSource = self;
-    bgTabView.clipsToBounds = NO;
-    [self addSubview:bgTabView];
+    
+    bgScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.width-12, self.height-autoScaleW(50))];
+    [self addSubview:bgScrollView];
     
     UIButton *sender = [[UIButton alloc]initWithFrame:CGRectMake(0, self.height-autoScaleW(50), autoScaleW(150), autoScaleW(50))];
     [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     sender.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
-    [sender setTitle:@"清空条件" forState:UIControlStateNormal];
+    [sender setTitle:@"清空" forState:UIControlStateNormal];
     [sender addTarget:self action:@selector(clearAllSelect) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:sender];
     
     UIButton *sureBtn = [[UIButton alloc]initWithFrame:CGRectMake(sender.right, sender.top, WIDTH-sender.width, sender.height)];
     sureBtn.backgroundColor = AppThemeColor;
     sureBtn.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
-    [sureBtn setTitle:@"确定条件" forState:UIControlStateNormal];
+    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
     [sureBtn addTarget:self action:@selector(hiddenView) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:sureBtn];
     
@@ -63,7 +64,7 @@
     lineView.backgroundColor = PageColor;
     [self addSubview:lineView];
     
-    [bgTabView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [bgScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.top.and.right.mas_equalTo(self);
         make.bottom.mas_equalTo(self).offset(0);
     }];
@@ -87,90 +88,46 @@
     }];
 }
 
-#pragma mark -- dataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _dataArr.count;
-}
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MyFilterTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"filterViewCell"];
-    if (cell==nil) {
-        cell = [[MyFilterTabCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"filterViewCell"];;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+- (void)refreshUI {
+    allCellViewArr = [NSMutableArray array];
+    CGFloat maxViewBottom = 0;
+    __weak typeof(self) weakSelf = self;
+    for (NSInteger index = 0; index < _dataArr.count; index++) {
+        NSArray *arr = _dataArr[index];
+        MyCustomView *view = [[MyCustomView alloc]initWithdataSource:arr andTilte:_titleArr[index]];
+        view.top = maxViewBottom;
+        BOOL isSingle = [_singleArr[index] boolValue];
+        view.isSingle = isSingle;
+        maxViewBottom = view.height+maxViewBottom;
+        view.getSlectInfo = ^(NSArray * _Nonnull info) {
+            [weakSelf.selectArr replaceObjectAtIndex:index withObject:info];
+            if (weakSelf.getSelectResultArr) {
+                weakSelf.getSelectResultArr(weakSelf.selectArr);
+            }
+        };
+        [bgScrollView addSubview:view];
+        [allCellViewArr addObject:view];
     }
-    NSArray *arr = _dataArr[indexPath.section];
-    cell.dataSource = arr;
-    cell.isSingle = NO;
-    cell.getSlectInfo = ^(NSString * _Nonnull info) {
-        NSLog(@"%@",info);
-    };
-    cell.isClear = isClearAll;
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *arr = _dataArr[indexPath.section];
-    NSInteger count = arr.count+1;
-    NSInteger line = count%LineCount==0?(count/LineCount):((count/LineCount)+1);
-    CGFloat cellH = WorkSpace+(line*(ButtonWidth*0.5+WorkSpace));
-    return cellH;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 20;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 30)];
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(12, 8, WIDTH/2.0, 20)];
-    if (section<_titleArr.count&&section>=0) {
-        label.text = _titleArr[section];
-    }
-    label.font = [UIFont systemFontOfSize:14];
-    [headerView addSubview:label];
-    return headerView;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 20)];
-    footerView.clipsToBounds = YES;
-    UITextField *contentTF = [[UITextField alloc]initWithFrame:CGRectMake(12, 10, WIDTH/2.0, 36)];
-    contentTF.placeholder = @"请输入其他车长";
-    contentTF.layer.borderColor = RGBValue(0xB4B4B4).CGColor;
-    contentTF.layer.borderWidth = 0.5;
-    contentTF.layer.cornerRadius =2;
-    contentTF.layer.masksToBounds = YES;
-    contentTF.font = [UIFont systemFontOfSize:14];
-    [footerView addSubview:contentTF];
-    
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, 1)];
-    contentTF.leftView = lineView;
-    contentTF.leftViewMode = UITextFieldViewModeAlways;
-    
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, footerView.height-10, WIDTH, 10)];
-    bgView.backgroundColor = RGBValue(0xF5f5f5);
-    [footerView addSubview:bgView];
-    
-    return footerView;
+    bgScrollView.contentSize = CGSizeMake(0, MAX(bgScrollView.height+1, maxViewBottom));
 }
 
 -(void)setDataArr:(NSArray *)dataArr {
     if (_dataArr!=dataArr) {
         _dataArr = dataArr;
     }
-    [bgTabView reloadData];
+    [_selectArr removeAllObjects];
+    [bgScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    for (NSInteger index = 0; index<_dataArr.count; index++) {
+        [_selectArr addObject:@""];
+    }
+    [self refreshUI];
 }
 
 - (void)clearAllSelect{
     isClearAll = YES;
-    [bgTabView reloadData];
+    for (MyCustomView *view in allCellViewArr) {
+        view.isClear = YES;
+    }
     isClearAll = NO;
 }
 
@@ -205,61 +162,79 @@
 
 @end
 
-@implementation MyFilterTabCell
-- (void)setDataSource:(NSArray *)dataSource {
-    if (self.dataSource.count>0) {
-        return;
-    }
-    if (_dataSource!=dataSource) {
-        _dataSource = dataSource;
-    }
-    [self createView];
-}
 
-- (void)createView {
-    self.clipsToBounds = YES;
-    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    allButtonArr = [NSMutableArray array];
-    NSInteger count = _dataSource.count+1;
-    NSInteger line = count%LineCount==0?(count/LineCount):((count/LineCount)+1);
-    NSInteger index = 0;
-    for (NSInteger i = 0; i<line; i++) {
-        for (NSInteger j =0; j < LineCount; j ++) {
+@implementation MyCustomView
+
+- (instancetype)initWithdataSource:(NSArray *)dataSource andTilte:(NSString *)titleStr {
+    self = [super init];
+    if (self) {
+        selectDataDic = [NSMutableArray array];
+        allButtonArr = [NSMutableArray array];
+        NSInteger count = dataSource.count+1;
+        NSInteger line = count%LineCount==0?(count/LineCount):((count/LineCount)+1);
+        CGFloat cellH = HeaderHeight+ WorkSpace+(line*(ButtonWidth*0.5+WorkSpace))+20;
+        self.frame = CGRectMake(0, 0, WIDTH, cellH);
+        
+        UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(12, 0, WIDTH/2.0, HeaderHeight)];
+        titleLab.text = titleStr;
+        titleLab.font = [UIFont systemFontOfSize:14];
+        [self addSubview:titleLab];
+        
+        NSInteger index = 0;
+        for (NSInteger i = 0; i<line; i++) {
+            for (NSInteger j =0; j < LineCount; j ++) {
+                if (index>count) {
+                    break;
+                }
+                MyCustomButton *_button = [[MyCustomButton alloc]initWithFrame:CGRectMake(WorkSpace+(j*(ButtonWidth+WorkSpace)), HeaderHeight+WorkSpace+(i*(ButtonWidth*0.5+WorkSpace)), ButtonWidth, ButtonWidth*0.5)];
+                if (index==0) {
+                    [_button setTitle:@"不限" forState:UIControlStateNormal];
+                    _button.dataDic = @{@"value":@"",@"label":@"不限"};
+                }
+                else {
+                    [_button setTitle:dataSource[index-1][@"label"] forState:UIControlStateNormal];
+                    _button.dataDic = dataSource[index-1];
+                }
+                _button.index = index;
+                [_button addTarget:self action:@selector(buttonTouchAction:) forControlEvents:UIControlEventTouchUpInside];
+                [self addSubview:_button];
+                [allButtonArr addObject:_button];
+                index++;
+            }
             if (index>count) {
                 break;
             }
-           MyCustomButton *_button = [[MyCustomButton alloc]initWithFrame:CGRectMake(WorkSpace+(j*(ButtonWidth+WorkSpace)), WorkSpace+(i*(ButtonWidth*0.5+WorkSpace)), ButtonWidth, ButtonWidth*0.5)];
-            if (index==0) {
-                [_button setTitle:@"不限" forState:UIControlStateNormal];
-            }
-            else {
-                [_button setTitle:_dataSource[index-1][@"label"] forState:UIControlStateNormal];
-                _button.dataDic = _dataSource[index-1];
-            }
-            _button.index = index;
-            [_button addTarget:self action:@selector(buttonTouchAction:) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:_button];
-            [allButtonArr addObject:_button];
-            index++;
         }
-        if (index>count) {
-            break;
-        }
+        UITextField *contentTF = [[UITextField alloc]initWithFrame:CGRectMake(12, 10, WIDTH/2.0, 36)];
+        contentTF.placeholder = @"请输入其他车长";
+        contentTF.layer.borderColor = RGBValue(0xB4B4B4).CGColor;
+        contentTF.layer.borderWidth = 0.5;
+        contentTF.layer.cornerRadius =2;
+        contentTF.layer.masksToBounds = YES;
+        contentTF.hidden = YES;
+        contentTF.font = [UIFont systemFontOfSize:14];
+        [self addSubview:contentTF];
+        
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 5, 1)];
+        contentTF.leftView = lineView;
+        contentTF.leftViewMode = UITextFieldViewModeAlways;
+        
+        UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, self.height-10, WIDTH, 10)];
+        bgView.backgroundColor = RGBValue(0xF5f5f5);
+        [self addSubview:bgView];
     }
+    return self;
 }
 
 - (void)buttonTouchAction:(MyCustomButton *)sender {
-    if (infoStr==nil) {
-        infoStr = @"";
-    }
     if (_isSingle) {//是单选
         lastSelectBtn.isSelect = NO;
         lastSelectBtn = sender;
-        infoStr = @"";
+        [selectDataDic removeAllObjects];
     }
     else {
         if (sender.index==0) {
-            infoStr = @"";
+           [selectDataDic removeAllObjects];
             for (MyCustomButton *btn in allButtonArr) {
                 if (btn.index!=0) {
                     btn.isSelect = NO;
@@ -269,22 +244,20 @@
         else {
             MyCustomButton *btn = [allButtonArr firstObject];
             btn.isSelect = NO;
+            [selectDataDic removeObject:btn.dataDic];
         }
     }
     sender.isSelect = !sender.isSelect;
-    NSDictionary *dic = sender.dataDic;
-    NSString *valueStr = @"";
-    if ([dic isKindOfClass:[NSDictionary class]]) {
-        valueStr = dic[@"value"];
-    }
     if (sender.isSelect) {
-        infoStr = [infoStr stringByAppendingString:[NSString stringWithFormat:@"%@,",valueStr]];
+        if (![selectDataDic containsObject:sender.dataDic]) {
+            [selectDataDic addObject:sender.dataDic];
+        }
     }
     else {
-       infoStr= [infoStr stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@,",valueStr] withString:@""];
+        [selectDataDic removeObject:sender.dataDic];
     }
     if (_getSlectInfo) {
-        self.getSlectInfo(infoStr);
+        self.getSlectInfo(selectDataDic);
     }
 }
 
@@ -292,14 +265,13 @@
     if (_isClear!=isClear) {
         _isClear = isClear;
     }
-    infoStr = @"";
+    [selectDataDic removeAllObjects];
     for (MyCustomButton *btn in allButtonArr) {
-            btn.isSelect = NO;
+        btn.isSelect = NO;
     }
     if (_getSlectInfo) {
-        self.getSlectInfo(infoStr);
+        self.getSlectInfo(selectDataDic);
     }
 }
-
 @end
 
