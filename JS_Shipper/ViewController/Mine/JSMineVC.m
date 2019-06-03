@@ -141,20 +141,21 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     JSAllOrderVC *orderVc = segue.destinationViewController;
-    if ([segue.identifier isEqualToString:@"ingOrder"]) {
+    /** 0全部  1发布中 2待支付 3待配送 4待收货 */
+    if ([segue.identifier isEqualToString:@"allOrder"]) { //全部
+        orderVc.typeFlage = 0;
+    }
+    else if ([segue.identifier isEqualToString:@"ingOrder"]) { //发布中
         orderVc.typeFlage = 1;
     }
-    else  if ([segue.identifier isEqualToString:@"payOrder"]) {
+    else if ([segue.identifier isEqualToString:@"payOrder"]) { //待支付
         orderVc.typeFlage = 2;
     }
-    else  if ([segue.identifier isEqualToString:@"publishOrder"]) {
+    else if ([segue.identifier isEqualToString:@"publishOrder"]) { //待配送
         orderVc.typeFlage = 3;
     }
-    else  if ([segue.identifier isEqualToString:@"getGoodsOrder"]) {
+    else if ([segue.identifier isEqualToString:@"getGoodsOrder"]) { //待收货
         orderVc.typeFlage = 4;
-    }
-    else  if ([segue.identifier isEqualToString:@"allOrder"]) {
-        orderVc.typeFlage = 0;
     }
     
     // Get the new view controller using [segue destinationViewController].

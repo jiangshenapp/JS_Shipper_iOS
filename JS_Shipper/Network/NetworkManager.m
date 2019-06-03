@@ -237,7 +237,7 @@ static NetworkManager *_manager = nil;
 
 //token失效判断
 - (BOOL)isTokenInvalid:(int)statusCode {
-    if (statusCode==403) { //token失效或者账号在其它地方登录
+    if (statusCode==401) { //token失效或者账号在其它地方登录
         [self reLogin];
         return YES;
     } else {
@@ -251,6 +251,7 @@ static NetworkManager *_manager = nil;
     [[UserInfo share] setUserInfo:nil]; //清除用户信息
     //跳转到登录页
     [Utils isLoginWithJump:YES];
+    [JHHJView hideLoading]; //结束加载
 }
 
 #pragma mark - 把输出的参数打印成model

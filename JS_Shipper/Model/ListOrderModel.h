@@ -11,78 +11,89 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListOrderModel : BaseItem
-/**  */
-@property  (nonatomic , copy) NSString *jdSubscriberId;
-/**  */
-@property  (nonatomic , copy) NSString *goodsType;
-/** 2 */
-@property  (nonatomic , copy) NSString *receivePosition;
-/** 2 */
-@property  (nonatomic , copy) NSString *sendMobile;
-/** 2 */
-@property  (nonatomic , copy) NSString *receiveMobile;
-/** 6 */
-@property  (nonatomic , copy) NSString *ID;
-/**  */
-@property  (nonatomic , copy) NSString *image2;
-/**  */
-@property  (nonatomic , copy) NSString *goodsWeight;
-/**  */
-@property  (nonatomic , copy) NSString *payTime;
-/** 1 */
-@property  (nonatomic , copy) NSString *state;
-/**  */
-@property  (nonatomic , copy) NSString *finishTime;
-/**  */
-@property  (nonatomic , copy) NSString *payWay;
-/**  */
-@property  (nonatomic , copy) NSString *image1;
-/**  */
-@property  (nonatomic , copy) NSString *matchState;
-/**  */
-@property  (nonatomic , copy) NSString *remark;
-/**  */
-@property  (nonatomic , copy) NSString *goodsVolume;
-/**  */
-@property  (nonatomic , copy) NSString *payType;
-/** 2 */
-@property  (nonatomic , copy) NSString *carLength;
-/** 2 */
-@property  (nonatomic , copy) NSString *createBy;
-/** 2 */
-@property  (nonatomic , copy) NSString *sendAddressCode;
-/**  */
-@property  (nonatomic , copy) NSString *feeType;
-/**  */
-@property  (nonatomic , copy) NSString *fee;
-/**  */
-@property  (nonatomic , copy) NSString *loadingTime;
-/**  */
-@property  (nonatomic , copy) NSString *driverId;
-/** 12019052911380644265990155155748 */
+
+#pragma mark - 订单列表字段
+
+/** 订单号 12019052911380644265990155155748 */
 @property  (nonatomic , copy) NSString *orderNo;
-/** 2 */
+/** 货主端状态中文 */
+@property  (nonatomic , copy) NSString *stateNameConsignor;
+/** 司机端状态中文 */
+@property  (nonatomic , copy) NSString *stateNameDriver;
+/** 发货地址 */
 @property  (nonatomic , copy) NSString *sendAddress;
-/** 2 */
-@property  (nonatomic , copy) NSString *sendPosition;
-/** 2 */
-@property  (nonatomic , copy) NSString *receiveAddressCode;
-/**  */
-@property  (nonatomic , copy) NSString *transferTime;
-/** 2 */
-@property  (nonatomic , copy) NSString *sendName;
-/** 2 */
+/** 收货地地址 */
 @property  (nonatomic , copy) NSString *receiveAddress;
-/** 2019-05-29 11:38:06 */
+/** 货物类型,字典表，多个 */
+@property  (nonatomic , copy) NSString *goodsType;
+/** 车长，多选，逗号分隔 */
+@property  (nonatomic , copy) NSString *carLength;
+/** 货物体积，单位立方米 */
+@property  (nonatomic , copy) NSString *goodsVolume;
+/** 货物重量、吨 */
+@property  (nonatomic , copy) NSString *goodsWeight;
+/** 运费 */
+@property  (nonatomic , copy) NSString *fee;
+
+#pragma mark - 其它字段
+
+/** 接单会员Id */
+@property  (nonatomic , copy) NSString *jdSubscriberId;
+/** 收货地坐标 */
+@property  (nonatomic , copy) NSString *receivePosition;
+/** 发货人手机号 */
+@property  (nonatomic , copy) NSString *sendMobile;
+/** 收货人手机号 */
+@property  (nonatomic , copy) NSString *receiveMobile;
+/** 订单ID */
+@property  (nonatomic , copy) NSString *ID;
+/** 图片2 */
+@property  (nonatomic , copy) NSString *image2;
+/** 付款时间 */
+@property  (nonatomic , copy) NSString *payTime;
+/** 状态 0全部 货主端：（ 1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待评价，8已完成，9已取消，10已关闭） 司机端：（2待接单，3待确认，4待货主付款，5待接货, 6待送达，7待货主评价，8已完成，9已取消，10已关闭） */
+@property  (nonatomic , copy) NSString *state;
+/** 订单完成时间 */
+@property  (nonatomic , copy) NSString *finishTime;
+/** 支付方式，1线上支付，2线下支付 */
+@property  (nonatomic , copy) NSString *payWay;
+/** 图片1 */
+@property  (nonatomic , copy) NSString *image1;
+/** 匹配状态，1匹配，0未匹配 */
+@property  (nonatomic , copy) NSString *matchState;
+/** 备注 */
+@property  (nonatomic , copy) NSString *remark;
+/** 付款方式，1到付，2现付 */
+@property  (nonatomic , copy) NSString *payType;
+/** 发布人 */
+@property  (nonatomic , copy) NSString *createBy;
+/** 发货地区域代码 */
+@property  (nonatomic , copy) NSString *sendAddressCode;
+/** 运费类型，1自己出价，2电议 */
+@property  (nonatomic , copy) NSString *feeType;
+/** 装货时间 */
+@property  (nonatomic , copy) NSString *loadingTime;
+/** 司机id */
+@property  (nonatomic , copy) NSString *driverId;
+/** 发货地坐标 */
+@property  (nonatomic , copy) NSString *sendPosition;
+/** 收货地区域代码 */
+@property  (nonatomic , copy) NSString *receiveAddressCode;
+/** 配送时间 */
+@property  (nonatomic , copy) NSString *transferTime;
+/** 发货人姓名 */
+@property  (nonatomic , copy) NSString *sendName;
+/** 发布时间 2019-05-29 11:38:06 */
 @property  (nonatomic , copy) NSString *createTime;
-/**  */
+/** 收货人 */
 @property  (nonatomic , copy) NSString *receiveName;
-/**  */
+/** 匹配会员id */
 @property  (nonatomic , copy) NSString *matchSubscriberId;
-/**  */
+/** 用车类型，字典 */
 @property  (nonatomic , copy) NSString *useCarType;
-/** 2 */
+/** 车型，多选，逗号分隔 */
 @property  (nonatomic , copy) NSString *carModel;
+
 @end
 
 NS_ASSUME_NONNULL_END
