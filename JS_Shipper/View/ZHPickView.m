@@ -178,7 +178,7 @@
     if (!pickStr || pickStr.length == 0) {
         if(isDate) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd"];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
             selectedStr = [formatter stringFromDate:[NSDate date]];
         } else {
             if([proTitleList count] > 0) {

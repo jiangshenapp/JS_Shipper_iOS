@@ -204,6 +204,9 @@
 }
 
 - (IBAction)carLongAction:(UIButton *)sender {
+    if (_carLengthArr.count==0) {
+        return;
+    }
     _touchType = 1;
     self.carLengthView.singleArr = @[@"0"];
     self.carLengthView.titleArr = @[@"车长"];
@@ -212,6 +215,9 @@
 }
 
 - (IBAction)carTypeAction:(id)sender {
+    if (_carModelArr.count==0) {
+        return;
+    }
     _touchType = 2;
     self.carLengthView.singleArr = @[@"1"];
     self.carLengthView.titleArr = @[@"车型"];
