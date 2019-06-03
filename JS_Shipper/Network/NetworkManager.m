@@ -61,6 +61,12 @@ static NetworkManager *_manager = nil;
         if ([code isEqualToString:@"0"]) { //成功
             id _Nullable dataObject = object[@"data"];
             completion(dataObject,Request_Success,nil);
+            if ([dataObject isKindOfClass:[NSDictionary class]]) {//打印model
+                NSArray *arr = dataObject[@"records"];
+                if ([arr isKindOfClass:[NSArray class]]&&arr.count>0) {
+//                    [self printDataToModel:arr[0]];
+                }
+            }
         }
         else {
             completion(nil,Request_Fail,nil);
@@ -245,6 +251,39 @@ static NetworkManager *_manager = nil;
     [[UserInfo share] setUserInfo:nil]; //清除用户信息
     //跳转到登录页
     [Utils isLoginWithJump:YES];
+}
+
+#pragma mark - 把输出的参数打印成model
+/** 把输出的参数打印成model */
+- (void)printDataToModel:(id)data {
+    if ([data isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *dataDic = data;
+        NSString *dataStr = @"";
+        for (NSString *key in dataDic.allKeys) {
+            id values = dataDic[key];
+            NSString *type = @"NSString";
+            NSString *prType = @"copy";
+            if ([values isKindOfClass:[NSDictionary class]]) {
+                type = @"NSDictionary";
+                prType = @"retain";
+            }
+            else if ([values isKindOfClass:[NSArray class]]) {
+                type = @"NSArray";
+                prType = @"retain";
+            }
+            NSString *resulr = [NSString stringWithFormat:@"/** %@ */\n@property  (nonatomic , %@) %@ *%@;\n",dataDic[key],prType,type,key];
+            dataStr = [dataStr stringByAppendingString:resulr];
+        }
+        if (dataStr.length>0) {
+            NSLog(@"\n打印开始------------\n\n%@\n\n打印结束------------",dataStr);
+        }
+    }
+    else if ([data isKindOfClass:[NSArray class]]) {
+        NSArray *dataArr = data;
+        if ([dataArr count] > 0) {
+            [self printDataToModel:[dataArr firstObject]];
+        }
+    }
 }
 
 @end

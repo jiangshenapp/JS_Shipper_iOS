@@ -215,59 +215,59 @@
     self.tableView.mj_header = header;
 }
 
-- (void)tableViewGifFooterWithRefreshingBlock:(void(^)(void)) block {
-    
-    NSMutableArray *footerImages = [self refreshImages];
-    
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
-        //上拉加载需要做的操作
-        block();
-    }];
-    
-    // 设置文字
-    [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
-    [footer setTitle:@"正在加载~" forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"全部加载完毕" forState:MJRefreshStateNoMoreData];
-    
-    //是否显示刷新状态和刷新时间
-//    footer.stateLabel.hidden = YES;
-//    footer.refreshingTitleHidden = YES;
-    
-    [footer setImages:@[footerImages[0]] duration:1 forState:MJRefreshStateIdle];
-    [footer setImages:footerImages duration:1 forState:MJRefreshStateRefreshing];
-    self.tableView.mj_footer = footer;
-}
-
-#pragma mark - 默认下拉刷新/上拉加载更多
-- (void)tableViewNormalHeaderWithRefreshingBlock:(void(^)(void)) block {
-    
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        //下拉刷新要做的操作
-        block();
-    }];
-    
-    // 设置文字
-    [header setTitle:@"正在刷新~" forState:MJRefreshStateIdle];
-    [header setTitle:@"松开立即刷新" forState:MJRefreshStatePulling];
-    [header setTitle:@"正在刷新~" forState:MJRefreshStateRefreshing];
-    
-    self.tableView.mj_header = header;
-}
-
-- (void)tableViewNormalFooterWithRefreshingBlock:(void(^)(void)) block {
-    
-    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        //上拉加载需要做的操作
-        block();
-    }];
-    
-    // 设置文字
-    [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
-    [footer setTitle:@"正在加载~" forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"全部加载完毕" forState:MJRefreshStateNoMoreData];
-    
-    self.tableView.mj_footer = footer;
-}
+//- (void)tableViewGifFooterWithRefreshingBlock:(void(^)(void)) block {
+//
+//    NSMutableArray *footerImages = [self refreshImages];
+//
+//    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+//        //上拉加载需要做的操作
+//        block();
+//    }];
+//
+//    // 设置文字
+//    [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
+//    [footer setTitle:@"正在加载~" forState:MJRefreshStateRefreshing];
+//    [footer setTitle:@"全部加载完毕" forState:MJRefreshStateNoMoreData];
+//
+//    //是否显示刷新状态和刷新时间
+////    footer.stateLabel.hidden = YES;
+////    footer.refreshingTitleHidden = YES;
+//
+//    [footer setImages:@[footerImages[0]] duration:1 forState:MJRefreshStateIdle];
+//    [footer setImages:footerImages duration:1 forState:MJRefreshStateRefreshing];
+//    self.tableView.mj_footer = footer;
+//}
+//
+//#pragma mark - 默认下拉刷新/上拉加载更多
+//- (void)tableViewNormalHeaderWithRefreshingBlock:(void(^)(void)) block {
+//
+//    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        //下拉刷新要做的操作
+//        block();
+//    }];
+//
+//    // 设置文字
+//    [header setTitle:@"正在刷新~" forState:MJRefreshStateIdle];
+//    [header setTitle:@"松开立即刷新" forState:MJRefreshStatePulling];
+//    [header setTitle:@"正在刷新~" forState:MJRefreshStateRefreshing];
+//
+//    self.tableView.mj_header = header;
+//}
+//
+//- (void)tableViewNormalFooterWithRefreshingBlock:(void(^)(void)) block {
+//
+//    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        //上拉加载需要做的操作
+//        block();
+//    }];
+//
+//    // 设置文字
+//    [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
+//    [footer setTitle:@"正在加载~" forState:MJRefreshStateRefreshing];
+//    [footer setTitle:@"全部加载完毕" forState:MJRefreshStateNoMoreData];
+//
+//    self.tableView.mj_footer = footer;
+//}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

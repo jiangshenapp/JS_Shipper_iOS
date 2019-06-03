@@ -26,6 +26,7 @@
 		203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF8224DFDE10066333A /* JSMyInfoVC.m */; };
 		2044521A2295522500FBF0C9 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 204452192295522500FBF0C9 /* Address.json */; };
 		2044521D2295523000FBF0C9 /* BaseCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044521B2295523000FBF0C9 /* BaseCustomView.m */; };
+		204AFAAF22A4CCCB0077D8C0 /* ListOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 204AFAAE22A4CCCB0077D8C0 /* ListOrderModel.m */; };
 		204E5299227068E600DE65A8 /* JSFeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 204E5298227068E600DE65A8 /* JSFeedBackVC.m */; };
 		2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */; };
 		205F20362276A254000A8967 /* JSOrderDetailMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 205F20352276A254000A8967 /* JSOrderDetailMapVC.m */; };
@@ -180,6 +181,8 @@
 		204452192295522500FBF0C9 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
 		2044521B2295523000FBF0C9 /* BaseCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCustomView.m; sourceTree = "<group>"; };
 		2044521C2295523000FBF0C9 /* BaseCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCustomView.h; sourceTree = "<group>"; };
+		204AFAAD22A4CCCB0077D8C0 /* ListOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOrderModel.h; sourceTree = "<group>"; };
+		204AFAAE22A4CCCB0077D8C0 /* ListOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListOrderModel.m; sourceTree = "<group>"; };
 		204E5297227068E600DE65A8 /* JSFeedBackVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFeedBackVC.h; sourceTree = "<group>"; };
 		204E5298227068E600DE65A8 /* JSFeedBackVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSFeedBackVC.m; sourceTree = "<group>"; };
 		2055C10F225C3B4D000E13C3 /* JSSystemMessageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSystemMessageVC.h; sourceTree = "<group>"; };
@@ -717,6 +720,8 @@
 				A0773E8D22885B1000C74D69 /* AuthInfo.m */,
 				201040B8229E662900B7B258 /* AddressInfoModel.h */,
 				201040B9229E662900B7B258 /* AddressInfoModel.m */,
+				204AFAAD22A4CCCB0077D8C0 /* ListOrderModel.h */,
+				204AFAAE22A4CCCB0077D8C0 /* ListOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1204,6 +1209,7 @@
 				20D64C49227010C9001F6172 /* FilterCustomView.m in Sources */,
 				20BD73AC2248BE440020EA5D /* Toast.m in Sources */,
 				20BD73AF2248BE440020EA5D /* JHHJAnimation.m in Sources */,
+				204AFAAF22A4CCCB0077D8C0 /* ListOrderModel.m in Sources */,
 				20BD73B82248BE440020EA5D /* NetworkManager.m in Sources */,
 				20BD73B62248BE440020EA5D /* NetworkUtil.m in Sources */,
 				20BD73C62248BE440020EA5D /* BaseVC.m in Sources */,

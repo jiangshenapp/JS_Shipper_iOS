@@ -9,11 +9,17 @@
 #import "JSAllOrderVC.h"
 #import "JSBaseOrderDetailsVC.h"
 #import "JSReleaseOrderVC.h"
+#import "ListOrderModel.h"
 
 @interface JSAllOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *classNameArr;
+  __block  NSInteger _page;
 }
+/** 列表的数据源 */
+@property (nonatomic,retain) NSMutableArray *listData;;
+/** 分页 从1开始 */
+@property (nonatomic,assign) NSInteger page;
 @end
 
 @implementation JSAllOrderVC
@@ -26,11 +32,49 @@
         UIButton *sender = [self.view viewWithTag:100+_typeFlage];
         [self titleBtnAction:sender];
     }
+    _listData = [NSMutableArray array];
+    _page = 0;
+    [self getData];
+    __weak typeof(self) weakSelf = self;
+    self.baseTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        weakSelf.page = 1;
+        [weakSelf getData];
+    }];
+    self.baseTabView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+         [weakSelf getData];
+    }];
     // Do any additional setup after loading the view.
 }
 
+- (void)getData {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *para = [NSMutableDictionary dictionary];
+    [para setObject:@(_typeFlage) forKey:@"state"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?current=%ld&size=%@",URL_OrdeList,_page,PageSize];
+    [[NetworkManager sharedManager] postJSON:urlStr parameters:para completion:^(id responseData, RequestState status, NSError *error) {
+        if (status==Request_Success) {
+            NSInteger count = [responseData[@"total"] integerValue];
+            if (weakSelf.page==1) {
+                [weakSelf.listData removeAllObjects];
+            }
+            NSArray *arr = [ListOrderModel mj_objectArrayWithKeyValuesArray:responseData[@"records"]];
+            if (weakSelf.listData.count<count) {
+                [weakSelf.listData addObjectsFromArray:arr];
+                weakSelf.page++;
+            }
+        }
+        [weakSelf.baseTabView reloadData];
+        if ([weakSelf.baseTabView.mj_header isRefreshing]) {
+            [weakSelf.baseTabView.mj_header endRefreshing];
+        }
+        if ([weakSelf.baseTabView.mj_footer isRefreshing]) {
+            [weakSelf.baseTabView.mj_footer endRefreshing];
+        }
+    }];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return classNameArr.count;
+    return self.listData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
