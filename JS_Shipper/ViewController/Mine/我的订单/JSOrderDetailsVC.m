@@ -22,7 +22,7 @@
     self.tileView1.hidden = YES;
     self.titleView2.hidden = NO;
     
-    [initData];
+    [self initData];
 }
 
 #pragma mark - init data
