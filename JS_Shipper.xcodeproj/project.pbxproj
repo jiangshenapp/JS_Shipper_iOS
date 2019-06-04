@@ -106,6 +106,7 @@
 		20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934DF224B18B4008C80DB /* JSRechargeVC.m */; };
 		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
 		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
+		A00A227822A5FA57002E2E0C /* JSOrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A00A227722A5FA57002E2E0C /* JSOrderDetailsVC.m */; };
 		A026350D228C234900C924E2 /* ic_refresh_image_025@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A02634EA228C234800C924E2 /* ic_refresh_image_025@2x.png */; };
 		A026350E228C234900C924E2 /* ic_refresh_image_029@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A02634EB228C234800C924E2 /* ic_refresh_image_029@2x.png */; };
 		A026350F228C234900C924E2 /* ic_refresh_image_001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A02634EC228C234800C924E2 /* ic_refresh_image_001@2x.png */; };
@@ -338,6 +339,8 @@
 		3F4AE2CD97BD2F091F4F87FD /* Pods-JS_Shipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.release.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.release.xcconfig"; sourceTree = "<group>"; };
 		485FFBE123B387C4A4ABBCD1 /* Pods-JS_Shipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.debug.xcconfig"; sourceTree = "<group>"; };
 		9B67392921C6C16FAB28EC6A /* Pods-JS_Shipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.debug.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.debug.xcconfig"; sourceTree = "<group>"; };
+		A00A227622A5FA57002E2E0C /* JSOrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOrderDetailsVC.h; sourceTree = "<group>"; };
+		A00A227722A5FA57002E2E0C /* JSOrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOrderDetailsVC.m; sourceTree = "<group>"; };
 		A02634EA228C234800C924E2 /* ic_refresh_image_025@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_refresh_image_025@2x.png"; sourceTree = "<group>"; };
 		A02634EB228C234800C924E2 /* ic_refresh_image_029@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_refresh_image_029@2x.png"; sourceTree = "<group>"; };
 		A02634EC228C234800C924E2 /* ic_refresh_image_001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_refresh_image_001@2x.png"; sourceTree = "<group>"; };
@@ -482,24 +485,11 @@
 			children = (
 				209D7DED224C617D00409EA2 /* JSAllOrderVC.h */,
 				209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */,
-				20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */,
-				20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */,
-				20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */,
-				20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */,
-				20F89D59224DC10A00D2DC2D /* JSConfirmOrderVC.h */,
-				20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */,
-				20F89D5C224DC14E00D2DC2D /* JSDeliveryOrderVC.h */,
-				20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */,
-				20F89D5F224DC2B200D2DC2D /* JSCommentOrderVC.h */,
-				20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */,
-				20F89D62224DC2F300D2DC2D /* JSTransportOrderVC.h */,
-				20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */,
-				20F89D65224DC32A00D2DC2D /* JSFinishOrderVC.h */,
-				20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */,
-				20F89D68224DC34D00D2DC2D /* JSCancleOrderVC.h */,
-				20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */,
+				A00A227622A5FA57002E2E0C /* JSOrderDetailsVC.h */,
+				A00A227722A5FA57002E2E0C /* JSOrderDetailsVC.m */,
 				205F20342276A254000A8967 /* JSOrderDetailMapVC.h */,
 				205F20352276A254000A8967 /* JSOrderDetailMapVC.m */,
+				A00A227522A5F9BC002E2E0C /* OrderDetail */,
 			);
 			path = "我的订单";
 			sourceTree = "<group>";
@@ -908,6 +898,29 @@
 			path = "接口日志";
 			sourceTree = "<group>";
 		};
+		A00A227522A5F9BC002E2E0C /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */,
+				20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */,
+				20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */,
+				20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */,
+				20F89D59224DC10A00D2DC2D /* JSConfirmOrderVC.h */,
+				20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */,
+				20F89D5C224DC14E00D2DC2D /* JSDeliveryOrderVC.h */,
+				20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */,
+				20F89D5F224DC2B200D2DC2D /* JSCommentOrderVC.h */,
+				20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */,
+				20F89D62224DC2F300D2DC2D /* JSTransportOrderVC.h */,
+				20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */,
+				20F89D65224DC32A00D2DC2D /* JSFinishOrderVC.h */,
+				20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */,
+				20F89D68224DC34D00D2DC2D /* JSCancleOrderVC.h */,
+				20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */,
+			);
+			path = OrderDetail;
+			sourceTree = "<group>";
+		};
 		A02634E8228C234800C924E2 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1218,7 @@
 				209B6ACC2272DCCF0060F509 /* MKMapView+ZoomLevel.m in Sources */,
 				20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */,
 				20BD73B42248BE440020EA5D /* RegularPhoneTF.m in Sources */,
+				A00A227822A5FA57002E2E0C /* JSOrderDetailsVC.m in Sources */,
 				20BD73B32248BE440020EA5D /* XLGLottie.m in Sources */,
 				20D64C49227010C9001F6172 /* FilterCustomView.m in Sources */,
 				20BD73AC2248BE440020EA5D /* Toast.m in Sources */,

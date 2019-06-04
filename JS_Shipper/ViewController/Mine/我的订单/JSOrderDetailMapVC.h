@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSOrderDetailMapVC : BaseVC
+
 @property (weak, nonatomic) IBOutlet UILabel *time1Lab;
 @property (weak, nonatomic) IBOutlet UILabel *info1Lab;
 @property (weak, nonatomic) IBOutlet UILabel *time2Lab;
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface MapLogisticsTabCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UILabel *infoLab;
 

@@ -7,8 +7,7 @@
 //
 
 #import "JSAllOrderVC.h"
-#import "JSBaseOrderDetailsVC.h"
-#import "JSReleaseOrderVC.h"
+#import "JSOrderDetailsVC.h"
 
 @interface JSAllOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -113,25 +112,15 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self.baseTabView deselectRowAtIndexPath:indexPath animated:YES];
     
-    JSBaseOrderDetailsVC *vc = (JSBaseOrderDetailsVC *)[Utils getViewController:@"Mine" WithVCName:@"JSBaseOrderDetailsVC"];;
-//    JSReleaseOrderVC *vc = [UIViewController alloc]initw;
+    JSOrderDetailsVC *vc = (JSOrderDetailsVC *)[Utils getViewController:@"Mine" WithVCName:@"JSBaseOrderDetailsVC"];
+    ListOrderModel *model = self.listData[indexPath.row];
+    vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)titleBtnAction:(UIButton *)sender {
     for (NSInteger tag = 100; tag<105; tag++) {
@@ -144,6 +133,16 @@
     [self getData];
     [self.baseTabView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
 }
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
 
