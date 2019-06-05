@@ -50,13 +50,11 @@ static NetworkManager *_manager = nil;
         
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
         NSLog(@"状态码：%ld",(long)response.statusCode);
+        id _Nullable object = [NSDictionary changeType:responseObject];
+        [self printLogInfoWith:urlStr WithParam:parameters andResult:object];
         if([self isTokenInvalid:(int)response.statusCode]) {
             return;
         }
-        
-        id _Nullable object = [NSDictionary changeType:responseObject];
-        [self printLogInfoWith:urlStr WithParam:parameters andResult:object];
-        
         NSString *code = [NSString stringWithFormat:@"%@",object[@"code"]];
         if ([code isEqualToString:@"0"]) { //成功
             id _Nullable dataObject = object[@"data"];

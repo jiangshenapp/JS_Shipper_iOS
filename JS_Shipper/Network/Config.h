@@ -67,7 +67,9 @@ NSString *PIC_URL(void);
 #define URL_GetOrderDetail @"/app/order/get"//订单详情
 #define URL_OrdeList @"/app/order/list"//我的运单
 
-
+#pragma mark - APP账户接口
+#define URL_Recharge @"/app/account/recharge"//账户充值
+#define URL_GetPayRoute @"/pigx-pay-biz/pay/getRoute"//获取支付方式
 
 #pragma mark - ---------------H5地址---------------
 
