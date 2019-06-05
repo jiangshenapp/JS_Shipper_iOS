@@ -37,6 +37,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - 其它字段
 
+/** 车型中文 */
+@property  (nonatomic , copy) NSString *carModelName;
+/** 回执图片1 */
+@property  (nonatomic , copy) NSString *commentImage1;
+/** 回执图片2 */
+@property  (nonatomic , copy) NSString *commentImage2;
+/** 回执图片3 */
+@property  (nonatomic , copy) NSString *commentImage3;
+/** 接单司机/网点头像 */
+@property  (nonatomic , copy) NSString *driverAvatar;
+/** 接单司机/网点名字 */
+@property  (nonatomic , copy) NSString *driverName;
+/** 接单司机/网点手机号 */
+@property  (nonatomic , copy) NSString *driverPhone;
+/** 通知司机数 */
+@property  (nonatomic , copy) NSString *driverNum;
 /** 接单会员Id */
 @property  (nonatomic , copy) NSString *jdSubscriberId;
 /** 收货地坐标 */

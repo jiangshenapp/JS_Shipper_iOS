@@ -116,7 +116,7 @@
     
     [self.baseTabView deselectRowAtIndexPath:indexPath animated:YES];
     
-    JSOrderDetailsVC *vc = (JSOrderDetailsVC *)[Utils getViewController:@"Mine" WithVCName:@"JSBaseOrderDetailsVC"];
+    JSOrderDetailsVC *vc = (JSOrderDetailsVC *)[Utils getViewController:@"Mine" WithVCName:@"JSOrderDetailsVC"];
     ListOrderModel *model = self.listData[indexPath.row];
     vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];

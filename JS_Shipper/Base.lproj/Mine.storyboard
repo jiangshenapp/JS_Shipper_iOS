@@ -2620,7 +2620,7 @@ Cg
         <!--订单详情-->
         <scene sceneID="shc-pJ-kif">
             <objects>
-                <viewController storyboardIdentifier="JSBaseOrderDetailsVC" title="订单详情" id="ULz-j3-HQB" customClass="JSBaseOrderDetailsVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JSOrderDetailsVC" title="订单详情" id="ULz-j3-HQB" customClass="JSOrderDetailsVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uOz-5J-CC2"/>
                         <viewControllerLayoutGuide type="bottom" id="z3h-LF-hFE"/>
@@ -2690,7 +2690,7 @@ Cg
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="订单编号：HZ-20190283482-0001" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCK-MN-4Fg">
-                                                <rect key="frame" x="12" y="0.0" width="260" height="34"/>
+                                                <rect key="frame" x="12" y="0.0" width="300" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
@@ -2996,7 +2996,6 @@ Cg
                                         <state key="normal" title="再发一次"/>
                                         <connections>
                                             <action selector="bottomRightBtnAction:" destination="ULz-j3-HQB" eventType="touchUpInside" id="9md-G3-A67"/>
-                                            <segue destination="eQy-14-vva" kind="push" id="U1M-7G-UT1"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWs-vQ-1mH">
@@ -3042,6 +3041,8 @@ Cg
                         <outlet property="goodsPayTypeLab" destination="xpH-4A-dEW" id="ZR2-aV-2MQ"/>
                         <outlet property="goodsTomeLab" destination="BD4-MF-gPs" id="DLe-MS-WG9"/>
                         <outlet property="goodsTypeLab" destination="uga-yO-WOv" id="VBs-Ii-hvC"/>
+                        <outlet property="headImgView1" destination="H7z-XL-jgr" id="I4l-x1-Bc5"/>
+                        <outlet property="headImgView2" destination="zax-V7-b4g" id="9rf-Kt-FPl"/>
                         <outlet property="introduceLab" destination="HTC-I5-eaB" id="vim-2I-xZ7"/>
                         <outlet property="iphoneBtn" destination="ThU-co-pLW" id="kkJ-kO-6hu"/>
                         <outlet property="nameLab" destination="LDj-mk-fZ5" id="bbC-2h-e57"/>

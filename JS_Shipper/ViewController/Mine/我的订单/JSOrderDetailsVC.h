@@ -21,8 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *tileView1;
 /** 张女士视图 */
 @property (weak, nonatomic) IBOutlet UIView *titleView2;
+/** 头像1 */
+@property (weak, nonatomic) IBOutlet UIImageView *headImgView1;
 /** 预约N分钟 */
 @property (weak, nonatomic) IBOutlet UILabel *bookTimeLab;
+/** 头像2 */
+@property (weak, nonatomic) IBOutlet UIImageView *headImgView2;
 /** 姓名 */
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 /** 介绍文字 */

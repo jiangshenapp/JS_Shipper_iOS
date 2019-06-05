@@ -75,6 +75,7 @@
     [pickView setDateViewWithTitle:@"装货时间"];
     [pickView showPickView:self];
     pickView.block = ^(NSString *selectedStr) {
+        selectedStr = [NSString stringWithFormat:@"%@:00",selectedStr];
         weakSelf.loadingTime = selectedStr;
         weakSelf.goodsTimeLab.text = selectedStr;
         weakSelf.goodsTimeLab.textColor = [UIColor grayColor];

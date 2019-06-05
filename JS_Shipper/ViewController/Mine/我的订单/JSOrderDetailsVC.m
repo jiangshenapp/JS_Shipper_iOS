@@ -22,24 +22,156 @@
     self.tileView1.hidden = YES;
     self.titleView2.hidden = NO;
     
-    [self initData];
+    [self getData];
+}
+
+#pragma mark - get data
+- (void)getData {
+    NSDictionary *dic = [NSDictionary dictionary];
+    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_GetOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            
+            //将用户信息解析成model
+            self.model = [ListOrderModel mj_objectWithKeyValues:(NSDictionary *)responseData];
+            
+            [self initView];
+            [self initData];
+        }
+    }];
 }
 
 #pragma mark - init data
 - (void)initData {
     
+//    self.model.state = @"9";
+    
+    [self.headImgView2 sd_setImageWithURL:[NSURL URLWithString:self.model.driverAvatar] placeholderImage:[UIImage imageNamed:@"personalcenter_driver_icon_head_land"]];
+    self.nameLab.text = self.model.driverName;
+    self.orderNoLab.text = [NSString stringWithFormat:@"订单编号：%@",self.model.orderNo];
+    self.orderStatusLab.text = self.model.stateNameConsignor;
+    self.startAddressLab.text = self.model.sendAddress;
+    self.endAddressLab.text = self.model.receiveAddress;
+    self.goodsTomeLab.text = self.model.loadingTime;
+    self.carInfoLab.text = [NSString stringWithFormat:@"%@%@米/%@方/%@吨",self.model.carModelName,self.model.carLength,self.model.goodsVolume,self.model.goodsWeight];;
+    self.goodsTypeLab.text = self.model.goodsType;
+    self.carTypeLab.text = self.model.useCarType;
+    if ([self.model.payWay isEqualToString:@"1"]) {
+        self.payTypeLab.text = @"线上支付";
+    } else {
+        self.payTypeLab.text = @"线下支付";
+    }
+    if ([self.model.feeType isEqualToString:@"1"]) {
+        self.orderFeeLab.text = [NSString stringWithFormat:@"￥%@",self.model.fee];
+    } else {
+        self.orderFeeLab.text = @"面仪";
+    }
+    if ([self.model.payType isEqualToString:@"1"]) {
+        self.goodsPayTypeLab.text = @"到付";
+    } else {
+        self.goodsPayTypeLab.text = @"现付";
+    }
+    self.explainLab.text = self.model.remark;
+    self.receiptNameLab.text = self.model.receiveName;
+    self.receiptNumerLab.text = self.model.receiveMobile;
+}
+
+#pragma mark - init view
+- (void)initView {
+    
+    
+    //1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待评价，8已完成，9已取消，10已关闭
+    NSInteger state = [self.model.state integerValue];
+    switch (state) {
+        case 1:
+            self.tileView1.hidden = NO;
+            self.titleView2.hidden = YES;
+            self.bookTimeLab.text = [NSString stringWithFormat:@"已为您通知%@个司机",self.model.driverNum];
+            [self.bottomLeftBtn setTitle:@"取消发布" forState:UIControlStateNormal];
+            [self.bottomRightBtn setTitle:@"再发一次" forState:UIControlStateNormal];
+            break;
+        case 2:
+            
+            break;
+        case 3: //车主待确认
+            [self.bottomLeftBtn setTitle:@"取消发布" forState:UIControlStateNormal];
+            [self.bottomRightBtn setTitle:@"立即支付" forState:UIControlStateNormal];
+            self.bottomRightBtn.userInteractionEnabled = NO;
+            self.bottomRightBtn.backgroundColor = RGBValue(0xB4B4B4);
+            break;
+        case 4: //车主已确认，待支付
+            [self.bottomLeftBtn setTitle:@"取消发布" forState:UIControlStateNormal];
+            [self.bottomRightBtn setTitle:@"立即支付" forState:UIControlStateNormal];
+            break;
+        case 5: //待配送
+            self.bottomBtn.hidden = NO;
+            self.bottomLeftBtn.hidden = YES;
+            self.bottomRightBtn.hidden = YES;
+            [self.bottomBtn setTitle:@"取消发货" forState:UIControlStateNormal];
+            break;
+        case 6: //运输中，待收货
+            [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
+            [self.bottomRightBtn setTitle:@"确认收货" forState:UIControlStateNormal];
+            break;
+        case 7: //待评价
+            [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
+            [self.bottomRightBtn setTitle:@"评价" forState:UIControlStateNormal];
+            break;
+        case 8: //已完成
+            self.orderStatusLab.hidden = YES;
+            [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
+            [self.bottomRightBtn setTitle:@"重新发货" forState:UIControlStateNormal];
+            break;
+        case 9: //已取消
+            self.bottomBtn.hidden = NO;
+            self.bottomLeftBtn.hidden = YES;
+            self.bottomRightBtn.hidden = YES;
+            [self.bottomBtn setTitle:@"重新发货" forState:UIControlStateNormal];
+            break;
+        case 10:
+            
+            break;
+        default:
+            break;
+    }
 }
 
 - (IBAction)bottomLeftBtnAction:(UIButton *)sender {
-    
+    NSString *title = sender.titleLabel.text;
+    if ([title isEqualToString:@"取消发布"]) {
+        [Utils showToast:@"取消发布"];
+    }
+    if ([title isEqualToString:@"查看路线"]) {
+        [Utils showToast:@"查看路线"];
+    }
 }
 
 - (IBAction)bottomRightBtnAction:(UIButton *)sender {
-    
+    NSString *title = sender.titleLabel.text;
+    if ([title isEqualToString:@"再发一次"]) {
+        [Utils showToast:@"再发一次"];
+    }
+    if ([title isEqualToString:@"立即支付"]) {
+        [Utils showToast:@"立即支付"];
+    }
+    if ([title isEqualToString:@"确认收货"]) {
+        [Utils showToast:@"确认收货"];
+    }
+    if ([title isEqualToString:@"评价"]) {
+        [Utils showToast:@"评价"];
+    }
+    if ([title isEqualToString:@"重新发货"]) {
+        [Utils showToast:@"重新发货"];
+    }
 }
 
 - (IBAction)bottomBtnAction:(UIButton *)sender {
-    
+    NSString *title = sender.titleLabel.text;
+    if ([title isEqualToString:@"取消发货"]) {
+        [Utils showToast:@"取消发货"];
+    }
+    if ([title isEqualToString:@"重新发货"]) {
+        [Utils showToast:@"重新发货"];
+    }
 }
 
 /*
