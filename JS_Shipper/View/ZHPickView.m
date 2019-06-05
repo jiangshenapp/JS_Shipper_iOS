@@ -169,7 +169,6 @@
 - (void)cancel:(UIButton *)btn
 {
     [self hide];
-    
 }
 
 - (void)submit:(UIButton *)btn
@@ -178,7 +177,7 @@
     if (!pickStr || pickStr.length == 0) {
         if(isDate) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             selectedStr = [formatter stringFromDate:[NSDate date]];
         } else {
             if([proTitleList count] > 0) {

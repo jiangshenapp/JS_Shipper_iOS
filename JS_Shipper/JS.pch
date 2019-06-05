@@ -52,6 +52,9 @@
 
 #define kAuthStateStrDic @{@(0):@"未提交",@(1):@"认证中",@(2):@"已认证",@(3):@"认证失败"}
 #define kAuthStateColorDic @{@(0):kVerifiedUnCommitColor,@(1):kVerifiedOnColor,@(2):AppThemeColor,@(3):kVerifiedFailColor}
+#define  CHANNEL_ALI_PAY  @"1";//支付宝app支付
+#define  CHANNEL_WX_PAY  @"2";//微信app支付
+#define  CHANNEL_UNION_PAY @"3";//银联app支付
 
 /******************************通知****************************/
 
