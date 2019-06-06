@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSMyWalletVC : BaseVC
 
+@property (weak, nonatomic) IBOutlet UILabel *balanceLab;
+
 @end
 
 NS_ASSUME_NONNULL_END

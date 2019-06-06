@@ -212,7 +212,7 @@ static NetworkManager *_manager = nil;
 }
 
 - (void)printLogInfoWith:(NSString *)url WithParam:(id)param andResult:(id)result {
-    NSLog(@"%@",[NSString stringWithFormat:@"时间：%@\n参数：%@ \n %@\n返回结果：%@",[Utils getCurrentDate],url,[param jsonPrettyStringEncoded],[result jsonPrettyStringEncoded]]);
+    NSLog(@"%@",[NSString stringWithFormat:@"时间：%@\n参数：%@ \n %@\n返回结果：%@",[Utils getCurrentDate],url,[param jsonPrettyStringEncoded],[result isKindOfClass:[NSDictionary class]]?[result jsonPrettyStringEncoded]:result]);
     if (!KOnline) {
         XLGExternalTestTool *tool = [XLGExternalTestTool shareInstance];
         tool.logTextViews.text = [NSString stringWithFormat:@"时间：%@\n参数：%@ \n %@\n返回结果：%@ \n\n\n%@",[Utils getCurrentDate],url,param,result,tool.logTextViews.text];

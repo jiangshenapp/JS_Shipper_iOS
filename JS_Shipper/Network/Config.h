@@ -26,8 +26,11 @@ NSString *PIC_URL(void);
 
 #pragma mark - APP账户接口
 
-#define URL_Recharge @"/app/account/recharge"//账户充值
 #define URL_GetPayRoute @"http://gateway.jiangshen56.com/pigx-pay-biz/pay/getRoute"//获取支付方式
+#define URL_Recharge @"/app/account/recharge"//账户充值
+#define URL_BalanceWithdraw @"/app/account/balanceWithdraw"//提现申请
+#define URL_GetBySubscriber @"/app/account/getBySubscriber"//账户详情
+#define URL_GetTradeRecord @"/app/account/getTradeRecord"//账单明细
 
 #define URL_GetDictByType @"/app/dict/getDictByType"//根据类型获取字典
 
