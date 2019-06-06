@@ -8,6 +8,7 @@
 
 #import "JSRechargeVC.h"
 #import "PayRouteModel.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface JSRechargeVC ()
 
@@ -81,6 +82,14 @@
 #pragma mark - 支付宝支付
 - (void)alipay {
     [Utils showToast:@"支付宝支付"];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?channelType=%@&money=%@&routeId=%@",URL_Recharge,_alipayRoute.channelType,self.priceTF.text,_alipayRoute.routeId];
+    [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status==Request_Success) {
+            
+        }
+    }];
 }
 
 #pragma mark - 微信支付

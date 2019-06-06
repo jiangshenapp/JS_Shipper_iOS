@@ -37,6 +37,11 @@
 
 /******************************keys****************************/
 
+#define kAPPScheme  @"com.js.shipper"
+
+// 微信key
+#define kWechatKey @"wxa1c709302475402e"
+
 // 友盟key
 #define kUMKey     @"5c710878b465f5fa50000071"
 
