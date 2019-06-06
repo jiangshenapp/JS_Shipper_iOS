@@ -22,7 +22,12 @@ NSString *PIC_URL(void);
 
 #pragma mark - 上传文件
 
-#define URL_FileUpload @"http://47.96.122.74:9999/admin/file/upload" //上传文件
+#define URL_FileUpload @"http://gateway.jiangshen56.com/admin/file/upload" //上传文件
+
+#pragma mark - APP账户接口
+
+#define URL_Recharge @"/app/account/recharge"//账户充值
+#define URL_GetPayRoute @"http://gateway.jiangshen56.com/pigx-pay-biz/pay/getRoute"//获取支付方式
 
 #define URL_GetDictByType @"/app/dict/getDictByType"//根据类型获取字典
 
@@ -66,10 +71,6 @@ NSString *PIC_URL(void);
 #define URL_CancelOrderDetail @"/app/order/cancel"//取消订单
 #define URL_GetOrderDetail @"/app/order/get"//订单详情
 #define URL_OrdeList @"/app/order/list"//我的运单
-
-#pragma mark - APP账户接口
-#define URL_Recharge @"/app/account/recharge"//账户充值
-#define URL_GetPayRoute @"/pigx-pay-biz/pay/getRoute"//获取支付方式
 
 #pragma mark - ---------------H5地址---------------
 

@@ -7,8 +7,16 @@
 //
 
 #import "JSRechargeVC.h"
+#import "PayRouteModel.h"
 
 @interface JSRechargeVC ()
+
+/** 支付路由数组 */
+@property (nonatomic,retain) NSMutableArray *listData;
+/** 支付宝支付路由 */
+@property (nonatomic,retain) PayRouteModel *alipayRoute;
+/** 微信支付路由 */
+@property (nonatomic,retain) PayRouteModel *wechatRoute;
 
 @end
 
@@ -17,25 +25,68 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"充值";
+    
     [self getData];
-    // Do any additional setup after loading the view.
 }
 
--(void)getData {
-    __weak typeof(self) weakSelf = self;
+#pragma mark - get data
+
+- (void)getData {
+    // business_id 1、运力端充值 2、货主端充值 3、货主端支付运费
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:@"1" forKey:@"business"];
-    [dic setObject:@"1" forKey:@"merchantId"];
-    [[NetworkManager sharedManager] postJSON:URL_GetPayRoute parameters:dic imageDataArr:nil imageName:nil completion:^(id responseData, RequestState status, NSError *error) {
+    NSString *urlStr = [NSString stringWithFormat:@"%@?business=%d&merchantId=%d",URL_GetPayRoute,2,1];
+    [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
-            
+            self.listData = [PayRouteModel mj_objectArrayWithKeyValuesArray:responseData];
+            for (PayRouteModel *payRouteModel in self.listData) {
+                if ([payRouteModel.channelType isEqualToString:@"1"]) {
+                    self.alipayRoute = payRouteModel;
+                }
+                if ([payRouteModel.channelType isEqualToString:@"2"]) {
+                    self.wechatRoute = payRouteModel;
+                }
+            }
         }
     }];
-//    [[NetworkManager sharedManager] postJSON:URL_GetPayRoute parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
-//
-//    }];
 }
 
+#pragma mark - methods
+
+//支付宝选中
+- (IBAction)alipaySelectAction:(id)sender {
+    self.alipayBtn.selected = YES;
+    self.wechatBtn.selected = NO;
+}
+
+//微信选中
+- (IBAction)wechetSelectAction:(id)sender {
+    self.alipayBtn.selected = NO;
+    self.wechatBtn.selected = YES;
+}
+
+//充值
+- (IBAction)payAction:(id)sender {
+    if ([Utils isBlankString:self.priceTF.text]) {
+        [Utils showToast:@"请输入充值金额"];
+        return;
+    }
+    if (self.alipayBtn.isSelected == YES) {
+        [self alipay];
+    }
+    if (self.wechatBtn.isSelected == YES) {
+        [self wechatPay];
+    }
+}
+
+#pragma mark - 支付宝支付
+- (void)alipay {
+    [Utils showToast:@"支付宝支付"];
+}
+
+#pragma mark - 微信支付
+- (void)wechatPay {
+    [Utils showToast:@"微信支付"];
+}
 
 /*
 #pragma mark - Navigation

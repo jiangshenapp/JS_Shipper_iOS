@@ -22,21 +22,19 @@ NSString *h5Url(void) {
 NSString *ROOT_URL(void) {
     
     if (KOnline || [Utils getServer] == 1) {
-        return @"http://gateway.jskj.com/logistic-biz"; //正式地址
+        return @"http://gateway.jiangshen56.com/logistic-biz"; //正式地址
     } else {
-//        return @"http://gateway.jskj.com/logistic-biz"; //阿里云地址
-//        return @"http://47.96.122.74:9999/logistic-biz"; //阿里云地址
-        return @"http://gateway.jiangshen56.com/logistic-biz";
+        return @"http://gateway.jiangshen56.com/logistic-biz"; //测试地址
     }
 }
 
 NSString *PIC_URL(void) {
     
-//    if (KOnline || [Utils getServer] == 1) {
-//        return @"http://gateway.jskj.com/logistic-biz"; //正式地址
-//    } else {
-        return @"http://47.96.122.74:9999/admin/file/download?fileName="; //阿里云地址
-//    }
+    if (KOnline || [Utils getServer] == 1) {
+        return @"http://gateway.jiangshen56.com/admin/file/download?fileName="; //正式地址
+    } else {
+        return @"http://gateway.jiangshen56.com/admin/file/download?fileName="; //测试地址
+    }
 }
 
 @end
