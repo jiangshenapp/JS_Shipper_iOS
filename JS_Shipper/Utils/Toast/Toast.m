@@ -10,7 +10,7 @@
 #import "Toast.h"
 
 //Toast默认停留时间
-#define ToastDispalyDuration 1.2f
+#define ToastDispalyDuration 1.5f
 //Toast到顶端/底端默认距离
 #define ToastSpace 100.0f
 //Toast背景颜色

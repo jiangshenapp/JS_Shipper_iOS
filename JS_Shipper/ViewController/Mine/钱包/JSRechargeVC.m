@@ -9,6 +9,8 @@
 #import "JSRechargeVC.h"
 #import "PayRouteModel.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "WXApi.h"
+#import "Toast.h"
 
 @interface JSRechargeVC ()
 
@@ -27,7 +29,29 @@
     [super viewDidLoad];
     self.title = @"充值";
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess) name:kPaySuccNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payFail) name:kPayFailNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payCancel) name:kPayCancelNotification object:nil];
+    
     [self getData];
+}
+
+#pragma mark - AppDelegate支付结果回调
+
+//支付成功
+- (void)paySuccess {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kChangeMoneyNotification object:nil];
+    [self backAction];
+}
+
+//支付失败
+- (void)payFail {
+    XLGAlertView *alert = [[XLGAlertView alloc] initWithTitle:@"温馨提示" content:@"支付失败" leftButtonTitle:@"" rightButtonTitle:@"确定"];
+}
+
+//支付取消
+-(void)payCancel {
+    XLGAlertView *alert = [[XLGAlertView alloc] initWithTitle:@"温馨提示" content:@"支付取消" leftButtonTitle:@"" rightButtonTitle:@"确定"];
 }
 
 #pragma mark - get data
@@ -71,6 +95,7 @@
         [Utils showToast:@"请输入充值金额"];
         return;
     }
+    [self.view endEditing:YES];
     if (self.alipayBtn.isSelected == YES) {
         [self alipay];
     }
@@ -81,20 +106,79 @@
 
 #pragma mark - 支付宝支付
 - (void)alipay {
-    [Utils showToast:@"支付宝支付"];
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     NSString *urlStr = [NSString stringWithFormat:@"%@?channelType=%@&money=%@&routeId=%@",URL_Recharge,_alipayRoute.channelType,self.priceTF.text,_alipayRoute.routeId];
     [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
+            //应用注册scheme,在Info.plist定义URL types
+            NSString *appScheme = kAPPScheme;
+            NSString *orderInfo = responseData[@"orderInfo"];
             
+            if (![Utils isBlankString:orderInfo]) {
+                
+                [[AlipaySDK defaultService] payOrder:orderInfo fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+                    NSInteger status = [resultDic[@"resultStatus"] integerValue];
+                    
+                    switch (status) {
+                        case 9000:
+                            [self paySuccess];
+                            break;
+                            
+                        case 8000:
+                            [Utils showToast:@"订单正在处理中"];
+                            break;
+                            
+                        case 4000:
+                            [self payFail];
+                            break;
+                            
+                        case 6001:
+                            [self payCancel];
+                            break;
+                            
+                        case 6002:
+                            [Utils showToast:@"网络连接出错"];
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                }];
+            }
         }
     }];
 }
 
 #pragma mark - 微信支付
 - (void)wechatPay {
-    [Utils showToast:@"微信支付"];
+    if (![WXApi isWXAppInstalled] && ![WXApi isWXAppSupportApi]) {
+        [Utils showToast:@"您未安装微信客户端，请安装微信以完成支付"];
+    } else {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        NSString *urlStr = [NSString stringWithFormat:@"%@?channelType=%@&money=%@&routeId=%@",URL_Recharge,_wechatRoute.channelType,self.priceTF.text,_wechatRoute.routeId];
+        [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status==Request_Success) {
+                
+                NSString *orderInfo = responseData[@"orderInfo"];
+                
+                if (![Utils isBlankString:orderInfo]) {
+                   NSDictionary *orderDic = [Utils dictionaryWithJsonString:orderInfo];
+                    //调起微信支付
+                    PayReq *req             = [[PayReq alloc] init];
+                    req.openID              = orderDic[@"appid"];
+                    req.partnerId           = orderDic[@"partnerid"];
+                    req.prepayId            = orderDic[@"prepayid"];
+                    req.nonceStr            = orderDic[@"noncestr"];
+                    NSMutableString *stamp  = orderDic[@"timestamp"];
+                    req.timeStamp           = stamp.intValue;
+                    req.package             = orderDic[@"package"];
+                    req.sign                = orderDic[@"sign"];
+                    [WXApi sendReq:req];
+                }
+            }
+        }];
+    }
 }
 
 /*

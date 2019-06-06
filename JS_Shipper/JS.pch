@@ -40,7 +40,7 @@
 #define kAPPScheme  @"com.js.shipper"
 
 // 微信key
-#define kWechatKey @"wxa1c709302475402e"
+#define kWechatKey @"wxc681f388f78e07c9"
 
 // 友盟key
 #define kUMKey     @"5c710878b465f5fa50000071"
@@ -66,6 +66,12 @@
 #define kLoginSuccNotification  @"kLoginSuccNotification"
 #define kLogoutSuccNotification  @"kLogoutSuccNotification"
 #define kUserInfoChangeNotification  @"kUserInfoChangeNotification"
+
+#define kPaySuccNotification  @"kPaySuccNotification"
+#define kPayFailNotification  @"kPayFailNotification"
+#define kPayCancelNotification  @"kPayCancelNotification"
+
+#define kChangeMoneyNotification  @"kChangeMoneyNotification"
 
 /********************屏幕宽高、系统版本、手机型号******************/
 
