@@ -21,7 +21,7 @@ def pods
   pod 'FXToast'
   pod 'JSONModel'
 pod 'AlipaySDK-iOS'
-#pod 'libWeChatSDK'
+pod 'libWeChatSDK'
 end
  target 'JS_Shipper' do
 

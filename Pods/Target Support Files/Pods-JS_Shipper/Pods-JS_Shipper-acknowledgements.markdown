@@ -365,6 +365,11 @@ SOFTWARE.
 
 
 
+## libWeChatSDK
+
+Copyright (c) 2012 Tencent. All rights reserved.
+
+
 ## lottie-ios
 
                                  Apache License
