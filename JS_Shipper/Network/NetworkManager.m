@@ -37,21 +37,23 @@ static NetworkManager *_manager = nil;
     
     [self configNetManager];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",ROOT_URL(),name];
+    if (![name containsString:@"http"]) {
+        name = [NSString stringWithFormat:@"%@%@",ROOT_URL(),name];
+    }
     
     [JHHJView showLoadingOnTheKeyWindowWithType:JHHJViewTypeSingleLine]; //开始加载
     NSMutableDictionary *postDic = [NSMutableDictionary dictionaryWithDictionary:parameters];
     if (![NSString isEmpty:[UserInfo share].token]) {
         [postDic setObject:[UserInfo share].token forKey:@"token"];
     }
-    [self POST:urlStr parameters:postDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self POST:name parameters:postDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [JHHJView hideLoading]; //结束加载
         
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
         NSLog(@"状态码：%ld",(long)response.statusCode);
         id _Nullable object = [NSDictionary changeType:responseObject];
-        [self printLogInfoWith:urlStr WithParam:parameters andResult:object];
+        [self printLogInfoWith:name WithParam:parameters andResult:object];
         if([self isTokenInvalid:(int)response.statusCode]) {
             return;
         }
@@ -78,7 +80,7 @@ static NetworkManager *_manager = nil;
             return;
         }
         completion(nil,Request_TimeoOut,error);
-        [self printLogInfoWith:urlStr WithParam:parameters andResult:[error localizedDescription]];
+        [self printLogInfoWith:name WithParam:parameters andResult:[error localizedDescription]];
         [Utils showToast:@"请求超时"];
         [JHHJView hideLoading]; //结束加载
     }];
@@ -95,11 +97,13 @@ static NetworkManager *_manager = nil;
     
     [self configNetManager];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@",ROOT_URL(),name];
+    if (![name containsString:@"http"]) {
+        name = [NSString stringWithFormat:@"%@%@",ROOT_URL(),name];
+    }
     
     [JHHJView showLoadingOnTheKeyWindowWithType:JHHJViewTypeSingleLine]; //开始加载
     
-    [self GET:urlStr parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self GET:name parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [JHHJView hideLoading]; //结束加载
         
@@ -123,7 +127,7 @@ static NetworkManager *_manager = nil;
             completion(nil,Request_Fail,nil);
             [Utils showToast:object[@"msg"]];
         }
-        [self printLogInfoWith:urlStr WithParam:parameters andResult:object];
+        [self printLogInfoWith:name WithParam:parameters andResult:object];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
@@ -132,7 +136,7 @@ static NetworkManager *_manager = nil;
             return;
         }
         completion(nil,Request_TimeoOut,error);
-        [self printLogInfoWith:urlStr WithParam:parameters andResult:[error localizedDescription]];
+        [self printLogInfoWith:name WithParam:parameters andResult:[error localizedDescription]];
         [Utils showToast:@"请求超时"];
         [JHHJView hideLoading]; //结束加载
     }];
@@ -208,7 +212,7 @@ static NetworkManager *_manager = nil;
 }
 
 - (void)printLogInfoWith:(NSString *)url WithParam:(id)param andResult:(id)result {
-    NSLog(@"%@",[NSString stringWithFormat:@"时间：%@\n参数：%@ \n %@\n返回结果：%@",[Utils getCurrentDate],url,param,result]);
+    NSLog(@"%@",[NSString stringWithFormat:@"时间：%@\n参数：%@ \n %@\n返回结果：%@",[Utils getCurrentDate],url,[param jsonPrettyStringEncoded],[result jsonPrettyStringEncoded]]);
     if (!KOnline) {
         XLGExternalTestTool *tool = [XLGExternalTestTool shareInstance];
         tool.logTextViews.text = [NSString stringWithFormat:@"时间：%@\n参数：%@ \n %@\n返回结果：%@ \n\n\n%@",[Utils getCurrentDate],url,param,result,tool.logTextViews.text];
