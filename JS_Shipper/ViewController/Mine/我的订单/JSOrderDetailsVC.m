@@ -7,6 +7,7 @@
 //
 
 #import "JSOrderDetailsVC.h"
+#import "JSOrderDetailMapVC.h"
 
 @interface JSOrderDetailsVC ()
 
@@ -30,10 +31,8 @@
     NSDictionary *dic = [NSDictionary dictionary];
     [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_GetOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status == Request_Success) {
-            
             //将用户信息解析成model
             self.model = [ListOrderModel mj_objectWithKeyValues:(NSDictionary *)responseData];
-            
             [self initView];
             [self initData];
         }
@@ -139,9 +138,11 @@
     NSString *title = sender.titleLabel.text;
     if ([title isEqualToString:@"取消发布"]) {
         [Utils showToast:@"取消发布"];
+        [self cancleOrder];
     }
     if ([title isEqualToString:@"查看路线"]) {
         [Utils showToast:@"查看路线"];
+        [self showRoutOrder];
     }
 }
 
@@ -149,18 +150,23 @@
     NSString *title = sender.titleLabel.text;
     if ([title isEqualToString:@"再发一次"]) {
         [Utils showToast:@"再发一次"];
+        [self againPushlishOrder];
     }
     if ([title isEqualToString:@"立即支付"]) {
         [Utils showToast:@"立即支付"];
+        [self payOrder];
     }
     if ([title isEqualToString:@"确认收货"]) {
         [Utils showToast:@"确认收货"];
+        [self confirmGoodsOrder];
     }
     if ([title isEqualToString:@"评价"]) {
         [Utils showToast:@"评价"];
+        [self commentOrder];
     }
     if ([title isEqualToString:@"重新发货"]) {
         [Utils showToast:@"重新发货"];
+        [self renewDeliverOrder];
     }
 }
 
@@ -168,11 +174,93 @@
     NSString *title = sender.titleLabel.text;
     if ([title isEqualToString:@"取消发货"]) {
         [Utils showToast:@"取消发货"];
+        [self cancleDeliverOrder];
     }
     if ([title isEqualToString:@"重新发货"]) {
         [Utils showToast:@"重新发货"];
+         [self renewDeliverOrder];
     }
 }
+
+#pragma mark - 取消订单
+/** 取消订单 */
+- (void)cancleOrder {
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *dic = [NSDictionary dictionary];
+    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+        }
+    }];
+}
+
+#pragma mark - 再发一次
+/** 再发一次 */
+- (void)againPushlishOrder {
+//    __weak typeof(self) weakSelf = self;
+}
+
+#pragma mark - 重新发货
+/** 重新发货 */
+- (void)renewDeliverOrder {
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *dic = [NSDictionary dictionary];
+    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_AgainOrder,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+        }
+    }];
+}
+
+#pragma mark - 取消发货
+/** 取消发货 */
+- (void)cancleDeliverOrder {
+//    __weak typeof(self) weakSelf = self;
+//    NSDictionary *dic = [NSDictionary dictionary];
+//    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+//        if (status == Request_Success) {
+//            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+//        }
+//    }];
+}
+
+
+#pragma mark - 评价
+/** 评价 */
+- (void)commentOrder {
+//    __weak typeof(self) weakSelf = self;
+//    NSDictionary *dic = [NSDictionary dictionary];
+//    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+//        if (status == Request_Success) {
+//            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+//        }
+//    }];
+}
+
+#pragma mark - 确认收货
+/** 确认收货 */
+- (void)confirmGoodsOrder {
+    __weak typeof(self) weakSelf = self;
+//    NSDictionary *dic = [NSDictionary dictionary];
+//    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+//        if (status == Request_Success) {
+//            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+//        }
+//    }];
+}
+
+#pragma mark - 立即支付
+/** 立即支付 */
+- (void)payOrder {
+   
+}
+#pragma mark - 查看路线
+/** 查看路线 */
+- (void)showRoutOrder {
+    JSOrderDetailMapVC *vc = [Utils getViewController:@"Mine" WithVCName:@"JSOrderDetailMapVC"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 /*
  #pragma mark - Navigation

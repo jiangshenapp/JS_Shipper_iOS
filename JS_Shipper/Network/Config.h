@@ -62,8 +62,8 @@ NSString *PIC_URL(void);
 
 #define URL_AddStepOne @"/app/order/addStepOne"//发货 --创建订单
 #define URL_AddStepTwo @"/app/order/addStepTwo"//发货 --确认订单
-#define URL_AgainOrder @"/app/order/again/{id}"//重新发货
-#define URL_CancelOrderDetail @"/app/order/cancel/{id}"//取消订单
+#define URL_AgainOrder @"/app/order/again"//重新发货
+#define URL_CancelOrderDetail @"/app/order/cancel"//取消订单
 #define URL_GetOrderDetail @"/app/order/get"//订单详情
 #define URL_OrdeList @"/app/order/list"//我的运单
 
