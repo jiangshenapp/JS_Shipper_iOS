@@ -105,16 +105,22 @@
     NSLog(@"第一个：%@\n",firstDic[@"sysArea"]);
 
     NSString *lastCode = firstDic[@"sysArea"][@"parentCode"];;
+    NSString *address = @"全国";;
     if (lastCode.length==0) {
         lastCode = @"0";
+        address = @"全国";
     }
     if (baseTag==3000) {
         firstName = @"全省";
         _currentPage = 1;
+        NSDictionary *dic = provinceArr[provinceIndex-2000-1];
+         address = [NSString stringWithFormat:@"全%@",dic[@"sysArea"][@"address"]];
     }
     else if (baseTag==4000) {
         firstName = @"全市";
         _currentPage = 2;
+        NSDictionary *dic = cityArr[cityIndex-3000-1];
+       address = [NSString stringWithFormat:@"全%@",dic[@"sysArea"][@"address"]];
     }
     [_bgScro.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSInteger index = 0;
@@ -128,7 +134,7 @@
             NSDictionary *dataDic;
             if (index==0) {
                 title = firstName;
-                dataDic = @{@"address":firstName,@"code":lastCode,@"parentCode":lastCode};
+                dataDic = @{@"address":address,@"code":lastCode,@"parentCode":lastCode};
             }
             else {
                 NSDictionary *privonceDic = dataSource[index-1];
@@ -155,6 +161,9 @@
     currentCityLab.text = [NSString stringWithFormat:@"选择：%@",sender.currentTitle];
     if (sender.tag>=2000&&sender.tag<3000) {//省份
         backBtn.hidden = NO;
+        if (sender.tag==2000) {
+            backBtn.hidden = YES;
+        }
         MyCustomButton *lastBtn = [self viewWithTag:provinceIndex];
         lastBtn.isSelect = NO;
         provinceIndex = sender.tag;

@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 单选多选数组  0多选选  1单选 */
 @property (nonatomic,retain) NSArray *singleArr;
 /** 获取到结果 */
-@property (nonatomic,copy) void (^getSelectResultArr)(NSMutableArray *resultArr);
+@property (nonatomic,copy) void (^getSelecObjectArr)(NSMutableArray *resultArr);
+@property (nonatomic,copy) void (^getSelectValueArr)(ns *resultArr);
+
 @end
 
 @interface MyCustomView : UIView

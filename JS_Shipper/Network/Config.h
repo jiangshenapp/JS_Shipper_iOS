@@ -30,6 +30,7 @@ NSString *PIC_URL(void);
 #define URL_GetPayRoute @"http://gateway.jiangshen56.com/pigx-pay-biz/pay/getRoute"//获取支付方式
 
 #define URL_GetDictByType @"/app/dict/getDictByType"//根据类型获取字典
+#define URL_GetDictList @"/app/dict/getDictList" //获取字典列表
 
 #pragma mark - APP会员注册登录接口
 
@@ -62,6 +63,8 @@ NSString *PIC_URL(void);
 
 #define URL_Classic @"/app/line/classic" //精品线路
 #define URL_Find @"/app/line/find" //车源
+
+
 
 #pragma mark - APP订单相关接口
 

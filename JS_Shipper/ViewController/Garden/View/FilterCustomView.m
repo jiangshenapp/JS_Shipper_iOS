@@ -36,7 +36,7 @@
 - (void)setupView {
     _selectArr = [NSMutableArray array];
     self.frame = CGRectMake(0, kNavBarH+46, WIDTH, HEIGHT-kNavBarH-46-kTabBarSafeH);
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = PageColor;
     self.clipsToBounds = YES;
     UIWindow *myWindow= [[[UIApplication sharedApplication] delegate] window];
     [myWindow addSubview:self];
@@ -47,6 +47,7 @@
     [self addSubview:bgScrollView];
     
     UIButton *sender = [[UIButton alloc]initWithFrame:CGRectMake(0, self.height-autoScaleW(50), autoScaleW(150), autoScaleW(50))];
+    sender.backgroundColor = [UIColor whiteColor];
     [sender setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     sender.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
     [sender setTitle:@"清空" forState:UIControlStateNormal];
@@ -57,7 +58,7 @@
     sureBtn.backgroundColor = AppThemeColor;
     sureBtn.titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [sureBtn addTarget:self action:@selector(hiddenView) forControlEvents:UIControlEventTouchUpInside];
+    [sureBtn addTarget:self action:@selector(confirmSelect) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:sureBtn];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, sender.top, WIDTH, 1)];
@@ -88,22 +89,34 @@
     }];
 }
 
+-(void)confirmSelect {
+    if (self.getSelecObjectArr) {
+        self.getSelecObjectArr(self.selectArr);
+    }
+    [self hiddenView];
+}
+
 - (void)refreshUI {
     allCellViewArr = [NSMutableArray array];
     CGFloat maxViewBottom = 0;
     __weak typeof(self) weakSelf = self;
     for (NSInteger index = 0; index < _dataArr.count; index++) {
+        BOOL isSingle = NO;
         NSArray *arr = _dataArr[index];
-        MyCustomView *view = [[MyCustomView alloc]initWithdataSource:arr andTilte:_titleArr[index]];
+        NSString *titleStr = _titleArr[index];
+        if ([titleStr containsString:@"用车"]) {
+            isSingle = YES;
+        }
+        else {
+            titleStr = [titleStr stringByAppendingString:@":(可多选)"];
+        }
+        MyCustomView *view = [[MyCustomView alloc]initWithdataSource:arr andTilte:titleStr];
         view.top = maxViewBottom;
-        BOOL isSingle = [_singleArr[index] boolValue];
+//        BOOL isSingle = [_singleArr[index] boolValue];
         view.isSingle = isSingle;
         maxViewBottom = view.height+maxViewBottom;
         view.getSlectInfo = ^(NSArray * _Nonnull info) {
             [weakSelf.selectArr replaceObjectAtIndex:index withObject:info];
-            if (weakSelf.getSelectResultArr) {
-                weakSelf.getSelectResultArr(weakSelf.selectArr);
-            }
         };
         [bgScrollView addSubview:view];
         [allCellViewArr addObject:view];
@@ -168,6 +181,7 @@
 - (instancetype)initWithdataSource:(NSArray *)dataSource andTilte:(NSString *)titleStr {
     self = [super init];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         selectDataDic = [NSMutableArray array];
         allButtonArr = [NSMutableArray array];
         NSInteger count = dataSource.count+1;
@@ -183,7 +197,7 @@
         NSInteger index = 0;
         for (NSInteger i = 0; i<line; i++) {
             for (NSInteger j =0; j < LineCount; j ++) {
-                if (index>count) {
+                if (index>=count) {
                     break;
                 }
                 MyCustomButton *_button = [[MyCustomButton alloc]initWithFrame:CGRectMake(WorkSpace+(j*(ButtonWidth+WorkSpace)), HeaderHeight+WorkSpace+(i*(ButtonWidth*0.5+WorkSpace)), ButtonWidth, ButtonWidth*0.5)];
@@ -220,7 +234,7 @@
         contentTF.leftViewMode = UITextFieldViewModeAlways;
         
         UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, self.height-10, WIDTH, 10)];
-        bgView.backgroundColor = RGBValue(0xF5f5f5);
+        bgView.backgroundColor = PageColor;
         [self addSubview:bgView];
     }
     return self;

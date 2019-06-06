@@ -19,7 +19,6 @@
     CityCustomView *cityView1;
      CityCustomView *cityView2;
     SortView *mySortView;
-    FilterCustomView *filteView;
     NSMutableArray *showFlagArr;
 }
 /** 0车源  1城市配送 2精品路线 */
@@ -34,6 +33,16 @@
 @property (nonatomic,retain) NSMutableArray *dataSource;
 /** <#object#> */
 @property (nonatomic,retain) HomeDataModel *dataModels;
+/** 筛选视图 */
+@property (nonatomic,retain) FilterCustomView *myfilteView;;
+/** 筛选条件 */
+@property (nonatomic,retain) NSDictionary *allDicKey;
+/** 筛选条件 */
+@property (nonatomic,retain) NSDictionary *filteDataDIc;
+/** 筛选条件 */
+@property (nonatomic,retain) NSMutableArray *filteKeysArr;
+/** 筛选条件 */
+@property (nonatomic,retain) NSMutableArray *filteValuesArr;
 @end
 
 @implementation JSGardenVC
@@ -42,6 +51,7 @@
     [super viewDidLoad];
     [self initView];
     [self getNetData];
+    [self getDicList];
 }
 
 -(void)initView {
@@ -78,12 +88,20 @@
         [weakSelf getNetData];
     };
     mySortView = [[SortView alloc]init];
-    filteView = [[FilterCustomView alloc]init];
-    titleViewArr = @[cityView1,cityView2,mySortView,filteView];
+    _myfilteView = [[FilterCustomView alloc]init];
+    _myfilteView.getSelecObjectArr = ^(NSMutableArray * _Nonnull resultArr) {
+        FilterButton *sender = [weakSelf.filterView viewWithTag:20003];
+        [weakSelf showViewAction:sender];
+        NSLog(@"%@",resultArr);
+    };
+    titleViewArr = @[cityView1,cityView2,mySortView,_myfilteView];
     _postUrlDic = @{@(0):URL_Find,@(1):URL_Find,@(2):URL_Classic};
     _areaCode1 = @"";
     _areaCode2 = @"";
     _dataSource = [NSMutableArray array];
+    _allDicKey = @{@"useCarType":@"用车类型",@"carLength":@"车长",@"carModel":@"车型",@"goodsType":@"货物类型"};
+    _filteKeysArr = [NSMutableArray array];
+    _filteValuesArr = [NSMutableArray array];
 }
 
 #pragma mark - 获取数据
@@ -98,6 +116,30 @@
             weakSelf.dataModels = [HomeDataModel mj_objectWithKeyValues:responseData];
         }
         [weakSelf.baseTabView reloadData];
+    }];
+}
+
+#pragma mark - 获取数据
+- (void)getDicList {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [[NetworkManager sharedManager] postJSON:URL_GetDictList parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            NSMutableArray *allDataSource = [NSMutableArray array];
+            NSMutableArray *titleArr = [NSMutableArray array];
+            weakSelf.filteDataDIc = responseData;
+            for (NSString *key in dic.allKeys ) {
+                NSArray *value = dic[key];
+                NSString *title = weakSelf.allDicKey[key];
+                [titleArr addObject:title];
+                [allDataSource addObject:value];
+                [weakSelf.filteKeysArr addObject:key];
+                [weakSelf.filteValuesArr addObject:value];
+            }
+            weakSelf.myfilteView.titleArr = titleArr;
+            weakSelf.myfilteView.dataArr = allDataSource;
+        }
+        
     }];
 }
 
