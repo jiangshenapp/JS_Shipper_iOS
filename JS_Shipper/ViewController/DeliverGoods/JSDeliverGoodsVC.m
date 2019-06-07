@@ -59,7 +59,7 @@
     _carLengthView.viewHeight = HEIGHT-kNavBarH-kTabBarSafeH;;
     _carLengthView.top = kNavBarH;
     __weak typeof(self) weakSelf = self;
-    _carLengthView.getSelectResultArr = ^(NSMutableArray * _Nonnull resultArr) {
+    _carLengthView.getSelecObjectArr = ^(NSMutableArray * _Nonnull resultArr) {
         NSString *allValueStr = @"";
         NSString *allLabelStr = @"";
         if (resultArr.count>0) {

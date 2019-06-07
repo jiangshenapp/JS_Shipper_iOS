@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,retain) NSArray *singleArr;
 /** 获取到结果 */
 @property (nonatomic,copy) void (^getSelecObjectArr)(NSMutableArray *resultArr);
-@property (nonatomic,copy) void (^getSelectValueArr)(ns *resultArr);
+@property (nonatomic,copy) void (^getSelectValueArr)(NSMutableArray *resultArr);
 
 @end
 

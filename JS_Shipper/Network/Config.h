@@ -32,6 +32,8 @@ NSString *PIC_URL(void);
 #define URL_GetBySubscriber @"/app/account/getBySubscriber"//账户详情
 #define URL_GetTradeRecord @"/app/account/getTradeRecord"//账单明细
 
+#pragma mark - 根据类型获取字典
+
 #define URL_GetDictByType @"/app/dict/getDictByType"//根据类型获取字典
 #define URL_GetDictList @"/app/dict/getDictList" //获取字典列表
 
