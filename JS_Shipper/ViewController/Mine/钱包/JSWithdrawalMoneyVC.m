@@ -48,6 +48,7 @@
         [Utils showToast:@"请输入提现金额"];
         return;
     }
+    [self.view endEditing:YES];
     CGFloat inputMoney = [self.moneyTF.text floatValue];
     CGFloat balanceMoney = [self.maxMoney floatValue];
     if (inputMoney>balanceMoney) {
