@@ -40,6 +40,7 @@
 
 //支付成功
 - (void)paySuccess {
+    XLGAlertView *alert = [[XLGAlertView alloc] initWithTitle:@"温馨提示" content:@"支付成功" leftButtonTitle:@"" rightButtonTitle:@"确定"];
     [[NSNotificationCenter defaultCenter] postNotificationName:kChangeMoneyNotification object:nil];
     [self backAction];
 }
