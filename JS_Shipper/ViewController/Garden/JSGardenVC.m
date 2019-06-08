@@ -21,6 +21,8 @@
     SortView *mySortView;
     NSMutableArray *showFlagArr;
 }
+/** 分页 */
+@property (nonatomic,assign) NSInteger page;
 /** 0车源  1城市配送 2精品路线 */
 @property (nonatomic,assign) NSInteger pageFlag;
 /** 传参字典 0 */
@@ -29,20 +31,14 @@
 @property (nonatomic,copy) NSString *areaCode1;
 /** 区域编码2 */
 @property (nonatomic,copy) NSString *areaCode2;
-/** 数据源 */
-@property (nonatomic,retain) NSMutableArray *dataSource;
 /** <#object#> */
 @property (nonatomic,retain) HomeDataModel *dataModels;
 /** 筛选视图 */
 @property (nonatomic,retain) FilterCustomView *myfilteView;;
 /** 筛选条件 */
 @property (nonatomic,retain) NSDictionary *allDicKey;
-/** 筛选条件 */
-@property (nonatomic,retain) NSDictionary *filteDataDIc;
-/** 筛选条件 */
-@property (nonatomic,retain) NSMutableArray *filteKeysArr;
-/** 筛选条件 */
-@property (nonatomic,retain) NSMutableArray *filteValuesArr;
+/** 数据源 */
+@property (nonatomic,retain) NSMutableArray <RecordsModel *>*dataSource;
 @end
 
 @implementation JSGardenVC
@@ -56,6 +52,8 @@
 
 -(void)initView {
     _pageFlag = 0;
+    _page = 1;
+    _dataSource = [NSMutableArray array];
     _titleView.top = 7+kStatusBarH;
     _titleView.centerX = WIDTH/2.0;
     [self.navBar addSubview:_titleView];
@@ -77,7 +75,7 @@
         tempBtn.isSelect = NO;
         [tempBtn setTitle:dataDic[@"address"] forState:UIControlStateNormal];
         weakSelf.areaCode1 = dataDic[@"code"];
-        [weakSelf getNetData];
+        [weakSelf.baseTabView.mj_header beginRefreshing];
     };
     cityView2 = [[CityCustomView alloc]init];
     cityView2.getCityData = ^(NSDictionary * _Nonnull dataDic) {
@@ -85,23 +83,28 @@
         [tempBtn setTitle:dataDic[@"address"] forState:UIControlStateNormal];
         weakSelf.areaCode2 = dataDic[@"code"];
         tempBtn.isSelect = NO;
-        [weakSelf getNetData];
+        [weakSelf.baseTabView.mj_header beginRefreshing];
     };
     mySortView = [[SortView alloc]init];
-    _myfilteView = [[FilterCustomView alloc]init];
-    _myfilteView.getSelecObjectArr = ^(NSMutableArray * _Nonnull resultArr) {
-        FilterButton *sender = [weakSelf.filterView viewWithTag:20003];
-        [weakSelf showViewAction:sender];
-        NSLog(@"%@",resultArr);
+    _myfilteView = [[FilterCustomView alloc]init];\
+    _myfilteView.getPostDic = ^(NSDictionary * _Nonnull dic, NSArray * _Nonnull titles) {
+        FilterButton *tempBtn = [weakSelf.view viewWithTag:20003];
+        tempBtn.selected = NO;
+        weakSelf.allDicKey = dic;
+        [weakSelf.baseTabView.mj_header beginRefreshing];
     };
     titleViewArr = @[cityView1,cityView2,mySortView,_myfilteView];
     _postUrlDic = @{@(0):URL_Find,@(1):URL_Find,@(2):URL_Classic};
     _areaCode1 = @"";
     _areaCode2 = @"";
-    _dataSource = [NSMutableArray array];
-    _allDicKey = @{@"useCarType":@"用车类型",@"carLength":@"车长",@"carModel":@"车型",@"goodsType":@"货物类型"};
-    _filteKeysArr = [NSMutableArray array];
-    _filteValuesArr = [NSMutableArray array];
+    _allDicKey = @{@"useCarType":@"",@"carLength":@"",@"carModel":@"",@"goodsType":@""};
+    self.baseTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        weakSelf.page = 1;
+        [weakSelf getNetData];
+    }];
+    self.baseTabView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf getNetData];
+    }];
 }
 
 #pragma mark - 获取数据
@@ -110,12 +113,28 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:_areaCode1 forKey:@"arriveAddressCode"];
     [dic setObject:_areaCode2 forKey:@"startAddressCode"];
-    NSString *url = _postUrlDic[@(_pageFlag)];
+    [dic addEntriesFromDictionary:self.allDicKey];
+    NSString *url = [NSString stringWithFormat:@"%@?current=%ld&size=%@",_postUrlDic[@(_pageFlag)],_page,PageSize];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (weakSelf.page==1) {
+            [weakSelf.dataSource removeAllObjects];
+        }
+        weakSelf.dataModels = nil;
         if (status == Request_Success) {
             weakSelf.dataModels = [HomeDataModel mj_objectWithKeyValues:responseData];
         }
+        if (weakSelf.dataSource.count<[weakSelf.dataModels.total integerValue]) {
+            [weakSelf.dataSource addObjectsFromArray:weakSelf.dataModels.records];
+            weakSelf.page++;
+        }
         [weakSelf.baseTabView reloadData];
+        if ([weakSelf.baseTabView.mj_footer isRefreshing]) {
+            [weakSelf.baseTabView.mj_footer endRefreshing];
+        }
+        if ([weakSelf.baseTabView.mj_header isRefreshing]) {
+            [weakSelf.baseTabView.mj_header endRefreshing];
+        }
+
     }];
 }
 
@@ -125,26 +144,14 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [[NetworkManager sharedManager] postJSON:URL_GetDictList parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status == Request_Success) {
-            NSMutableArray *allDataSource = [NSMutableArray array];
-            NSMutableArray *titleArr = [NSMutableArray array];
-            weakSelf.filteDataDIc = responseData;
-            for (NSString *key in dic.allKeys ) {
-                NSArray *value = dic[key];
-                NSString *title = weakSelf.allDicKey[key];
-                [titleArr addObject:title];
-                [allDataSource addObject:value];
-                [weakSelf.filteKeysArr addObject:key];
-                [weakSelf.filteValuesArr addObject:value];
-            }
-            weakSelf.myfilteView.titleArr = titleArr;
-            weakSelf.myfilteView.dataArr = allDataSource;
+            weakSelf.myfilteView.dataDic = responseData;
         }
         
     }];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataModels.records.count;
+    return self.dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -152,11 +159,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RecordsModel *model =self.dataModels.records[indexPath.section];
+    RecordsModel *model =self.dataSource[indexPath.section];
     if (_pageFlag==0||_pageFlag==2) {
         JSGardenTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSGardenTabCell"];
         cell.countBtn.hidden = _pageFlag;
-        
+        cell.startAddressLab.text = model.startAddressCodeName;
+        cell.endAddressLab.text = model.receiveAddressCodeName;
+        cell.contentLab.text = [NSString stringWithFormat:@"%@ %@ %@/%@",model.driverName,model.cphm,model.carModelName,model.carLengthName];
         return cell;
     }
     else if (_pageFlag==1) {
@@ -243,7 +252,6 @@
 
 - (IBAction)titleBtnAction:(UIButton*)sender {
     _pageFlag = sender.tag-100;
-    [self getNetData];
     for (NSInteger tag = 100; tag<103; tag++) {
         UIButton *btn = [self.view viewWithTag:tag];
         if ([btn isEqual:sender]) {
@@ -255,7 +263,7 @@
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
     }
-    [self.baseTabView reloadData];
+    [self.baseTabView.mj_header beginRefreshing];
 }
 
 @end

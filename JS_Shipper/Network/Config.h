@@ -36,6 +36,7 @@ NSString *PIC_URL(void);
 
 #define URL_GetDictByType @"/app/dict/getDictByType"//根据类型获取字典
 #define URL_GetDictList @"/app/dict/getDictList" //获取字典列表
+#define URL_GetCityList @"/app/area/getCityTree"// 获取所有城市
 
 #pragma mark - APP会员注册登录接口
 

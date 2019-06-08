@@ -56,12 +56,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *driverPhone;
 @property (nonatomic,copy) NSString *classic;
 @property (nonatomic,copy) NSString *carModel;
+@property (nonatomic,copy) NSString *carModelName;
+
 @property (nonatomic,copy) NSString *carLength;
+@property (nonatomic,copy) NSString *carLengthName;
+
 @property (nonatomic,copy) NSString *subscriberId;
 @property (nonatomic,copy) NSString *remark;
 @property (nonatomic,copy) NSString *driverName;
 @property (nonatomic,copy) NSString *arriveAddressCode;
+@property (nonatomic,copy) NSString *receiveAddressCodeName;
 @property (nonatomic,copy) NSString *startAddressCode;
+@property (nonatomic,copy) NSString *startAddressCodeName;
 @end
 
 @interface HomeDataModel : BaseItem

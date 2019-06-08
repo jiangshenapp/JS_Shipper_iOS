@@ -23,9 +23,9 @@
 /** 车型数组 */
 @property (nonatomic,retain) NSArray *carModelArr;
 /** 车长 */
-@property (nonatomic,copy) NSString *carLengthStr;
+@property (nonatomic,retain) NSDictionary *carLengthDic;
 /** 车型 */
-@property (nonatomic,copy) NSString *carModelStr;
+@property (nonatomic,retain) NSDictionary *carModelDic;
 /** 点击类型  1车长 2车型 */
 @property (nonatomic,assign) NSInteger touchType;
 
@@ -41,8 +41,6 @@
 }
 
 - (void)setupView {
-    _carLengthStr = @"2";
-    _carModelStr = @"2";
     _touchType = 0;
     _bannerView.imageURLStringsGroup = @[@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554786828281&di=adb087e354b74cf42fffb75077e2c757&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F14%2F37%2F09%2F97a58PICQ6H_1024.jpg",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554786828281&di=adb087e354b74cf42fffb75077e2c757&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F14%2F37%2F09%2F97a58PICQ6H_1024.jpg"];
     _bannerView.currentPageDotColor = AppThemeColor;
@@ -59,34 +57,16 @@
     _carLengthView.viewHeight = HEIGHT-kNavBarH-kTabBarSafeH;;
     _carLengthView.top = kNavBarH;
     __weak typeof(self) weakSelf = self;
-    _carLengthView.getSelecObjectArr = ^(NSMutableArray * _Nonnull resultArr) {
-        NSString *allValueStr = @"";
-        NSString *allLabelStr = @"";
-        if (resultArr.count>0) {
-            NSArray *arr = [resultArr firstObject];
-            for (NSDictionary *dataDic in arr) {
-                allValueStr = [allValueStr stringByAppendingString:[NSString stringWithFormat:@"%@,",dataDic[@"value"]]];
-                allLabelStr = [allLabelStr stringByAppendingString:[NSString stringWithFormat:@"%@,",dataDic[@"label"]]];
-            }
-        }
-        if (allValueStr.length>0) {
-            allValueStr = [allLabelStr substringToIndex:allValueStr.length-1];
-        }
-        if (allLabelStr.length>0) {
-            allLabelStr = [allLabelStr substringToIndex:allLabelStr.length-1];
-        }
-
+    _carLengthView.getPostDic = ^(NSDictionary * _Nonnull dic, NSArray * _Nonnull titles) {
         if (weakSelf.touchType==1) {
-            weakSelf.carLengthStr = allValueStr;
-            [weakSelf.carLenthBtn setTitle:allLabelStr forState:UIControlStateNormal];
+            weakSelf.carLengthDic = dic;
+            [weakSelf.carLenthBtn setTitle:[titles firstObject] forState:UIControlStateNormal];
         }
         else if (weakSelf.touchType==2) {
-            weakSelf.carModelStr = allValueStr;;
-            [weakSelf.carModelBtn setTitle:allLabelStr forState:UIControlStateNormal];
+            weakSelf.carModelDic = dic;
+            [weakSelf.carModelBtn setTitle:[titles firstObject] forState:UIControlStateNormal];
         }
-        NSLog(@"label:%@  value:%@  ",allLabelStr,allValueStr);
     };
-    
 }
 
 #pragma mark - 车长
@@ -170,8 +150,8 @@
 - (IBAction)sendGoodsAction:(UIButton *)sender {
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:_carLengthStr forKey:@"carLength"];
-    [dic setObject:_carModelStr forKey:@"carModel"];
+    [dic addEntriesFromDictionary:_carLengthDic];
+    [dic addEntriesFromDictionary:_carModelDic];
     if (_info2.address.length==0||_info1.address.length==0) {
         [Utils showToast:@"请选择地址"];
         return;
@@ -208,9 +188,7 @@
         return;
     }
     _touchType = 1;
-    self.carLengthView.singleArr = @[@"0"];
-    self.carLengthView.titleArr = @[@"车长"];
-    self.carLengthView.dataArr = @[_carLengthArr];
+    self.carLengthView.dataDic = @{@"carLength":self.carLengthArr};
     [_carLengthView showView];
 }
 
@@ -219,9 +197,7 @@
         return;
     }
     _touchType = 2;
-    self.carLengthView.singleArr = @[@"1"];
-    self.carLengthView.titleArr = @[@"车型"];
-    self.carLengthView.dataArr = @[self.carModelArr];
+    self.carLengthView.dataDic = @{@"carModel":self.carModelArr};
     [_carLengthView showView];
 }
 @end

@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSSelectCityVC : BaseVC
-
+/** 选中当前城市 */
+@property (nonatomic,copy) void(^getSelectDic)( NSDictionary *dic);
 @end
 
 NS_ASSUME_NONNULL_END

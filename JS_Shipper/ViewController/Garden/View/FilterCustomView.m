@@ -18,9 +18,15 @@
     BOOL isClearAll;
     UIScrollView *bgScrollView;
     NSMutableArray *allCellViewArr;
+    NSDictionary *_allDicKey;
 }
 /** 所选择的数组 */
 @property (nonatomic,retain) NSMutableArray *selectArr;
+/** <#object#> */
+@property (nonatomic,retain) NSMutableDictionary *postDic;
+/** <#object#> */
+@property (nonatomic,retain) NSMutableArray *titlesArr;
+;
 @end
 
 @implementation FilterCustomView
@@ -34,6 +40,7 @@
 }
 
 - (void)setupView {
+    _allDicKey = @{@"useCarType":@"用车类型",@"carLength":@"车长",@"carModel":@"车型",@"goodsType":@"货物类型"};
     _selectArr = [NSMutableArray array];
     self.frame = CGRectMake(0, kNavBarH+46, WIDTH, HEIGHT-kNavBarH-46-kTabBarSafeH);
     self.backgroundColor = PageColor;
@@ -90,20 +97,22 @@
 }
 
 -(void)confirmSelect {
-    if (self.getSelecObjectArr) {
-        self.getSelecObjectArr(self.selectArr);
+    if (self.getPostDic) {
+        self.getPostDic(_postDic, _titlesArr);
     }
     [self hiddenView];
 }
 
 - (void)refreshUI {
+    _postDic = [NSMutableDictionary dictionary];;
+    __weak typeof(self) weakSelf = self;
     allCellViewArr = [NSMutableArray array];
     CGFloat maxViewBottom = 0;
-    __weak typeof(self) weakSelf = self;
-    for (NSInteger index = 0; index < _dataArr.count; index++) {
+    NSInteger index = 0;
+    for (NSString *keys in _dataDic.allKeys) {
+        NSArray *arr = _dataDic[keys];
         BOOL isSingle = NO;
-        NSArray *arr = _dataArr[index];
-        NSString *titleStr = _titleArr[index];
+        NSString *titleStr = _allDicKey[keys];
         if ([titleStr containsString:@"用车"]) {
             isSingle = YES;
         }
@@ -112,32 +121,44 @@
         }
         MyCustomView *view = [[MyCustomView alloc]initWithdataSource:arr andTilte:titleStr];
         view.top = maxViewBottom;
-//        BOOL isSingle = [_singleArr[index] boolValue];
+        //        BOOL isSingle = [_singleArr[index] boolValue];
         view.isSingle = isSingle;
         maxViewBottom = view.height+maxViewBottom;
-        view.getSlectInfo = ^(NSArray * _Nonnull info) {
-            [weakSelf.selectArr replaceObjectAtIndex:index withObject:info];
+        view.getSlectInfoStr = ^(NSString * _Nonnull titles, NSString * _Nonnull values) {
+            if (values.length>0) {
+                values = [values substringToIndex:values.length-1];
+            }
+            if (titles.length>0) {
+                titles = [titles substringToIndex:titles.length-1];
+            }
+            [weakSelf.postDic setObject:values forKey:keys];
+            [weakSelf.titlesArr replaceObjectAtIndex:index withObject:titles];
         };
         [bgScrollView addSubview:view];
         [allCellViewArr addObject:view];
+        index ++;
     }
     bgScrollView.contentSize = CGSizeMake(0, MAX(bgScrollView.height+1, maxViewBottom));
 }
 
--(void)setDataArr:(NSArray *)dataArr {
-    if (_dataArr!=dataArr) {
-        _dataArr = dataArr;
+
+- (void)setDataDic:(NSDictionary *)dataDic{
+    if (_dataDic!=dataDic) {
+        _dataDic=dataDic;
     }
-    [_selectArr removeAllObjects];
-    [bgScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    for (NSInteger index = 0; index<_dataArr.count; index++) {
-        [_selectArr addObject:@""];
+    _titlesArr = [NSMutableArray array];
+    for (NSInteger index = 0; index<dataDic.allKeys.count; index++) {
+        [_titlesArr addObject:@""];
     }
     [self refreshUI];
 }
 
 - (void)clearAllSelect{
     isClearAll = YES;
+    for (NSInteger index = 0; index<_dataDic.allKeys.count; index++) {
+        [_titlesArr addObject:@""];
+    }
+    _postDic = [NSMutableDictionary dictionary];;
     for (MyCustomView *view in allCellViewArr) {
         view.isClear = YES;
     }
@@ -181,8 +202,9 @@
 - (instancetype)initWithdataSource:(NSArray *)dataSource andTilte:(NSString *)titleStr {
     self = [super init];
     if (self) {
+        _titles = @"";
+        _values = @"";
         self.backgroundColor = [UIColor whiteColor];
-        selectDataDic = [NSMutableArray array];
         allButtonArr = [NSMutableArray array];
         NSInteger count = dataSource.count+1;
         NSInteger line = count%LineCount==0?(count/LineCount):((count/LineCount)+1);
@@ -241,14 +263,17 @@
 }
 
 - (void)buttonTouchAction:(MyCustomButton *)sender {
+    
     if (_isSingle) {//是单选
         lastSelectBtn.isSelect = NO;
         lastSelectBtn = sender;
-        [selectDataDic removeAllObjects];
+        _titles = @"";
+        _values = @"";
     }
     else {
         if (sender.index==0) {
-           [selectDataDic removeAllObjects];
+            _titles = @"";
+            _values = @"";
             for (MyCustomButton *btn in allButtonArr) {
                 if (btn.index!=0) {
                     btn.isSelect = NO;
@@ -258,20 +283,19 @@
         else {
             MyCustomButton *btn = [allButtonArr firstObject];
             btn.isSelect = NO;
-            [selectDataDic removeObject:btn.dataDic];
         }
     }
     sender.isSelect = !sender.isSelect;
     if (sender.isSelect) {
-        if (![selectDataDic containsObject:sender.dataDic]) {
-            [selectDataDic addObject:sender.dataDic];
-        }
+            _titles = [_titles stringByAppendingString:[NSString stringWithFormat:@"%@,",sender.dataDic[@"label"]]];
+            _values = [_values stringByAppendingString:[NSString stringWithFormat:@"%@,",sender.dataDic[@"value"]]];
     }
     else {
-        [selectDataDic removeObject:sender.dataDic];
+        _titles = [_titles stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@,",sender.dataDic[@"label"]] withString:@""];
+        _values = [_values stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@,",sender.dataDic[@"value"]] withString:@""];
     }
-    if (_getSlectInfo) {
-        self.getSlectInfo(selectDataDic);
+    if (_getSlectInfoStr) {
+        self.getSlectInfoStr(_titles, _values);
     }
 }
 
@@ -279,12 +303,13 @@
     if (_isClear!=isClear) {
         _isClear = isClear;
     }
-    [selectDataDic removeAllObjects];
+    _titles = @"";
+    _values = @"";
     for (MyCustomButton *btn in allButtonArr) {
         btn.isSelect = NO;
     }
-    if (_getSlectInfo) {
-        self.getSlectInfo(selectDataDic);
+    if (_getSlectInfoStr) {
+        self.getSlectInfoStr(@"", @"");
     }
 }
 @end

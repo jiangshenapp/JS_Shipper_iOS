@@ -9,6 +9,7 @@
 #import "JSConfirmAddressMapVC.h"
 #import "MKMapView+ZoomLevel.h"
 #import "JSEditAddressVC.h"
+#import "JSSelectCityVC.h"
 
 @interface JSConfirmAddressMapVC ()<BMKLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,BMKMapViewDelegate,BMKGeoCodeSearchDelegate,BMKPoiSearchDelegate>
 {
@@ -93,11 +94,6 @@
 - (void)fetchNearbyInfo:(CLLocationDegrees )latitude andT:(CLLocationDegrees )longitude {
     BMKGeoCodeSearch *geocodesearch  = [[BMKGeoCodeSearch alloc] init];
     geocodesearch.delegate =self;
-    NSMutableArray
-    *userDefaultLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
-    // 强制 成 简体中文
-    [[NSUserDefaults
-      standardUserDefaults] setObject:[NSArray arrayWithObjects:@"zh-hans", nil] forKey:@"AppleLanguages"];
     // 显示所有信息
     BMKReverseGeoCodeSearchOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeSearchOption alloc]init];
     reverseGeocodeSearchOption.location = CLLocationCoordinate2DMake(latitude, longitude);
@@ -108,6 +104,10 @@
     else {
         NSLog(@"反geo检索发送失败");
     }
+}
+
+-(void)onGetGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKGeoCodeSearchResult *)result errorCode:(BMKSearchErrorCode)error {
+    
 }
 
 /**
@@ -216,7 +216,13 @@
 }
 
 - (void)selectCityBtn:(UIButton *)sender {
-    
+    __weak typeof(self) weakSelf = self;
+    JSSelectCityVC *vc = [Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectCityVC"];
+    vc.getSelectDic = ^(NSDictionary * _Nonnull dic) {
+        [sender setTitle:dic[@"address"] forState:UIControlStateNormal];
+        [weakSelf.bdMapView setCenterCoordinate:CLLocationCoordinate2DMake([dic[@"lat"] floatValue], [dic[@"lng"] floatValue])];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
