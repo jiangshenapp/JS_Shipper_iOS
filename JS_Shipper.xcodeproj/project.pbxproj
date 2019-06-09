@@ -95,14 +95,6 @@
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
 		20BD741B2248C8230020EA5D /* JSResetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSResetPswVC.m */; };
 		20D64C49227010C9001F6172 /* FilterCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D64C48227010C9001F6172 /* FilterCustomView.m */; };
-		20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */; };
-		20F89D58224DC0DF00D2DC2D /* JSReleaseOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */; };
-		20F89D5B224DC10A00D2DC2D /* JSConfirmOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */; };
-		20F89D5E224DC14E00D2DC2D /* JSDeliveryOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */; };
-		20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */; };
-		20F89D64224DC2F400D2DC2D /* JSTransportOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */; };
-		20F89D67224DC32A00D2DC2D /* JSFinishOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */; };
-		20F89D6A224DC34D00D2DC2D /* JSCancleOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */; };
 		20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934DF224B18B4008C80DB /* JSRechargeVC.m */; };
 		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
 		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
@@ -316,22 +308,6 @@
 		20BD741A2248C8230020EA5D /* JSResetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSResetPswVC.m; sourceTree = "<group>"; };
 		20D64C47227010C9001F6172 /* FilterCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCustomView.h; sourceTree = "<group>"; };
 		20D64C48227010C9001F6172 /* FilterCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCustomView.m; sourceTree = "<group>"; };
-		20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBaseOrderDetailsVC.h; sourceTree = "<group>"; };
-		20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBaseOrderDetailsVC.m; sourceTree = "<group>"; };
-		20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSReleaseOrderVC.h; sourceTree = "<group>"; };
-		20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSReleaseOrderVC.m; sourceTree = "<group>"; };
-		20F89D59224DC10A00D2DC2D /* JSConfirmOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSConfirmOrderVC.h; sourceTree = "<group>"; };
-		20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSConfirmOrderVC.m; sourceTree = "<group>"; };
-		20F89D5C224DC14E00D2DC2D /* JSDeliveryOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDeliveryOrderVC.h; sourceTree = "<group>"; };
-		20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDeliveryOrderVC.m; sourceTree = "<group>"; };
-		20F89D5F224DC2B200D2DC2D /* JSCommentOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCommentOrderVC.h; sourceTree = "<group>"; };
-		20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCommentOrderVC.m; sourceTree = "<group>"; };
-		20F89D62224DC2F300D2DC2D /* JSTransportOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSTransportOrderVC.h; sourceTree = "<group>"; };
-		20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSTransportOrderVC.m; sourceTree = "<group>"; };
-		20F89D65224DC32A00D2DC2D /* JSFinishOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFinishOrderVC.h; sourceTree = "<group>"; };
-		20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSFinishOrderVC.m; sourceTree = "<group>"; };
-		20F89D68224DC34D00D2DC2D /* JSCancleOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCancleOrderVC.h; sourceTree = "<group>"; };
-		20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCancleOrderVC.m; sourceTree = "<group>"; };
 		20F934DE224B18B4008C80DB /* JSRechargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRechargeVC.h; sourceTree = "<group>"; };
 		20F934DF224B18B4008C80DB /* JSRechargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRechargeVC.m; sourceTree = "<group>"; };
 		20F934E1224B1C95008C80DB /* JSWithdrawalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawalMoneyVC.h; sourceTree = "<group>"; };
@@ -495,7 +471,6 @@
 				A00A227722A5FA57002E2E0C /* JSOrderDetailsVC.m */,
 				205F20342276A254000A8967 /* JSOrderDetailMapVC.h */,
 				205F20352276A254000A8967 /* JSOrderDetailMapVC.m */,
-				A00A227522A5F9BC002E2E0C /* OrderDetail */,
 			);
 			path = "我的订单";
 			sourceTree = "<group>";
@@ -908,29 +883,6 @@
 			path = "接口日志";
 			sourceTree = "<group>";
 		};
-		A00A227522A5F9BC002E2E0C /* OrderDetail */ = {
-			isa = PBXGroup;
-			children = (
-				20F89D53224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.h */,
-				20F89D54224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m */,
-				20F89D56224DC0DF00D2DC2D /* JSReleaseOrderVC.h */,
-				20F89D57224DC0DF00D2DC2D /* JSReleaseOrderVC.m */,
-				20F89D59224DC10A00D2DC2D /* JSConfirmOrderVC.h */,
-				20F89D5A224DC10A00D2DC2D /* JSConfirmOrderVC.m */,
-				20F89D5C224DC14E00D2DC2D /* JSDeliveryOrderVC.h */,
-				20F89D5D224DC14E00D2DC2D /* JSDeliveryOrderVC.m */,
-				20F89D5F224DC2B200D2DC2D /* JSCommentOrderVC.h */,
-				20F89D60224DC2B200D2DC2D /* JSCommentOrderVC.m */,
-				20F89D62224DC2F300D2DC2D /* JSTransportOrderVC.h */,
-				20F89D63224DC2F400D2DC2D /* JSTransportOrderVC.m */,
-				20F89D65224DC32A00D2DC2D /* JSFinishOrderVC.h */,
-				20F89D66224DC32A00D2DC2D /* JSFinishOrderVC.m */,
-				20F89D68224DC34D00D2DC2D /* JSCancleOrderVC.h */,
-				20F89D69224DC34D00D2DC2D /* JSCancleOrderVC.m */,
-			);
-			path = OrderDetail;
-			sourceTree = "<group>";
-		};
 		A02634E8228C234800C924E2 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1190,9 +1142,7 @@
 				20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
 				209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */,
-				20F89D61224DC2B200D2DC2D /* JSCommentOrderVC.m in Sources */,
 				20A83ED5229CE01E001304A8 /* MyCustomButton.m in Sources */,
-				20F89D67224DC32A00D2DC2D /* JSFinishOrderVC.m in Sources */,
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
 				207D144022714E5900594520 /* JSAboutVC.m in Sources */,
 				20BD73342248BDC30020EA5D /* main.m in Sources */,
@@ -1200,7 +1150,6 @@
 				20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */,
 				20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */,
 				A075190C227D17710032A974 /* HmAddressModel.m in Sources */,
-				20F89D58224DC0DF00D2DC2D /* JSReleaseOrderVC.m in Sources */,
 				20BD73D02248BE440020EA5D /* XLGLogVC.m in Sources */,
 				20BD73C52248BE440020EA5D /* BaseTabBarVC.m in Sources */,
 				20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */,
@@ -1218,7 +1167,6 @@
 				20BD73A92248BE440020EA5D /* KeyChainUtil.m in Sources */,
 				20BD73C72248BE440020EA5D /* BaseNC.m in Sources */,
 				209B6ACC2272DCCF0060F509 /* MKMapView+ZoomLevel.m in Sources */,
-				20F89D55224DBFBB00D2DC2D /* JSBaseOrderDetailsVC.m in Sources */,
 				20BD73B42248BE440020EA5D /* RegularPhoneTF.m in Sources */,
 				A00A227822A5FA57002E2E0C /* JSOrderDetailsVC.m in Sources */,
 				20BD73B32248BE440020EA5D /* XLGLottie.m in Sources */,
@@ -1230,16 +1178,13 @@
 				A0346BF222A95AD900E5BAED /* TradeRecordModel.m in Sources */,
 				20BD73B62248BE440020EA5D /* NetworkUtil.m in Sources */,
 				20BD73C62248BE440020EA5D /* BaseVC.m in Sources */,
-				20F89D6A224DC34D00D2DC2D /* JSCancleOrderVC.m in Sources */,
 				20BD73BD2248BE440020EA5D /* UserInfo.m in Sources */,
 				20BD73CF2248BE440020EA5D /* XLGChangeServerVC.m in Sources */,
-				20F89D64224DC2F400D2DC2D /* JSTransportOrderVC.m in Sources */,
 				20BD73B92248BE440020EA5D /* CZNotNetAvailableVC.m in Sources */,
 				20BD73BC2248BE440020EA5D /* Reachability.m in Sources */,
 				A075190A227D17710032A974 /* UIView+Extension.m in Sources */,
 				20BD73AE2248BE440020EA5D /* JHHJView.m in Sources */,
 				20BD73B52248BE440020EA5D /* ProgressLoadView.m in Sources */,
-				20F89D5E224DC14E00D2DC2D /* JSDeliveryOrderVC.m in Sources */,
 				20BD73CA2248BE440020EA5D /* BaseWebVC.m in Sources */,
 				20BD73C92248BE440020EA5D /* BaseScrollView.m in Sources */,
 				20BD73CB2248BE440020EA5D /* XLGInternalDemoVC.m in Sources */,
@@ -1254,7 +1199,6 @@
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
 				209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */,
-				20F89D5B224DC10A00D2DC2D /* JSConfirmOrderVC.m in Sources */,
 				20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,

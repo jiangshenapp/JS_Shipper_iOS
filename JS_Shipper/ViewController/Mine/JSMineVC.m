@@ -28,10 +28,11 @@
     
     [self getData];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUserInfo) name:kLoginSuccNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUserInfo) name:kUserInfoChangeNotification object:nil];
-    iconArr = @[@"personalcenter_icon_cars",@"personalcenter_icon_cars",@"personalcenter_icon_cars",@"personalcenter_icon_cars",@"personalcenter_icon_cars",@"personalcenter_icon_cars",@"personalcenter_icon_cars",@"personalcenter_icon_cars"];
-    menuTileArr = @[@"我的车辆",@"我的司机",@"我的路线",@"我的客服",@"我的发票",@"推广大人",@"推广大人"];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kLoginSuccNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kUserInfoChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kChangeMoneyNotification object:nil];
+    iconArr = @[@"personalcenter_icon_service",@"personalcenter_icon_invoice",@"personalcenter_icon_collection",@"personalcenter_icon_customer"];
+    menuTileArr = @[@"我的服务",@"我的发票",@"推广达人",@"我的客服"];
     [self createUI];
 }
 
@@ -58,6 +59,9 @@
 }
 
 - (void)showAction:(UIButton *)sender {
+    
+    [Utils showToast:@"功能暂未开通，敬请期待"];
+    
     NSString *vcName = @"";
     
     if (vcName.length>0) {
@@ -66,13 +70,13 @@
     }
 }
 
-
 #pragma mark - get data
 
 - (void)getData {
     
     if ([Utils isLoginWithJump:YES]) {
         [self getUserInfo]; //获取用户信息
+        [self getAccountInfo]; //获取账户信息
     }
 }
 
@@ -115,7 +119,11 @@
             }
         }
     }];
-    
+}
+
+/* 获取账户信息 */
+- (void)getAccountInfo {
+    NSDictionary *dic = [NSDictionary dictionary];
     [[NetworkManager sharedManager] getJSON:URL_GetBySubscriber parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
             NSString *balance = [NSString stringWithFormat:@"%@",responseData[@"balance"]];
@@ -164,10 +172,26 @@
     else if ([segue.identifier isEqualToString:@"getGoodsOrder"]) { //待收货
         orderVc.typeFlage = 4;
     }
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
+/** 我的圈子 */
+- (IBAction)quanziAction:(id)sender {
+    [Utils showToast:@"功能暂未开通，敬请期待"];
+}
+
+/** 我的社区 */
+- (IBAction)shequAction:(id)sender {
+    [Utils showToast:@"功能暂未开通，敬请期待"];
+}
+
+/** 我的帖子 */
+- (IBAction)tieziAction:(id)sender {
+    [Utils showToast:@"功能暂未开通，敬请期待"];
+}
+
+/** 我的草稿箱 */
+- (IBAction)caogaoxiangAction:(id)sender {
+    [Utils showToast:@"功能暂未开通，敬请期待"];
+}
 
 @end

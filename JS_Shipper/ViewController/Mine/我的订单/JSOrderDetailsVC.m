@@ -46,6 +46,7 @@
     
     [self.headImgView2 sd_setImageWithURL:[NSURL URLWithString:self.model.driverAvatar] placeholderImage:[UIImage imageNamed:@"personalcenter_driver_icon_head_land"]];
     self.nameLab.text = self.model.driverName;
+    self.introduceLab.text = self.model.driverPhone;
     self.orderNoLab.text = [NSString stringWithFormat:@"订单编号：%@",self.model.orderNo];
     self.orderStatusLab.text = self.model.stateNameConsignor;
     self.startAddressLab.text = self.model.sendAddress;
@@ -77,14 +78,22 @@
 #pragma mark - init view
 - (void)initView {
     
-    
     //1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待评价，8已完成，9已取消，10已关闭
     NSInteger state = [self.model.state integerValue];
-    switch (state) {
-        case 1:
+    if (state == 1) {
+        self.tileView1.hidden = NO;
+        self.titleView2.hidden = YES;
+        self.bookTimeLab.text = [NSString stringWithFormat:@"已为您通知%@个司机",self.model.driverNum];
+    } else {
+        if (![Utils isBlankString:self.model.dotName]) {
             self.tileView1.hidden = NO;
             self.titleView2.hidden = YES;
-            self.bookTimeLab.text = [NSString stringWithFormat:@"已为您通知%@个司机",self.model.driverNum];
+            [self.headImgView1 sd_setImageWithURL:[NSURL URLWithString:self.model.driverAvatar] placeholderImage:[UIImage imageNamed:@"personalcenter_driver_icon_head_land"]];
+            self.bookTimeLab.text = self.model.dotName;
+        }
+    }
+    switch (state) {
+        case 1:
             [self.bottomLeftBtn setTitle:@"取消发布" forState:UIControlStateNormal];
             [self.bottomRightBtn setTitle:@"再发一次" forState:UIControlStateNormal];
             break;
@@ -134,10 +143,25 @@
     }
 }
 
+#pragma mark - methods
+
+/** 打电话 */
+- (IBAction)callPhone:(id)sender {
+    if ([Utils isBlankString:self.model.driverPhone]) {
+        [Utils showToast:@"电话号码是空号"];
+        return;
+    }
+    [Utils call:self.model.driverPhone];
+}
+
+/** 聊天 */
+- (IBAction)chatAction:(id)sender {
+    [Utils showToast:@"功能暂未开通，敬请期待"];
+}
+
 - (IBAction)bottomLeftBtnAction:(UIButton *)sender {
     NSString *title = sender.titleLabel.text;
     if ([title isEqualToString:@"取消发布"]) {
-        [Utils showToast:@"取消发布"];
         [self cancleOrder];
     }
     if ([title isEqualToString:@"查看路线"]) {
@@ -161,7 +185,6 @@
         [self confirmGoodsOrder];
     }
     if ([title isEqualToString:@"评价"]) {
-        [Utils showToast:@"评价"];
         [self commentOrder];
     }
     if ([title isEqualToString:@"重新发货"]) {
@@ -173,12 +196,11 @@
 - (IBAction)bottomBtnAction:(UIButton *)sender {
     NSString *title = sender.titleLabel.text;
     if ([title isEqualToString:@"取消发货"]) {
-        [Utils showToast:@"取消发货"];
-        [self cancleDeliverOrder];
+        [self cancleOrder];
     }
     if ([title isEqualToString:@"重新发货"]) {
         [Utils showToast:@"重新发货"];
-         [self renewDeliverOrder];
+        [self renewDeliverOrder];
     }
 }
 
@@ -189,6 +211,7 @@
     NSDictionary *dic = [NSDictionary dictionary];
     [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status == Request_Success) {
+            [Utils showToast:@"订单取消成功"];
             [weakSelf.navigationController popToRootViewControllerAnimated:NO];
         }
     }];
@@ -212,29 +235,10 @@
     }];
 }
 
-#pragma mark - 取消发货
-/** 取消发货 */
-- (void)cancleDeliverOrder {
-//    __weak typeof(self) weakSelf = self;
-//    NSDictionary *dic = [NSDictionary dictionary];
-//    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
-//        if (status == Request_Success) {
-//            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-//        }
-//    }];
-}
-
-
 #pragma mark - 评价
 /** 评价 */
 - (void)commentOrder {
-//    __weak typeof(self) weakSelf = self;
-//    NSDictionary *dic = [NSDictionary dictionary];
-//    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
-//        if (status == Request_Success) {
-//            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-//        }
-//    }];
+    [Utils showToast:@"功能暂未开通，敬请期待"];
 }
 
 #pragma mark - 确认收货

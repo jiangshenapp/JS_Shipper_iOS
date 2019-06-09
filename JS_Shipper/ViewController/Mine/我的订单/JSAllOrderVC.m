@@ -11,7 +11,6 @@
 
 @interface JSAllOrderVC ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSArray *classNameArr;
     __block NSInteger _page;
 }
 /** 列表的数据源 */
@@ -24,10 +23,16 @@
 
 @implementation JSAllOrderVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"我的订单";
-    classNameArr = @[@"JSReleaseOrderVC",@"JSConfirmOrderVC",@"JSDeliveryOrderVC",@"JSCommentOrderVC",@"JSTransportOrderVC",@"JSFinishOrderVC",@"JSCancleOrderVC"];
+
     if (_typeFlage>0) {
         UIButton *sender = [self.view viewWithTag:100+_typeFlage];
         [self titleBtnAction:sender];

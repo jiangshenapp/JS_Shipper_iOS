@@ -96,4 +96,9 @@
  */
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
 
+/*!
+ *  @brief 打电话
+ */
++ (UIWebView *)call:(NSString *)phoneAccount;
+
 @end

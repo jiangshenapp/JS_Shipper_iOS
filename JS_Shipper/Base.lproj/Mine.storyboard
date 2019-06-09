@@ -100,13 +100,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_abutus_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Jm7-5y-NXj">
-                                <rect key="frame" x="119" y="98" width="137" height="128"/>
+                                <rect key="frame" x="179" y="98" width="17" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jm7-5y-NXj" secondAttribute="height" multiplier="137:128" id="GXF-Gl-inN"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOg-kI-Stb">
-                                <rect key="frame" x="28" y="260" width="319" height="58"/>
+                                <rect key="frame" x="28" y="148" width="319" height="58"/>
                                 <attributedString key="attributedText">
                                     <fragment content="AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。">
                                         <attributes>
@@ -751,6 +751,9 @@
                                                         <state key="normal" title="我的圈子">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="quanziAction:" destination="ko5-fX-6mn" eventType="touchUpInside" id="NgY-RX-OP6"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -771,6 +774,9 @@
                                                         <state key="normal" title="我的社区">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="shequAction:" destination="ko5-fX-6mn" eventType="touchUpInside" id="kGi-g7-dwn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -791,6 +797,9 @@
                                                         <state key="normal" title="我的帖子">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tieziAction:" destination="ko5-fX-6mn" eventType="touchUpInside" id="dRg-5t-UJj"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -811,6 +820,9 @@
                                                         <state key="normal" title="我的草稿箱">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="caogaoxiangAction:" destination="ko5-fX-6mn" eventType="touchUpInside" id="vRe-QD-q74"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2710,11 +2722,17 @@ Cg
                                                 <rect key="frame" x="286" y="10" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="home_list_btn_phone"/>
+                                                <connections>
+                                                    <action selector="callPhone:" destination="ULz-j3-HQB" eventType="touchUpInside" id="yed-Mv-dIs"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZ2-td-3dR">
                                                 <rect key="frame" x="330" y="10" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="home_list_btn_chat"/>
+                                                <connections>
+                                                    <action selector="chatAction:" destination="ULz-j3-HQB" eventType="touchUpInside" id="GHb-1k-lln"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
