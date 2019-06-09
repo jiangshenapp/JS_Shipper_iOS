@@ -231,7 +231,7 @@
     [postDic setObject:_payType forKey:@"payType"];
     [[NetworkManager sharedManager] postJSON:URL_AddStepTwo parameters:postDic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
-            NSLog(@"下单成功");
+            [Utils showToast:@"下单成功"];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
     }];

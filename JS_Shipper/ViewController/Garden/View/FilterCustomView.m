@@ -223,13 +223,23 @@
                     break;
                 }
                 MyCustomButton *_button = [[MyCustomButton alloc]initWithFrame:CGRectMake(WorkSpace+(j*(ButtonWidth+WorkSpace)), HeaderHeight+WorkSpace+(i*(ButtonWidth*0.5+WorkSpace)), ButtonWidth, ButtonWidth*0.5)];
+                _button.isSelect = NO;
                 if (index==0) {
                     [_button setTitle:@"不限" forState:UIControlStateNormal];
                     _button.dataDic = @{@"value":@"",@"label":@"不限"};
+                    if (_titles.length==0) {
+                        _button.isSelect = YES;
+                    }
+                    if (lastSelectBtn==nil) {
+                        lastSelectBtn = _button;
+                    }
                 }
                 else {
                     [_button setTitle:dataSource[index-1][@"label"] forState:UIControlStateNormal];
                     _button.dataDic = dataSource[index-1];
+                }
+                if ([_titles containsString:[NSString stringWithFormat:@"%@,",_button.currentTitle]]) {
+                    _button.isSelect = YES;
                 }
                 _button.index = index;
                 [_button addTarget:self action:@selector(buttonTouchAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -263,7 +273,6 @@
 }
 
 - (void)buttonTouchAction:(MyCustomButton *)sender {
-    
     if (_isSingle) {//是单选
         lastSelectBtn.isSelect = NO;
         lastSelectBtn = sender;
@@ -305,8 +314,16 @@
     }
     _titles = @"";
     _values = @"";
+    NSInteger index = 0;
     for (MyCustomButton *btn in allButtonArr) {
-        btn.isSelect = NO;
+        if (index==0) {
+            btn.isSelect = YES;
+            lastSelectBtn = btn;
+        }
+        else {
+            btn.isSelect = NO;
+        }
+        index++;
     }
     if (_getSlectInfoStr) {
         self.getSlectInfoStr(@"", @"");

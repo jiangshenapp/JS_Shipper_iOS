@@ -272,6 +272,12 @@
 
 
 - (IBAction)getAddressInfoAction:(UIButton *)sender {
+    if (_sourceType==1) {
+        if(self.dataModel.mobile.length==0||self.dataModel.userName.length==0) {
+            [Utils showToast:@"请填写收货人信息"];
+            return;
+        }
+    }
     if (_getAddressinfo) {
         if (_dataModel!=nil) {
             _dataModel.areaCode = areaCode;
