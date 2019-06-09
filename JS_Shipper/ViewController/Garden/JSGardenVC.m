@@ -39,6 +39,9 @@
 @property (nonatomic,retain) NSDictionary *allDicKey;
 /** 数据源 */
 @property (nonatomic,retain) NSMutableArray <RecordsModel *>*dataSource;
+/** 排序，1发货时间 2距离; */
+@property (nonatomic,copy) NSString *sort;
+
 @end
 
 @implementation JSGardenVC
@@ -53,6 +56,7 @@
 -(void)initView {
     _pageFlag = 0;
     _page = 1;
+    _sort = @"1";
     _dataSource = [NSMutableArray array];
     _titleView.top = 7+kStatusBarH;
     _titleView.centerX = WIDTH/2.0;
@@ -86,6 +90,16 @@
         [weakSelf.baseTabView.mj_header beginRefreshing];
     };
     mySortView = [[SortView alloc]init];
+    mySortView.getSortString = ^(NSString * _Nonnull sorts) {
+        FilterButton *tempBtn = [weakSelf.view viewWithTag:20002];
+        tempBtn.selected = NO;
+        if ([sorts containsString:@"默认"]) {
+            weakSelf.sort = @"1";
+        }
+        else {
+            weakSelf.sort = @"2";
+        }
+    };
     _myfilteView = [[FilterCustomView alloc]init];\
     _myfilteView.getPostDic = ^(NSDictionary * _Nonnull dic, NSArray * _Nonnull titles) {
         FilterButton *tempBtn = [weakSelf.view viewWithTag:20003];
@@ -111,8 +125,9 @@
 - (void)getNetData {
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:_areaCode1 forKey:@"arriveAddressCode"];
-    [dic setObject:_areaCode2 forKey:@"startAddressCode"];
+    [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
+    [dic setObject:_areaCode1 forKey:@"startAddressCode"];
+    [dic setObject:_sort forKey:@"sort"];
     [dic addEntriesFromDictionary:self.allDicKey];
     NSString *url = [NSString stringWithFormat:@"%@?current=%ld&size=%@",_postUrlDic[@(_pageFlag)],_page,PageSize];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
