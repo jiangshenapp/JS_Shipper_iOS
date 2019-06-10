@@ -240,6 +240,7 @@
 
 /* 选择区域 */
 - (IBAction)selectAddressAction:(id)sender {
+    [self.view endEditing:YES];
     // 这里传进去的self.currentProvince 等等的都是本页面的存储值
     HmSelectAdView *selectV = [[HmSelectAdView alloc] initWithLastContent:self.currentProvince ? @[self.currentProvince, self.currentCity, self.currentArea] : nil];
     selectV.confirmSelect = ^(NSArray *address) {
@@ -253,6 +254,7 @@
 
 /* 公司选择所在地 */
 - (IBAction)selectCompanyAddressAction:(id)sender {
+    [self.view endEditing:YES];
     // 这里传进去的self.currentProvince 等等的都是本页面的存储值
     HmSelectAdView *selectV = [[HmSelectAdView alloc] initWithLastContent:self.currentProvince ? @[self.currentProvince, self.currentCity, self.currentArea] : nil];
     selectV.confirmSelect = ^(NSArray *address) {
