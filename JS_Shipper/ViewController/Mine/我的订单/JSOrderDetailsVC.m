@@ -80,7 +80,7 @@
     
     //1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待评价，8已完成，9已取消，10已关闭
     NSInteger state = [self.model.state integerValue];
-    if (state == 1) {
+    if (state == 1 || state == 2) {
         self.tileView1.hidden = NO;
         self.titleView2.hidden = YES;
         self.bookTimeLab.text = [NSString stringWithFormat:@"已为您通知%@个司机",self.model.driverNum];
@@ -94,11 +94,9 @@
     }
     switch (state) {
         case 1:
+        case 2:
             [self.bottomLeftBtn setTitle:@"取消发布" forState:UIControlStateNormal];
             [self.bottomRightBtn setTitle:@"再发一次" forState:UIControlStateNormal];
-            break;
-        case 2:
-            
             break;
         case 3: //车主待确认
             [self.bottomLeftBtn setTitle:@"取消发布" forState:UIControlStateNormal];
