@@ -162,8 +162,10 @@
         if (_info1.mobile) {
             [dic setObject:_info1.mobile forKey:@"sendMobile"];
             [dic setObject:_info1.userName forKey:@"sendName"];
-            [dic setObject:_info1.detailAddress forKey:@"sendPosition"];
         }
+        NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
+        [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
+
     }
     if (_info2.address.length>0) {
         [dic setObject:_info2.address forKey:@"receiveAddress"];

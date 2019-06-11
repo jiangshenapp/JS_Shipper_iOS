@@ -38,6 +38,8 @@
 @property (nonatomic,copy) NSString *remark;
 /** 用车类型，字典 */
 @property (nonatomic,copy) NSString *useCarType;
+/** 用车类型 */
+@property (nonatomic,retain) NSArray *useCarTypeArr;
 @end
 
 @implementation JSDeliverConfirmVC
@@ -53,6 +55,7 @@
     self.payType = @"1";
     UIButton *otherBtn = [self.view viewWithTag:100];
     [self needLoadGoodsType:otherBtn];
+    [self getCarTypeInfo];
     // Do any additional setup after loading the view.
 }
 
@@ -85,13 +88,33 @@
 - (IBAction)selectUseCarTypeAction:(id)sender {
     __weak typeof(self) weakSelf = self;
     ZHPickView *pickView = [[ZHPickView alloc] init];
-    [pickView setDataViewWithItem:@[@"零担",@"整车"] title:@"用车类型"];
+    NSMutableArray *arr = [NSMutableArray array];
+    for (NSDictionary *dic in self.useCarTypeArr) {
+        [arr addObject:dic[@"label"]];
+    }
+    [pickView setDataViewWithItem:arr title:@"用车类型"];
     [pickView showPickView:self];
     pickView.block = ^(NSString *selectedStr) {
-        weakSelf.useCarType = selectedStr;
+        weakSelf.useCarType = weakSelf.useCarTypeArr[[arr indexOfObject:selectedStr]][@"value"];
         weakSelf.useCarTypeLab.text = selectedStr;
         weakSelf.useCarTypeLab.textColor = [UIColor grayColor];
     };
+}
+
+#pragma mark - 车型
+/** 车型 */
+- (void)getCarTypeInfo {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSString *url = [NSString stringWithFormat:@"%@?type=useCarType",URL_GetDictByType];
+    [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status==Request_Success) {
+            NSArray *arr = responseData;
+            if ([arr isKindOfClass:[NSArray class]]) {
+                weakSelf.useCarTypeArr = [NSArray arrayWithArray:arr];
+            }
+        }
+    }];
 }
 
 - (IBAction)selectPhotoAction1:(UIButton *)sender {
@@ -224,6 +247,7 @@
     [postDic setObject:_goodAreaTF.text forKey:@"goodsVolume"];
     [postDic setObject:_image1 forKey:@"image1"];
     [postDic setObject:_image2 forKey:@"image2"];
+    [postDic setObject:_orderID forKey:@"id"];
     [postDic setObject:_remark forKey:@"remark"];
     [postDic setObject:_feeType forKey:@"feeType"];
     [postDic setObject:_fee forKey:@"fee"];
