@@ -8,6 +8,7 @@
 
 #import "JSMyWalletVC.h"
 #import "JSWithdrawalMoneyVC.h"
+#import "AccountInfo.h"
 
 @implementation JSMyWalletVC
 
@@ -28,8 +29,10 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [[NetworkManager sharedManager] getJSON:URL_GetBySubscriber parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
-            NSString *balance = [NSString stringWithFormat:@"%@",responseData[@"balance"]];
-            self.balanceLab.text = balance;
+            AccountInfo *accountInfo = [AccountInfo mj_objectWithKeyValues:(NSDictionary *)responseData];
+            if (accountInfo!=nil) {
+                self.balanceLab.text = accountInfo.balance;
+            }
         }
     }];
 }

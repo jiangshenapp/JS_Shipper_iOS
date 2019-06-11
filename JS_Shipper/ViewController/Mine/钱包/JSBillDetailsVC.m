@@ -21,15 +21,16 @@
     
     self.title = @"账单明细";
     
-    [self getData];
+    [self getData:@"0"];
 }
 
 #pragma mark - get data
 
-- (void)getData {
+- (void)getData:(NSString *)type {
+    //type 0全部，1余额，2运力端保证金, 3货主端保证金
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [[NetworkManager sharedManager] getJSON:URL_GetTradeRecord parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+    [[NetworkManager sharedManager] getJSON:[NSString stringWithFormat:@"%@?type=%@",URL_GetTradeRecord,type] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
             weakSelf.listData = [TradeRecordModel mj_objectArrayWithKeyValuesArray:responseData];
             [weakSelf.baseTabView reloadData];
@@ -70,9 +71,11 @@
     [sender setTitleColor:AppThemeColor forState:UIControlStateNormal];
     if ([sender isEqual:_allOrderBtn]) {
         [_balanceOrderBtn setTitleColor:kBlackColor forState:UIControlStateNormal];
+        [self getData:@"0"];
     }
     else {
         [_allOrderBtn setTitleColor:kBlackColor forState:UIControlStateNormal];
+        [self getData:@"1"];
     }
 }
 

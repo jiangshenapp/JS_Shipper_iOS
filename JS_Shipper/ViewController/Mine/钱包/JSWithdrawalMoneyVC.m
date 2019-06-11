@@ -83,7 +83,7 @@
     }
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    NSString *urlStr = [NSString stringWithFormat:@"%@?bankCard=%@&khh=%@&zh=%@&withdrawChannel=%@&withdrawType=%@&zfbzh=%@&zfbzhxm=%@",URL_BalanceWithdraw,self.bankCardNoTF.text,self.openBankNameTF.text,self.openBankBranchNameTF.text,withdrawChannel,@"2",self.alipayAccountTF.text,self.alipayAccountNameTF.text];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?bankCard=%@&khh=%@&zh=%@&withdrawChannel=%@&withdrawType=%@&zfbzh=%@&zfbmc=%@",URL_BalanceWithdraw,self.bankCardNoTF.text,self.openBankNameTF.text,self.openBankBranchNameTF.text,withdrawChannel,@"2",self.alipayAccountTF.text,self.alipayAccountNameTF.text];
     [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
             [Utils showToast:@"申请提现成功"];

@@ -144,6 +144,7 @@
 		A075190D227D17710032A974 /* HmSelectAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751906227D17710032A974 /* HmSelectAdView.m */; };
 		A0773E8E22885B1000C74D69 /* AuthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A0773E8D22885B1000C74D69 /* AuthInfo.m */; };
 		A0E9270522852C9C00D07C58 /* AEFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E9270422852C9C00D07C58 /* AEFilePath.m */; };
+		A0F9CC7722AF366600161945 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F9CC7522AF366600161945 /* AccountInfo.m */; };
 		C2906EBDB1A940D92FBD8960 /* libPods-JS_Shipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */; };
 /* End PBXBuildFile section */
 
@@ -373,6 +374,8 @@
 		A0773E8D22885B1000C74D69 /* AuthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthInfo.m; sourceTree = "<group>"; };
 		A0E9270322852C9C00D07C58 /* AEFilePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFilePath.h; sourceTree = "<group>"; };
 		A0E9270422852C9C00D07C58 /* AEFilePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFilePath.m; sourceTree = "<group>"; };
+		A0F9CC7522AF366600161945 /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
+		A0F9CC7622AF366600161945 /* AccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfo.h; sourceTree = "<group>"; };
 		F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JS_Shipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9A20BD52D80F462075489F /* Pods-JS_Shipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -687,6 +690,8 @@
 				A04CB3C1227B1C6E00ED6979 /* BaseItem.m */,
 				20BD73722248BE430020EA5D /* UserInfo.h */,
 				20BD73712248BE430020EA5D /* UserInfo.m */,
+				A0F9CC7622AF366600161945 /* AccountInfo.h */,
+				A0F9CC7522AF366600161945 /* AccountInfo.m */,
 				A0773E8C22885B1000C74D69 /* AuthInfo.h */,
 				A0773E8D22885B1000C74D69 /* AuthInfo.m */,
 				201040B8229E662900B7B258 /* AddressInfoModel.h */,
@@ -1140,6 +1145,7 @@
 				A0E9270522852C9C00D07C58 /* AEFilePath.m in Sources */,
 				202845E9226FF9C70087BCF6 /* SortView.m in Sources */,
 				20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */,
+				A0F9CC7722AF366600161945 /* AccountInfo.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
 				209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */,
 				20A83ED5229CE01E001304A8 /* MyCustomButton.m in Sources */,

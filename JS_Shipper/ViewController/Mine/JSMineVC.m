@@ -8,6 +8,7 @@
 
 #import "JSMineVC.h"
 #import "JSAllOrderVC.h"
+#import "AccountInfo.h"
 
 #define LineCount 3
 
@@ -31,6 +32,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kLoginSuccNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kUserInfoChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kChangeMoneyNotification object:nil];
+    
     iconArr = @[@"personalcenter_icon_service",@"personalcenter_icon_invoice",@"personalcenter_icon_collection",@"personalcenter_icon_customer"];
     menuTileArr = @[@"我的服务",@"我的发票",@"推广达人",@"我的客服"];
     [self createUI];
@@ -126,8 +128,10 @@
     NSDictionary *dic = [NSDictionary dictionary];
     [[NetworkManager sharedManager] getJSON:URL_GetBySubscriber parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
-            NSString *balance = [NSString stringWithFormat:@"%@",responseData[@"balance"]];
-            self.balanceLab.text = balance;
+            AccountInfo *accountInfo = [AccountInfo mj_objectWithKeyValues:(NSDictionary *)responseData];
+            if (accountInfo!=nil) {
+                self.balanceLab.text = accountInfo.balance;
+            }
         }
     }];
 }
