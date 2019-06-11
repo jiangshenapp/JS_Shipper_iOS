@@ -233,11 +233,11 @@
     }
     _fee = @"";
     if ([_feeType integerValue]==1) {
-        if ([NSString isEmpty:_goodsTypeTF.text]) {
+        if ([NSString isEmpty:_priceLab.text]) {
             [Utils showToast:@"请输入价格"];
             return;
         }
-        _fee = _goodsTypeTF.text;
+        _fee = _priceLab.text;
     }
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *postDic = [NSMutableDictionary dictionary];

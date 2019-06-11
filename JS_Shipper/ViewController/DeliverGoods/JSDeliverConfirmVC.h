@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *bottomLeftBtn;
 @property (weak, nonatomic) IBOutlet UIButton *bottomRightBtn;
 
+@property (weak, nonatomic) IBOutlet UITextField *priceLab;
 /** 选择货物类型 */
 - (IBAction)selectGoodsTypeAction:(id)sender;
 /** 选择装货时间 */

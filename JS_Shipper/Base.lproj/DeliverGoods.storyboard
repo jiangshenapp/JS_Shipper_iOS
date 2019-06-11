@@ -701,6 +701,7 @@
                         <outlet property="goodsTimeLab" destination="5er-Dh-rIW" id="Xdn-ce-gsa"/>
                         <outlet property="goodsTypeTF" destination="7K0-Q1-7yZ" id="0Km-lY-o8u"/>
                         <outlet property="markTF" destination="VTk-LQ-FSp" id="FYm-aD-sIV"/>
+                        <outlet property="priceLab" destination="yNT-rn-NF9" id="evb-ep-Alu"/>
                         <outlet property="useCarTypeLab" destination="gtH-hT-9Vn" id="Z1a-Fl-Pgq"/>
                         <outlet property="weightTF" destination="igN-db-14O" id="mDN-tU-Fe6"/>
                     </connections>
