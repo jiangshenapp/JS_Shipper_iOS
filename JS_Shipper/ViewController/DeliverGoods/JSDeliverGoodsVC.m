@@ -172,8 +172,10 @@
         [dic setObject:_info2.areaCode forKey:@"receiveAddressCode"];
         if (_info2.mobile.length>0) {
             [dic setObject:_info2.mobile forKey:@"receiveMobile"];
-            [dic setObject:_info2.detailAddress forKey:@"receivePosition"];
+            [dic setObject:_info2.userName forKey:@"receiveName"];
         }
+        NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
+        [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];
     }
     [[NetworkManager sharedManager] postJSON:URL_AddStepOne parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
