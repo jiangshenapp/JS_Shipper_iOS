@@ -19,6 +19,8 @@
     
     self.title = @"提现";
     
+    self.moneyTF.enabled = NO;
+    self.moneyTF.text = self.maxMoney;
     self.maxMoneyLab.text = [NSString stringWithFormat:@"当前最大提现金额：%@元",self.maxMoney];
 }
 
