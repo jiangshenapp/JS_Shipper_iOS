@@ -128,6 +128,9 @@
 }
 
 - (IBAction)titleBtnAction:(UIButton *)sender {
+    if (sender.selected) {
+        return;
+    }
     for (NSInteger tag = 100; tag<105; tag++) {
         UIButton *btn = [self.view viewWithTag:tag];
         btn.selected = [btn isEqual:sender]?YES:NO;
