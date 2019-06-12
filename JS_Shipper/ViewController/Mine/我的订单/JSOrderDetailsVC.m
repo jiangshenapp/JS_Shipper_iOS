@@ -8,6 +8,7 @@
 
 #import "JSOrderDetailsVC.h"
 #import "JSOrderDetailMapVC.h"
+#import "JSPayVC.h"
 
 @interface JSOrderDetailsVC ()
 
@@ -175,7 +176,6 @@
         [self againPushlishOrder];
     }
     if ([title isEqualToString:@"立即支付"]) {
-        [Utils showToast:@"立即支付"];
         [self payOrder];
     }
     if ([title isEqualToString:@"确认收货"]) {
@@ -254,12 +254,15 @@
 #pragma mark - 立即支付
 /** 立即支付 */
 - (void)payOrder {
-   
+    JSPayVC *vc = (JSPayVC *)[Utils getViewController:@"Mine" WithVCName:@"JSPayVC"];
+    vc.orderID  = [NSString stringWithFormat:@"%@",self.model.orderNo];
+    vc.price = [NSString stringWithFormat:@"%@",self.model.fee];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark - 查看路线
 /** 查看路线 */
 - (void)showRoutOrder {
-    JSOrderDetailMapVC *vc = [Utils getViewController:@"Mine" WithVCName:@"JSOrderDetailMapVC"];
+    JSOrderDetailMapVC *vc = (JSOrderDetailMapVC *)[Utils getViewController:@"Mine" WithVCName:@"JSOrderDetailMapVC"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -56,7 +56,6 @@
 }
 
 #pragma mark - get data
-
 - (void)getData {
     // business_id 1、运力端充值 2、货主端充值 3、货主端支付运费
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
