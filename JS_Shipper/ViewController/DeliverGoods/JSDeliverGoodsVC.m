@@ -33,6 +33,11 @@
 
 @implementation JSDeliverGoodsVC
 
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_carLengthView hiddenView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"发货";

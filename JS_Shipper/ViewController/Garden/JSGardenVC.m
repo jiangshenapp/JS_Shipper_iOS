@@ -100,7 +100,7 @@
             weakSelf.sort = @"2";
         }
     };
-    _myfilteView = [[FilterCustomView alloc]init];\
+    _myfilteView = [[FilterCustomView alloc]init];
     _myfilteView.getPostDic = ^(NSDictionary * _Nonnull dic, NSArray * _Nonnull titles) {
         FilterButton *tempBtn = [weakSelf.view viewWithTag:20003];
         tempBtn.selected = NO;
