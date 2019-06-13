@@ -65,9 +65,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *remark;
 @property (nonatomic,copy) NSString *driverName;
 @property (nonatomic,copy) NSString *arriveAddressCode;
-@property (nonatomic,copy) NSString *receiveAddressCodeName;
 @property (nonatomic,copy) NSString *startAddressCode;
 @property (nonatomic,copy) NSString *startAddressCodeName;
+/** arriveAddressCodeName */
+@property (nonatomic,copy) NSString *arriveAddressCodeName;
 @end
 
 @interface HomeDataModel : BaseItem

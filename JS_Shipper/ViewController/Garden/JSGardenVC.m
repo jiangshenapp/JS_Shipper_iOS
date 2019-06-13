@@ -10,6 +10,7 @@
 #import "CityCustomView.h"
 #import "SortView.h"
 #import "FilterCustomView.h"
+#import "JSCarSourceDetailVC.h"
 
 @interface JSGardenVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -108,7 +109,7 @@
         [weakSelf.baseTabView.mj_header beginRefreshing];
     };
     titleViewArr = @[cityView1,cityView2,mySortView,_myfilteView];
-    _postUrlDic = @{@(0):URL_Find,@(1):URL_Find,@(2):URL_Classic};
+    _postUrlDic = @{@(0):URL_Find,@(1):URL_CityParkList,@(2):URL_Classic};
     _areaCode1 = @"";
     _areaCode2 = @"";
     _allDicKey = @{@"useCarType":@"",@"carLength":@"",@"carModel":@"",@"goodsType":@""};
@@ -179,8 +180,11 @@
         JSGardenTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JSGardenTabCell"];
         cell.countBtn.hidden = _pageFlag;
         cell.startAddressLab.text = model.startAddressCodeName;
-        cell.endAddressLab.text = model.receiveAddressCodeName;
+        cell.endAddressLab.text = model.arriveAddressCodeName;
         cell.contentLab.text = [NSString stringWithFormat:@"%@ %@ %@/%@",model.driverName,model.cphm,model.carModelName,model.carLengthName];
+//        if (_pageFlag==2) {
+//              cell.contentLab.text = [NSString stringWithFormat:@"%@ %@ %@/%@",model.driverName,model.cphm,model.carModelName,model.carLengthName];
+//        }
         return cell;
     }
     else if (_pageFlag==1) {
@@ -217,6 +221,17 @@
         }
     }
     return 0.01;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    RecordsModel *model =self.dataSource[indexPath.section];
+    if (_pageFlag==0) {
+        JSCarSourceDetailVC *vc = (JSCarSourceDetailVC *)[Utils getViewController:@"Garden" WithVCName:@"JSCarSourceDetailVC"];
+        vc.carSourceID = model.ID;
+        vc.dataModel = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)showDevileryText:(UIButton*)sender {

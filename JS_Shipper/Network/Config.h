@@ -69,7 +69,8 @@ NSString *PIC_URL(void);
 
 #define URL_Classic @"/app/line/classic" //精品线路
 #define URL_Find @"/app/line/find" //车源
-
+#define URL_CityParkList @"/app/park/list"//找城市配送
+#define URL_GetGradeDetail @"/app/park/get"//园区详情"
 
 
 #pragma mark - APP订单相关接口

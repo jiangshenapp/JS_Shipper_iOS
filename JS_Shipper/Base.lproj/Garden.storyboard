@@ -316,7 +316,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S58-t1-WTD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="a18-PM-nvd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
@@ -324,7 +324,7 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z9i-7Z-CKy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
-                                            <color key="backgroundColor" red="0.0" green="0.80392156859999997" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Z9i-7Z-CKy" secondAttribute="height" multiplier="5:2" id="5cZ-q5-wFN"/>
                                             </constraints>
@@ -486,11 +486,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <state key="normal" image="home_list_btn_phone"/>
+                                        <connections>
+                                            <action selector="callAction:" destination="SgN-9e-9lD" eventType="touchUpInside" id="S6T-f3-aRV"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS7-V0-krC">
                                         <rect key="frame" x="80" y="0.0" width="80" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <state key="normal" image="home_list_btn_chat"/>
+                                        <connections>
+                                            <action selector="chatAction:" destination="SgN-9e-9lD" eventType="touchUpInside" id="JLb-6b-Nd9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXI-5K-mU3">
                                         <rect key="frame" x="170" y="0.0" width="205" height="50"/>
@@ -498,6 +504,9 @@
                                         <color key="backgroundColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="立即下单"/>
+                                        <connections>
+                                            <action selector="createOrderAction:" destination="SgN-9e-9lD" eventType="touchUpInside" id="yWj-Rh-v6y"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -513,11 +522,23 @@
                             <constraint firstItem="fHN-es-eQ2" firstAttribute="leading" secondItem="iMQ-9s-Vwm" secondAttribute="leading" id="Jsg-QJ-FoG"/>
                             <constraint firstItem="S58-t1-WTD" firstAttribute="leading" secondItem="iMQ-9s-Vwm" secondAttribute="leading" id="P7A-Tu-mZK"/>
                             <constraint firstAttribute="trailing" secondItem="fHN-es-eQ2" secondAttribute="trailing" id="j0l-4a-PSZ"/>
-                            <constraint firstItem="kpp-Fw-hVg" firstAttribute="top" secondItem="S58-t1-WTD" secondAttribute="bottom" id="mcH-ER-bPI"/>
+                            <constraint firstItem="kpp-Fw-hVg" firstAttribute="top" secondItem="S58-t1-WTD" secondAttribute="bottom" constant="50" id="mcH-ER-bPI"/>
                             <constraint firstItem="kpp-Fw-hVg" firstAttribute="top" secondItem="fHN-es-eQ2" secondAttribute="bottom" id="tQa-OF-OYR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y2K-14-UNc"/>
+                    <connections>
+                        <outlet property="baseTabView" destination="S58-t1-WTD" id="dfT-G7-r7O"/>
+                        <outlet property="carAspect" destination="5cZ-q5-wFN" id="2a1-I9-svg"/>
+                        <outlet property="carImgView" destination="Z9i-7Z-CKy" id="Ob8-98-TSA"/>
+                        <outlet property="carLengthLab" destination="Xdv-XG-FHx" id="Uec-3n-Zzd"/>
+                        <outlet property="carNumLab" destination="jAQ-QK-FuG" id="zjn-QL-UPV"/>
+                        <outlet property="carTypeLab" destination="slt-M5-kmm" id="6VJ-Ys-oXT"/>
+                        <outlet property="endAddressLab" destination="E6u-5q-Pt1" id="Wng-EH-ae2"/>
+                        <outlet property="nameLab" destination="ytx-uc-Ayl" id="Ur1-3e-Y5d"/>
+                        <outlet property="remarkTV" destination="TlB-5A-oBu" id="yBe-L8-uJS"/>
+                        <outlet property="startAddressLab" destination="UJj-jQ-rZJ" id="Tsg-4C-3mT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYM-cl-Tzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

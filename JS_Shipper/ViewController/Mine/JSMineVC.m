@@ -33,8 +33,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kUserInfoChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kChangeMoneyNotification object:nil];
     
-    iconArr = @[@"personalcenter_icon_service",@"personalcenter_icon_invoice",@"personalcenter_icon_collection",@"personalcenter_icon_customer"];
-    menuTileArr = @[@"我的服务",@"我的发票",@"推广达人",@"我的客服"];
+    iconArr = @[@"personalcenter_icon_park",@"personalcenter_icon_service",@"personalcenter_icon_invoice",@"personalcenter_icon_collection",@"personalcenter_icon_customer"];
+    menuTileArr = @[@"我的园区",@"我的服务",@"我的发票",@"推广达人",@"我的客服"];
     [self createUI];
 }
 
