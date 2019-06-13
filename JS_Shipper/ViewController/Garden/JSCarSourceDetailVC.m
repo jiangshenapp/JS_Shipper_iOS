@@ -7,6 +7,7 @@
 //
 
 #import "JSCarSourceDetailVC.h"
+#import "JSDeliverConfirmVC.h"
 
 @interface JSCarSourceDetailVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *carImgView;
@@ -37,22 +38,23 @@
 - (void)getData {
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    NSString *url = [NSString stringWithFormat:@"%@?id=%@",URL_GetGradeDetail,_carSourceID];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",URL_GetLineDetail,_carSourceID];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status == Request_Success) {
             weakSelf.dataModel = [RecordsModel mj_objectWithKeyValues:responseData];
+            [weakSelf refreshUI];
         }
-//        [weakSelf refreshUI];
     }];
 }
 
 - (void)refreshUI {
     _startAddressLab.text = _dataModel.startAddressCodeName;
-    _endAddressLab.text = _dataModel.arriveAddressCodeName;
+    _endAddressLab.text = _dataModel.receiveAddressCodeName;
     _nameLab.text = _dataModel.driverName;
     _carNumLab.text = _dataModel.cphm;
     _carTypeLab.text = _dataModel.carModelName;
     _carLengthLab.text = _dataModel.carLengthName;
+    _remarkTV.text = _dataModel.remark;
 }
 
 /*
@@ -72,5 +74,27 @@
 }
 
 - (IBAction)createOrderAction:(UIButton *)sender {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:_dataModel.carModel forKey:@"carModel"];
+    [dic setObject:_dataModel.carLength forKey:@"carLength"];
+//        [dic setObject:_info1.address forKey:@"sendAddress"];
+        [dic setObject:_dataModel.startAddressCode forKey:@"sendAddressCode"];
+//        NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
+//        [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
+        [dic setObject:_dataModel.arriveAddressCode forKey:@"receiveAddressCode"];
+            [dic setObject:_dataModel.driverPhone forKey:@"receiveMobile"];
+            [dic setObject:_dataModel.driverName forKey:@"receiveName"];
+    
+//        NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
+//        [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];
+    [[NetworkManager sharedManager] postJSON:URL_AddStepOne parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status==Request_Success) {
+            JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
+            vc.orderID = [NSString stringWithFormat:@"%@",responseData];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }
+    }];
+    
 }
 @end

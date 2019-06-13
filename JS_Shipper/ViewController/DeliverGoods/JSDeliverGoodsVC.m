@@ -189,7 +189,6 @@
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }
     }];
-    
 }
 
 - (IBAction)carLongAction:(UIButton *)sender {
