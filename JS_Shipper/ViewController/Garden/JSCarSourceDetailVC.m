@@ -11,7 +11,7 @@
 
 @interface JSCarSourceDetailVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *carImgView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *carAspect;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *carImgH;
 @property (weak, nonatomic) IBOutlet UILabel *startAddressLab;
 @property (weak, nonatomic) IBOutlet UILabel *endAddressLab;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
@@ -19,10 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *carTypeLab;
 @property (weak, nonatomic) IBOutlet UILabel *carLengthLab;
 @property (weak, nonatomic) IBOutlet UITextView *remarkTV;
-- (IBAction)callAction:(UIButton *)sender;
-- (IBAction)chatAction:(UIButton *)sender;
-- (IBAction)createOrderAction:(UIButton *)sender;
-
 @end
 
 @implementation JSCarSourceDetailVC
@@ -38,7 +34,7 @@
 - (void)getData {
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    NSString *url = [NSString stringWithFormat:@"%@/%@",URL_GetLineDetail,_carSourceID];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",URL_GetLineDetail,self.carSourceID];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status == Request_Success) {
             weakSelf.dataModel = [RecordsModel mj_objectWithKeyValues:responseData];
@@ -48,13 +44,13 @@
 }
 
 - (void)refreshUI {
-    _startAddressLab.text = _dataModel.startAddressCodeName;
-    _endAddressLab.text = _dataModel.receiveAddressCodeName;
-    _nameLab.text = _dataModel.driverName;
-    _carNumLab.text = _dataModel.cphm;
-    _carTypeLab.text = _dataModel.carModelName;
-    _carLengthLab.text = _dataModel.carLengthName;
-    _remarkTV.text = _dataModel.remark;
+    _startAddressLab.text = self.dataModel.startAddressCodeName;
+    _endAddressLab.text = self.dataModel.receiveAddressCodeName;
+    _nameLab.text = self.dataModel.driverName;
+    _carNumLab.text = self.dataModel.cphm;
+    _carTypeLab.text = self.dataModel.carModelName;
+    _carLengthLab.text = self.dataModel.carLengthName;
+    _remarkTV.text = self.dataModel.remark;
 }
 
 /*
@@ -67,24 +63,19 @@
 }
 */
 
-- (IBAction)callAction:(UIButton *)sender {
-}
 
-- (IBAction)chatAction:(UIButton *)sender {
-}
-
-- (IBAction)createOrderAction:(UIButton *)sender {
+- (void)createOrderAction{
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:_dataModel.carModel forKey:@"carModel"];
-    [dic setObject:_dataModel.carLength forKey:@"carLength"];
+    [dic setObject:self.dataModel.carModel forKey:@"carModel"];
+    [dic setObject:self.dataModel.carLength forKey:@"carLength"];
 //        [dic setObject:_info1.address forKey:@"sendAddress"];
-        [dic setObject:_dataModel.startAddressCode forKey:@"sendAddressCode"];
+        [dic setObject:self.dataModel.startAddressCode forKey:@"sendAddressCode"];
 //        NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
 //        [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
-        [dic setObject:_dataModel.arriveAddressCode forKey:@"receiveAddressCode"];
-            [dic setObject:_dataModel.driverPhone forKey:@"receiveMobile"];
-            [dic setObject:_dataModel.driverName forKey:@"receiveName"];
+        [dic setObject:self.dataModel.arriveAddressCode forKey:@"receiveAddressCode"];
+            [dic setObject:self.dataModel.driverPhone forKey:@"receiveMobile"];
+            [dic setObject:self.dataModel.driverName forKey:@"receiveName"];
     
 //        NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
 //        [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];

@@ -6,16 +6,13 @@
 //  Copyright © 2019年 zhanbing han. All rights reserved.
 //
 
-#import "BaseVC.h"
-#import "JSGardenVC.h"
+#import "JSHomeDetaileVC.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSCarSourceDetailVC : BaseVC
-/** 车源id */
-@property (nonatomic,copy) NSString *carSourceID;
-/** 数据源 */
-@property (nonatomic,retain) RecordsModel *dataModel;
+@interface JSCarSourceDetailVC : JSHomeDetaileVC
+
 @end
 
 NS_ASSUME_NONNULL_END

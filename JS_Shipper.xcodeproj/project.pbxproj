@@ -10,6 +10,9 @@
 		200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */; };
 		201040BA229E662900B7B258 /* AddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 201040B9229E662900B7B258 /* AddressInfoModel.m */; };
 		201040BD229E7C6A00B7B258 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201040BC229E7C6A00B7B258 /* ZHPickView.m */; };
+		2012E5B322B33904001F8001 /* JSLineDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B222B33904001F8001 /* JSLineDetaileVC.m */; };
+		2012E5B622B33941001F8001 /* JSCityDeliveryDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B522B33941001F8001 /* JSCityDeliveryDetaileVC.m */; };
+		2012E5B922B37643001F8001 /* JSHomeDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B822B37643001F8001 /* JSHomeDetaileVC.m */; };
 		202845E9226FF9C70087BCF6 /* SortView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202845E8226FF9C70087BCF6 /* SortView.m */; };
 		202D3FE2226B0E16001B3353 /* CityCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202D3FE1226B0E16001B3353 /* CityCustomView.m */; };
 		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
@@ -155,6 +158,12 @@
 		201040B9229E662900B7B258 /* AddressInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressInfoModel.m; sourceTree = "<group>"; };
 		201040BB229E7C6A00B7B258 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
 		201040BC229E7C6A00B7B258 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
+		2012E5B122B33904001F8001 /* JSLineDetaileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLineDetaileVC.h; sourceTree = "<group>"; };
+		2012E5B222B33904001F8001 /* JSLineDetaileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLineDetaileVC.m; sourceTree = "<group>"; };
+		2012E5B422B33941001F8001 /* JSCityDeliveryDetaileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCityDeliveryDetaileVC.h; sourceTree = "<group>"; };
+		2012E5B522B33941001F8001 /* JSCityDeliveryDetaileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCityDeliveryDetaileVC.m; sourceTree = "<group>"; };
+		2012E5B722B37643001F8001 /* JSHomeDetaileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSHomeDetaileVC.h; sourceTree = "<group>"; };
+		2012E5B822B37643001F8001 /* JSHomeDetaileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSHomeDetaileVC.m; sourceTree = "<group>"; };
 		202845E7226FF9C70087BCF6 /* SortView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortView.h; sourceTree = "<group>"; };
 		202845E8226FF9C70087BCF6 /* SortView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortView.m; sourceTree = "<group>"; };
 		202D3FE0226B0E16001B3353 /* CityCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityCustomView.h; sourceTree = "<group>"; };
@@ -782,8 +791,14 @@
 			children = (
 				20BD73822248BE430020EA5D /* JSGardenVC.h */,
 				20BD73812248BE430020EA5D /* JSGardenVC.m */,
+				2012E5B722B37643001F8001 /* JSHomeDetaileVC.h */,
+				2012E5B822B37643001F8001 /* JSHomeDetaileVC.m */,
 				203C1980225AE02000AB5970 /* JSCarSourceDetailVC.h */,
 				203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */,
+				2012E5B422B33941001F8001 /* JSCityDeliveryDetaileVC.h */,
+				2012E5B522B33941001F8001 /* JSCityDeliveryDetaileVC.m */,
+				2012E5B122B33904001F8001 /* JSLineDetaileVC.h */,
+				2012E5B222B33904001F8001 /* JSLineDetaileVC.m */,
 				202D3FDF226B0D91001B3353 /* View */,
 			);
 			path = Garden;
@@ -1163,6 +1178,7 @@
 				20BD74122248C1FC0020EA5D /* JSRegisterVC.m in Sources */,
 				2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */,
 				20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */,
+				2012E5B622B33941001F8001 /* JSCityDeliveryDetaileVC.m in Sources */,
 				20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */,
 				203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */,
 				2044521D2295523000FBF0C9 /* BaseCustomView.m in Sources */,
@@ -1193,6 +1209,7 @@
 				20BD73B52248BE440020EA5D /* ProgressLoadView.m in Sources */,
 				20BD73CA2248BE440020EA5D /* BaseWebVC.m in Sources */,
 				20BD73C92248BE440020EA5D /* BaseScrollView.m in Sources */,
+				2012E5B922B37643001F8001 /* JSHomeDetaileVC.m in Sources */,
 				20BD73CB2248BE440020EA5D /* XLGInternalDemoVC.m in Sources */,
 				20BD73C82248BE440020EA5D /* BaseNavBar.m in Sources */,
 				203D8EF6224DFC460066333A /* JSPayVC.m in Sources */,
@@ -1203,6 +1220,7 @@
 				20BD741B2248C8230020EA5D /* JSResetPswVC.m in Sources */,
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
+				2012E5B322B33904001F8001 /* JSLineDetaileVC.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
 				209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */,
 				20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */,

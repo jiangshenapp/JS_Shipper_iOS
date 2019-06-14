@@ -11,6 +11,7 @@
 #import "SortView.h"
 #import "FilterCustomView.h"
 #import "JSCarSourceDetailVC.h"
+#import "JSLineDetaileVC.h"
 
 @interface JSGardenVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -226,12 +227,20 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     RecordsModel *model =self.dataSource[indexPath.section];
+    NSString *className = @"";
     if (_pageFlag==0) {
-        JSCarSourceDetailVC *vc = (JSCarSourceDetailVC *)[Utils getViewController:@"Garden" WithVCName:@"JSCarSourceDetailVC"];
-        vc.carSourceID = model.ID;
-        vc.dataModel = model;
-        [self.navigationController pushViewController:vc animated:YES];
+        className = @"JSCarSourceDetailVC";
     }
+    else if (_pageFlag==1) {
+         className = @"JSCityDeliveryDetaileVC";
+    }
+    else if (_pageFlag==2) {
+        className = @"JSLineDetaileVC";
+    }
+    JSCarSourceDetailVC *vc = (JSCarSourceDetailVC *)[Utils getViewController:@"Garden" WithVCName:className];
+    vc.carSourceID = model.ID;
+    vc.dataModel = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)showDevileryText:(UIButton*)sender {
