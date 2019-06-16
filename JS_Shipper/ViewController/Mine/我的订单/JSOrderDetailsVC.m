@@ -9,22 +9,38 @@
 #import "JSOrderDetailsVC.h"
 #import "JSOrderDetailMapVC.h"
 #import "JSPayVC.h"
+#import "JSChangeOrderDetailVC.h"
 
 @interface JSOrderDetailsVC ()
+
+/** 修改按钮 */
+@property (nonatomic,retain) UIButton *changeBtn;
 
 @end
 
 @implementation JSOrderDetailsVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self getData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+50);
     self.title = @"我的订单";
+    
+    self.changeBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 40)];
+    [self.changeBtn setTitle:@"修改" forState:UIControlStateNormal];
+    [self.changeBtn setTitleColor:kBlackColor forState:UIControlStateNormal];
+    self.changeBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.changeBtn addTarget:self action:@selector(changeOrderInfo) forControlEvents:UIControlEventTouchUpInside];
+    self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.changeBtn];
+    
+    _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+50);
     self.tileView1.hidden = YES;
     self.titleView2.hidden = NO;
-    
-    [self getData];
 }
 
 #pragma mark - get data
@@ -64,7 +80,7 @@
     if ([self.model.feeType isEqualToString:@"1"]) {
         self.orderFeeLab.text = [NSString stringWithFormat:@"￥%@",self.model.fee];
     } else {
-        self.orderFeeLab.text = @"面仪";
+        self.orderFeeLab.text = @"电议";
     }
     if ([self.model.payType isEqualToString:@"1"]) {
         self.goodsPayTypeLab.text = @"到付";
@@ -81,6 +97,11 @@
     
     //1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待评价，8已完成，9已取消，10已关闭
     NSInteger state = [self.model.state integerValue];
+    if (state == 3 || state == 4) { //待司机确认，修改支付信息、收货人信息；待支付，修改收货人信息；
+        self.changeBtn.hidden = NO;
+    } else {
+        self.changeBtn.hidden = YES;
+    }
     if (state == 1 || state == 2) {
         self.tileView1.hidden = NO;
         self.titleView2.hidden = YES;
@@ -143,6 +164,13 @@
 }
 
 #pragma mark - methods
+
+/** 修改订单信息 */
+- (void)changeOrderInfo {
+    JSChangeOrderDetailVC *vc = (JSChangeOrderDetailVC *)[Utils getViewController:@"Mine" WithVCName:@"JSChangeOrderDetailVC"];
+    vc.model = self.model;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 /** 打电话 */
 - (IBAction)callPhone:(id)sender {
@@ -259,13 +287,13 @@
     vc.price = [NSString stringWithFormat:@"%@",self.model.fee];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 #pragma mark - 查看路线
 /** 查看路线 */
 - (void)showRoutOrder {
     JSOrderDetailMapVC *vc = (JSOrderDetailMapVC *)[Utils getViewController:@"Mine" WithVCName:@"JSOrderDetailMapVC"];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 /*
  #pragma mark - Navigation
