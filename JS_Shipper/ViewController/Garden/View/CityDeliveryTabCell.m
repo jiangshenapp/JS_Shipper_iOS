@@ -7,6 +7,7 @@
 //
 
 #import "CityDeliveryTabCell.h"
+#import "XLGMapNavVC.h"
 
 @implementation CityDeliveryTabCell
 
@@ -16,6 +17,8 @@
     _navBtn.layer.borderWidth = 1;
     _navBtn.layer.cornerRadius = 10;
     _navBtn.layer.masksToBounds = YES;
+    [_navBtn addTarget:self action:@selector(showNavAction:) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
 - (void)setModel:(RecordsModel *)model {
@@ -28,5 +31,15 @@
     NSString *distanceStr = [NSString stringWithFormat:@"距离您%@",[Utils distanceBetweenOrderBy:[locDic[@"lat"] floatValue] :[contactLocDic[@"latitude"] floatValue] :[locDic[@"lng"] floatValue] :[contactLocDic[@"longitude"] floatValue]]];
     self.dustanceLab.text = distanceStr;
 }
+
+#pragma mark - 导航
+/** 导航 */
+-(void)showNavAction:(MyCustomButton *)sender {
+    RecordsModel *model = sender.dataDic;
+    NSDictionary *contactLocDic = [Utils dictionaryWithJsonString:model.contactLocation];
+    [XLGMapNavVC share].destionName = model.companyName;
+    [XLGMapNavVC startNavWithEndPt:CLLocationCoordinate2DMake([contactLocDic[@"latitude"] floatValue], [contactLocDic[@"longitude"] floatValue])];
+}
+
 
 @end

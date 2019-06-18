@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 是否选中 */
 @property (nonatomic,assign) BOOL isSelect;
 /**  数据源 */
-@property (nonatomic,retain) NSDictionary *dataDic;
+@property (nonatomic,retain) id dataDic;
 /** 索引 */
 @property (nonatomic,assign) NSInteger index;
 @end

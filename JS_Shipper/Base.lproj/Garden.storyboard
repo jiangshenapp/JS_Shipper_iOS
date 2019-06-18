@@ -163,7 +163,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gql-aK-VWl">
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gql-aK-VWl" customClass="MyCustomButton">
                                                             <rect key="frame" x="206" y="5" width="42" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="Byy-fU-kK2"/>

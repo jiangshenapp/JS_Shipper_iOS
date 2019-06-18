@@ -18,6 +18,7 @@
 #import "JSGardenTabCell.h"
 #import "CityDeliveryTabCell.h"
 
+
 @interface JSGardenVC ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>
 {
     NSArray *titleArr1;
@@ -227,6 +228,7 @@
         cell.serviceBtn.tag = 3000+indexPath.section;
         cell.iphoneCallBtn.tag = 1000+indexPath.section;
         cell.sendMsgBtn.tag = 2000+indexPath.section;
+        cell.navBtn.dataDic = model;
         [cell.serviceBtn addTarget:self action:@selector(showDevileryText:) forControlEvents:UIControlEventTouchUpInside];
         [cell.iphoneCallBtn addTarget:self action:@selector(callAction:) forControlEvents:UIControlEventTouchUpInside];
         [cell.sendMsgBtn addTarget:self action:@selector(chatAction:) forControlEvents:UIControlEventTouchUpInside];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RecordsModel.h"
+#import "MyCustomButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,10 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dotNameLab;
 @property (weak, nonatomic) IBOutlet UILabel *dustanceLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
-@property (weak, nonatomic) IBOutlet UIButton *navBtn;
-@property (weak, nonatomic) IBOutlet UIButton *serviceBtn;
+@property (weak, nonatomic) IBOutlet MyCustomButton *navBtn;
+@property (weak, nonatomic) IBOutlet MyCustomButton *serviceBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *isShowImgView;
-@property (weak, nonatomic) IBOutlet UIButton *iphoneCallBtn;
+@property (weak, nonatomic) IBOutlet MyCustomButton *iphoneCallBtn;
 @property (weak, nonatomic) IBOutlet UIButton *sendMsgBtn;
 
 @end
