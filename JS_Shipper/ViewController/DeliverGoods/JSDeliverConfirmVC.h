@@ -18,10 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *subscriberId;
 /** 是否是综合发货 */
 @property (nonatomic,assign) BOOL isAll;
+
 @property (weak, nonatomic) IBOutlet UIView *tabHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *startAddressBtn;
 @property (weak, nonatomic) IBOutlet UIButton *endAddressBtn;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLab;
+@property (weak, nonatomic) IBOutlet UIButton *carLengthBtn;
+@property (weak, nonatomic) IBOutlet UIButton *carModelBtn;
 
 @property (weak, nonatomic) IBOutlet UITextField *weightTF;
 @property (weak, nonatomic) IBOutlet UITextField *goodAreaTF;

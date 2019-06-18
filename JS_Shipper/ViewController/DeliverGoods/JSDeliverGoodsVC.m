@@ -33,14 +33,17 @@
 
 @implementation JSDeliverGoodsVC
 
--(void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    
     [_carLengthView hiddenView];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"发货";
+    
     [self getCarLengthInfo];
     [self getCarModelInfo];
 }
@@ -82,10 +85,10 @@
     NSString *url = [NSString stringWithFormat:@"%@?type=carLength",URL_GetDictByType];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
-        NSArray *arr = responseData;
-        if ([arr isKindOfClass:[NSArray class]]) {
-            weakSelf.carLengthArr = [NSArray arrayWithArray:arr];
-        }
+            NSArray *arr = responseData;
+            if ([arr isKindOfClass:[NSArray class]]) {
+                weakSelf.carLengthArr = [NSArray arrayWithArray:arr];
+            }
         }
     }];
 }
@@ -98,14 +101,13 @@
     NSString *url = [NSString stringWithFormat:@"%@?type=carModel",URL_GetDictByType];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
-        NSArray *arr = responseData;
-        if ([arr isKindOfClass:[NSArray class]]) {
-            weakSelf.carModelArr = [NSArray arrayWithArray:arr];
-        }
+            NSArray *arr = responseData;
+            if ([arr isKindOfClass:[NSArray class]]) {
+                weakSelf.carModelArr = [NSArray arrayWithArray:arr];
+            }
         }
     }];
 }
-
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -142,7 +144,6 @@
     else {
         dist = dist/1000;
         _distanceLab.text = [NSString stringWithFormat:@"总里程：%.2fkm",dist];
-
     }
 }
 
@@ -157,8 +158,12 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic addEntriesFromDictionary:_carLengthDic];
     [dic addEntriesFromDictionary:_carModelDic];
-    if (_info2.address.length==0||_info1.address.length==0) {
-        [Utils showToast:@"请选择地址"];
+    if (_info1.address.length==0) {
+        [Utils showToast:@"请选择发货地址"];
+        return;
+    }
+    if (_info2.address.length==0) {
+        [Utils showToast:@"请选择收获地址"];
         return;
     }
     if (_info1.address.length>0) {
@@ -208,5 +213,6 @@
     self.carLengthView.dataDic = @{@"carModel":self.carModelArr};
     [_carLengthView showView];
 }
+
 @end
 

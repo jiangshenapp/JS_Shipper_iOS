@@ -10,6 +10,7 @@
 #import "JSOrderDetailMapVC.h"
 #import "JSPayVC.h"
 #import "JSChangeOrderDetailVC.h"
+#import "JSDeliverConfirmVC.h"
 
 @interface JSOrderDetailsVC ()
 
@@ -200,8 +201,7 @@
 - (IBAction)bottomRightBtnAction:(UIButton *)sender {
     NSString *title = sender.titleLabel.text;
     if ([title isEqualToString:@"再发一次"]) {
-        [Utils showToast:@"再发一次"];
-        [self againPushlishOrder];
+        [self againPublishOrder];
     }
     if ([title isEqualToString:@"立即支付"]) {
         [self payOrder];
@@ -214,8 +214,7 @@
         [self commentOrder];
     }
     if ([title isEqualToString:@"重新发货"]) {
-        [Utils showToast:@"重新发货"];
-        [self renewDeliverOrder];
+        [self againPublishOrder];
     }
 }
 
@@ -225,8 +224,7 @@
         [self cancleOrder];
     }
     if ([title isEqualToString:@"重新发货"]) {
-        [Utils showToast:@"重新发货"];
-        [self renewDeliverOrder];
+        [self againPublishOrder];
     }
 }
 
@@ -243,22 +241,12 @@
     }];
 }
 
-#pragma mark - 再发一次
-/** 再发一次 */
-- (void)againPushlishOrder {
-//    __weak typeof(self) weakSelf = self;
-}
-
-#pragma mark - 重新发货
-/** 重新发货 */
-- (void)renewDeliverOrder {
-    __weak typeof(self) weakSelf = self;
-    NSDictionary *dic = [NSDictionary dictionary];
-    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_AgainOrder,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
-        if (status == Request_Success) {
-            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-        }
-    }];
+#pragma mark - 再发一次/重新发货
+/** 再发一次/重新发货 */
+- (void)againPublishOrder {
+    JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
+    vc.isAll = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 评价
@@ -270,7 +258,7 @@
 #pragma mark - 确认收货
 /** 确认收货 */
 - (void)confirmGoodsOrder {
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
 //    NSDictionary *dic = [NSDictionary dictionary];
 //    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
 //        if (status == Request_Success) {

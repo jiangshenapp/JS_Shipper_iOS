@@ -148,7 +148,7 @@
     }
     _titlesArr = [NSMutableArray array];
     for (NSInteger index = 0; index<dataDic.allKeys.count; index++) {
-        [_titlesArr addObject:@""];
+        [_titlesArr addObject:@"不限"];
     }
     [self refreshUI];
 }
@@ -156,7 +156,7 @@
 - (void)clearAllSelect{
     isClearAll = YES;
     for (NSInteger index = 0; index<_dataDic.allKeys.count; index++) {
-        [_titlesArr addObject:@""];
+        [_titlesArr addObject:@"不限"];
     }
     _postDic = [NSMutableDictionary dictionary];;
     for (MyCustomView *view in allCellViewArr) {
