@@ -61,14 +61,12 @@
 }
 
 - (void)showAction:(UIButton *)sender {
-    
-    [Utils showToast:@"功能暂未开通，敬请期待"];
-    
-    NSString *vcName = @"";
-    
-    if (vcName.length>0) {
-        UIViewController *vc = [Utils getViewController:@"Mine" WithVCName:vcName];
+
+    if ([sender.titleLabel.text isEqualToString:@"我的园区"]) {
+        UIViewController *vc = [Utils getViewController:@"Garden" WithVCName:@"JSMyGardenVC"];
         [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        [Utils showToast:@"功能暂未开通，敬请期待"];
     }
 }
 

@@ -48,6 +48,7 @@
     } else {
         self.collectBtn.selected = NO;
     }
+    _contentTV.userInteractionEnabled = NO;
 }
 
 #pragma mark - methods

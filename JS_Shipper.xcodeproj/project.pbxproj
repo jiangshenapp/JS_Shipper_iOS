@@ -152,6 +152,7 @@
 		A096484622B881AD000FDBE6 /* FilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A096484522B881AD000FDBE6 /* FilterButton.m */; };
 		A096484922B8824B000FDBE6 /* JSGardenTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A096484822B8824B000FDBE6 /* JSGardenTabCell.m */; };
 		A096484C22B88260000FDBE6 /* CityDeliveryTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A096484B22B88260000FDBE6 /* CityDeliveryTabCell.m */; };
+		A096484F22B8BDB7000FDBE6 /* JSMyGardenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A096484E22B8BDB7000FDBE6 /* JSMyGardenVC.m */; };
 		A0E9270522852C9C00D07C58 /* AEFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E9270422852C9C00D07C58 /* AEFilePath.m */; };
 		A0F9CC7722AF366600161945 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F9CC7522AF366600161945 /* AccountInfo.m */; };
 		C2906EBDB1A940D92FBD8960 /* libPods-JS_Shipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */; };
@@ -399,6 +400,8 @@
 		A096484822B8824B000FDBE6 /* JSGardenTabCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSGardenTabCell.m; sourceTree = "<group>"; };
 		A096484A22B88260000FDBE6 /* CityDeliveryTabCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityDeliveryTabCell.h; sourceTree = "<group>"; };
 		A096484B22B88260000FDBE6 /* CityDeliveryTabCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityDeliveryTabCell.m; sourceTree = "<group>"; };
+		A096484D22B8BDB7000FDBE6 /* JSMyGardenVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyGardenVC.h; sourceTree = "<group>"; };
+		A096484E22B8BDB7000FDBE6 /* JSMyGardenVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyGardenVC.m; sourceTree = "<group>"; };
 		A0E9270322852C9C00D07C58 /* AEFilePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFilePath.h; sourceTree = "<group>"; };
 		A0E9270422852C9C00D07C58 /* AEFilePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFilePath.m; sourceTree = "<group>"; };
 		A0F9CC7522AF366600161945 /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
@@ -1001,6 +1004,8 @@
 		A096482D22B87EF2000FDBE6 /* 我的园区 */ = {
 			isa = PBXGroup;
 			children = (
+				A096484D22B8BDB7000FDBE6 /* JSMyGardenVC.h */,
+				A096484E22B8BDB7000FDBE6 /* JSMyGardenVC.m */,
 			);
 			path = "我的园区";
 			sourceTree = "<group>";
@@ -1231,6 +1236,7 @@
 				20BD73BA2248BE440020EA5D /* CZUpdateView.m in Sources */,
 				204E5299227068E600DE65A8 /* JSFeedBackVC.m in Sources */,
 				207D1443227153E300594520 /* JSDeliverConfirmVC.m in Sources */,
+				A096484F22B8BDB7000FDBE6 /* JSMyGardenVC.m in Sources */,
 				20BD73A92248BE440020EA5D /* KeyChainUtil.m in Sources */,
 				20BD73C72248BE440020EA5D /* BaseNC.m in Sources */,
 				209B6ACC2272DCCF0060F509 /* MKMapView+ZoomLevel.m in Sources */,
