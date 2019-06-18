@@ -52,6 +52,7 @@
     self.nameLab.text = self.dataModel.contactName;
     self.addressLab.text = self.dataModel.contactAddress;
     self.contentTV.text = self.dataModel.remark;
+    self.contentTV.userInteractionEnabled = NO;
 }
 
 #pragma mark - methods

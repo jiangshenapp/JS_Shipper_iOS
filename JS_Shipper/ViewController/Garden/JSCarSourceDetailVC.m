@@ -63,8 +63,10 @@
     if ([Utils isBlankString:self.dataModel.image2]) {
         self.carImgH.constant = 0;
     } else {
-        [self.carImgView sd_setImageWithURL:[NSURL URLWithString:self.dataModel.image2]];
+        self.carImgH.constant = 150;
+        [self.carImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.dataModel.image2]]];
     }
+    _remarkTV.userInteractionEnabled = NO;
 }
 
 #pragma mark - methods
