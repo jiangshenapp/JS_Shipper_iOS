@@ -24,6 +24,10 @@
     return self;
 }
 
+-(void)awakeFromNib {
+    [super awakeFromNib];
+}
+
 -(void)setIsSelect:(BOOL)isSelect {
     if (_isSelect!=isSelect) {
         _isSelect=isSelect;
