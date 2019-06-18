@@ -22,6 +22,9 @@
 }
 
 - (void)setModel:(RecordsModel *)model {
+    if (_model!=model) {
+        _model = model;
+    }
     self.dotNameLab.text = model.companyName;
     self.addressLab.text = model.contactAddress;
     self.isShowImgView.image = model.showFlag?[UIImage imageNamed:@"app_list_arrow_up"]:[UIImage imageNamed:@"app_list_arrow_down"];
@@ -35,9 +38,8 @@
 #pragma mark - 导航
 /** 导航 */
 -(void)showNavAction:(MyCustomButton *)sender {
-    RecordsModel *model = sender.dataDic;
-    NSDictionary *contactLocDic = [Utils dictionaryWithJsonString:model.contactLocation];
-    [XLGMapNavVC share].destionName = model.companyName;
+    NSDictionary *contactLocDic = [Utils dictionaryWithJsonString:_model.contactLocation];
+    [XLGMapNavVC share].destionName = _model.companyName;
     [XLGMapNavVC startNavWithEndPt:CLLocationCoordinate2DMake([contactLocDic[@"latitude"] floatValue], [contactLocDic[@"longitude"] floatValue])];
 }
 
