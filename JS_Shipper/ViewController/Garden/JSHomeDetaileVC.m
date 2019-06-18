@@ -7,6 +7,7 @@
 //
 
 #import "JSHomeDetaileVC.h"
+#import "JSDeliverConfirmVC.h"
 
 @interface JSHomeDetaileVC ()
 
@@ -49,20 +50,27 @@
     [self.view addSubview:self.cretaeOrderBtn];
 }
 
+/** 收藏 */
 - (void)collectAction {
     
 }
 
+/** 打电话 */
 - (void)callAction {
 
 }
 
+/** 聊天 */
 - (void)chatAction {
     [Utils showToast:@"聊天功能暂未开放"];
 }
 
+/** 下单 */
 - (void)createOrderAction {
-    
+    JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
+    vc.subscriberId = self.dataModel.subscriberId;
+    vc.isAll = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

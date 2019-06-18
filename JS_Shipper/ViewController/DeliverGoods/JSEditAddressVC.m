@@ -33,9 +33,11 @@
 
 - (IBAction)confirmAddressAction:(UIButton *)sender {
     if (_userNameLab.text.length==0) {
+        [Utils showToast:@"请填写收货人姓名"];
         return;
     }
     if (_iphoneLab.text.length==0) {
+        [Utils showToast:@"请填写收货人手机号"];
         return;
     }
     NSString *text = @"";

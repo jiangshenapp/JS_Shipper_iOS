@@ -85,6 +85,7 @@
         [Utils showToast:@"手机号码为空"];
     }
 }
+
 /*
 #pragma mark - Navigation
 
@@ -95,7 +96,4 @@
 }
 */
 
-
-- (IBAction)createOrderAction{
-}
 @end

@@ -281,7 +281,7 @@
     else if (_pageFlag==2) {
         className = @"JSLineDetaileVC";
     }
-    JSCarSourceDetailVC *vc = (JSCarSourceDetailVC *)[Utils getViewController:@"Garden" WithVCName:className];
+    JSHomeDetaileVC *vc = (JSHomeDetaileVC *)[Utils getViewController:@"Garden" WithVCName:className];
     vc.carSourceID = model.ID;
     vc.dataModel = model;
     [self.navigationController pushViewController:vc animated:YES];

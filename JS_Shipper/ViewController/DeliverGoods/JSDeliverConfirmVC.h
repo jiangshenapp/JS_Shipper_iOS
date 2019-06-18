@@ -11,8 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSDeliverConfirmVC : BaseVC
+
 /** 订单ID */
 @property (nonatomic,copy) NSString *orderID;
+/** 分配会员，线路/园区关联的subscriberId */
+@property (nonatomic,copy) NSString *subscriberId;
 /** 是否是综合发货 */
 @property (nonatomic,assign) BOOL isAll;
 @property (weak, nonatomic) IBOutlet UIView *tabHeaderView;
@@ -20,15 +23,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *endAddressBtn;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLab;
 
-
 @property (weak, nonatomic) IBOutlet UITextField *weightTF;
 @property (weak, nonatomic) IBOutlet UITextField *goodAreaTF;
 @property (weak, nonatomic) IBOutlet UITextField *goodsTypeTF;
 @property (weak, nonatomic) IBOutlet UILabel *goodsTimeLab;
 @property (weak, nonatomic) IBOutlet UILabel *useCarTypeLab;
 @property (weak, nonatomic) IBOutlet UITextView *markTF;
-@property (weak, nonatomic) IBOutlet UIButton *bottomLeftBtn;
-@property (weak, nonatomic) IBOutlet UIButton *bottomRightBtn;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
 @property (weak, nonatomic) IBOutlet UITextField *priceLab;
 /** 选择货物类型 */
@@ -47,12 +48,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)feeSelectAction:(UIButton *)sender;
 /** 支付方式 */
 - (IBAction)payTypeAction:(UIButton *)sender;
-/** f付款方式 */
+/** 付款方式 */
 - (IBAction)payTypeAction2:(UIButton *)sender;
-/** 底部左按钮点击事件 */
-- (IBAction)bottomLeftBtnAction:(UIButton *)sender;
-/** 底部右按钮点击事件 */
-- (IBAction)bottomRightBtnAction:(UIButton *)sender;
+/** 指定发布/下单点击事件 */
+- (IBAction)submitAction:(id)sender;
 
 @end
 

@@ -84,6 +84,7 @@ NSString *PIC_URL(void);
 
 #pragma mark - APP订单相关接口
 
+#define URL_AddOrder @"/app/order/addOrder"//发货 --综合下单
 #define URL_AddStepOne @"/app/order/addStepOne"//发货 --创建订单
 #define URL_AddStepTwo @"/app/order/addStepTwo"//发货 --确认订单
 #define URL_AgainOrder @"/app/order/again"//重新发货

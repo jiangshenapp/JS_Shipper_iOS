@@ -7,7 +7,6 @@
 //
 
 #import "JSCarSourceDetailVC.h"
-#import "JSDeliverConfirmVC.h"
 
 @interface JSCarSourceDetailVC ()
 
@@ -102,32 +101,6 @@
     } else {
         [Utils showToast:@"手机号码为空"];
     }
-}
-
-/** 下单 */
-- (void)createOrderAction {
-    __weak typeof(self) weakSelf = self;
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.dataModel.carModel forKey:@"carModel"];
-    [dic setObject:self.dataModel.carLength forKey:@"carLength"];
-    //        [dic setObject:_info1.address forKey:@"sendAddress"];
-    [dic setObject:self.dataModel.startAddressCode forKey:@"sendAddressCode"];
-    //        NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
-    //        [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
-    [dic setObject:self.dataModel.arriveAddressCode forKey:@"receiveAddressCode"];
-    [dic setObject:self.dataModel.driverPhone forKey:@"receiveMobile"];
-    [dic setObject:self.dataModel.driverName forKey:@"receiveName"];
-    
-    //        NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
-    //        [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];
-    [[NetworkManager sharedManager] postJSON:URL_AddStepOne parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
-        if (status==Request_Success) {
-            JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
-            vc.orderID = [NSString stringWithFormat:@"%@",responseData];
-            vc.isAll = YES;
-            [weakSelf.navigationController pushViewController:vc animated:YES];
-        }
-    }];
 }
 
 /*

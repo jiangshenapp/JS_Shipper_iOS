@@ -59,17 +59,21 @@
     self.feeType = @"1";
     self.payWay = @"1";
     self.payType = @"1";
-    if (_isAll) {
+    if (_isAll) { //综合发货
         _tabHeaderView.height = 1085;
     }
     else {
         _tabHeaderView.height = 925;
     }
+    if (![Utils isBlankString:self.subscriberId]) { //指定发布
+        [_submitBtn setTitle:@"指定发布" forState:UIControlStateNormal];
+    } else {
+        [_submitBtn setTitle:@"下单" forState:UIControlStateNormal];
+    }
     [self.baseTabView reloadData];
     UIButton *otherBtn = [self.view viewWithTag:100];
     [self needLoadGoodsType:otherBtn];
     [self getCarTypeInfo];
-    // Do any additional setup after loading the view.
 }
 
 #pragma mark - Navigation
@@ -217,8 +221,6 @@
     UIButton *otherBtn = [self.view viewWithTag:otherTag];
     otherBtn.selected = NO;
 }
-- (IBAction)bottomLeftBtnAction:(UIButton *)sender {
-}
 
 - (void)postImage:(UIImage *)iconImage {
     __weak typeof(self) weakSelf = self;
@@ -238,7 +240,10 @@
     }];
 }
 
-- (IBAction)bottomRightBtnAction:(UIButton *)sender {
+- (IBAction)selectAddress1Action:(UIButton *)sender {
+}
+
+- (IBAction)submitAction:(id)sender {
     if ([NSString isEmpty:_weightTF.text]) {
         [Utils showToast:@"请输入货物重量"];
         return;
@@ -291,6 +296,5 @@
         }
     }];
 }
-- (IBAction)selectAddress1Action:(UIButton *)sender {
-}
+
 @end
