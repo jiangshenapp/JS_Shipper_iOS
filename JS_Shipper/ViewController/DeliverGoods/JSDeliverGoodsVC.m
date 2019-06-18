@@ -57,7 +57,7 @@
     [sender setTitleColor:kBlackColor forState:UIControlStateNormal];
     [sender addTarget:self action:@selector(showMyOrderAction) forControlEvents:UIControlEventTouchUpInside];
     sender.titleLabel.font = [UIFont systemFontOfSize:12];
-    self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:sender];;
+    self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:sender];
     _carLengthView =  [[FilterCustomView alloc]init];
     _carLengthView.viewHeight = HEIGHT-kNavBarH-kTabBarSafeH;;
     _carLengthView.top = kNavBarH;

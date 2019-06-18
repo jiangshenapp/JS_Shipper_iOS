@@ -16,6 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.collectBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [self.collectBtn setImage:[UIImage imageNamed:@"app_navigationbar_collection_default"] forState:UIControlStateNormal];
+    [self.collectBtn setImage:[UIImage imageNamed:@"app_navigationbar_collection_selected"] forState:UIControlStateSelected];
+    [self.collectBtn addTarget:self action:@selector(collectAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.collectBtn];
+    
     [self createBottomView];
 }
 
@@ -42,19 +49,21 @@
     [self.view addSubview:self.cretaeOrderBtn];
 }
 
-- (void)callAction {
+- (void)collectAction {
     
+}
+
+- (void)callAction {
+
 }
 
 - (void)chatAction {
-    
+    [Utils showToast:@"聊天功能暂未开放"];
 }
-
 
 - (void)createOrderAction {
     
 }
-
 
 /*
 #pragma mark - Navigation

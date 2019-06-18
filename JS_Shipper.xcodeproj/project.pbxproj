@@ -13,8 +13,6 @@
 		2012E5B322B33904001F8001 /* JSLineDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B222B33904001F8001 /* JSLineDetaileVC.m */; };
 		2012E5B622B33941001F8001 /* JSCityDeliveryDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B522B33941001F8001 /* JSCityDeliveryDetaileVC.m */; };
 		2012E5B922B37643001F8001 /* JSHomeDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B822B37643001F8001 /* JSHomeDetaileVC.m */; };
-		202845E9226FF9C70087BCF6 /* SortView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202845E8226FF9C70087BCF6 /* SortView.m */; };
-		202D3FE2226B0E16001B3353 /* CityCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 202D3FE1226B0E16001B3353 /* CityCustomView.m */; };
 		203C1982225AE02000AB5970 /* JSCarSourceDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */; };
 		203D7F96229BD16E00A3D847 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 203D7F91229BD16E00A3D847 /* libcrypto.a */; };
 		203D7F97229BD16E00A3D847 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 203D7F92229BD16E00A3D847 /* libssl.a */; };
@@ -27,8 +25,6 @@
 		203D7FA2229BDC6100A3D847 /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203D7FA1229BDC6100A3D847 /* BaiduMapAPI_Search.framework */; };
 		203D8EF6224DFC460066333A /* JSPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF5224DFC460066333A /* JSPayVC.m */; };
 		203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 203D8EF8224DFDE10066333A /* JSMyInfoVC.m */; };
-		2044521A2295522500FBF0C9 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = 204452192295522500FBF0C9 /* Address.json */; };
-		2044521D2295523000FBF0C9 /* BaseCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044521B2295523000FBF0C9 /* BaseCustomView.m */; };
 		204AFAAF22A4CCCB0077D8C0 /* ListOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 204AFAAE22A4CCCB0077D8C0 /* ListOrderModel.m */; };
 		204E5299227068E600DE65A8 /* JSFeedBackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 204E5298227068E600DE65A8 /* JSFeedBackVC.m */; };
 		2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */; };
@@ -97,7 +93,6 @@
 		20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */; };
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
 		20BD741B2248C8230020EA5D /* JSResetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSResetPswVC.m */; };
-		20D64C49227010C9001F6172 /* FilterCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D64C48227010C9001F6172 /* FilterCustomView.m */; };
 		20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934DF224B18B4008C80DB /* JSRechargeVC.m */; };
 		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
 		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
@@ -147,6 +142,16 @@
 		A075190C227D17710032A974 /* HmAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751904227D17700032A974 /* HmAddressModel.m */; };
 		A075190D227D17710032A974 /* HmSelectAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0751906227D17710032A974 /* HmSelectAdView.m */; };
 		A0773E8E22885B1000C74D69 /* AuthInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A0773E8D22885B1000C74D69 /* AuthInfo.m */; };
+		A096483022B87F6D000FDBE6 /* HomeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A096482F22B87F6D000FDBE6 /* HomeDataModel.m */; };
+		A096483322B87FD2000FDBE6 /* RecordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A096483222B87FD2000FDBE6 /* RecordsModel.m */; };
+		A096483F22B8815D000FDBE6 /* CityCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A096483622B8815C000FDBE6 /* CityCustomView.m */; };
+		A096484022B8815D000FDBE6 /* SortView.m in Sources */ = {isa = PBXBuildFile; fileRef = A096483722B8815C000FDBE6 /* SortView.m */; };
+		A096484122B8815D000FDBE6 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = A096483B22B8815C000FDBE6 /* Address.json */; };
+		A096484222B8815D000FDBE6 /* FilterCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A096483D22B8815C000FDBE6 /* FilterCustomView.m */; };
+		A096484322B8815D000FDBE6 /* BaseCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A096483E22B8815C000FDBE6 /* BaseCustomView.m */; };
+		A096484622B881AD000FDBE6 /* FilterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A096484522B881AD000FDBE6 /* FilterButton.m */; };
+		A096484922B8824B000FDBE6 /* JSGardenTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A096484822B8824B000FDBE6 /* JSGardenTabCell.m */; };
+		A096484C22B88260000FDBE6 /* CityDeliveryTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A096484B22B88260000FDBE6 /* CityDeliveryTabCell.m */; };
 		A0E9270522852C9C00D07C58 /* AEFilePath.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E9270422852C9C00D07C58 /* AEFilePath.m */; };
 		A0F9CC7722AF366600161945 /* AccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A0F9CC7522AF366600161945 /* AccountInfo.m */; };
 		C2906EBDB1A940D92FBD8960 /* libPods-JS_Shipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F289B1DBC4F7E18335BF54E1 /* libPods-JS_Shipper.a */; };
@@ -165,10 +170,6 @@
 		2012E5B522B33941001F8001 /* JSCityDeliveryDetaileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCityDeliveryDetaileVC.m; sourceTree = "<group>"; };
 		2012E5B722B37643001F8001 /* JSHomeDetaileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSHomeDetaileVC.h; sourceTree = "<group>"; };
 		2012E5B822B37643001F8001 /* JSHomeDetaileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSHomeDetaileVC.m; sourceTree = "<group>"; };
-		202845E7226FF9C70087BCF6 /* SortView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SortView.h; sourceTree = "<group>"; };
-		202845E8226FF9C70087BCF6 /* SortView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SortView.m; sourceTree = "<group>"; };
-		202D3FE0226B0E16001B3353 /* CityCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityCustomView.h; sourceTree = "<group>"; };
-		202D3FE1226B0E16001B3353 /* CityCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityCustomView.m; sourceTree = "<group>"; };
 		203C1980225AE02000AB5970 /* JSCarSourceDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCarSourceDetailVC.h; sourceTree = "<group>"; };
 		203C1981225AE02000AB5970 /* JSCarSourceDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSCarSourceDetailVC.m; sourceTree = "<group>"; };
 		203D7F91229BD16E00A3D847 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
@@ -184,9 +185,6 @@
 		203D8EF5224DFC460066333A /* JSPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSPayVC.m; sourceTree = "<group>"; };
 		203D8EF7224DFDE10066333A /* JSMyInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSMyInfoVC.h; sourceTree = "<group>"; };
 		203D8EF8224DFDE10066333A /* JSMyInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSMyInfoVC.m; sourceTree = "<group>"; };
-		204452192295522500FBF0C9 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
-		2044521B2295523000FBF0C9 /* BaseCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCustomView.m; sourceTree = "<group>"; };
-		2044521C2295523000FBF0C9 /* BaseCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCustomView.h; sourceTree = "<group>"; };
 		204AFAAD22A4CCCB0077D8C0 /* ListOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListOrderModel.h; sourceTree = "<group>"; };
 		204AFAAE22A4CCCB0077D8C0 /* ListOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListOrderModel.m; sourceTree = "<group>"; };
 		204E5297227068E600DE65A8 /* JSFeedBackVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSFeedBackVC.h; sourceTree = "<group>"; };
@@ -317,8 +315,6 @@
 		20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPwdVC.m; sourceTree = "<group>"; };
 		20BD74192248C8230020EA5D /* JSResetPswVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSResetPswVC.h; sourceTree = "<group>"; };
 		20BD741A2248C8230020EA5D /* JSResetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSResetPswVC.m; sourceTree = "<group>"; };
-		20D64C47227010C9001F6172 /* FilterCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCustomView.h; sourceTree = "<group>"; };
-		20D64C48227010C9001F6172 /* FilterCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterCustomView.m; sourceTree = "<group>"; };
 		20F934DE224B18B4008C80DB /* JSRechargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRechargeVC.h; sourceTree = "<group>"; };
 		20F934DF224B18B4008C80DB /* JSRechargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRechargeVC.m; sourceTree = "<group>"; };
 		20F934E1224B1C95008C80DB /* JSWithdrawalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawalMoneyVC.h; sourceTree = "<group>"; };
@@ -384,6 +380,25 @@
 		A0751908227D17710032A974 /* HmAddressCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmAddressCityModel.h; sourceTree = "<group>"; };
 		A0773E8C22885B1000C74D69 /* AuthInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthInfo.h; sourceTree = "<group>"; };
 		A0773E8D22885B1000C74D69 /* AuthInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthInfo.m; sourceTree = "<group>"; };
+		A096482E22B87F6D000FDBE6 /* HomeDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDataModel.h; sourceTree = "<group>"; };
+		A096482F22B87F6D000FDBE6 /* HomeDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDataModel.m; sourceTree = "<group>"; };
+		A096483122B87FD2000FDBE6 /* RecordsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordsModel.h; sourceTree = "<group>"; };
+		A096483222B87FD2000FDBE6 /* RecordsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordsModel.m; sourceTree = "<group>"; };
+		A096483622B8815C000FDBE6 /* CityCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityCustomView.m; sourceTree = "<group>"; };
+		A096483722B8815C000FDBE6 /* SortView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortView.m; sourceTree = "<group>"; };
+		A096483822B8815C000FDBE6 /* FilterCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCustomView.h; sourceTree = "<group>"; };
+		A096483922B8815C000FDBE6 /* BaseCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCustomView.h; sourceTree = "<group>"; };
+		A096483A22B8815C000FDBE6 /* SortView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortView.h; sourceTree = "<group>"; };
+		A096483B22B8815C000FDBE6 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
+		A096483C22B8815C000FDBE6 /* CityCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityCustomView.h; sourceTree = "<group>"; };
+		A096483D22B8815C000FDBE6 /* FilterCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterCustomView.m; sourceTree = "<group>"; };
+		A096483E22B8815C000FDBE6 /* BaseCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCustomView.m; sourceTree = "<group>"; };
+		A096484422B881AD000FDBE6 /* FilterButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterButton.h; sourceTree = "<group>"; };
+		A096484522B881AD000FDBE6 /* FilterButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterButton.m; sourceTree = "<group>"; };
+		A096484722B8824B000FDBE6 /* JSGardenTabCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSGardenTabCell.h; sourceTree = "<group>"; };
+		A096484822B8824B000FDBE6 /* JSGardenTabCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSGardenTabCell.m; sourceTree = "<group>"; };
+		A096484A22B88260000FDBE6 /* CityDeliveryTabCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityDeliveryTabCell.h; sourceTree = "<group>"; };
+		A096484B22B88260000FDBE6 /* CityDeliveryTabCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityDeliveryTabCell.m; sourceTree = "<group>"; };
 		A0E9270322852C9C00D07C58 /* AEFilePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFilePath.h; sourceTree = "<group>"; };
 		A0E9270422852C9C00D07C58 /* AEFilePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFilePath.m; sourceTree = "<group>"; };
 		A0F9CC7522AF366600161945 /* AccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfo.m; sourceTree = "<group>"; };
@@ -426,15 +441,11 @@
 		202D3FDF226B0D91001B3353 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2044521C2295523000FBF0C9 /* BaseCustomView.h */,
-				2044521B2295523000FBF0C9 /* BaseCustomView.m */,
-				202D3FE0226B0E16001B3353 /* CityCustomView.h */,
-				202D3FE1226B0E16001B3353 /* CityCustomView.m */,
-				204452192295522500FBF0C9 /* Address.json */,
-				202845E7226FF9C70087BCF6 /* SortView.h */,
-				202845E8226FF9C70087BCF6 /* SortView.m */,
-				20D64C47227010C9001F6172 /* FilterCustomView.h */,
-				20D64C48227010C9001F6172 /* FilterCustomView.m */,
+				A096484722B8824B000FDBE6 /* JSGardenTabCell.h */,
+				A096484822B8824B000FDBE6 /* JSGardenTabCell.m */,
+				A096484A22B88260000FDBE6 /* CityDeliveryTabCell.h */,
+				A096484B22B88260000FDBE6 /* CityDeliveryTabCell.m */,
+				A096483522B8815C000FDBE6 /* 筛选 */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,6 +719,10 @@
 				A0F9CC7522AF366600161945 /* AccountInfo.m */,
 				A0773E8C22885B1000C74D69 /* AuthInfo.h */,
 				A0773E8D22885B1000C74D69 /* AuthInfo.m */,
+				A096482E22B87F6D000FDBE6 /* HomeDataModel.h */,
+				A096482F22B87F6D000FDBE6 /* HomeDataModel.m */,
+				A096483122B87FD2000FDBE6 /* RecordsModel.h */,
+				A096483222B87FD2000FDBE6 /* RecordsModel.m */,
 				201040B8229E662900B7B258 /* AddressInfoModel.h */,
 				201040B9229E662900B7B258 /* AddressInfoModel.m */,
 				204AFAAD22A4CCCB0077D8C0 /* ListOrderModel.h */,
@@ -785,6 +800,7 @@
 				204E5298227068E600DE65A8 /* JSFeedBackVC.m */,
 				207D143E22714E5900594520 /* JSAboutVC.h */,
 				207D143F22714E5900594520 /* JSAboutVC.m */,
+				A096482D22B87EF2000FDBE6 /* 我的园区 */,
 				209D7DEC224C615F00409EA2 /* 我的订单 */,
 				20306C6C224A5253004D6762 /* 钱包 */,
 			);
@@ -982,6 +998,31 @@
 			path = AddressSelect;
 			sourceTree = "<group>";
 		};
+		A096482D22B87EF2000FDBE6 /* 我的园区 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "我的园区";
+			sourceTree = "<group>";
+		};
+		A096483522B8815C000FDBE6 /* 筛选 */ = {
+			isa = PBXGroup;
+			children = (
+				A096483B22B8815C000FDBE6 /* Address.json */,
+				A096483922B8815C000FDBE6 /* BaseCustomView.h */,
+				A096483E22B8815C000FDBE6 /* BaseCustomView.m */,
+				A096483C22B8815C000FDBE6 /* CityCustomView.h */,
+				A096483622B8815C000FDBE6 /* CityCustomView.m */,
+				A096483822B8815C000FDBE6 /* FilterCustomView.h */,
+				A096483D22B8815C000FDBE6 /* FilterCustomView.m */,
+				A096483A22B8815C000FDBE6 /* SortView.h */,
+				A096483722B8815C000FDBE6 /* SortView.m */,
+				A096484422B881AD000FDBE6 /* FilterButton.h */,
+				A096484522B881AD000FDBE6 /* FilterButton.m */,
+			);
+			path = "筛选";
+			sourceTree = "<group>";
+		};
 		BC6FE1E952040C63C0F9E829 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,7 +1101,6 @@
 				A026350E228C234900C924E2 /* ic_refresh_image_029@2x.png in Resources */,
 				A026352A228C234900C924E2 /* ic_refresh_image_014@2x.png in Resources */,
 				A0263517228C234900C924E2 /* ic_refresh_image_023@2x.png in Resources */,
-				2044521A2295522500FBF0C9 /* Address.json in Resources */,
 				A0263524228C234900C924E2 /* ic_refresh_image_034@2x.png in Resources */,
 				A0263521228C234900C924E2 /* ic_refresh_image_028@2x.png in Resources */,
 				A026352B228C234900C924E2 /* ic_refresh_image_032@2x.png in Resources */,
@@ -1070,6 +1110,7 @@
 				A0263512228C234900C924E2 /* ic_refresh_image_011@2x.png in Resources */,
 				A0263514228C234900C924E2 /* ic_refresh_image_007@2x.png in Resources */,
 				A0263510228C234900C924E2 /* ic_refresh_image_013@2x.png in Resources */,
+				A096484122B8815D000FDBE6 /* Address.json in Resources */,
 				20BD74042248BEB00020EA5D /* Login.storyboard in Resources */,
 				20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */,
 				20BD74032248BEB00020EA5D /* Message.storyboard in Resources */,
@@ -1161,9 +1202,7 @@
 				205F20362276A254000A8967 /* JSOrderDetailMapVC.m in Sources */,
 				20BD73D12248BE440020EA5D /* XLGExternalTestTool.m in Sources */,
 				20BD73AA2248BE440020EA5D /* CacheUtil.m in Sources */,
-				202D3FE2226B0E16001B3353 /* CityCustomView.m in Sources */,
 				A0E9270522852C9C00D07C58 /* AEFilePath.m in Sources */,
-				202845E9226FF9C70087BCF6 /* SortView.m in Sources */,
 				20781E6F224A054F00F0767D /* JSAuthenticationVC.m in Sources */,
 				A0F9CC7722AF366600161945 /* AccountInfo.m in Sources */,
 				20BD73B12248BE440020EA5D /* Utils.m in Sources */,
@@ -1171,6 +1210,8 @@
 				20A83ED5229CE01E001304A8 /* MyCustomButton.m in Sources */,
 				20BD73CE2248BE440020EA5D /* XLGChangeServerModel.m in Sources */,
 				207D144022714E5900594520 /* JSAboutVC.m in Sources */,
+				A096484922B8824B000FDBE6 /* JSGardenTabCell.m in Sources */,
+				A096484622B881AD000FDBE6 /* FilterButton.m in Sources */,
 				20BD73342248BDC30020EA5D /* main.m in Sources */,
 				201040BA229E662900B7B258 /* AddressInfoModel.m in Sources */,
 				20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */,
@@ -1186,7 +1227,6 @@
 				2012E5B622B33941001F8001 /* JSCityDeliveryDetaileVC.m in Sources */,
 				20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */,
 				203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */,
-				2044521D2295523000FBF0C9 /* BaseCustomView.m in Sources */,
 				20BD73B72248BE440020EA5D /* Config.m in Sources */,
 				20BD73BA2248BE440020EA5D /* CZUpdateView.m in Sources */,
 				204E5299227068E600DE65A8 /* JSFeedBackVC.m in Sources */,
@@ -1196,14 +1236,18 @@
 				209B6ACC2272DCCF0060F509 /* MKMapView+ZoomLevel.m in Sources */,
 				20BD73B42248BE440020EA5D /* RegularPhoneTF.m in Sources */,
 				A00A227822A5FA57002E2E0C /* JSOrderDetailsVC.m in Sources */,
+				A096484322B8815D000FDBE6 /* BaseCustomView.m in Sources */,
+				A096484022B8815D000FDBE6 /* SortView.m in Sources */,
 				20BD73B32248BE440020EA5D /* XLGLottie.m in Sources */,
-				20D64C49227010C9001F6172 /* FilterCustomView.m in Sources */,
 				20BD73AC2248BE440020EA5D /* Toast.m in Sources */,
 				20BD73AF2248BE440020EA5D /* JHHJAnimation.m in Sources */,
 				204AFAAF22A4CCCB0077D8C0 /* ListOrderModel.m in Sources */,
 				20BD73B82248BE440020EA5D /* NetworkManager.m in Sources */,
+				A096484222B8815D000FDBE6 /* FilterCustomView.m in Sources */,
+				A096483F22B8815D000FDBE6 /* CityCustomView.m in Sources */,
 				A0346BF222A95AD900E5BAED /* TradeRecordModel.m in Sources */,
 				20BD73B62248BE440020EA5D /* NetworkUtil.m in Sources */,
+				A096483322B87FD2000FDBE6 /* RecordsModel.m in Sources */,
 				20BD73C62248BE440020EA5D /* BaseVC.m in Sources */,
 				20BD73BD2248BE440020EA5D /* UserInfo.m in Sources */,
 				20BD73CF2248BE440020EA5D /* XLGChangeServerVC.m in Sources */,
@@ -1225,12 +1269,14 @@
 				20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */,
 				20BD741B2248C8230020EA5D /* JSResetPswVC.m in Sources */,
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
+				A096484C22B88260000FDBE6 /* CityDeliveryTabCell.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
 				2012E5B322B33904001F8001 /* JSLineDetaileVC.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
 				209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */,
 				20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */,
 				20BD73C42248BE440020EA5D /* WKDelegateController.m in Sources */,
+				A096483022B87F6D000FDBE6 /* HomeDataModel.m in Sources */,
 				20BD73AB2248BE440020EA5D /* CZStarView.m in Sources */,
 				A075190D227D17710032A974 /* HmSelectAdView.m in Sources */,
 				20BD73BF2248BE440020EA5D /* JSDeliverGoodsVC.m in Sources */,

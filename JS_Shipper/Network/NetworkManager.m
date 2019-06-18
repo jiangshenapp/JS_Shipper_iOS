@@ -73,7 +73,9 @@ static NetworkManager *_manager = nil;
         }
         else {
             completion(nil,Request_Fail,nil);
-            [Utils showToast:object[@"msg"]];
+            if (![Utils isBlankString:object[@"msg"]]) {
+                [Utils showToast:object[@"msg"]];
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -131,7 +133,9 @@ static NetworkManager *_manager = nil;
         }
         else {
             completion(nil,Request_Fail,nil);
-            [Utils showToast:object[@"msg"]];
+            if (![Utils isBlankString:object[@"msg"]]) {
+                [Utils showToast:object[@"msg"]];
+            }
         }
         [self printLogInfoWith:name WithParam:parameters andResult:object];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -204,7 +208,9 @@ static NetworkManager *_manager = nil;
         }
         else {
             completion(nil,Request_Fail,nil);
-            [Utils showToast:object[@"msg"]];
+            if (![Utils isBlankString:object[@"msg"]]) {
+                [Utils showToast:object[@"msg"]];
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

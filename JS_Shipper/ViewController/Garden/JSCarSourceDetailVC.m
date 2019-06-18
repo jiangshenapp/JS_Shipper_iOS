@@ -10,6 +10,7 @@
 #import "JSDeliverConfirmVC.h"
 
 @interface JSCarSourceDetailVC ()
+
 @property (weak, nonatomic) IBOutlet UIImageView *carImgView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *carImgH;
 @property (weak, nonatomic) IBOutlet UILabel *startAddressLab;
@@ -19,13 +20,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *carTypeLab;
 @property (weak, nonatomic) IBOutlet UILabel *carLengthLab;
 @property (weak, nonatomic) IBOutlet UITextView *remarkTV;
+
 @end
 
 @implementation JSCarSourceDetailVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"车源详情";
+    
     [self refreshUI];
     [self getData];
 }
@@ -51,6 +55,76 @@
     _carTypeLab.text = self.dataModel.carModelName;
     _carLengthLab.text = self.dataModel.carLengthName;
     _remarkTV.text = self.dataModel.remark;
+    if ([self.dataModel.isCollect isEqualToString:@"1"]) {
+        self.collectBtn.selected = YES;
+    } else {
+        self.collectBtn.selected = NO;
+    }
+    if ([Utils isBlankString:self.dataModel.image2]) {
+        self.carImgH.constant = 0;
+    } else {
+        [self.carImgView sd_setImageWithURL:[NSURL URLWithString:self.dataModel.image2]];
+    }
+}
+
+#pragma mark - methods
+
+/** 收藏 */
+- (void)collectAction {
+
+    if (self.collectBtn.isSelected) {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:self.carSourceID forKey:@"lineId"];
+        [[NetworkManager sharedManager] postJSON:URL_LineRemove parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                [Utils showToast:@"取消收藏成功"];
+                self.collectBtn.selected = !self.collectBtn.isSelected;
+            }
+        }];
+    } else {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:self.carSourceID forKey:@"lineId"];
+        [[NetworkManager sharedManager] postJSON:URL_LineAdd parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                [Utils showToast:@"收藏成功"];
+                self.collectBtn.selected = !self.collectBtn.isSelected;
+            }
+        }];
+    }
+}
+
+/** 打电话 */
+- (void)callAction {
+    if (![Utils isBlankString:self.dataModel.driverPhone]) {
+        [Utils call:self.dataModel.driverPhone];
+    } else {
+        [Utils showToast:@"手机号码为空"];
+    }
+}
+
+/** 下单 */
+- (void)createOrderAction {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.dataModel.carModel forKey:@"carModel"];
+    [dic setObject:self.dataModel.carLength forKey:@"carLength"];
+    //        [dic setObject:_info1.address forKey:@"sendAddress"];
+    [dic setObject:self.dataModel.startAddressCode forKey:@"sendAddressCode"];
+    //        NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
+    //        [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
+    [dic setObject:self.dataModel.arriveAddressCode forKey:@"receiveAddressCode"];
+    [dic setObject:self.dataModel.driverPhone forKey:@"receiveMobile"];
+    [dic setObject:self.dataModel.driverName forKey:@"receiveName"];
+    
+    //        NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
+    //        [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];
+    [[NetworkManager sharedManager] postJSON:URL_AddStepOne parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status==Request_Success) {
+            JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
+            vc.orderID = [NSString stringWithFormat:@"%@",responseData];
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }
+    }];
 }
 
 /*
@@ -63,29 +137,4 @@
 }
 */
 
-
-- (void)createOrderAction{
-    __weak typeof(self) weakSelf = self;
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.dataModel.carModel forKey:@"carModel"];
-    [dic setObject:self.dataModel.carLength forKey:@"carLength"];
-//        [dic setObject:_info1.address forKey:@"sendAddress"];
-        [dic setObject:self.dataModel.startAddressCode forKey:@"sendAddressCode"];
-//        NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
-//        [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
-        [dic setObject:self.dataModel.arriveAddressCode forKey:@"receiveAddressCode"];
-            [dic setObject:self.dataModel.driverPhone forKey:@"receiveMobile"];
-            [dic setObject:self.dataModel.driverName forKey:@"receiveName"];
-    
-//        NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
-//        [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];
-    [[NetworkManager sharedManager] postJSON:URL_AddStepOne parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
-        if (status==Request_Success) {
-            JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
-            vc.orderID = [NSString stringWithFormat:@"%@",responseData];
-            [weakSelf.navigationController pushViewController:vc animated:YES];
-        }
-    }];
-    
-}
 @end

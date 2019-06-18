@@ -16,9 +16,74 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.title = @"精品路线详情";
+    
+    [self refreshUI];
+    [self getData];
 }
 
+#pragma mark - 获取数据
+- (void)getData {
+    __weak typeof(self) weakSelf = self;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSString *url = [NSString stringWithFormat:@"%@/%@",URL_GetLineDetail,self.carSourceID];
+    [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            weakSelf.dataModel = [RecordsModel mj_objectWithKeyValues:responseData];
+            [weakSelf refreshUI];
+        }
+    }];
+}
+
+- (void)refreshUI {
+    _startAddressLab.text = self.dataModel.startAddressCodeName;
+    _endAddressLab.text = self.dataModel.receiveAddressCodeName;
+    _nameLab.text = self.dataModel.driverName;
+    _carModelLab.text = self.dataModel.carModelName;
+    _calLengthLab.text = self.dataModel.carLengthName;
+    _contentTV.text = self.dataModel.remark;
+    if ([self.dataModel.isCollect isEqualToString:@"1"]) {
+        self.collectBtn.selected = YES;
+    } else {
+        self.collectBtn.selected = NO;
+    }
+}
+
+#pragma mark - methods
+
+/** 收藏 */
+- (void)collectAction {
+    
+    if (self.collectBtn.isSelected) {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:self.carSourceID forKey:@"lineId"];
+        [[NetworkManager sharedManager] postJSON:URL_LineRemove parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                [Utils showToast:@"取消收藏成功"];
+                self.collectBtn.selected = !self.collectBtn.isSelected;
+            }
+        }];
+    } else {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        [dic setObject:self.carSourceID forKey:@"lineId"];
+        [[NetworkManager sharedManager] postJSON:URL_LineAdd parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+            if (status == Request_Success) {
+                [Utils showToast:@"收藏成功"];
+                self.collectBtn.selected = !self.collectBtn.isSelected;
+            }
+        }];
+    }
+}
+
+/** 打电话 */
+- (void)callAction {
+    if (![Utils isBlankString:self.dataModel.driverPhone]) {
+        [Utils call:self.dataModel.driverPhone];
+    } else {
+        [Utils showToast:@"手机号码为空"];
+    }
+}
 /*
 #pragma mark - Navigation
 

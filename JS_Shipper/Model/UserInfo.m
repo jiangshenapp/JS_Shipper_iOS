@@ -45,7 +45,9 @@ static NSUserDefaults *_defaults = nil;
 }
 
 - (NSString *)avatar {
-    _avatar = [NSString stringWithFormat:@"%@%@",PIC_URL(),_avatar];
+    if (![_avatar containsString:@"http"]) {
+        _avatar = [NSString stringWithFormat:@"%@%@",PIC_URL(),_avatar];
+    }
     return _avatar;
 }
 
