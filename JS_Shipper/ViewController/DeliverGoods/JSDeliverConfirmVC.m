@@ -9,11 +9,17 @@
 #import "JSDeliverConfirmVC.h"
 #import "ZHPickView.h"
 #import "TZImagePickerController.h"
+#import "JSConfirmAddressMapVC.h"
 
 @interface JSDeliverConfirmVC ()<TZImagePickerControllerDelegate>
 {
    __block NSInteger imageType;
 }
+/** 起止点 */
+@property (nonatomic,retain) AddressInfoModel *info1;
+/** 终止点 */
+@property (nonatomic,retain) AddressInfoModel *info2;
+
 /** 运费 */
 @property (nonatomic,copy) NSString *fee;
 /** 运费类型，1自己出价，2电议 */
@@ -53,21 +59,46 @@
     self.feeType = @"1";
     self.payWay = @"1";
     self.payType = @"1";
+    if (_isAll) {
+        _tabHeaderView.height = 1085;
+    }
+    else {
+        _tabHeaderView.height = 925;
+    }
+    [self.baseTabView reloadData];
     UIButton *otherBtn = [self.view viewWithTag:100];
     [self needLoadGoodsType:otherBtn];
     [self getCarTypeInfo];
     // Do any additional setup after loading the view.
 }
 
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    __weak typeof(self) weakSelf = self;
+    JSConfirmAddressMapVC *vc = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"start"]) {
+        vc.sourceType = 0;
+        vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
+            [weakSelf.startAddressBtn setTitle:info.address forState:UIControlStateNormal];
+            weakSelf.info1 = info;
+            if (weakSelf.info1&&weakSelf.info2) {
+                NSString *disStr = [Utils distanceBetweenOrderBy:weakSelf.info1.pt.latitude :weakSelf.info2.pt.latitude :weakSelf.info1.pt.longitude :weakSelf.info2.pt.longitude];
+                weakSelf.distanceLab.text = [NSString stringWithFormat:@"总里程:%@",disStr];
+            }
+        };
+    }
+    else if ([segue.identifier isEqualToString:@"end"]) {
+        vc.sourceType = 1;
+        vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
+            [weakSelf.endAddressBtn setTitle:info.address forState:UIControlStateNormal];
+            weakSelf.info2 = info;
+            if (weakSelf.info1&&weakSelf.info2) {
+                NSString *disStr = [Utils distanceBetweenOrderBy:weakSelf.info1.pt.latitude :weakSelf.info2.pt.latitude :weakSelf.info1.pt.longitude :weakSelf.info2.pt.longitude];
+                weakSelf.distanceLab.text = [NSString stringWithFormat:@"总里程:%@",disStr];
+            }
+        };
+    }
 }
-*/
 
 - (IBAction)selectGoodsTypeAction:(id)sender {
 }
@@ -259,5 +290,7 @@
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
     }];
+}
+- (IBAction)selectAddress1Action:(UIButton *)sender {
 }
 @end

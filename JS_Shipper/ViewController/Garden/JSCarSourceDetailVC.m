@@ -124,6 +124,7 @@
         if (status==Request_Success) {
             JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
             vc.orderID = [NSString stringWithFormat:@"%@",responseData];
+            vc.isAll = YES;
             [weakSelf.navigationController pushViewController:vc animated:YES];
         }
     }];

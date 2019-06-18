@@ -13,6 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface JSDeliverConfirmVC : BaseVC
 /** 订单ID */
 @property (nonatomic,copy) NSString *orderID;
+/** 是否是综合发货 */
+@property (nonatomic,assign) BOOL isAll;
+@property (weak, nonatomic) IBOutlet UIView *tabHeaderView;
+@property (weak, nonatomic) IBOutlet UIButton *startAddressBtn;
+@property (weak, nonatomic) IBOutlet UIButton *endAddressBtn;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLab;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *weightTF;
 @property (weak, nonatomic) IBOutlet UITextField *goodAreaTF;
 @property (weak, nonatomic) IBOutlet UITextField *goodsTypeTF;
