@@ -137,11 +137,11 @@
     BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_info2.pt.latitude,_info2.pt.longitude));
   float  dist = BMKMetersBetweenMapPoints(point1,point2);
     if (dist<1000) {
-        _distanceLab.text = [NSString stringWithFormat:@"总里程：%.2f米",dist];
+        _distanceLab.text = [NSString stringWithFormat:@"总里程：%.2fm",dist];
     }
     else {
         dist = dist/1000;
-        _distanceLab.text = [NSString stringWithFormat:@"总里程：%.2f公里",dist];
+        _distanceLab.text = [NSString stringWithFormat:@"总里程：%.2fkm",dist];
 
     }
 }

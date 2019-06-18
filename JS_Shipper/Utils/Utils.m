@@ -419,6 +419,9 @@ static Utils *_utils = nil;
 }
 
 + (NSString *)getTimeStrToCurrentDateWith:(NSString *)dateStr1 {
+    if (dateStr1.length==0) {
+        return @"";
+    }
     NSDateFormatter *fmt = [[NSDateFormatter alloc]init];
     fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     NSTimeZone *zone = [NSTimeZone systemTimeZone];

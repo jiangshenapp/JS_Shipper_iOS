@@ -33,6 +33,8 @@
 		20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20781E74224A257A00F0767D /* JSMyWalletVC.m */; };
 		207D144022714E5900594520 /* JSAboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207D143F22714E5900594520 /* JSAboutVC.m */; };
 		207D1443227153E300594520 /* JSDeliverConfirmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 207D1442227153E300594520 /* JSDeliverConfirmVC.m */; };
+		20914FDF22B8C6E7005B4A4E /* XLGMapNavVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20914FDE22B8C6E7005B4A4E /* XLGMapNavVC.m */; };
+		20914FE322B8C734005B4A4E /* LocationTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 20914FE222B8C734005B4A4E /* LocationTransform.m */; };
 		209B6ACC2272DCCF0060F509 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6ACA2272DCCE0060F509 /* MKMapView+ZoomLevel.m */; };
 		209B6ACF227300850060F509 /* JSSelectCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6ACE227300850060F509 /* JSSelectCityVC.m */; };
 		209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6AD12273097A0060F509 /* JSEditAddressVC.m */; };
@@ -201,6 +203,10 @@
 		207D143F22714E5900594520 /* JSAboutVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAboutVC.m; sourceTree = "<group>"; };
 		207D1441227153E300594520 /* JSDeliverConfirmVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSDeliverConfirmVC.h; sourceTree = "<group>"; };
 		207D1442227153E300594520 /* JSDeliverConfirmVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSDeliverConfirmVC.m; sourceTree = "<group>"; };
+		20914FDD22B8C6E6005B4A4E /* XLGMapNavVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLGMapNavVC.h; sourceTree = "<group>"; };
+		20914FDE22B8C6E7005B4A4E /* XLGMapNavVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLGMapNavVC.m; sourceTree = "<group>"; };
+		20914FE122B8C734005B4A4E /* LocationTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTransform.h; sourceTree = "<group>"; };
+		20914FE222B8C734005B4A4E /* LocationTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTransform.m; sourceTree = "<group>"; };
 		209B6ACA2272DCCE0060F509 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		209B6ACB2272DCCE0060F509 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		209B6ACD227300850060F509 /* JSSelectCityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSSelectCityVC.h; sourceTree = "<group>"; };
@@ -488,6 +494,15 @@
 			path = thirdlibs;
 			sourceTree = "<group>";
 		};
+		20914FE022B8C734005B4A4E /* LocationTransform */ = {
+			isa = PBXGroup;
+			children = (
+				20914FE122B8C734005B4A4E /* LocationTransform.h */,
+				20914FE222B8C734005B4A4E /* LocationTransform.m */,
+			);
+			path = LocationTransform;
+			sourceTree = "<group>";
+		};
 		209D7DEC224C615F00409EA2 /* 我的订单 */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +574,7 @@
 				A0E9270422852C9C00D07C58 /* AEFilePath.m */,
 				209B6ACB2272DCCE0060F509 /* MKMapView+ZoomLevel.h */,
 				209B6ACA2272DCCE0060F509 /* MKMapView+ZoomLevel.m */,
+				20914FE022B8C734005B4A4E /* LocationTransform */,
 				20BD733C2248BE420020EA5D /* Cache */,
 				20BD73412248BE420020EA5D /* StarView */,
 				20BD73442248BE420020EA5D /* Toast */,
@@ -760,6 +776,8 @@
 		20BD73772248BE430020EA5D /* DeliverGoods */ = {
 			isa = PBXGroup;
 			children = (
+				20914FDD22B8C6E6005B4A4E /* XLGMapNavVC.h */,
+				20914FDE22B8C6E7005B4A4E /* XLGMapNavVC.m */,
 				20BD73782248BE430020EA5D /* JSDeliverGoodsVC.h */,
 				20BD73792248BE430020EA5D /* JSDeliverGoodsVC.m */,
 				207D1441227153E300594520 /* JSDeliverConfirmVC.h */,
@@ -1196,6 +1214,7 @@
 				A0773E8E22885B1000C74D69 /* AuthInfo.m in Sources */,
 				200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */,
 				20BD73B02248BE440020EA5D /* AEIndicator.m in Sources */,
+				20914FDF22B8C6E7005B4A4E /* XLGMapNavVC.m in Sources */,
 				20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */,
 				A0346BBB22A8A48B00E5BAED /* PayRouteModel.m in Sources */,
 				A04CB3C3227B1C6E00ED6979 /* BaseItem.m in Sources */,
@@ -1271,6 +1290,7 @@
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,
 				A096484C22B88260000FDBE6 /* CityDeliveryTabCell.m in Sources */,
 				20BD73AD2248BE440020EA5D /* JHHJCenterBGView.m in Sources */,
+				20914FE322B8C734005B4A4E /* LocationTransform.m in Sources */,
 				2012E5B322B33904001F8001 /* JSLineDetaileVC.m in Sources */,
 				20BD73CC2248BE440020EA5D /* XLGInternalTestVC.m in Sources */,
 				209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */,
