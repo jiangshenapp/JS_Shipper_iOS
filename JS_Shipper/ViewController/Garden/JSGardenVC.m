@@ -18,7 +18,7 @@
 #import "JSGardenTabCell.h"
 #import "CityDeliveryTabCell.h"
 
-@interface JSGardenVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface JSGardenVC ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>
 {
     NSArray *titleArr1;
     NSArray *titleArr2;
@@ -47,6 +47,10 @@
 @property (nonatomic,retain) NSMutableArray <RecordsModel *>*dataSource;
 /** 排序，1发货时间 2距离; */
 @property (nonatomic,copy) NSString *sort;
+/** 定位管理器 */
+@property (retain, nonatomic) CLLocationManager *locationManager;
+/** 当前经纬度 */
+@property (nonatomic,assign) CLLocationCoordinate2D currentLoc;
 
 @end
 
@@ -56,16 +60,43 @@
     
     [super viewDidLoad];
     
+    [self startLocation];
     [self initView];
     [self getData];
     [self getDicList];
 }
 
--(void)initView {
+#pragma mark 定位
+- (void)startLocation {
+    if ([CLLocationManager locationServicesEnabled]) {//判断定位操作是否被允许
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;//遵循代理
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = 10.0f;
+        [_locationManager requestWhenInUseAuthorization];//使用程序其间允许访问位置数据（iOS8以上版本定位需要）
+        [self.locationManager startUpdatingLocation];//开始定位
+    }else{//不能定位用户的位置的情况再次进行判断，并给与用户提示
+        
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    [self.locationManager stopUpdatingLocation];
+    //当前所在城市的坐标值
+    CLLocation *currLocation = [locations lastObject];
+    _currentLoc = currLocation.coordinate;
+    NSDictionary *locDic = @{@"lat":@(_currentLoc.latitude),@"lng":@(_currentLoc.longitude)};
+    [[NSUserDefaults standardUserDefaults] setObject:locDic forKey:@"loc"];;
+    NSLog(@"经度=%f 纬度=%f 高度=%f", currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude);
+}
+
+- (void)initView {
     _pageFlag = 0;
     _page = 1;
     _sort = @"1";
     _dataSource = [NSMutableArray array];
+    NSDictionary *locDic = [[NSUserDefaults standardUserDefaults]objectForKey:@"loc"];
+    _currentLoc = CLLocationCoordinate2DMake([locDic[@"lat"] floatValue], [locDic[@"lng"] floatValue]);
     _titleView.top = 7+kStatusBarH;
     _titleView.centerX = WIDTH/2.0;
     [self.navBar addSubview:_titleView];

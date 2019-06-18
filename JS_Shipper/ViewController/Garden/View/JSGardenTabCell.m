@@ -17,7 +17,8 @@
     self.endAddressLab.text = model.arriveAddressCodeName;
     if (_pageFlag == 0) {
         self.countBtn.hidden = NO;
-        [self.countBtn setTitle:model.enableTime forState:UIControlStateNormal];
+        
+        [self.countBtn setTitle:[Utils getTimeStrToCurrentDateWith:model.enableTime] forState:UIControlStateNormal];
         self.contentLab.text = [NSString stringWithFormat:@"%@ %@ %@/%@",model.driverName,model.cphm,model.carLengthName,model.carModelName];
     } else {
         self.countBtn.hidden = YES;

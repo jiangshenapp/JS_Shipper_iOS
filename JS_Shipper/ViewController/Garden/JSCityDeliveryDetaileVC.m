@@ -45,7 +45,10 @@
     }
     self.parkImgH.constant = 0; //园区地址二期
     self.dotNameLab.text = self.dataModel.companyName;
-//    self.dotAddressLab.text = [NSString stringWithFormat:@"距离您xxkm"];
+    NSDictionary *contactLocDic = [Utils dictionaryWithJsonString:self.dataModel.contactLocation];
+    NSDictionary *locDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"loc"];
+    NSString *distanceStr = [NSString stringWithFormat:@"距离您%@",[Utils distanceBetweenOrderBy:[locDic[@"lat"] floatValue] :[contactLocDic[@"latitude"] floatValue] :[locDic[@"lng"] floatValue] :[contactLocDic[@"longitude"] floatValue]]];
+    self.dotAddressLab.text = distanceStr;
     self.nameLab.text = self.dataModel.contactName;
     self.addressLab.text = self.dataModel.contactAddress;
     self.contentTV.text = self.dataModel.remark;
