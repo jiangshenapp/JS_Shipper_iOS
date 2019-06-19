@@ -259,13 +259,14 @@
 #pragma mark - 确认收货
 /** 确认收货 */
 - (void)confirmGoodsOrder {
-//    __weak typeof(self) weakSelf = self;
-//    NSDictionary *dic = [NSDictionary dictionary];
-//    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_CancelOrderDetail,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
-//        if (status == Request_Success) {
-//            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
-//        }
-//    }];
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *dic = [NSDictionary dictionary];
+    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_ConfirmOrder,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            [Utils showToast:@"确认收货成功"];
+            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+        }
+    }];
 }
 
 #pragma mark - 立即支付
