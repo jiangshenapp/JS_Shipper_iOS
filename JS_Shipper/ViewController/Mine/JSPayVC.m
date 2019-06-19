@@ -14,7 +14,7 @@
 
 @interface JSPayVC ()
 {
-    NSInteger payType;//0支付宝 1微信 2余额
+    NSInteger payType; //0支付宝 1微信 2余额
 }
 /** 支付路由数组 */
 @property (nonatomic,retain) NSMutableArray *listData;
@@ -28,14 +28,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"在线支付";
+    
     payType = 0;
     _payMoneyLab.text =[NSString stringWithFormat:@"%@", _price];
+    
     [self getData];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess) name:kPaySuccNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payFail) name:kPayFailNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payCancel) name:kPayCancelNotification object:nil];
-    // Do any additional setup after loading the view.
 }
 
 #pragma mark - AppDelegate支付结果回调
@@ -89,14 +92,17 @@
 }
 
 - (IBAction)payAction:(UIButton *)sender {
+    
     [self.view endEditing:YES];
+    
     if (payType==0) {
         [self alipay];
-    }else if (payType==1) {
+    } else if (payType==1) {
         [self wechatPay];
+    } else if (payType==2) {
+        [self balancePay];
     }
 }
-
 
 #pragma mark - 支付宝支付
 - (void)alipay {
@@ -175,6 +181,17 @@
             }
         }];
     }
+}
+
+#pragma mark - 余额支付
+- (void)balancePay {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?orderNo=%@",URL_RechargeOrderFee,_orderID];
+    [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status==Request_Success) {
+            [self paySuccess];
+        }
+    }];
 }
 
 @end
