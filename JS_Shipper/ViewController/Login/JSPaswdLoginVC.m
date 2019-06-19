@@ -21,6 +21,14 @@
 }
 
 #pragma mark - methods
+
+/* 返回 */
+- (void)backAction {
+    self.tabBarController.selectedIndex = 0;
+    // 跳转到首页
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 /* 登录 */
 - (IBAction)loginAction:(id)sender {
     

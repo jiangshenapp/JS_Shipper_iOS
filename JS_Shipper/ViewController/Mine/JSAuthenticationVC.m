@@ -34,8 +34,28 @@
     [super viewDidLoad];
     
     self.title = @"货主身份认证";
-    isPerson = YES;
-    _authState = [[UserInfo share].personConsignorVerified integerValue];
+    
+    if ([[UserInfo share].personConsignorVerified integerValue] != 0) {
+        isPerson = YES;
+        UIButton *otherBtn = [self.view viewWithTag:100];
+        [self titleViewAction:otherBtn];
+        self.personBtn.userInteractionEnabled = NO;
+        self.companyBtn.userInteractionEnabled = NO;
+    } else if ([[UserInfo share].companyConsignorVerified integerValue] != 0) {
+        isPerson = NO;
+        UIButton *otherBtn = [self.view viewWithTag:101];
+        [self titleViewAction:otherBtn];
+        self.personBtn.userInteractionEnabled = NO;
+        self.companyBtn.userInteractionEnabled = NO;
+    } else {
+        isPerson = YES;
+        self.companyTabView.hidden = YES;
+    }
+    if (isPerson == YES) {
+        _authState = [[UserInfo share].personConsignorVerified integerValue];
+    } else {
+        _authState = [[UserInfo share].companyConsignorVerified integerValue];
+    }
     self.bottomViewH.constant = 100;
     if (_authState == 0) { //未认证
         self.authStateH.constant = 0;
@@ -49,7 +69,6 @@
         }
     }
     self.photoType = 0;
-    self.companyTabView.hidden = YES;
     self.personTabView.tableFooterView = [[UIView alloc] init];
     self.companyTabView.tableFooterView = [[UIView alloc] init];
 }
@@ -97,9 +116,12 @@
 
 #pragma mark - methods
 
+#pragma mark - 切换个人公司
 /* 切换个人/公司 */
 - (IBAction)titleViewAction:(UIButton *)sender {
+    
     isPerson = sender.tag==100?YES:NO;
+    
     for (NSInteger tag = 100; tag<102; tag++) {
         UIButton *btn = [self.view viewWithTag:tag];
         if ([btn isEqual:sender]) {
