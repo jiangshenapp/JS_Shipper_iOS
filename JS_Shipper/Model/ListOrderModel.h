@@ -28,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property  (nonatomic , copy) NSString *goodsType;
 /** 车长，多选，逗号分隔 */
 @property  (nonatomic , copy) NSString *carLength;
+/** 车长名称，多选，逗号分隔*/
+@property  (nonatomic , copy) NSString *carLengthName;
 /** 货物体积，单位立方米 */
 @property  (nonatomic , copy) NSString *goodsVolume;
 /** 货物重量、吨 */
@@ -108,6 +110,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property  (nonatomic , copy) NSString *matchSubscriberId;
 /** 用车类型，字典 */
 @property  (nonatomic , copy) NSString *useCarType;
+/** 用车类型名称 */
+@property  (nonatomic , copy) NSString *useCarTypeName;
 /** 车型，多选，逗号分隔 */
 @property  (nonatomic , copy) NSString *carModel;
 

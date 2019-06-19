@@ -109,11 +109,88 @@
         [_submitBtn setTitle:@"下单" forState:UIControlStateNormal];
     }
     [self.baseTabView reloadData];
-    UIButton *otherBtn = [self.view viewWithTag:100];
-    [self needLoadGoodsType:otherBtn];
+//    UIButton *otherBtn = [self.view viewWithTag:100];
+//    [self needLoadGoodsType:otherBtn];
     [self getCarLengthInfo]; //车长
     [self getCarModelInfo]; //车型
     [self getCarTypeInfo]; //用车类型
+    [self initData]; //重新发货数据初始化
+}
+
+#pragma mark - 重新发货数据初始化
+/** 重新发货数据初始化 */
+- (void)initData {
+    if (self.model != nil) {
+        _carLengthDic = @{@"carLength":self.model.carLength};
+        _carModelDic = @{@"carModel":self.model.carModel};
+        _info2 = [[AddressInfoModel alloc] init];
+        _info1 = [[AddressInfoModel alloc] init];
+        _info1.address = self.model.sendAddress;
+        _info1.areaCode = self.model.sendAddressCode;
+        _info1.mobile = self.model.sendMobile;
+        _info1.userName = self.model.sendName;
+        NSString *sendPosition = self.model.sendPosition;
+        NSDictionary *sendPositionDic = [Utils dictionaryWithJsonString:sendPosition];
+        _info1.pt = CLLocationCoordinate2DMake([[sendPositionDic valueForKey:@"latitude"] floatValue],[[sendPositionDic valueForKey:@"longitude"] floatValue]);
+        _info2.address = self.model.receiveAddress;
+        _info2.areaCode = self.model.receiveAddressCode;
+        _info2.mobile = self.model.receiveMobile;
+        _info2.userName = self.model.receiveName;
+        NSString *receivePosition = self.model.receivePosition;
+        NSDictionary *receivePositionDic = [Utils dictionaryWithJsonString:receivePosition];
+        _info2.pt = CLLocationCoordinate2DMake([[receivePositionDic valueForKey:@"latitude"] floatValue],[[receivePositionDic valueForKey:@"longitude"] floatValue]);
+        
+        _weightTF.text = self.model.goodsWeight;
+        _goodAreaTF.text = self.model.goodsVolume;
+        _goodsTypeTF.text = self.model.goodsType;
+        _goodsTimeLab.text = self.model.loadingTime;
+        _useCarTypeLab.text = self.model.useCarTypeName;
+        _loadingTime = self.model.loadingTime;
+        _useCarType = self.model.useCarType;
+        _markTF.text = self.model.remark;
+        _feeType = self.model.feeType;
+        _priceLab.text = self.model.fee;
+        _image1 = self.model.image1;
+        _image2 = self.model.image2;
+        _payWay = self.model.payWay;
+        _payType = self.model.payType;
+        
+        [_startAddressBtn setTitle:self.model.sendAddress forState:UIControlStateNormal];
+        [_endAddressBtn setTitle:self.model.receiveAddress forState:UIControlStateNormal];
+        if (_info1&&_info2) {
+            NSString *disStr = [Utils distanceBetweenOrderBy:_info1.pt.latitude :_info2.pt.latitude :_info1.pt.longitude :_info2.pt.longitude];
+            _distanceLab.text = [NSString stringWithFormat:@"总里程:%@",disStr];
+        }
+        if (![Utils isBlankString:self.model.carLengthName]) {
+            [_carLengthBtn setTitle:self.model.carLengthName forState:UIControlStateNormal];
+        }
+        if (![Utils isBlankString:self.model.carModelName]) {
+            [_carModelBtn setTitle:self.model.carModelName forState:UIControlStateNormal];
+        }
+        [_image1Btn sd_setImageWithURL:[NSURL URLWithString:self.model.image1] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"order_upload_icon_photo"]];
+        [_image2Btn sd_setImageWithURL:[NSURL URLWithString:self.model.image2] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"order_upload_icon_photo"]];
+        if ([_feeType integerValue] == 1) { //自己出价
+            _chujiaBtn.selected = YES;
+            _dianyiBtn.selected = NO;
+        } else { //电议
+            _chujiaBtn.selected = NO;
+            _dianyiBtn.selected = YES;
+        }
+        if ([_payWay integerValue] == 1) { //线上支付
+            _onPayBtn.selected = YES;
+            _offPayBtn.selected = NO;
+        } else { //线下支付
+            _onPayBtn.selected = NO;
+            _offPayBtn.selected = YES;
+        }
+        if ([_payType integerValue] == 1) { //到付
+            _daoPayBtn.selected = YES;
+            _nowPayBtn.selected = NO;
+        } else { //现付
+            _daoPayBtn.selected = NO;
+            _nowPayBtn.selected = YES;
+        }
+    }
 }
 
 #pragma mark - 车长
@@ -323,6 +400,8 @@
     otherBtn.borderColor = RGBValue(0xc8c8c8);
     otherBtn.borderWidth = 1;
     otherBtn.cornerRadius = 5;
+    
+    _markTF.text = [NSString stringWithFormat:@"%@ %@",_markTF.text,sender.titleLabel.text];
 }
 
 #pragma mark - 自己出价/电议

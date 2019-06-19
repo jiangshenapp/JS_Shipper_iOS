@@ -7,6 +7,7 @@
 //
 
 #import "BaseVC.h"
+#import "ListOrderModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *subscriberId;
 /** 是否是综合发货 */
 @property (nonatomic,assign) BOOL isAll;
+/** 订单model(订单详情重新发货带过来) */
+@property (nonatomic,retain) ListOrderModel *model;
 
 @property (weak, nonatomic) IBOutlet UIView *tabHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *startAddressBtn;
@@ -31,10 +34,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *goodsTypeTF;
 @property (weak, nonatomic) IBOutlet UILabel *goodsTimeLab;
 @property (weak, nonatomic) IBOutlet UILabel *useCarTypeLab;
+@property (weak, nonatomic) IBOutlet UIButton *image1Btn;
+@property (weak, nonatomic) IBOutlet UIButton *image2Btn;
+@property (weak, nonatomic) IBOutlet UIButton *banhuoBtn;
+@property (weak, nonatomic) IBOutlet UIButton *xiehuoBtn;
 @property (weak, nonatomic) IBOutlet UITextView *markTF;
+@property (weak, nonatomic) IBOutlet UIButton *chujiaBtn;
+@property (weak, nonatomic) IBOutlet UIButton *dianyiBtn;
+@property (weak, nonatomic) IBOutlet UIButton *onPayBtn;
+@property (weak, nonatomic) IBOutlet UIButton *offPayBtn;
+@property (weak, nonatomic) IBOutlet UIButton *daoPayBtn;
+@property (weak, nonatomic) IBOutlet UIButton *nowPayBtn;
+@property (weak, nonatomic) IBOutlet UITextField *priceLab;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
-@property (weak, nonatomic) IBOutlet UITextField *priceLab;
 /** 选择货物类型 */
 - (IBAction)selectGoodsTypeAction:(id)sender;
 /** 选择装货时间 */

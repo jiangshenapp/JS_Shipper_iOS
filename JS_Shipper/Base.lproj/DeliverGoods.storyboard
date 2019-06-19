@@ -508,7 +508,7 @@
                                             <rect key="frame" x="0.0" y="631" width="375" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <subviews>
-                                                <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ooh-qb-Gdr">
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ooh-qb-Gdr">
                                                     <rect key="frame" x="14" y="10" width="110" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -667,10 +667,10 @@
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
-                                                            <state key="normal" title="到付" image="app_checkbox_icon_default">
+                                                            <state key="normal" title="线上支付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
-                                                            <state key="selected" title="在线支付" image="app_checkbox_icon_selected">
+                                                            <state key="selected" title="线上支付" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <connections>
@@ -686,7 +686,7 @@
                                                             <state key="normal" title="线下支付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
-                                                            <state key="selected" title="现付" image="app_checkbox_icon_selected">
+                                                            <state key="selected" title="线下支付" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <connections>
@@ -728,7 +728,7 @@
                                                             <state key="normal" title="到付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
-                                                            <state key="selected" image="app_checkbox_icon_selected">
+                                                            <state key="selected" title="到付" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <connections>
@@ -744,7 +744,7 @@
                                                             <state key="normal" title="现付" image="app_checkbox_icon_default">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
-                                                            <state key="selected" image="app_checkbox_icon_selected">
+                                                            <state key="selected" title="现付" image="app_checkbox_icon_selected">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
                                                             <connections>
@@ -801,20 +801,30 @@
                     <navigationItem key="navigationItem" id="0Wi-aX-BX4"/>
                     <size key="freeformSize" width="375" height="1300"/>
                     <connections>
+                        <outlet property="banhuoBtn" destination="Ooh-qb-Gdr" id="hu6-eU-AZL"/>
                         <outlet property="carLengthBtn" destination="ihI-aa-aIO" id="scd-kT-DtR"/>
                         <outlet property="carModelBtn" destination="dMa-Ew-JMM" id="3qR-rT-PAE"/>
+                        <outlet property="chujiaBtn" destination="CwK-Bm-iFn" id="tVd-Kz-Du7"/>
+                        <outlet property="daoPayBtn" destination="Bca-jF-Pfx" id="0Uv-fN-Hdv"/>
+                        <outlet property="dianyiBtn" destination="SR1-Im-7tM" id="ijq-qq-Yv4"/>
                         <outlet property="distanceLab" destination="qeQ-BL-EGK" id="cf8-TJ-ubL"/>
                         <outlet property="endAddressBtn" destination="59B-Fv-OQu" id="uqE-TT-Fgl"/>
                         <outlet property="goodAreaTF" destination="YVZ-Is-ZOH" id="PKI-Gt-Jm8"/>
                         <outlet property="goodsTimeLab" destination="5er-Dh-rIW" id="Xdn-ce-gsa"/>
                         <outlet property="goodsTypeTF" destination="7K0-Q1-7yZ" id="0Km-lY-o8u"/>
+                        <outlet property="image1Btn" destination="k7s-oU-qBb" id="AZI-sc-3jV"/>
+                        <outlet property="image2Btn" destination="1zU-uz-F8w" id="eIy-L5-gTa"/>
                         <outlet property="markTF" destination="VTk-LQ-FSp" id="FYm-aD-sIV"/>
+                        <outlet property="nowPayBtn" destination="42R-Qb-Rw0" id="Thy-YT-SB0"/>
+                        <outlet property="offPayBtn" destination="AY3-h0-2WM" id="coR-pq-VhD"/>
+                        <outlet property="onPayBtn" destination="Ppr-se-7ex" id="bny-F5-Yc0"/>
                         <outlet property="priceLab" destination="yNT-rn-NF9" id="evb-ep-Alu"/>
                         <outlet property="startAddressBtn" destination="8Sp-Jx-NJE" id="CpL-Zm-L6Y"/>
                         <outlet property="submitBtn" destination="3pc-rS-T4n" id="XLb-Mp-wPm"/>
                         <outlet property="tabHeaderView" destination="G1c-sL-g5K" id="O9Z-i6-Gu9"/>
                         <outlet property="useCarTypeLab" destination="gtH-hT-9Vn" id="Z1a-Fl-Pgq"/>
                         <outlet property="weightTF" destination="igN-db-14O" id="mDN-tU-Fe6"/>
+                        <outlet property="xiehuoBtn" destination="RHK-sR-73L" id="mie-Ja-eiY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cyx-Fs-bEq" userLabel="First Responder" sceneMemberID="firstResponder"/>

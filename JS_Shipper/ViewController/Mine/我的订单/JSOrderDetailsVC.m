@@ -246,6 +246,7 @@
 - (void)againPublishOrder {
     JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
     vc.isAll = YES;
+    vc.model = self.model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
