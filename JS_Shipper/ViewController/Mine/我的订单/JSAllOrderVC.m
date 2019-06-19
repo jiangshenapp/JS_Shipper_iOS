@@ -26,6 +26,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    _page = 1;
+    [self getData];
 }
 
 - (void)viewDidLoad {
@@ -39,16 +41,13 @@
         [self titleBtnAction:sender];
     }
     _listData = [NSMutableArray array];
-    _page = 1;
     [self initOrderState:_typeFlage];
-    [self getData];
     __weak typeof(self) weakSelf = self;
     self.baseTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
         [weakSelf getData];
     }];
     [self addTabMJ_FootView];
-    // Do any additional setup after loading the view.
 }
 
 #pragma mark - 初始化订单状态
