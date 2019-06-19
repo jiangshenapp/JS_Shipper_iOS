@@ -25,10 +25,11 @@
     NSArray *titleArr2;
     NSArray *titleViewArr1;
     NSArray *titleViewArr2;
+    NSMutableArray *_titleBtnArr;
     CityCustomView *cityView1;
     CityCustomView *cityView2;
     SortView *mySortView1;
-     SortView *mySortView2;
+    SortView *mySortView2;
     CityCustomView *cityView3;
 }
 /** 分页 */
@@ -106,6 +107,7 @@
     _areaCode2 = @"";
     _areaCode3 = @"";
     _dataSource = [NSMutableArray array];
+    _titleBtnArr = [NSMutableArray array];
     NSDictionary *locDic = [[NSUserDefaults standardUserDefaults]objectForKey:@"loc"];
     _currentLoc = CLLocationCoordinate2DMake([locDic[@"lat"] floatValue], [locDic[@"lng"] floatValue]);
     _titleView.top = 7+kStatusBarH;
@@ -119,6 +121,7 @@
         [sender setTitle:titleArr1[index] forState:UIControlStateNormal];
         [sender addTarget:self action:@selector(showViewAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.filterView1 addSubview:sender];
+        [_titleBtnArr addObject:sender];
     }
     
     titleArr2 = @[@"区域",@"全部",@"默认排序"];
@@ -129,6 +132,7 @@
         [sender setTitle:titleArr2[index] forState:UIControlStateNormal];
         [sender addTarget:self action:@selector(showViewAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.filterView2 addSubview:sender];
+         [_titleBtnArr addObject:sender];
     }
     
     __weak typeof(self) weakSelf = self;
@@ -169,6 +173,7 @@
         else {
             weakSelf.sort1 = @"2";
         }
+         [weakSelf.baseTabView.mj_header beginRefreshing];
     };
     _myfilteView = [[FilterCustomView alloc]init];
     _myfilteView.getPostDic = ^(NSDictionary * _Nonnull dic, NSArray * _Nonnull titles) {
@@ -432,6 +437,14 @@
     [self.baseTabView.mj_header beginRefreshing];
     _filterView1.hidden = sender.tag==101?YES:NO;
     _filterView2.hidden = !_filterView1.hidden;
+    NSMutableArray *titleViewArr = [NSMutableArray arrayWithArray:titleViewArr2];
+    [titleViewArr addObjectsFromArray:titleViewArr1];
+    for (BaseCustomView *view in titleViewArr) {
+        [view hiddenView];
+    }
+    for (MyCustomButton *btn in _titleBtnArr) {
+        btn.isSelect = NO;
+    }
 }
 
 
