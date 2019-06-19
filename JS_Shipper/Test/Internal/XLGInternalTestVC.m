@@ -50,9 +50,9 @@
     [self.view addSubview:self.tableView];
     
     //动画下拉刷新
-    [self tableViewGifHeaderWithRefreshingBlock:^{
-        [self getData];
-    }];
+//    [self tableViewGifHeaderWithRefreshingBlock:^{
+//        [self getData];
+//    }];
     [self.tableView.mj_header beginRefreshing];
 
 //    //动画加载更多
@@ -67,9 +67,9 @@
 //    [self.tableView.mj_header beginRefreshing];
     
     //默认加载更多
-    [self tableViewNormalFooterWithRefreshingBlock:^{
-        [self loadMoreData];
-    }];
+//    [self tableViewNormalFooterWithRefreshingBlock:^{
+//        [self loadMoreData];
+//    }];
 }
 
 #pragma mark - lazy loading...

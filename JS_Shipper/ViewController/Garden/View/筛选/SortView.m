@@ -10,7 +10,7 @@
 
 @interface SortView ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSArray *dataSource;
+//    NSArray *dataSource;
     CGFloat viewH;
     NSMutableArray *selectArr;
 }
@@ -37,8 +37,7 @@
     self.hidden = YES;
     self.clipsToBounds = YES;
     
-    dataSource = @[@"默认排序",@"距离排序"];
-    selectArr = [NSMutableArray arrayWithArray:@[@"1",@"0"]];
+    
     _myTab = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.width, self.height) style:UITableViewStylePlain];
     viewH = self.height;
     _myTab.delegate = self;
@@ -49,7 +48,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return dataSource.count;
+    return _titleArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,7 +59,7 @@
         cell.selected = NO;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
-    cell.textLabel.text = dataSource[indexPath.row];
+    cell.textLabel.text = _titleArr[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryNone;
     if ([selectArr[indexPath.row] integerValue]==1) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -79,9 +78,25 @@
     }
     [_myTab reloadData];
     if (self.getSortString) {
-        self.getSortString(dataSource[indexPath.row]);
+        self.getSortString(_titleArr[indexPath.row]);
     }
     [self hiddenView];
+}
+
+-(void)setTitleArr:(NSArray *)titleArr {
+    if (_titleArr!=titleArr) {
+        _titleArr = titleArr;
+    }
+    [selectArr removeAllObjects];
+    for (NSInteger index = 0; index<_titleArr.count; index++) {
+        if (index==0) {
+            [selectArr addObject:@"1"];
+        }
+        else {
+            [selectArr addObject:@"0"];
+        }
+    }
+    [self.myTab reloadData];
 }
 
 - (void)showView {

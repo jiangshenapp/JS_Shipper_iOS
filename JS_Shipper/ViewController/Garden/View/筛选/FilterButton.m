@@ -20,7 +20,7 @@
 
 - (void)initView {
     _titleLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.width-20, self.height)];
-    _titleLab.textAlignment = NSTextAlignmentRight;
+    _titleLab.textAlignment = NSTextAlignmentCenter;
     _titleLab.font = [UIFont systemFontOfSize:14];
     _titleLab.minimumScaleFactor = 0.5;
     _titleLab.adjustsFontSizeToFitWidth=YES;

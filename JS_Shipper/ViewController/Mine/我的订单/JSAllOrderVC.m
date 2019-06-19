@@ -47,9 +47,7 @@
         weakSelf.page = 1;
         [weakSelf getData];
     }];
-    self.baseTabView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-         [weakSelf getData];
-    }];
+    [self addTabMJ_FootView];
     // Do any additional setup after loading the view.
 }
 
@@ -78,8 +76,9 @@
     [para setObject:self.orderState forKey:@"state"];
     NSString *urlStr = [NSString stringWithFormat:@"%@?current=%ld&size=%@",URL_OrdeList,_page,PageSize];
     [[NetworkManager sharedManager] postJSON:urlStr parameters:para completion:^(id responseData, RequestState status, NSError *error) {
+        NSInteger count = 0;
         if (status==Request_Success) {
-            NSInteger count = [responseData[@"total"] integerValue];
+            count = [responseData[@"total"] integerValue];
             if (weakSelf.page==1) {
                 [weakSelf.listData removeAllObjects];
             }
@@ -95,6 +94,12 @@
         }
         if ([weakSelf.baseTabView.mj_footer isRefreshing]) {
             [weakSelf.baseTabView.mj_footer endRefreshing];
+        }
+        if (weakSelf.listData.count==count) {
+            weakSelf.baseTabView.mj_footer = nil;
+        }
+        else {
+            [weakSelf addTabMJ_FootView];
         }
     }];
 }

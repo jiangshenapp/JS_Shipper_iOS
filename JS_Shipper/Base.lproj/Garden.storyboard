@@ -28,6 +28,13 @@
                                     <constraint firstAttribute="height" constant="44" id="ph2-tS-rY0"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQH-aj-QSX">
+                                <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Yb7-pC-8ho"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aqP-a0-7N3">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -49,13 +56,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天津 北城区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCH-2G-A3F">
-                                                    <rect key="frame" x="130" y="15.5" width="91" height="21"/>
+                                                    <rect key="frame" x="122" y="15.5" width="91" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="home_lite_icon_going" translatesAutoresizingMaskIntoConstraints="NO" id="9tc-jB-wrL">
-                                                    <rect key="frame" x="105" y="19" width="24" height="14"/>
+                                                    <rect key="frame" x="105" y="18" width="16" height="16"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3分钟前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTe-Q7-2wd">
                                                     <rect key="frame" x="319" y="14" width="44" height="24"/>
@@ -283,16 +290,20 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="aqP-a0-7N3" secondAttribute="trailing" id="0N2-vE-rqJ"/>
                             <constraint firstItem="aqP-a0-7N3" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="1Yo-HC-Asc"/>
+                            <constraint firstItem="CQH-aj-QSX" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="NDE-4r-Biz"/>
                             <constraint firstItem="GFa-Qg-qc2" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="Szn-ou-pd7"/>
                             <constraint firstItem="aqP-a0-7N3" firstAttribute="top" secondItem="GFa-Qg-qc2" secondAttribute="bottom" constant="1" id="Ts5-1x-rQp"/>
+                            <constraint firstAttribute="trailing" secondItem="CQH-aj-QSX" secondAttribute="trailing" id="Umx-bj-1Xx"/>
                             <constraint firstItem="GFa-Qg-qc2" firstAttribute="top" secondItem="5L1-Vw-ec4" secondAttribute="bottom" constant="45" id="bVv-Ou-4xq"/>
                             <constraint firstAttribute="trailing" secondItem="GFa-Qg-qc2" secondAttribute="trailing" id="mR7-Vo-sW0"/>
+                            <constraint firstItem="CQH-aj-QSX" firstAttribute="top" secondItem="5L1-Vw-ec4" secondAttribute="bottom" constant="46" id="qCJ-wx-SCV"/>
                             <constraint firstAttribute="bottom" secondItem="aqP-a0-7N3" secondAttribute="bottom" id="ycK-Iq-uGw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="baseTabView" destination="aqP-a0-7N3" id="PnX-Ey-Hgj"/>
-                        <outlet property="filterView" destination="GFa-Qg-qc2" id="IeF-yb-biP"/>
+                        <outlet property="filterView1" destination="GFa-Qg-qc2" id="IeF-yb-biP"/>
+                        <outlet property="filterView2" destination="CQH-aj-QSX" id="mov-Fi-lG6"/>
                         <outlet property="titleView" destination="Rnf-l7-dti" id="3va-Ii-gJQ"/>
                     </connections>
                 </viewController>
@@ -868,7 +879,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tr-Eb-Yy4">
-                                        <rect key="frame" x="81" y="0.0" width="77" height="30"/>
+                                        <rect key="frame" x="81" y="0.0" width="76" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -880,7 +891,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDA-e5-M9M">
-                                        <rect key="frame" x="159" y="0.0" width="81" height="30"/>
+                                        <rect key="frame" x="158" y="0.0" width="82" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -925,13 +936,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天津 北城区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljw-i1-qNc">
-                                                    <rect key="frame" x="130" y="15.5" width="91" height="21"/>
+                                                    <rect key="frame" x="122" y="15.5" width="91" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="home_lite_icon_going" translatesAutoresizingMaskIntoConstraints="NO" id="CTt-nb-p29">
-                                                    <rect key="frame" x="105" y="19" width="24" height="14"/>
+                                                    <rect key="frame" x="105" y="18" width="16" height="16"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3分钟前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekH-kg-UIs">
                                                     <rect key="frame" x="319" y="14" width="44" height="24"/>

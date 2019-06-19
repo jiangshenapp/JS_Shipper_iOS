@@ -12,6 +12,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SortView : BaseCustomView
+/** 数据源 */
+@property (nonatomic,retain) NSArray *titleArr;
 /** <#object#> */
 @property (nonatomic,copy) void (^getSortString)(NSString *sorts);
 @end

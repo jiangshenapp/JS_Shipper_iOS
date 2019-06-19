@@ -26,22 +26,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     //隐藏系统导航条
     [self.navigationController setNavigationBarHidden:YES];
     [self.view addSubview:self.navBar];
-    
-    if (!self.isPanForbid) { //默认开启
-        // 开启iOS自带侧滑返回手势
-        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-        }
-    } else {
-        // 禁用iOS自带侧滑返回手势
-        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-        }
-    }
     
     XLGExternalTestTool *testTool = [XLGExternalTestTool shareInstance];
     UIWindow *myWindow= [[[UIApplication sharedApplication] delegate] window];
@@ -49,6 +36,17 @@
         [myWindow addSubview:testTool];
     }
     [myWindow bringSubviewToFront:testTool];
+    //防止上拉加载闪动
+    self.baseTabView.estimatedRowHeight = 0;
+    self.baseTabView.estimatedSectionHeaderHeight = 0;
+    self.baseTabView.estimatedSectionFooterHeight = 0;
+}
+
+-(void)addTabMJ_FootView {
+    __weak typeof(self) weakSelf = self;
+    self.baseTabView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [weakSelf getData];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -84,8 +82,6 @@
         UIScrollView.appearance.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
     
-    _viewConstraintH.constant = MIN(autoScaleH(50), 60);
-    _viewTopY.constant = 44;
     self.tableFrame = CGRectMake(0, kNavBarH, WIDTH, HEIGHT-kNavBarH);
     
     [self setNavBar];

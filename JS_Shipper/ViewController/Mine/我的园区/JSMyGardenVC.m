@@ -54,9 +54,7 @@
         weakSelf.page = 1;
         [weakSelf getData];
     }];
-    self.baseTabView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf getData];
-    }];
+    [self addTabMJ_FootView];
 }
 
 #pragma mark - 获取数据
@@ -82,6 +80,12 @@
         }
         if ([weakSelf.baseTabView.mj_header isRefreshing]) {
             [weakSelf.baseTabView.mj_header endRefreshing];
+        }
+        if (weakSelf.dataSource.count==[weakSelf.dataModels.total integerValue]) {
+            weakSelf.baseTabView.mj_footer = nil;
+        }
+        else {
+            [weakSelf addTabMJ_FootView];
         }
     }];
 }

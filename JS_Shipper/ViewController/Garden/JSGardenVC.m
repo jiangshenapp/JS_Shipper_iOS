@@ -23,10 +23,13 @@
 {
     NSArray *titleArr1;
     NSArray *titleArr2;
-    NSArray *titleViewArr;
+    NSArray *titleViewArr1;
+    NSArray *titleViewArr2;
     CityCustomView *cityView1;
     CityCustomView *cityView2;
-    SortView *mySortView;
+    SortView *mySortView1;
+     SortView *mySortView2;
+    CityCustomView *cityView3;
 }
 /** 分页 */
 @property (nonatomic,assign) NSInteger page;
@@ -38,6 +41,9 @@
 @property (nonatomic,copy) NSString *areaCode1;
 /** 区域编码2 */
 @property (nonatomic,copy) NSString *areaCode2;
+/** 区域编码2 */
+@property (nonatomic,copy) NSString *areaCode3;
+
 /** 数据源 */
 @property (nonatomic,retain) HomeDataModel *dataModels;
 /** 筛选视图 */
@@ -47,7 +53,9 @@
 /** 数据源 */
 @property (nonatomic,retain) NSMutableArray <RecordsModel *>*dataSource;
 /** 排序，1发货时间 2距离; */
-@property (nonatomic,copy) NSString *sort;
+@property (nonatomic,copy) NSString *sort1;
+/** 排序，1服务中心 2车代点  3网点; */
+@property (nonatomic,copy) NSString *companyType;
 /** 定位管理器 */
 @property (retain, nonatomic) CLLocationManager *locationManager;
 /** 当前经纬度 */
@@ -58,9 +66,7 @@
 @implementation JSGardenVC
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
-    
     [self startLocation];
     [self initView];
     [self getData];
@@ -94,22 +100,37 @@
 - (void)initView {
     _pageFlag = 0;
     _page = 1;
-    _sort = @"1";
+    _sort1 = @"1";
+    _companyType = @"";
+    _areaCode1 = @"";
+    _areaCode2 = @"";
+    _areaCode3 = @"";
     _dataSource = [NSMutableArray array];
     NSDictionary *locDic = [[NSUserDefaults standardUserDefaults]objectForKey:@"loc"];
     _currentLoc = CLLocationCoordinate2DMake([locDic[@"lat"] floatValue], [locDic[@"lng"] floatValue]);
     _titleView.top = 7+kStatusBarH;
     _titleView.centerX = WIDTH/2.0;
     [self.navBar addSubview:_titleView];
-    CGFloat btW = WIDTH/4.0;
     titleArr1 = @[@"发货地",@"收货地",@"默认排序",@"筛选"];
-    for (NSInteger index = 0; index<4; index++) {
-        FilterButton *sender = [[FilterButton alloc]initWithFrame:CGRectMake(index*btW, 0, btW, self.filterView.height)];
+    CGFloat btW1 = WIDTH/titleArr1.count;
+    for (NSInteger index = 0; index<titleArr1.count; index++) {
+        FilterButton *sender = [[FilterButton alloc]initWithFrame:CGRectMake(index*btW1, 0, btW1, self.filterView1.height)];
         sender.tag = 20000+index;
         [sender setTitle:titleArr1[index] forState:UIControlStateNormal];
         [sender addTarget:self action:@selector(showViewAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self.filterView addSubview:sender];
+        [self.filterView1 addSubview:sender];
     }
+    
+    titleArr2 = @[@"区域",@"全部",@"默认排序"];
+    CGFloat btW2 = WIDTH/titleArr2.count;
+    for (NSInteger index = 0; index<titleArr2.count; index++) {
+        FilterButton *sender = [[FilterButton alloc]initWithFrame:CGRectMake(index*btW2, 0, btW2, self.filterView2.height)];
+        sender.tag = 30000+index;
+        [sender setTitle:titleArr2[index] forState:UIControlStateNormal];
+        [sender addTarget:self action:@selector(showViewAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.filterView2 addSubview:sender];
+    }
+    
     __weak typeof(self) weakSelf = self;
     cityView1 = [[CityCustomView alloc]init];
     cityView1.getCityData = ^(NSDictionary * _Nonnull dataDic) {
@@ -127,36 +148,58 @@
         tempBtn.isSelect = NO;
         [weakSelf.baseTabView.mj_header beginRefreshing];
     };
-    mySortView = [[SortView alloc]init];
-    mySortView.getSortString = ^(NSString * _Nonnull sorts) {
+    cityView3 = [[CityCustomView alloc]init];
+    cityView3.getCityData = ^(NSDictionary * _Nonnull dataDic) {
+        FilterButton *tempBtn = [weakSelf.view viewWithTag:30000];
+        [tempBtn setTitle:dataDic[@"address"] forState:UIControlStateNormal];
+        weakSelf.areaCode3 = dataDic[@"code"];
+        tempBtn.isSelect = NO;
+        [weakSelf.baseTabView.mj_header beginRefreshing];
+    };
+    
+    
+    mySortView1 = [[SortView alloc]init];
+    mySortView1.titleArr = @[@"默认排序",@"距离排序"];
+    mySortView1.getSortString = ^(NSString * _Nonnull sorts) {
         FilterButton *tempBtn = [weakSelf.view viewWithTag:20002];
-        tempBtn.selected = NO;
+        tempBtn.isSelect = NO;
         if ([sorts containsString:@"默认"]) {
-            weakSelf.sort = @"1";
+            weakSelf.sort1 = @"1";
         }
         else {
-            weakSelf.sort = @"2";
+            weakSelf.sort1 = @"2";
         }
     };
     _myfilteView = [[FilterCustomView alloc]init];
     _myfilteView.getPostDic = ^(NSDictionary * _Nonnull dic, NSArray * _Nonnull titles) {
         FilterButton *tempBtn = [weakSelf.view viewWithTag:20003];
-        tempBtn.selected = NO;
+        tempBtn.isSelect = NO;
         weakSelf.allDicKey = dic;
         [weakSelf.baseTabView.mj_header beginRefreshing];
     };
-    titleViewArr = @[cityView1,cityView2,mySortView,_myfilteView];
+    
+    mySortView2 = [[SortView alloc]init];
+    mySortView2.titleArr = @[@"全部",@"服务中心",@"车代点",@"网点"];
+    mySortView2.getSortString = ^(NSString * _Nonnull sorts) {
+        FilterButton *tempBtn = [weakSelf.view viewWithTag:30001];
+        [tempBtn setTitle:sorts forState:UIControlStateNormal];
+        tempBtn.isSelect = NO;
+        weakSelf.companyType = kcompanyTypeStrDic[sorts];
+        [weakSelf.baseTabView.mj_header beginRefreshing];
+    };
+    
+    titleViewArr1 = @[cityView1,cityView2,mySortView1,_myfilteView];
+    titleViewArr2 = @[cityView3,mySortView2,mySortView1];
     _postUrlDic = @{@(0):URL_Find,@(1):URL_CityParkList,@(2):URL_Classic};
     _areaCode1 = @"";
     _areaCode2 = @"";
     _allDicKey = @{@"useCarType":@"",@"carLength":@"",@"carModel":@"",@"goodsType":@""};
     self.baseTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
+        [weakSelf.baseTabView setContentOffset:CGPointMake(0, 0)];
         [weakSelf getData];
     }];
-    self.baseTabView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf getData];
-    }];
+     [self addTabMJ_FootView];
 }
 
 #pragma mark - 获取数据
@@ -165,7 +208,10 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
     [dic setObject:_areaCode1 forKey:@"startAddressCode"];
-    [dic setObject:_sort forKey:@"sort"];
+    if (self.pageFlag==1) {
+        [dic setObject:_companyType forKey:@"companyType"];
+    }
+    [dic setObject:_sort1 forKey:@"sort"];
     [dic addEntriesFromDictionary:self.allDicKey];
     NSString *url = [NSString stringWithFormat:@"%@?current=%ld&size=%@",_postUrlDic[@(_pageFlag)],_page,PageSize];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
@@ -187,8 +233,16 @@
         if ([weakSelf.baseTabView.mj_header isRefreshing]) {
             [weakSelf.baseTabView.mj_header endRefreshing];
         }
+        if (weakSelf.dataSource.count==[weakSelf.dataModels.total integerValue]) {
+            weakSelf.baseTabView.mj_footer = nil;
+        }
+        else {
+            [weakSelf addTabMJ_FootView];
+        }
     }];
 }
+
+
 
 #pragma mark - 获取配置
 - (void)getDicList {
@@ -331,9 +385,19 @@
 - (void)showViewAction:(FilterButton *)sender {
     sender.userInteractionEnabled = NO;
     sender.isSelect = !sender.isSelect;
-    for (NSInteger index = 0; index<4; index++) {
-        FilterButton *tempBtn = [self.view viewWithTag:20000+index];
-        BaseCustomView *vv = titleViewArr[index];
+    NSArray *tempArr;
+    NSInteger baseTag;
+    if (self.pageFlag==1) {
+        tempArr = titleViewArr2;
+        baseTag = 30000;
+    }
+    else {
+        tempArr = titleViewArr1;
+        baseTag = 20000;
+    }
+    for (NSInteger index = 0; index<tempArr.count; index++) {
+        FilterButton *tempBtn = [self.view viewWithTag:baseTag+index];
+        BaseCustomView *vv = tempArr[index];
         if (![sender isEqual:tempBtn]) {
             tempBtn.isSelect = NO;
             [vv hiddenView];
@@ -366,7 +430,11 @@
         }
     }
     [self.baseTabView.mj_header beginRefreshing];
+    _filterView1.hidden = sender.tag==101?YES:NO;
+    _filterView2.hidden = !_filterView1.hidden;
 }
+
+
 
 /*
  #pragma mark - Navigation
