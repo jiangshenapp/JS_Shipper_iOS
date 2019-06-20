@@ -161,7 +161,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     
     // 1.1 先设置日期的格式字符串
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
     // 1.2 使用格式字符串, 将日期转换成字符串
     selectedStr = [formatter stringFromDate:datePicker.date];
