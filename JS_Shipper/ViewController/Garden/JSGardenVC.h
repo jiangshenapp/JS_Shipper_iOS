@@ -11,8 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSGardenVC : BaseVC
-@property (weak, nonatomic) IBOutlet UIView *noDataView;
-
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 @property (weak, nonatomic) IBOutlet UIView *filterView1;
 @property (weak, nonatomic) IBOutlet UIView *filterView2;

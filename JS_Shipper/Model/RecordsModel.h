@@ -42,6 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *contactAddress;
 /** 详细地址 */
 @property (nonatomic,copy) NSString *detailAddress;
+/** businessLicenceImage */
+@property (nonatomic,copy) NSString *businessLicenceImage;
 /** 园区经纬度 */
 @property (nonatomic,copy) NSString *contactLocation;
 @property (nonatomic,copy) NSString *image1;

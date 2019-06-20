@@ -59,6 +59,7 @@
 #define kAuthStateColorDic @{@(0):kVerifiedUnCommitColor,@(1):kVerifiedOnColor,@(2):AppThemeColor,@(3):kVerifiedFailColor}
 #define kCompanyTypeStrDic @{@"全部":@"",@"服务中心":@"1",@"车代点":@"2",@"网点":@"3",@"1":@"服务中心",@"2":@"车代点",@"3":@"网点"}
 
+#define DefaultImage [UIImage imageNamed:@"personalcenter_shipper_icon_head_landing"]
 
 /******************************通知****************************/
 

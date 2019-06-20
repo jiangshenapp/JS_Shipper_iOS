@@ -46,6 +46,4 @@
     [XLGMapNavVC share].destionName = _model.companyName;
     [XLGMapNavVC startNavWithEndPt:CLLocationCoordinate2DMake([contactLocDic[@"latitude"] floatValue], [contactLocDic[@"longitude"] floatValue])];
 }
-
-
 @end

@@ -87,7 +87,6 @@
                 weakSelf.page++;
             }
         }
-        [weakSelf.baseTabView reloadData];
         if ([weakSelf.baseTabView.mj_header isRefreshing]) {
             [weakSelf.baseTabView.mj_header endRefreshing];
         }
@@ -100,6 +99,8 @@
         else {
             [weakSelf addTabMJ_FootView];
         }
+        [weakSelf hiddenNoDataView:weakSelf.listData.count];
+        [weakSelf.baseTabView reloadData];
     }];
 }
 

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSCityDeliveryDetaileVC : JSHomeDetaileVC
 
+@property (weak, nonatomic) IBOutlet UIView *tabHeadView;
 @property (weak, nonatomic) IBOutlet UIImageView *parkImgView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *parkImgH;
 @property (weak, nonatomic) IBOutlet UILabel *dotNameLab;

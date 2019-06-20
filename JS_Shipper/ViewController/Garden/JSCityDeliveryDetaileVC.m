@@ -44,6 +44,7 @@
         self.collectBtn.selected = NO;
     }
     self.parkImgH.constant = 0; //园区地址二期
+    self.tabHeadView.height = 410;
     self.dotNameLab.text = self.dataModel.companyName;
     NSDictionary *contactLocDic = [Utils dictionaryWithJsonString:self.dataModel.contactLocation];
     NSDictionary *locDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"loc"];
@@ -53,6 +54,12 @@
     self.addressLab.text = self.dataModel.contactAddress;
     self.contentTV.text = self.dataModel.remark;
     self.contentTV.userInteractionEnabled = NO;
+    if (self.dataModel.businessLicenceImage.length>0) {
+        self.parkImgH.constant = 150;
+        [self.parkImgView sd_setImageWithURL:[NSURL URLWithString:self.dataModel.businessLicenceImage] placeholderImage:DefaultImage];
+        self.tabHeadView.height = 560;
+    }
+    [self.baseTabView reloadData];
 }
 
 #pragma mark - methods
