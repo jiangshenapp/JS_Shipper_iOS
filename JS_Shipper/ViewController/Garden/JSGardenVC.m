@@ -231,7 +231,6 @@
             [weakSelf.dataSource addObjectsFromArray:weakSelf.dataModels.records];
             weakSelf.page++;
         }
-        [weakSelf.baseTabView reloadData];
         if ([weakSelf.baseTabView.mj_footer isRefreshing]) {
             [weakSelf.baseTabView.mj_footer endRefreshing];
         }
@@ -244,6 +243,8 @@
         else {
             [weakSelf addTabMJ_FootView];
         }
+        weakSelf.noDataView.height = weakSelf.dataSource.count==0?weakSelf.baseTabView.height:0;
+        [weakSelf.baseTabView reloadData];
     }];
 }
 
@@ -262,8 +263,6 @@
 
 #pragma mark - UITableView 代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    _noDataView.hidden = self.dataSource.count;
-    self.baseTabView.hidden = !_noDataView.hidden;
     return self.dataSource.count;
 }
 
