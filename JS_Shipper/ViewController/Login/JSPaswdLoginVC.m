@@ -8,7 +8,7 @@
 
 #import "JSPaswdLoginVC.h"
 
-@interface JSPaswdLoginVC ()
+@interface JSPaswdLoginVC ()<UITextFieldDelegate>
 
 @end
 
@@ -70,6 +70,18 @@
 /* 用户协议 */
 - (IBAction)protocalAction:(id)sender {
     [Utils showToast:@"用户协议"];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField.tag == 100) {
+        if (textField.text.length + string.length > 11) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 /*
