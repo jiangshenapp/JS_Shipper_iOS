@@ -51,24 +51,15 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     [self.view bringSubviewToFront:self.navBar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     //显示系统导航条
     [self.navigationController setNavigationBarHidden:NO];
 }
 
-//- (void)viewDidLayoutSubviews {
-//
-//    UIView *view = self.view.subviews[0];
-//    CGRect frame = view.frame;
-//    frame.origin.y = kNavBarH;
-//    view.frame = frame;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,6 +82,12 @@
     if (self.baseTabView.tableFooterView==nil) {
         self.baseTabView.tableFooterView = [[UIView alloc]init];
     }
+    _noDataView = [[[NSBundle mainBundle]loadNibNamed:@"noDataView" owner:self options:nil]firstObject];
+    _noDataView.height = 0.1;
+    _noDataView.hidden = YES;
+    if (!self.baseTabView.tableHeaderView) {
+        self.baseTabView.tableHeaderView = _noDataView;
+    }
     [self setupView];
 
     //无网络通知
@@ -98,6 +95,12 @@
     //有网络通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netWorkAppear) name:@"kNetAppear" object:nil];
 }
+
+-(void)hiddenNoDataView:(BOOL)hidden {
+    self.noDataView.hidden = hidden;
+    self.noDataView.height = hidden?0:self.baseTabView.height;
+}
+
 
 - (void)setupView {
     

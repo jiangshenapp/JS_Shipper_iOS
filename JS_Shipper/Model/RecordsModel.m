@@ -9,5 +9,10 @@
 #import "RecordsModel.h"
 
 @implementation RecordsModel
-
+-(NSString *)businessLicenceImage {
+    if (_businessLicenceImage.length==0) {
+        return @"";
+    }
+    return [NSString stringWithFormat:@"%@%@",PIC_URL(),_businessLicenceImage];
+}
 @end

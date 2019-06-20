@@ -95,6 +95,7 @@
 		20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74142248C5B70020EA5D /* JSCodeLoginVC.m */; };
 		20BD74182248C6D70020EA5D /* JSForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */; };
 		20BD741B2248C8230020EA5D /* JSResetPswVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD741A2248C8230020EA5D /* JSResetPswVC.m */; };
+		20DC7D6522BB68BF003CB4FD /* noDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20DC7D6422BB68BE003CB4FD /* noDataView.xib */; };
 		20F934E0224B18B4008C80DB /* JSRechargeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934DF224B18B4008C80DB /* JSRechargeVC.m */; };
 		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
 		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
@@ -322,6 +323,7 @@
 		20BD74172248C6D70020EA5D /* JSForgetPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSForgetPwdVC.m; sourceTree = "<group>"; };
 		20BD74192248C8230020EA5D /* JSResetPswVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSResetPswVC.h; sourceTree = "<group>"; };
 		20BD741A2248C8230020EA5D /* JSResetPswVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSResetPswVC.m; sourceTree = "<group>"; };
+		20DC7D6422BB68BE003CB4FD /* noDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = noDataView.xib; sourceTree = "<group>"; };
 		20F934DE224B18B4008C80DB /* JSRechargeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSRechargeVC.h; sourceTree = "<group>"; };
 		20F934DF224B18B4008C80DB /* JSRechargeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSRechargeVC.m; sourceTree = "<group>"; };
 		20F934E1224B1C95008C80DB /* JSWithdrawalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSWithdrawalMoneyVC.h; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 		202D3FDF226B0D91001B3353 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				20DC7D6422BB68BE003CB4FD /* noDataView.xib */,
 				A096484722B8824B000FDBE6 /* JSGardenTabCell.h */,
 				A096484822B8824B000FDBE6 /* JSGardenTabCell.m */,
 				A096484A22B88260000FDBE6 /* CityDeliveryTabCell.h */,
@@ -1120,6 +1123,7 @@
 				A0263525228C234900C924E2 /* ic_refresh_image_026@2x.png in Resources */,
 				A0263515228C234900C924E2 /* ic_refresh_image_019@2x.png in Resources */,
 				A0263522228C234900C924E2 /* ic_refresh_image_010@2x.png in Resources */,
+				20DC7D6522BB68BF003CB4FD /* noDataView.xib in Resources */,
 				20BD74082248BEC80020EA5D /* DeliverGoods.storyboard in Resources */,
 				A026350E228C234900C924E2 /* ic_refresh_image_029@2x.png in Resources */,
 				A026352A228C234900C924E2 /* ic_refresh_image_014@2x.png in Resources */,
