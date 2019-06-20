@@ -262,6 +262,8 @@
 
 #pragma mark - UITableView 代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    _noDataView.hidden = self.dataSource.count;
+    self.baseTabView.hidden = !_noDataView.hidden;
     return self.dataSource.count;
 }
 

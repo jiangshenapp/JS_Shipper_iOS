@@ -21,6 +21,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JWZ-0U-zj2">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_default_icon_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="7Yb-FS-DUg">
+                                        <rect key="frame" x="137.5" y="203.5" width="100" height="110"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tp-G6-2ve">
+                                        <rect key="frame" x="0.0" y="313.5" width="375" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="nrp-Si-kVg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7Tp-G6-2ve" secondAttribute="trailing" id="IWz-o3-qpy"/>
+                                    <constraint firstItem="7Tp-G6-2ve" firstAttribute="leading" secondItem="JWZ-0U-zj2" secondAttribute="leading" id="IiQ-nF-Xda"/>
+                                    <constraint firstItem="7Yb-FS-DUg" firstAttribute="centerY" secondItem="JWZ-0U-zj2" secondAttribute="centerY" constant="-20" id="hA3-EL-F1Z"/>
+                                    <constraint firstItem="7Yb-FS-DUg" firstAttribute="centerX" secondItem="JWZ-0U-zj2" secondAttribute="centerX" id="qeJ-xP-Qyu"/>
+                                    <constraint firstItem="7Tp-G6-2ve" firstAttribute="top" secondItem="7Yb-FS-DUg" secondAttribute="bottom" id="zfD-Ke-aad"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFa-Qg-qc2">
                                 <rect key="frame" x="0.0" y="65" width="375" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,13 +81,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天津 北城区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCH-2G-A3F">
-                                                    <rect key="frame" x="122" y="15.5" width="91" height="21"/>
+                                                    <rect key="frame" x="130" y="15.5" width="91" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="home_lite_icon_going" translatesAutoresizingMaskIntoConstraints="NO" id="9tc-jB-wrL">
-                                                    <rect key="frame" x="105" y="18" width="16" height="16"/>
+                                                    <rect key="frame" x="105" y="19" width="24" height="14"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3分钟前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTe-Q7-2wd">
                                                     <rect key="frame" x="319" y="14" width="44" height="24"/>
@@ -291,12 +316,17 @@
                             <constraint firstAttribute="trailing" secondItem="aqP-a0-7N3" secondAttribute="trailing" id="0N2-vE-rqJ"/>
                             <constraint firstItem="aqP-a0-7N3" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="1Yo-HC-Asc"/>
                             <constraint firstItem="CQH-aj-QSX" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="NDE-4r-Biz"/>
+                            <constraint firstAttribute="trailing" secondItem="JWZ-0U-zj2" secondAttribute="trailing" id="Ps3-0i-Ob0"/>
                             <constraint firstItem="GFa-Qg-qc2" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="Szn-ou-pd7"/>
                             <constraint firstItem="aqP-a0-7N3" firstAttribute="top" secondItem="GFa-Qg-qc2" secondAttribute="bottom" constant="1" id="Ts5-1x-rQp"/>
                             <constraint firstAttribute="trailing" secondItem="CQH-aj-QSX" secondAttribute="trailing" id="Umx-bj-1Xx"/>
+                            <constraint firstItem="JWZ-0U-zj2" firstAttribute="centerY" secondItem="aqP-a0-7N3" secondAttribute="centerY" id="ZGG-B8-f7Z"/>
                             <constraint firstItem="GFa-Qg-qc2" firstAttribute="top" secondItem="5L1-Vw-ec4" secondAttribute="bottom" constant="45" id="bVv-Ou-4xq"/>
+                            <constraint firstItem="JWZ-0U-zj2" firstAttribute="leading" secondItem="GZu-Se-bPn" secondAttribute="leading" id="jrD-eB-H6X"/>
                             <constraint firstAttribute="trailing" secondItem="GFa-Qg-qc2" secondAttribute="trailing" id="mR7-Vo-sW0"/>
                             <constraint firstItem="CQH-aj-QSX" firstAttribute="top" secondItem="5L1-Vw-ec4" secondAttribute="bottom" constant="46" id="qCJ-wx-SCV"/>
+                            <constraint firstItem="aqP-a0-7N3" firstAttribute="width" secondItem="JWZ-0U-zj2" secondAttribute="width" id="qTH-EX-l9g"/>
+                            <constraint firstItem="aqP-a0-7N3" firstAttribute="height" secondItem="JWZ-0U-zj2" secondAttribute="height" id="vVt-bl-Tcy"/>
                             <constraint firstAttribute="bottom" secondItem="aqP-a0-7N3" secondAttribute="bottom" id="ycK-Iq-uGw"/>
                         </constraints>
                     </view>
@@ -304,6 +334,7 @@
                         <outlet property="baseTabView" destination="aqP-a0-7N3" id="PnX-Ey-Hgj"/>
                         <outlet property="filterView1" destination="GFa-Qg-qc2" id="IeF-yb-biP"/>
                         <outlet property="filterView2" destination="CQH-aj-QSX" id="mov-Fi-lG6"/>
+                        <outlet property="noDataView" destination="JWZ-0U-zj2" id="GTF-dv-QPu"/>
                         <outlet property="titleView" destination="Rnf-l7-dti" id="3va-Ii-gJQ"/>
                     </connections>
                 </viewController>
@@ -891,7 +922,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDA-e5-M9M">
-                                        <rect key="frame" x="158" y="0.0" width="82" height="30"/>
+                                        <rect key="frame" x="157" y="0.0" width="83" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -936,13 +967,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天津 北城区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljw-i1-qNc">
-                                                    <rect key="frame" x="122" y="15.5" width="91" height="21"/>
+                                                    <rect key="frame" x="130" y="15.5" width="91" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="home_lite_icon_going" translatesAutoresizingMaskIntoConstraints="NO" id="CTt-nb-p29">
-                                                    <rect key="frame" x="105" y="18" width="16" height="16"/>
+                                                    <rect key="frame" x="105" y="19" width="24" height="14"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3分钟前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekH-kg-UIs">
                                                     <rect key="frame" x="319" y="14" width="44" height="24"/>
@@ -1141,6 +1172,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="app_default_icon_nodata" width="100" height="110"/>
         <image name="app_goods_icon_go" width="16" height="16"/>
         <image name="app_goods_icon_reach" width="16" height="16"/>
         <image name="app_list_arrow_down" width="12" height="12"/>
