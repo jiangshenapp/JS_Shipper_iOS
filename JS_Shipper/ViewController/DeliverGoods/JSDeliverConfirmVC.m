@@ -95,7 +95,8 @@
     _remark = @"";
     self.feeType = @"1";
     self.payWay = @"1";
-    self.payType = @"1";
+    self.payType = @"2";
+    self.daoPayBtn.userInteractionEnabled = NO;
     if (_isAll) { //综合发货
         _tabHeaderView.height = 1185;
         self.title = @"发货";
@@ -422,6 +423,14 @@
     NSInteger otherTag = sender.tag==120?121:120;
     UIButton *otherBtn = [self.view viewWithTag:otherTag];
     otherBtn.selected = NO;
+    
+    if ([self.payWay isEqualToString:@"1"]) { //线上支付
+        self.payType = @"2";
+        self.nowPayBtn.selected = YES;
+        self.daoPayBtn.userInteractionEnabled = NO;
+    } else {
+        self.daoPayBtn.userInteractionEnabled = YES;
+    }
 }
 
 #pragma mark - 付款方式
@@ -432,6 +441,14 @@
     NSInteger otherTag = sender.tag==130?131:130;
     UIButton *otherBtn = [self.view viewWithTag:otherTag];
     otherBtn.selected = NO;
+    
+    if ([self.payType isEqualToString:@"1"]) { //到付
+        self.payWay = @"2";
+        self.offPayBtn.selected = YES;
+        self.onPayBtn.userInteractionEnabled = NO;
+    } else {
+        self.onPayBtn.userInteractionEnabled = YES;
+    }
 }
 
 #pragma mark - 指定发布/下单
