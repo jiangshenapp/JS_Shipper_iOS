@@ -35,13 +35,14 @@
     
     self.title = @"货主身份认证";
     
-    if ([[UserInfo share].personConsignorVerified integerValue] != 0) {
+    if ([[UserInfo share].personConsignorVerified integerValue] == 1
+        || [[UserInfo share].personConsignorVerified integerValue] == 2) {
         isPerson = YES;
         UIButton *otherBtn = [self.view viewWithTag:100];
         [self titleViewAction:otherBtn];
         self.personBtn.userInteractionEnabled = NO;
         self.companyBtn.userInteractionEnabled = NO;
-    } else if ([[UserInfo share].companyConsignorVerified integerValue] != 0) {
+    } else if ([[UserInfo share].companyConsignorVerified integerValue] == 1 || [[UserInfo share].companyConsignorVerified integerValue] == 2) {
         isPerson = NO;
         UIButton *otherBtn = [self.view viewWithTag:101];
         [self titleViewAction:otherBtn];
