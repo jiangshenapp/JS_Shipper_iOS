@@ -189,7 +189,7 @@
         FilterButton *tempBtn = [weakSelf.view viewWithTag:30001];
         [tempBtn setTitle:sorts forState:UIControlStateNormal];
         tempBtn.isSelect = NO;
-        weakSelf.companyType = kcompanyTypeStrDic[sorts];
+        weakSelf.companyType = kCompanyTypeStrDic[sorts];
         [weakSelf.baseTabView.mj_header beginRefreshing];
     };
     

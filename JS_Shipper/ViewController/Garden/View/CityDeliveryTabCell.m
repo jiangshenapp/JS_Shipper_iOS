@@ -28,7 +28,7 @@
     self.dotNameLab.text = model.companyName;
     if ([model.companyType integerValue]>0) {
         NSString *value = [NSString stringWithFormat:@"%@",model.companyType];
-         self.dotNameLab.text = [NSString stringWithFormat:@"%@[%@]",model.companyName,kcompanyTypeStrDic[value]];
+         self.dotNameLab.text = [NSString stringWithFormat:@"%@[%@]",model.companyName,kCompanyTypeStrDic[value]];
     }
     self.addressLab.text = model.contactAddress;
     self.isShowImgView.image = model.showFlag?[UIImage imageNamed:@"app_list_arrow_up"]:[UIImage imageNamed:@"app_list_arrow_down"];
