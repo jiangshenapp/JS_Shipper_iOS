@@ -31,7 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UITextField *weightTF;
 @property (weak, nonatomic) IBOutlet UITextField *goodAreaTF;
-@property (weak, nonatomic) IBOutlet UITextField *goodsTypeTF;
+@property (weak, nonatomic) IBOutlet UITextField *goodsNameTypeTF;
+@property (weak, nonatomic) IBOutlet UITextField *goodsPackTF;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsTimeLab;
 @property (weak, nonatomic) IBOutlet UILabel *useCarTypeLab;
 @property (weak, nonatomic) IBOutlet UIButton *image1Btn;
@@ -48,6 +50,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *priceLab;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
+/** 选择货物名称 */
+- (IBAction)selectGoodsNameAction:(UIButton *)sender;
+/** 选择货物包装类型 */
+- (IBAction)selectGoodsPackAction:(UIButton *)sender;
 /** 选择货物类型 */
 - (IBAction)selectGoodsTypeAction:(id)sender;
 /** 选择装货时间 */

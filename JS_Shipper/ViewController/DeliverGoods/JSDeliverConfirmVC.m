@@ -11,6 +11,7 @@
 #import "TZImagePickerController.h"
 #import "JSConfirmAddressMapVC.h"
 #import "FilterCustomView.h"
+#import "JSSelectGoodsNameVC.h"
 
 @interface JSDeliverConfirmVC ()<TZImagePickerControllerDelegate>
 {
@@ -98,11 +99,11 @@
     self.payType = @"2";
     self.daoPayBtn.userInteractionEnabled = NO;
     if (_isAll) { //综合发货
-        _tabHeaderView.height = 1185;
+        _tabHeaderView.height = 1300;
         self.title = @"发货";
     }
     else {
-        _tabHeaderView.height = 925;
+        _tabHeaderView.height = 1035;
     }
     if (![Utils isBlankString:self.subscriberId]) { //指定发布
         [_submitBtn setTitle:@"指定发布" forState:UIControlStateNormal];
@@ -143,7 +144,7 @@
         
         _weightTF.text = self.model.goodsWeight;
         _goodAreaTF.text = self.model.goodsVolume;
-        _goodsTypeTF.text = self.model.goodsType;
+        _goodsNameTypeTF.text = self.model.goodsType;
         _goodsTimeLab.text = self.model.loadingTime;
         _useCarTypeLab.text = self.model.useCarTypeName;
         _loadingTime = self.model.loadingTime;
@@ -246,8 +247,8 @@
 /** 选择地址 */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     __weak typeof(self) weakSelf = self;
-    JSConfirmAddressMapVC *vc = segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"start"]) {
+        JSConfirmAddressMapVC *vc = segue.destinationViewController;
         vc.sourceType = 0;
         vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
             [weakSelf.startAddressBtn setTitle:info.address forState:UIControlStateNormal];
@@ -259,6 +260,7 @@
         };
     }
     else if ([segue.identifier isEqualToString:@"end"]) {
+        JSConfirmAddressMapVC *vc = segue.destinationViewController;
         vc.sourceType = 1;
         vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
             [weakSelf.endAddressBtn setTitle:info.address forState:UIControlStateNormal];
@@ -269,6 +271,15 @@
             }
         };
     }
+    else if ([segue.identifier isEqualToString:@"goodsName"]) {
+        JSSelectGoodsNameVC *vc = segue.destinationViewController;
+        vc.sourceType = 0;
+    }
+    else if ([segue.identifier isEqualToString:@"packType"]) {
+        JSSelectGoodsNameVC *vc = segue.destinationViewController;
+        vc.sourceType = 1;
+    }
+
 }
 
 #pragma mark - 选择车长
@@ -499,7 +510,7 @@
         [Utils showToast:@"请输入货物体积"];
         return;
     }
-    if ([NSString isEmpty:_goodsTypeTF.text]) {
+    if ([NSString isEmpty:_goodsNameTypeTF.text]) {
         [Utils showToast:@"请输入货物类型"];
         return;
     }
@@ -531,7 +542,7 @@
     }
     [dic setObject:_useCarType forKey:@"useCarType"];
     [dic setObject:_loadingTime forKey:@"loadingTime"];
-    [dic setObject:_goodsTypeTF.text forKey:@"goodsType"];
+    [dic setObject:_goodsNameTypeTF.text forKey:@"goodsType"];
     [dic setObject:_weightTF.text forKey:@"goodsWeight"];
     [dic setObject:_goodAreaTF.text forKey:@"goodsVolume"];
     [dic setObject:_image1 forKey:@"image1"];
@@ -551,6 +562,12 @@
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
     }];
+}
+
+- (IBAction)selectGoodsNameAction:(UIButton *)sender {
+}
+
+- (IBAction)selectGoodsPackAction:(UIButton *)sender {
 }
 
 @end
