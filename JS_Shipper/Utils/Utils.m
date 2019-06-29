@@ -479,4 +479,11 @@ static Utils *_utils = nil;
     return  str;
 }
 
+//计算文字所占大小
++ (CGSize)getSizeByString:(NSString*)string AndFontSize:(CGFloat)font {
+    CGSize size = [string boundingRectWithSize:CGSizeMake(999, 25) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Heiti SC" size:font]} context:nil].size;
+    size.width += 5;
+    return size;
+}
+
 @end

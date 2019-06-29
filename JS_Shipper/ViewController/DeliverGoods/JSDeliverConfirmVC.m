@@ -111,8 +111,10 @@
         [_submitBtn setTitle:@"下单" forState:UIControlStateNormal];
     }
     [self.baseTabView reloadData];
-//    UIButton *otherBtn = [self.view viewWithTag:100];
-//    [self needLoadGoodsType:otherBtn];
+
+    self.depositFeeTF.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 6, 0)];
+    self.depositFeeTF.leftViewMode = UITextFieldViewModeAlways;
+
     [self getCarLengthInfo]; //车长
     [self getCarModelInfo]; //车型
     [self getCarTypeInfo]; //用车类型
@@ -144,7 +146,8 @@
         
         _weightTF.text = self.model.goodsWeight;
         _goodAreaTF.text = self.model.goodsVolume;
-        _goodsNameTypeTF.text = self.model.goodsType;
+        _goodsNameTypeTF.text = self.model.goodsName;
+        _goodsPackTF.text = self.model.packType;
         _goodsTimeLab.text = self.model.loadingTime;
         _useCarTypeLab.text = self.model.useCarTypeName;
         _loadingTime = self.model.loadingTime;
@@ -191,6 +194,14 @@
         } else { //现付
             _daoPayBtn.selected = NO;
             _nowPayBtn.selected = YES;
+        }
+        
+        if ([self.model.deposit floatValue]>0) {
+            _depositSwitchBtn.selected = YES;
+            _depositFeeTF.text = self.model.deposit;
+        } else {
+            _depositSwitchBtn.selected = NO;
+            _depositFeeTF.hidden = YES;
         }
     }
 }
@@ -243,8 +254,8 @@
     }];
 }
 
-#pragma mark - 选择地址
-/** 选择地址 */
+#pragma mark - storyboard方法
+/** storyboard方法 */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     __weak typeof(self) weakSelf = self;
     if ([segue.identifier isEqualToString:@"start"]) {
@@ -271,15 +282,6 @@
             }
         };
     }
-    else if ([segue.identifier isEqualToString:@"goodsName"]) {
-        JSSelectGoodsNameVC *vc = segue.destinationViewController;
-        vc.sourceType = 0;
-    }
-    else if ([segue.identifier isEqualToString:@"packType"]) {
-        JSSelectGoodsNameVC *vc = segue.destinationViewController;
-        vc.sourceType = 1;
-    }
-
 }
 
 #pragma mark - 选择车长
@@ -304,10 +306,26 @@
     [_carLengthView showView];
 }
 
-#pragma mark - 选择货物类型
-/** 选择货物类型 */
-- (IBAction)selectGoodsTypeAction:(id)sender {
-    
+#pragma mark - 选择货物名称
+/** 选择货物名称 */
+- (IBAction)selectGoodsNameAction:(UIButton *)sender {
+    JSSelectGoodsNameVC *vc = (JSSelectGoodsNameVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectGoodsNameVC"];
+    vc.sourceType = 0;
+    [vc setSelectBlock:^(NSString *name){
+        self.goodsNameTypeTF.text = name;
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - 选择包装类型
+/** 选择包装类型 */
+- (IBAction)selectGoodsPackAction:(UIButton *)sender {
+    JSSelectGoodsNameVC *vc = (JSSelectGoodsNameVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectGoodsNameVC"];
+    vc.sourceType = 1;
+    [vc setSelectBlock:^(NSString *name){
+        self.goodsPackTF.text = name;
+    }];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 选择装货时间
@@ -462,6 +480,17 @@
     }
 }
 
+#pragma mark - 是否需要保证金
+/** 是否需要保证金 */
+- (IBAction)depositSwitchAction:(id)sender {
+    self.depositSwitchBtn.selected = !self.depositSwitchBtn.isSelected;
+    if (self.depositSwitchBtn.isSelected == YES) {
+        self.depositFeeTF.hidden = NO;
+    } else {
+        self.depositFeeTF.hidden = YES;
+    }
+}
+
 #pragma mark - 指定发布/下单
 /** 指定发布/下单 */
 - (IBAction)submitAction:(id)sender {
@@ -510,10 +539,6 @@
         [Utils showToast:@"请输入货物体积"];
         return;
     }
-    if ([NSString isEmpty:_goodsNameTypeTF.text]) {
-        [Utils showToast:@"请输入货物类型"];
-        return;
-    }
     if ([NSString isEmpty:_loadingTime]) {
         [Utils showToast:@"请选择装货时间"];
         return;
@@ -533,6 +558,10 @@
         }
         _fee = _priceLab.text;
     }
+    if (self.depositSwitchBtn.isSelected == YES && [NSString isEmpty:self.depositFeeTF]) {
+        [Utils showToast:@"请输入保证金金额"];
+        return;
+    }
     
     if (![Utils isBlankString:_subscriberId]) {
         [dic setObject:_subscriberId forKey:@"matchId"];
@@ -542,7 +571,8 @@
     }
     [dic setObject:_useCarType forKey:@"useCarType"];
     [dic setObject:_loadingTime forKey:@"loadingTime"];
-    [dic setObject:_goodsNameTypeTF.text forKey:@"goodsType"];
+    [dic setObject:_goodsNameTypeTF.text forKey:@"goodsName"];
+    [dic setObject:_goodsPackTF.text forKey:@"packType"];
     [dic setObject:_weightTF.text forKey:@"goodsWeight"];
     [dic setObject:_goodAreaTF.text forKey:@"goodsVolume"];
     [dic setObject:_image1 forKey:@"image1"];
@@ -552,6 +582,13 @@
     [dic setObject:_fee forKey:@"fee"];
     [dic setObject:_payWay forKey:@"payWay"];
     [dic setObject:_payType forKey:@"payType"];
+    if (_depositSwitchBtn.isSelected == YES) {
+        [dic setObject:@"1" forKey:@"requireDeposit"];
+        [dic setObject:_depositFeeTF.text forKey:@"deposit"];
+    } else {
+        [dic setObject:@"0" forKey:@"requireDeposit"];
+        [dic setObject:@"0" forKey:@"deposit"];
+    }
     [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status==Request_Success) {
             if ([Utils isBlankString:self.subscriberId]) {
@@ -562,12 +599,6 @@
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
     }];
-}
-
-- (IBAction)selectGoodsNameAction:(UIButton *)sender {
-}
-
-- (IBAction)selectGoodsPackAction:(UIButton *)sender {
 }
 
 @end

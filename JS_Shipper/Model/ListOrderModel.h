@@ -36,6 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property  (nonatomic , copy) NSString *goodsWeight;
 /** 运费 */
 @property  (nonatomic , copy) NSString *fee;
+/** 货物名称 */
+@property  (nonatomic , copy) NSString *goodsName;
+/** 包装类型 */
+@property  (nonatomic , copy) NSString *packType;
+/** 是否需要保证金 0否 1是 */
+@property  (nonatomic , copy) NSString *requireDeposit;
+/** 保证金 默认0 */
+@property  (nonatomic , copy) NSString *deposit;
 
 #pragma mark - 详情字段
 /** 接单司机/网点头像 */

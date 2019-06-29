@@ -101,6 +101,8 @@
 		20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E2224B1C95008C80DB /* JSWithdrawalMoneyVC.m */; };
 		20F934E6224B2469008C80DB /* JSBillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F934E5224B2469008C80DB /* JSBillDetailsVC.m */; };
 		A00A227822A5FA57002E2E0C /* JSOrderDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A00A227722A5FA57002E2E0C /* JSOrderDetailsVC.m */; };
+		A02221D922C799B9006AD29A /* AEFlowLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = A02221D722C799B9006AD29A /* AEFlowLayoutView.m */; };
+		A02221DC22C79A09006AD29A /* AEButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A02221DA22C79A09006AD29A /* AEButton.m */; };
 		A026350D228C234900C924E2 /* ic_refresh_image_025@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A02634EA228C234800C924E2 /* ic_refresh_image_025@2x.png */; };
 		A026350E228C234900C924E2 /* ic_refresh_image_029@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A02634EB228C234800C924E2 /* ic_refresh_image_029@2x.png */; };
 		A026350F228C234900C924E2 /* ic_refresh_image_001@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A02634EC228C234800C924E2 /* ic_refresh_image_001@2x.png */; };
@@ -338,6 +340,10 @@
 		9B67392921C6C16FAB28EC6A /* Pods-JS_Shipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JS_Shipper.debug.xcconfig"; path = "Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper.debug.xcconfig"; sourceTree = "<group>"; };
 		A00A227622A5FA57002E2E0C /* JSOrderDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOrderDetailsVC.h; sourceTree = "<group>"; };
 		A00A227722A5FA57002E2E0C /* JSOrderDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOrderDetailsVC.m; sourceTree = "<group>"; };
+		A02221D722C799B9006AD29A /* AEFlowLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFlowLayoutView.m; sourceTree = "<group>"; };
+		A02221D822C799B9006AD29A /* AEFlowLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFlowLayoutView.h; sourceTree = "<group>"; };
+		A02221DA22C79A09006AD29A /* AEButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEButton.m; sourceTree = "<group>"; };
+		A02221DB22C79A09006AD29A /* AEButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEButton.h; sourceTree = "<group>"; };
 		A02634EA228C234800C924E2 /* ic_refresh_image_025@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_refresh_image_025@2x.png"; sourceTree = "<group>"; };
 		A02634EB228C234800C924E2 /* ic_refresh_image_029@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_refresh_image_029@2x.png"; sourceTree = "<group>"; };
 		A02634EC228C234800C924E2 /* ic_refresh_image_001@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_refresh_image_001@2x.png"; sourceTree = "<group>"; };
@@ -587,6 +593,7 @@
 				20BD733C2248BE420020EA5D /* Cache */,
 				20BD73412248BE420020EA5D /* StarView */,
 				20BD73442248BE420020EA5D /* Toast */,
+				A02221D622C799B9006AD29A /* FlowLayout(仿安卓流式布局) */,
 				20BD73472248BE420020EA5D /* Indicator(指示器) */,
 				20BD73522248BE420020EA5D /* AlertView */,
 				20BD73552248BE420020EA5D /* Lottie */,
@@ -953,6 +960,17 @@
 			path = "接口日志";
 			sourceTree = "<group>";
 		};
+		A02221D622C799B9006AD29A /* FlowLayout(仿安卓流式布局) */ = {
+			isa = PBXGroup;
+			children = (
+				A02221DB22C79A09006AD29A /* AEButton.h */,
+				A02221DA22C79A09006AD29A /* AEButton.m */,
+				A02221D822C799B9006AD29A /* AEFlowLayoutView.h */,
+				A02221D722C799B9006AD29A /* AEFlowLayoutView.m */,
+			);
+			path = "FlowLayout(仿安卓流式布局)";
+			sourceTree = "<group>";
+		};
 		A02634E8228C234800C924E2 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,6 +1301,7 @@
 				A0346BF222A95AD900E5BAED /* TradeRecordModel.m in Sources */,
 				20BD73B62248BE440020EA5D /* NetworkUtil.m in Sources */,
 				A096483322B87FD2000FDBE6 /* RecordsModel.m in Sources */,
+				A02221DC22C79A09006AD29A /* AEButton.m in Sources */,
 				20BD73C62248BE440020EA5D /* BaseVC.m in Sources */,
 				20BD73BD2248BE440020EA5D /* UserInfo.m in Sources */,
 				20BD73CF2248BE440020EA5D /* XLGChangeServerVC.m in Sources */,
@@ -1301,6 +1320,7 @@
 				20F934E3224B1C95008C80DB /* JSWithdrawalMoneyVC.m in Sources */,
 				20BD74152248C5B70020EA5D /* JSCodeLoginVC.m in Sources */,
 				20BD73CD2248BE440020EA5D /* XLGChangeServerCell.m in Sources */,
+				A02221D922C799B9006AD29A /* AEFlowLayoutView.m in Sources */,
 				20781E75224A257A00F0767D /* JSMyWalletVC.m in Sources */,
 				20BD741B2248C8230020EA5D /* JSResetPswVC.m in Sources */,
 				20BD73BB2248BE440020EA5D /* CZNotDataView.m in Sources */,

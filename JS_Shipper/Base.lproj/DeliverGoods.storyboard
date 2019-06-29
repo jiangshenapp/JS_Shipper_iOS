@@ -217,7 +217,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4X6-Yb-mqq">
                                             <rect key="frame" x="0.0" y="10" width="375" height="60"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-WH-S6y">
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-WH-S6y">
                                                     <rect key="frame" x="8" y="5" width="359" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -248,7 +248,7 @@
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Co-jC-Ms3">
-                                            <rect key="frame" x="12" y="140" width="351" height="44"/>
+                                            <rect key="frame" x="28" y="125" width="319" height="44"/>
                                             <color key="backgroundColor" red="0.92549019610000005" green="0.65490196079999996" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="rjA-St-bzJ"/>
@@ -263,22 +263,25 @@
                                                     <integer key="value" value="22"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="doneAction:" destination="d53-fI-7Rz" eventType="touchUpInside" id="10p-o3-TCo"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="oJe-di-rNr" firstAttribute="top" secondItem="SEi-va-ZQh" secondAttribute="bottom" constant="10" id="GrI-SD-LxK"/>
-                                        <constraint firstItem="3Co-jC-Ms3" firstAttribute="leading" secondItem="4xq-qm-0k1" secondAttribute="leading" constant="12" id="OWD-Bd-eqg"/>
+                                        <constraint firstItem="3Co-jC-Ms3" firstAttribute="leading" secondItem="4xq-qm-0k1" secondAttribute="leading" constant="28" id="OWD-Bd-eqg"/>
                                         <constraint firstItem="oJe-di-rNr" firstAttribute="leading" secondItem="4xq-qm-0k1" secondAttribute="leading" id="PR5-6c-ph2"/>
                                         <constraint firstItem="3Co-jC-Ms3" firstAttribute="top" secondItem="oJe-di-rNr" secondAttribute="bottom" constant="30" id="RHx-AP-Wgv"/>
                                         <constraint firstItem="4X6-Yb-mqq" firstAttribute="top" secondItem="4xq-qm-0k1" secondAttribute="top" constant="10" id="SQz-nw-iOY"/>
                                         <constraint firstItem="4X6-Yb-mqq" firstAttribute="leading" secondItem="4xq-qm-0k1" secondAttribute="leading" id="X7W-0w-gXs"/>
                                         <constraint firstItem="SEi-va-ZQh" firstAttribute="leading" secondItem="4xq-qm-0k1" secondAttribute="leading" constant="12" id="ZWw-f9-Vxn"/>
-                                        <constraint firstItem="3Co-jC-Ms3" firstAttribute="top" secondItem="oJe-di-rNr" secondAttribute="bottom" constant="30" id="aeW-a8-LfE"/>
+                                        <constraint firstItem="3Co-jC-Ms3" firstAttribute="top" secondItem="oJe-di-rNr" secondAttribute="bottom" constant="15" id="aeW-a8-LfE"/>
                                         <constraint firstAttribute="trailing" secondItem="oJe-di-rNr" secondAttribute="trailing" id="bLt-TX-n8K"/>
                                         <constraint firstItem="oJe-di-rNr" firstAttribute="top" secondItem="SEi-va-ZQh" secondAttribute="bottom" constant="10" id="eH1-EE-bzG"/>
                                         <constraint firstItem="SEi-va-ZQh" firstAttribute="top" secondItem="4X6-Yb-mqq" secondAttribute="bottom" constant="10" id="i8L-mV-yqP"/>
-                                        <constraint firstAttribute="trailing" secondItem="3Co-jC-Ms3" secondAttribute="trailing" constant="12" id="n1G-Rf-lp3"/>
+                                        <constraint firstAttribute="trailing" secondItem="3Co-jC-Ms3" secondAttribute="trailing" constant="28" id="n1G-Rf-lp3"/>
                                         <constraint firstAttribute="trailing" secondItem="4X6-Yb-mqq" secondAttribute="trailing" id="xg4-Wl-d60"/>
                                     </constraints>
                                 </view>
@@ -293,6 +296,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fwK-1a-s4i"/>
+                    <connections>
+                        <outlet property="nameTF" destination="aRI-WH-S6y" id="OOD-GZ-Qua"/>
+                        <outlet property="nameView" destination="oJe-di-rNr" id="s7p-FF-TBw"/>
+                        <outlet property="viewH" destination="vr4-0h-bCO" id="e1p-Vl-cLZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dfe-LS-6dg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -499,10 +507,9 @@
                                                             <state key="normal" image="app_list_arrow_black"/>
                                                             <connections>
                                                                 <action selector="selectGoodsNameAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="Wdc-Bw-3vG"/>
-                                                                <segue destination="d53-fI-7Rz" kind="push" identifier="goodsName" id="uOc-wL-Okn"/>
                                                             </connections>
                                                         </button>
-                                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入货物类型" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7K0-Q1-7yZ">
+                                                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择货物名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7K0-Q1-7yZ">
                                                             <rect key="frame" x="80" y="0.0" width="227" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <nil key="textColor"/>
@@ -535,10 +542,9 @@
                                                             <state key="normal" image="app_list_arrow_black"/>
                                                             <connections>
                                                                 <action selector="selectGoodsPackAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="ioJ-FO-6r2"/>
-                                                                <segue destination="d53-fI-7Rz" kind="push" identifier="packType" id="k6w-2S-TRk"/>
                                                             </connections>
                                                         </button>
-                                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入货物类型" textAlignment="natural" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="dzR-8f-GdZ">
+                                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择包装类型" textAlignment="natural" minimumFontSize="2" translatesAutoresizingMaskIntoConstraints="NO" id="dzR-8f-GdZ">
                                                             <rect key="frame" x="80" y="0.0" width="227" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <nil key="textColor"/>
@@ -910,7 +916,7 @@
                                             <rect key="frame" x="0.0" y="1243" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <subviews>
-                                                <button opaque="NO" tag="111" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnz-MI-ddj">
+                                                <button opaque="NO" tag="111" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnz-MI-ddj">
                                                     <rect key="frame" x="0.0" y="0.0" width="162" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -921,7 +927,7 @@
                                                     </state>
                                                     <state key="selected" image="app_checkbox_icon_selected"/>
                                                     <connections>
-                                                        <action selector="feeSelectAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="129-0L-BlA"/>
+                                                        <action selector="depositSwitchAction:" destination="Awa-zj-wG3" eventType="touchUpInside" id="bFT-2i-SFd"/>
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入需要交纳的金额" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvg-3q-KKh">
@@ -930,7 +936,7 @@
                                                     <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -984,6 +990,8 @@
                         <outlet property="carModelBtn" destination="dMa-Ew-JMM" id="3qR-rT-PAE"/>
                         <outlet property="chujiaBtn" destination="CwK-Bm-iFn" id="tVd-Kz-Du7"/>
                         <outlet property="daoPayBtn" destination="Bca-jF-Pfx" id="0Uv-fN-Hdv"/>
+                        <outlet property="depositFeeTF" destination="tvg-3q-KKh" id="g2Q-sN-9BR"/>
+                        <outlet property="depositSwitchBtn" destination="dnz-MI-ddj" id="xUm-GZ-5IP"/>
                         <outlet property="dianyiBtn" destination="SR1-Im-7tM" id="ijq-qq-Yv4"/>
                         <outlet property="distanceLab" destination="qeQ-BL-EGK" id="cf8-TJ-ubL"/>
                         <outlet property="endAddressBtn" destination="59B-Fv-OQu" id="uqE-TT-Fgl"/>
@@ -1473,6 +1481,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kuF-Uh-ki7"/>
-        <segue reference="k6w-2S-TRk"/>
     </inferredMetricsTieBreakers>
 </document>

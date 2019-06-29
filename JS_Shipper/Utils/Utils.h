@@ -101,6 +101,11 @@
  */
 + (UIWebView *)call:(NSString *)phoneAccount;
 
+/*!
+ *  @brief 根据文字计算文字所占的位置
+ */
++ (CGSize)getSizeByString:(NSString*)string AndFontSize:(CGFloat)font;
+
 /** 计算时间差 返回几分钟/小时前   */
 + (NSString *)getTimeStrToCurrentDateWith:(NSString *)dateStr1;
 

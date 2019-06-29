@@ -40,7 +40,7 @@
 }
 
 - (void)setupView {
-    _allDicKey = @{@"useCarType":@"用车类型",@"carLength":@"车长",@"carModel":@"车型",@"goodsType":@"货物类型"};
+    _allDicKey = @{@"useCarType":@"用车类型",@"carLength":@"车长",@"carModel":@"车型",@"goodsType":@"货物名称"};
     _selectArr = [NSMutableArray array];
     self.frame = CGRectMake(0, kNavBarH+46, WIDTH, HEIGHT-kNavBarH-46-kTabBarSafeH);
     self.backgroundColor = PageColor;

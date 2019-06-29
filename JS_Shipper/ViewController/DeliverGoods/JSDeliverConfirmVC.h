@@ -48,21 +48,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *daoPayBtn;
 @property (weak, nonatomic) IBOutlet UIButton *nowPayBtn;
 @property (weak, nonatomic) IBOutlet UITextField *priceLab;
+@property (weak, nonatomic) IBOutlet UIButton *depositSwitchBtn;
+@property (weak, nonatomic) IBOutlet UITextField *depositFeeTF;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
 /** 选择货物名称 */
 - (IBAction)selectGoodsNameAction:(UIButton *)sender;
 /** 选择货物包装类型 */
 - (IBAction)selectGoodsPackAction:(UIButton *)sender;
-/** 选择货物类型 */
-- (IBAction)selectGoodsTypeAction:(id)sender;
 /** 选择装货时间 */
 - (IBAction)selectGoodsTimeAction:(id)sender;
-/** 选择货物类型 */
+/** 选择用车类型 */
 - (IBAction)selectUseCarTypeAction:(id)sender;
 /** 上传照片1 */
 - (IBAction)selectPhotoAction1:(UIButton *)sender;
-/** a上传照片2 */
+/** 上传照片2 */
 - (IBAction)selectPhotoAction2:(UIButton *)sender;
 /** 需要装货 卸货 */
 - (IBAction)needLoadGoodsType:(UIButton *)sender;
