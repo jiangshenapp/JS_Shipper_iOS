@@ -98,7 +98,7 @@
 #pragma mark - init view
 - (void)initView {
     
-    //1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待评价，8已完成，9已取消，10已关闭
+    //1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待确认收货，8待回单收到确认，9待评价，10已完成，11已取消，12已关闭
     NSInteger state = [self.model.state integerValue];
     if (state == 3 || state == 4) { //待司机确认，修改支付信息、收货人信息；待支付，修改收货人信息；
         self.changeBtn.hidden = NO;
@@ -140,25 +140,30 @@
             [self.bottomBtn setTitle:@"取消发货" forState:UIControlStateNormal];
             break;
         case 6: //运输中，待收货
+        case 7: //待确认收货
             [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
             [self.bottomRightBtn setTitle:@"确认收货" forState:UIControlStateNormal];
             break;
-        case 7: //待评价
+        case 8: //待回单收到确认
+            [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
+            [self.bottomRightBtn setTitle:@"回单收到确认" forState:UIControlStateNormal];
+            break;
+        case 9: //待评价
             [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
             [self.bottomRightBtn setTitle:@"评价" forState:UIControlStateNormal];
             break;
-        case 8: //已完成
+        case 10: //已完成
             self.orderStatusLab.hidden = YES;
             [self.bottomLeftBtn setTitle:@"查看路线" forState:UIControlStateNormal];
             [self.bottomRightBtn setTitle:@"重新发货" forState:UIControlStateNormal];
             break;
-        case 9: //已取消
+        case 11: //已取消
             self.bottomBtn.hidden = NO;
             self.bottomLeftBtn.hidden = YES;
             self.bottomRightBtn.hidden = YES;
             [self.bottomBtn setTitle:@"重新发货" forState:UIControlStateNormal];
             break;
-        case 10:
+        case 12: //已关闭
             
             break;
         default:
@@ -211,6 +216,9 @@
     if ([title isEqualToString:@"确认收货"]) {
         [Utils showToast:@"确认收货"];
         [self confirmGoodsOrder];
+    }
+    if ([title isEqualToString:@"回单收到确认"]) {
+        [self comfirmReceiptOrder];
     }
     if ([title isEqualToString:@"评价"]) {
         [self commentOrder];
@@ -266,6 +274,19 @@
     [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_ConfirmOrder,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (status == Request_Success) {
             [Utils showToast:@"确认收货成功"];
+            [weakSelf.navigationController popToRootViewControllerAnimated:NO];
+        }
+    }];
+}
+
+#pragma mark - 回单收到确认
+/** 回单收到确认 */
+- (void)comfirmReceiptOrder {
+    __weak typeof(self) weakSelf = self;
+    NSDictionary *dic = [NSDictionary dictionary];
+    [[NetworkManager sharedManager] postJSON:[NSString stringWithFormat:@"%@/%@",URL_ConfirmOrderReceipt,self.model.ID] parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
+        if (status == Request_Success) {
+            [Utils showToast:@"回执订单已确认"];
             [weakSelf.navigationController popToRootViewControllerAnimated:NO];
         }
     }];
