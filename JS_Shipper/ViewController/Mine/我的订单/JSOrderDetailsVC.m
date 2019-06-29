@@ -101,9 +101,11 @@
     //1发布中，2待司机接单，3待司机确认，4待支付，5待司机接货, 6待收货，7待确认收货，8待回单收到确认，9待评价，10已完成，11已取消，12已关闭
     NSInteger state = [self.model.state integerValue];
     if (state == 3 || state == 4) { //待司机确认，修改支付信息、收货人信息；待支付，修改收货人信息；
-        self.changeBtn.hidden = NO;
+//        self.changeBtn.hidden = NO;
+        [self.changeBtn setTitle:@"修改" forState:UIControlStateNormal];
     } else {
-        self.changeBtn.hidden = YES;
+//        self.changeBtn.hidden = YES;
+        [self.changeBtn setTitle:@"再发一次" forState:UIControlStateNormal];
     }
     if (state == 1 || state == 2) {
         self.tileView1.hidden = NO;
@@ -173,11 +175,16 @@
 
 #pragma mark - methods
 
+#pragma mark - 修改/再发一次
 /** 修改订单信息 */
 - (void)changeOrderInfo {
-    JSChangeOrderDetailVC *vc = (JSChangeOrderDetailVC *)[Utils getViewController:@"Mine" WithVCName:@"JSChangeOrderDetailVC"];
-    vc.model = self.model;
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([self.changeBtn.titleLabel.text isEqualToString:@"修改"]) {
+        JSChangeOrderDetailVC *vc = (JSChangeOrderDetailVC *)[Utils getViewController:@"Mine" WithVCName:@"JSChangeOrderDetailVC"];
+        vc.model = self.model;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else { //再发一次
+        [self againPublishOrder];
+    }
 }
 
 /** 打电话 */
