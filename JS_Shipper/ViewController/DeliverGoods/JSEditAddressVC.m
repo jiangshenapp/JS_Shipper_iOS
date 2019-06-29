@@ -8,7 +8,7 @@
 
 #import "JSEditAddressVC.h"
 
-@interface JSEditAddressVC ()
+@interface JSEditAddressVC ()<UITextFieldDelegate>
 
 @end
 
@@ -19,6 +19,18 @@
     self.title = @"收货人";
     _titleAddressLab.text = _addressInfo[@"title"];
     _addressLab.text = _addressInfo[@"address"];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField.tag == 100) {
+        if (textField.text.length + string.length > 11) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 /*

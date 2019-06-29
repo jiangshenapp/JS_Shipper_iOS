@@ -3347,11 +3347,13 @@ Cg
                         <outlet property="bottomRightBtn" destination="Hom-q4-rHL" id="yyz-Wt-MqX"/>
                         <outlet property="carInfoLab" destination="xLv-a1-sav" id="IBm-p3-yHR"/>
                         <outlet property="carTypeLab" destination="Iwc-Xk-9sd" id="7IL-LA-sCP"/>
+                        <outlet property="depositLab" destination="M66-Rn-qHh" id="DIK-H6-d01"/>
                         <outlet property="endAddressLab" destination="8qf-zn-3VY" id="1mI-Fw-fvF"/>
                         <outlet property="explainLab" destination="8AT-nO-vhW" id="sSq-wx-9Sg"/>
+                        <outlet property="goodsNameLab" destination="uga-yO-WOv" id="x62-NV-A8v"/>
+                        <outlet property="goodsPackTypeLab" destination="mvI-bi-40K" id="cfn-sw-40f"/>
                         <outlet property="goodsPayTypeLab" destination="xpH-4A-dEW" id="ZR2-aV-2MQ"/>
                         <outlet property="goodsTomeLab" destination="BD4-MF-gPs" id="DLe-MS-WG9"/>
-                        <outlet property="goodsTypeLab" destination="uga-yO-WOv" id="VBs-Ii-hvC"/>
                         <outlet property="headImgView1" destination="H7z-XL-jgr" id="I4l-x1-Bc5"/>
                         <outlet property="headImgView2" destination="zax-V7-b4g" id="9rf-Kt-FPl"/>
                         <outlet property="introduceLab" destination="HTC-I5-eaB" id="vim-2I-xZ7"/>

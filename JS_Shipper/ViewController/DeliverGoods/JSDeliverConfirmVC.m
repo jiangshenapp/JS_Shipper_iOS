@@ -558,7 +558,7 @@
         }
         _fee = _priceLab.text;
     }
-    if (self.depositSwitchBtn.isSelected == YES && [NSString isEmpty:self.depositFeeTF]) {
+    if (self.depositSwitchBtn.isSelected == YES && [NSString isEmpty:self.depositFeeTF.text]) {
         [Utils showToast:@"请输入保证金金额"];
         return;
     }
@@ -583,10 +583,10 @@
     [dic setObject:_payWay forKey:@"payWay"];
     [dic setObject:_payType forKey:@"payType"];
     if (_depositSwitchBtn.isSelected == YES) {
-        [dic setObject:@"1" forKey:@"requireDeposit"];
+        [dic setObject:@"true" forKey:@"requireDeposit"];
         [dic setObject:_depositFeeTF.text forKey:@"deposit"];
     } else {
-        [dic setObject:@"0" forKey:@"requireDeposit"];
+        [dic setObject:@"false" forKey:@"requireDeposit"];
         [dic setObject:@"0" forKey:@"deposit"];
     }
     [[NetworkManager sharedManager] postJSON:urlStr parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
