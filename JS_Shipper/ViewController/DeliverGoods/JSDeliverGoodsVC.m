@@ -154,6 +154,11 @@
 
 
 - (IBAction)sendGoodsAction:(UIButton *)sender {
+    
+    if (![Utils isVerified]) {
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic addEntriesFromDictionary:_carLengthDic];

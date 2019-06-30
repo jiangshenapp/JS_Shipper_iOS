@@ -270,6 +270,9 @@
 #pragma mark - 再发一次/重新发货
 /** 再发一次/重新发货 */
 - (void)againPublishOrder {
+    if (![Utils isVerified]) {
+        return;
+    }
     JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
     vc.isAll = YES;
     vc.model = self.model;

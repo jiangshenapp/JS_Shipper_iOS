@@ -67,6 +67,9 @@
 
 /** 下单 */
 - (void)createOrderAction {
+    if (![Utils isVerified]) {
+        return;
+    }
     JSDeliverConfirmVC *vc = (JSDeliverConfirmVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSDeliverConfirmVC"];
     vc.subscriberId = self.dataModel.subscriberId;
     vc.isAll = YES;
