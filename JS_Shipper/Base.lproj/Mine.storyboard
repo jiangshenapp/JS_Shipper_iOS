@@ -2676,7 +2676,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITy-ps-l8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95" y="1465"/>
+            <point key="canvasLocation" x="-95" y="1720"/>
         </scene>
         <!--修改订单信息-->
         <scene sceneID="Hxu-TY-8m7">
@@ -2886,11 +2886,11 @@ Cg
                         <viewControllerLayoutGuide type="bottom" id="z3h-LF-hFE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OmC-xA-K4h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="930"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNZ-fX-SAj">
-                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="837"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qSB-9W-zzu">
                                         <rect key="frame" x="0.0" y="1" width="375" height="60"/>
@@ -3271,11 +3271,43 @@ Cg
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SJF-go-b7R">
+                                        <rect key="frame" x="0.0" y="670" width="375" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="回执" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0s-My-3lo">
+                                                <rect key="frame" x="8" y="8" width="350" height="16"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSo-Wm-ym9">
+                                                <rect key="frame" x="12" y="36" width="100" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="icon_action_paopao_middle_left.png"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-RK-Hgi">
+                                                <rect key="frame" x="260" y="36" width="100" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="icon_action_paopao_middle_left.png"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkc-bf-oIC">
+                                                <rect key="frame" x="135" y="36" width="100" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="icon_action_paopao_middle_left.png"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="egx-rp-ExA">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="880" width="375" height="50"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fq-eN-dj5">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -3339,6 +3371,9 @@ Cg
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hSo-1J-1wn"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="1000"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="930"/>
                     <connections>
                         <outlet property="bgScroView" destination="gNZ-fX-SAj" id="auX-UX-Jve"/>
                         <outlet property="bookTimeLab" destination="pkY-Ji-0J3" id="e7S-uz-b72"/>
@@ -3347,6 +3382,9 @@ Cg
                         <outlet property="bottomRightBtn" destination="Hom-q4-rHL" id="yyz-Wt-MqX"/>
                         <outlet property="carInfoLab" destination="xLv-a1-sav" id="IBm-p3-yHR"/>
                         <outlet property="carTypeLab" destination="Iwc-Xk-9sd" id="7IL-LA-sCP"/>
+                        <outlet property="commentImage1Btn" destination="kSo-Wm-ym9" id="2cV-OB-5w3"/>
+                        <outlet property="commentImage2Btn" destination="bGf-RK-Hgi" id="ALR-oX-Iqi"/>
+                        <outlet property="commentImage3Btn" destination="tkc-bf-oIC" id="fCl-7s-nwL"/>
                         <outlet property="depositLab" destination="M66-Rn-qHh" id="DIK-H6-d01"/>
                         <outlet property="endAddressLab" destination="8qf-zn-3VY" id="1mI-Fw-fvF"/>
                         <outlet property="explainLab" destination="8AT-nO-vhW" id="sSq-wx-9Sg"/>
@@ -3362,10 +3400,11 @@ Cg
                         <outlet property="orderFeeLab" destination="Ymw-8f-RC4" id="iIg-tI-RIb"/>
                         <outlet property="orderNoLab" destination="XCK-MN-4Fg" id="omg-fa-4dU"/>
                         <outlet property="orderStatusLab" destination="eXx-gk-dQS" id="Cyl-H1-hBQ"/>
+                        <outlet property="otherInfoView" destination="iIQ-R0-2qe" id="x73-1H-b7w"/>
                         <outlet property="payTypeLab" destination="jnQ-Ni-bfu" id="Mi1-Qz-u7c"/>
                         <outlet property="receiptNameLab" destination="QQe-cd-S0M" id="18j-MU-Nxf"/>
                         <outlet property="receiptNumerLab" destination="Lrq-rH-qKS" id="OMY-EO-TVA"/>
-                        <outlet property="receiptView" destination="iIQ-R0-2qe" id="PyN-gn-En8"/>
+                        <outlet property="receiptView" destination="SJF-go-b7R" id="UXu-9z-ZN5"/>
                         <outlet property="sendMSgBtn" destination="FZ2-td-3dR" id="gV0-Sa-Y0y"/>
                         <outlet property="startAddressLab" destination="ls5-Wy-NR8" id="1q6-uh-xhf"/>
                         <outlet property="tileView1" destination="qSB-9W-zzu" id="A6w-5B-S3I"/>
@@ -3374,7 +3413,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DD-7M-6Nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95.200000000000003" y="802.848575712144"/>
+            <point key="canvasLocation" x="-95.200000000000003" y="802.39880059970017"/>
         </scene>
     </scenes>
     <resources>
@@ -3400,6 +3439,7 @@ Cg
         <image name="authentication_img_body" width="186" height="112"/>
         <image name="home_list_btn_chat" width="32" height="32"/>
         <image name="home_list_btn_phone" width="32" height="32"/>
+        <image name="icon_action_paopao_middle_left.png" width="8" height="54"/>
         <image name="logistics_map_icon_logistics" width="4" height="4"/>
         <image name="logistics_map_icon_starting" width="26" height="26"/>
         <image name="personalcenter_driver_icon_head_land" width="60" height="60"/>

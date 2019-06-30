@@ -39,7 +39,7 @@
     [self.changeBtn addTarget:self action:@selector(changeOrderInfo) forControlEvents:UIControlEventTouchUpInside];
     self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.changeBtn];
     
-    _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+50);
+    _bgScroView.contentSize = CGSizeMake(0, _otherInfoView.bottom+50);
     self.tileView1.hidden = YES;
     self.titleView2.hidden = NO;
 }
@@ -118,6 +118,16 @@
             [self.headImgView1 sd_setImageWithURL:[NSURL URLWithString:self.model.driverAvatar] placeholderImage:[UIImage imageNamed:@"personalcenter_driver_icon_head_land"]];
             self.bookTimeLab.text = self.model.dotName;
         }
+    }
+    if (state >= 8 && ![NSString isEmpty:self.model.commentImage1]) {
+        _receiptView.height = 120;
+        _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+10);
+        [_commentImage1Btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage1]] forState:UIControlStateNormal];
+        [_commentImage2Btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage2]] forState:UIControlStateNormal];
+        [_commentImage3Btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage3]] forState:UIControlStateNormal];
+    } else {
+        _receiptView.height = 0;
+        _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+10);
     }
     switch (state) {
         case 1:
@@ -207,7 +217,6 @@
         [self cancleOrder];
     }
     if ([title isEqualToString:@"查看路线"]) {
-        [Utils showToast:@"查看路线"];
         [self showRoutOrder];
     }
 }
@@ -311,8 +320,9 @@
 #pragma mark - 查看路线
 /** 查看路线 */
 - (void)showRoutOrder {
-    JSOrderDetailMapVC *vc = (JSOrderDetailMapVC *)[Utils getViewController:@"Mine" WithVCName:@"JSOrderDetailMapVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [Utils showToast:@"功能暂未开通，敬请期待"];
+//    JSOrderDetailMapVC *vc = (JSOrderDetailMapVC *)[Utils getViewController:@"Mine" WithVCName:@"JSOrderDetailMapVC"];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*
@@ -325,4 +335,6 @@
  }
  */
 
+- (IBAction)commentImage1Btn:(id)sender {
+}
 @end
