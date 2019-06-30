@@ -3286,19 +3286,19 @@ Cg
                                                 <rect key="frame" x="12" y="36" width="100" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icon_action_paopao_middle_left.png"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-RK-Hgi">
-                                                <rect key="frame" x="260" y="36" width="100" height="80"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icon_action_paopao_middle_left.png"/>
+                                                <state key="normal" image="order_upload_icon_photo"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkc-bf-oIC">
                                                 <rect key="frame" x="135" y="36" width="100" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="icon_action_paopao_middle_left.png"/>
+                                                <state key="normal" image="order_upload_icon_photo"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-RK-Hgi">
+                                                <rect key="frame" x="260" y="36" width="100" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="order_upload_icon_photo"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3383,8 +3383,8 @@ Cg
                         <outlet property="carInfoLab" destination="xLv-a1-sav" id="IBm-p3-yHR"/>
                         <outlet property="carTypeLab" destination="Iwc-Xk-9sd" id="7IL-LA-sCP"/>
                         <outlet property="commentImage1Btn" destination="kSo-Wm-ym9" id="2cV-OB-5w3"/>
-                        <outlet property="commentImage2Btn" destination="bGf-RK-Hgi" id="ALR-oX-Iqi"/>
-                        <outlet property="commentImage3Btn" destination="tkc-bf-oIC" id="fCl-7s-nwL"/>
+                        <outlet property="commentImage2Btn" destination="tkc-bf-oIC" id="UJc-Mw-MR8"/>
+                        <outlet property="commentImage3Btn" destination="bGf-RK-Hgi" id="fPJ-Bd-vq4"/>
                         <outlet property="depositLab" destination="M66-Rn-qHh" id="DIK-H6-d01"/>
                         <outlet property="endAddressLab" destination="8qf-zn-3VY" id="1mI-Fw-fvF"/>
                         <outlet property="explainLab" destination="8AT-nO-vhW" id="sSq-wx-9Sg"/>
@@ -3439,9 +3439,9 @@ Cg
         <image name="authentication_img_body" width="186" height="112"/>
         <image name="home_list_btn_chat" width="32" height="32"/>
         <image name="home_list_btn_phone" width="32" height="32"/>
-        <image name="icon_action_paopao_middle_left.png" width="8" height="54"/>
         <image name="logistics_map_icon_logistics" width="4" height="4"/>
         <image name="logistics_map_icon_starting" width="26" height="26"/>
+        <image name="order_upload_icon_photo" width="40" height="40"/>
         <image name="personalcenter_driver_icon_head_land" width="60" height="60"/>
         <image name="personalcenter_icon_circle" width="36" height="36"/>
         <image name="personalcenter_icon_collect" width="28" height="28"/>
