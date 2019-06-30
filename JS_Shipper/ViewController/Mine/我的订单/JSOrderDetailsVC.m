@@ -122,9 +122,9 @@
     if (state >= 8 && ![NSString isEmpty:self.model.commentImage1]) {
         _receiptView.height = 120;
         _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+10);
-        [_commentImage1Btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage1]] forState:UIControlStateNormal];
-        [_commentImage2Btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage2]] forState:UIControlStateNormal];
-        [_commentImage3Btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage3]] forState:UIControlStateNormal];
+        [_commentImage1Btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage1]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"order_upload_icon_photo"]];
+        [_commentImage2Btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage2]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"order_upload_icon_photo"]];
+        [_commentImage3Btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.model.commentImage3]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"order_upload_icon_photo"]];
     } else {
         _receiptView.height = 0;
         _bgScroView.contentSize = CGSizeMake(0, _receiptView.bottom+10);
