@@ -38,7 +38,7 @@
 
 - (void)refreshUI {
     _startAddressLab.text = self.dataModel.startAddressCodeName;
-    _endAddressLab.text = self.dataModel.receiveAddressCodeName;
+    _endAddressLab.text = self.dataModel.arriveAddressCodeName;
     _nameLab.text = self.dataModel.driverName;
     _carModelLab.text = self.dataModel.carModelName;
     _calLengthLab.text = self.dataModel.carLengthName;

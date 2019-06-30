@@ -48,7 +48,7 @@
 
 - (void)refreshUI {
     _startAddressLab.text = self.dataModel.startAddressCodeName;
-    _endAddressLab.text = self.dataModel.receiveAddressCodeName;
+    _endAddressLab.text = self.dataModel.arriveAddressCodeName;
     _nameLab.text = self.dataModel.driverName;
     _carNumLab.text = self.dataModel.cphm;
     _carTypeLab.text = self.dataModel.carModelName;
@@ -60,7 +60,7 @@
         self.collectBtn.selected = NO;
     }
     if ([Utils isBlankString:self.dataModel.image2]) {
-        self.carImgH.constant = 0;
+//        self.carImgH.constant = 0;
     } else {
         self.carImgH.constant = 150;
         [self.carImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.dataModel.image2]]];
