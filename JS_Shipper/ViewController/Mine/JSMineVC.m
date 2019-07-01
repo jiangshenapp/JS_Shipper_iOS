@@ -23,6 +23,14 @@
 
 @implementation JSMineVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if ([Utils isLoginWithJump:YES]) {
+        [self getAccountInfo]; //获取账户信息
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -32,7 +40,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kLoginSuccNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kUserInfoChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kChangeMoneyNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kChangeMoneyNotification object:nil];
     
     iconArr = @[@"personalcenter_icon_park",@"personalcenter_icon_service",@"personalcenter_icon_invoice",@"personalcenter_icon_collection",@"personalcenter_icon_customer"];
     menuTileArr = @[@"我的园区",@"我的服务",@"我的发票",@"推广达人",@"我的客服"];
@@ -77,7 +85,7 @@
     
     if ([Utils isLoginWithJump:YES]) {
         [self getUserInfo]; //获取用户信息
-        [self getAccountInfo]; //获取账户信息
+//        [self getAccountInfo]; //获取账户信息
     }
 }
 
