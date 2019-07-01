@@ -26,11 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = @"车源详情";
-    
-//    [self refreshUI];
-//    [self getData];
+    [self refreshUI];
+    [self getData];
 }
 
 #pragma mark - 获取数据
@@ -60,7 +58,7 @@
         self.collectBtn.selected = NO;
     }
     if ([Utils isBlankString:self.dataModel.image2]) {
-//        self.carImgH.constant = 0;
+        self.carImgH.constant = 0;
     } else {
         self.carImgH.constant = 150;
         [self.carImgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",PIC_URL(),self.dataModel.image2]]];
