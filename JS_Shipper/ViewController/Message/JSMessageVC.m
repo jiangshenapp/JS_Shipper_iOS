@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息";
+    self.baseTabView.delegate = self;
+    self.baseTabView.dataSource = self;
     // Do any additional setup after loading the view.
 }
 
@@ -25,7 +27,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MessageHomeTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageHomeTabCell"];
+    MessageHomeTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageHomeTabCell2"];
     return cell;
 }
 

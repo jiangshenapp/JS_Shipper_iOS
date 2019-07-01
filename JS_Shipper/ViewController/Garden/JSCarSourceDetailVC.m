@@ -29,8 +29,8 @@
     
     self.title = @"车源详情";
     
-    [self refreshUI];
-    [self getData];
+//    [self refreshUI];
+//    [self getData];
 }
 
 #pragma mark - 获取数据
