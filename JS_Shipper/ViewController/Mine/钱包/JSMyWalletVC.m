@@ -8,6 +8,7 @@
 
 #import "JSMyWalletVC.h"
 #import "JSWithdrawalMoneyVC.h"
+#import "JSRechargeVC.h"
 #import "AccountInfo.h"
 
 @implementation JSMyWalletVC
@@ -41,6 +42,12 @@
 - (IBAction)withdrawalAction:(id)sender {
     JSWithdrawalMoneyVC *vc = (JSWithdrawalMoneyVC *)[Utils getViewController:@"Mine" WithVCName:@"JSWithdrawalMoneyVC"];
     vc.maxMoney = self.balanceLab.text;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+// 充值
+- (IBAction)rechargeAction:(id)sender {
+    JSRechargeVC *vc = (JSRechargeVC *)[Utils getViewController:@"Mine" WithVCName:@"JSRechargeVC"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

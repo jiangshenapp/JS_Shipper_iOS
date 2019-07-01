@@ -8,6 +8,7 @@
 
 #import "JSMineVC.h"
 #import "JSAllOrderVC.h"
+#import "JSMyWalletVC.h"
 #import "AccountInfo.h"
 
 #define LineCount 3
@@ -174,6 +175,15 @@
     else if ([segue.identifier isEqualToString:@"getGoodsOrder"]) { //待收货
         orderVc.typeFlage = 4;
     }
+}
+
+/** 我的钱包 */
+- (IBAction)myWalletAction:(id)sender {
+    if (![Utils isVerified]) {
+        return;
+    }
+    JSMyWalletVC *vc = (JSMyWalletVC *)[Utils getViewController:@"Mine" WithVCName:@"JSMyWalletVC"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /** 我的圈子 */
