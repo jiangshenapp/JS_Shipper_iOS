@@ -89,7 +89,6 @@
     datePickr.backgroundColor = [UIColor whiteColor];
     // 1.1选择datePickr的显示风格
     [datePickr setDatePickerMode:UIDatePickerModeDateAndTime];
-    
     // 1.2查询所有可用的地区
     //NSLog(@"%@", [NSLocale availableLocaleIdentifiers]);
     
@@ -103,6 +102,8 @@
     
     // 2.3 将转换后的日期设置给日期选择控件
     [datePickr setDate:date];
+    
+    datePickr.minimumDate = date;
     
     [self addSubview:datePickr];
     
