@@ -287,6 +287,7 @@
 #pragma mark - 选择车长
 /** 选择车长 */
 - (IBAction)carLengthAction:(id)sender {
+    [self.view endEditing:YES];
     if (_carLengthArr.count==0) {
         return;
     }
@@ -298,6 +299,7 @@
 #pragma mark - 选择车型
 /** 选择车型 */
 - (IBAction)carModelAction:(id)sender {
+    [self.view endEditing:YES];
     if (_carModelArr.count==0) {
         return;
     }
@@ -309,6 +311,7 @@
 #pragma mark - 选择货物名称
 /** 选择货物名称 */
 - (IBAction)selectGoodsNameAction:(UIButton *)sender {
+    [self.view endEditing:YES];
     JSSelectGoodsNameVC *vc = (JSSelectGoodsNameVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectGoodsNameVC"];
     vc.sourceType = 0;
     [vc setSelectBlock:^(NSString *name){
@@ -320,6 +323,7 @@
 #pragma mark - 选择包装类型
 /** 选择包装类型 */
 - (IBAction)selectGoodsPackAction:(UIButton *)sender {
+    [self.view endEditing:YES];
     JSSelectGoodsNameVC *vc = (JSSelectGoodsNameVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectGoodsNameVC"];
     vc.sourceType = 1;
     [vc setSelectBlock:^(NSString *name){
@@ -331,6 +335,7 @@
 #pragma mark - 选择装货时间
 /** 选择装货时间 */
 - (IBAction)selectGoodsTimeAction:(id)sender {
+    [self.view endEditing:YES];
     __weak typeof(self) weakSelf = self;
     ZHPickView *pickView = [[ZHPickView alloc] init];
     [pickView setDateViewWithTitle:@"装货时间"];
@@ -345,6 +350,7 @@
 #pragma mark - 选择用车类型
 /** 选择用车类型 */
 - (IBAction)selectUseCarTypeAction:(id)sender {
+    [self.view endEditing:YES];
     __weak typeof(self) weakSelf = self;
     ZHPickView *pickView = [[ZHPickView alloc] init];
     NSMutableArray *arr = [NSMutableArray array];
@@ -363,6 +369,7 @@
 #pragma mark - 上传照片左
 /** 上传照片左 */
 - (IBAction)selectPhotoAction1:(UIButton *)sender {
+    [self.view endEditing:YES];
     imageType = 1;
     __weak typeof(self) weakSelf = self;
     TZImagePickerController *vc = [[TZImagePickerController alloc]initWithMaxImagesCount:1 delegate:self];;
@@ -381,6 +388,7 @@
 #pragma mark - 上传照片右
 /** 上传照片右 */
 - (IBAction)selectPhotoAction2:(UIButton *)sender {
+    [self.view endEditing:YES];
     imageType = 2;
     __weak typeof(self) weakSelf = self;
     TZImagePickerController *vc = [[TZImagePickerController alloc]initWithMaxImagesCount:1 delegate:self];;
@@ -419,6 +427,7 @@
 #pragma mark - 需要搬货/卸货
 /** 需要搬货/卸货 */
 - (IBAction)needLoadGoodsType:(UIButton *)sender {
+    [self.view endEditing:YES];
     sender.selected = YES;
     sender.borderColor = AppThemeColor;
     sender.borderWidth = 1;
@@ -599,6 +608,40 @@
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
     }];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+{
+    //string就是此时输入的那个字符textField就是此时正在输入的那个输入框返回YES就是可以改变输入框的值NO相反
+    NSString * toBeString = [textField.text     stringByReplacingCharactersInRange:range withString:string];
+    // 判断是否输入内容，或者用户点击的是键盘的删除按钮
+    if (![string isEqualToString:@""]) {
+//        if ([textField isEqual:self.textField]) {
+            // 小数点在字符串中的位置 第一个数字从0位置开始
+            NSInteger dotLocation = [textField.text rangeOfString:@"."].location;
+            if (dotLocation == NSNotFound && range.location != 0) {
+                //没有小数点,最大数值
+                if (range.location >= 9){
+                    NSLog(@"单笔金额不能超过亿位");
+                    if ([string isEqualToString:@"."] && range.location == 9) {
+                        return YES;
+                    }
+                    return NO;
+                }
+            }
+            //判断输入多个小数点,禁止输入多个小数点
+            if (dotLocation != NSNotFound){
+                if ([string isEqualToString:@"."])return NO;
+            }
+            //判断小数点后最多两位
+            if (dotLocation != NSNotFound && range.location > dotLocation + 2) { return NO; }
+            //判断总长度
+            if (textField.text.length > 11) {
+                return NO;
+            }
+//        }
+    }
+    return YES;
 }
 
 @end
