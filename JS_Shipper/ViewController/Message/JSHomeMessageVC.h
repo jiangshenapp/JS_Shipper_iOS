@@ -1,5 +1,5 @@
 //
-//  JSMessageVC.h
+//  JSHomeMessageVC.h
 //  JS_Driver
 //
 //  Created by Jason_zyl on 2019/3/6.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSMessageVC : BaseVC
+@interface JSHomeMessageVC : BaseVC
 
 @end
 

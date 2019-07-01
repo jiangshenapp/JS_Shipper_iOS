@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"系统消息";
+    self.baseTabView.delegate = self;
+    self.baseTabView.dataSource = self;
     // Do any additional setup after loading the view.
 }
 

@@ -67,7 +67,7 @@
 		20BD73BD2248BE440020EA5D /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73712248BE430020EA5D /* UserInfo.m */; };
 		20BD73BE2248BE440020EA5D /* JSCommunityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73762248BE430020EA5D /* JSCommunityVC.m */; };
 		20BD73BF2248BE440020EA5D /* JSDeliverGoodsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73792248BE430020EA5D /* JSDeliverGoodsVC.m */; };
-		20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD737C2248BE430020EA5D /* JSMessageVC.m */; };
+		20BD73C02248BE440020EA5D /* JSHomeMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD737C2248BE430020EA5D /* JSHomeMessageVC.m */; };
 		20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD737F2248BE430020EA5D /* JSMineVC.m */; };
 		20BD73C22248BE440020EA5D /* JSGardenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73812248BE430020EA5D /* JSGardenVC.m */; };
 		20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73842248BE430020EA5D /* JSPaswdLoginVC.m */; };
@@ -275,8 +275,8 @@
 		20BD73762248BE430020EA5D /* JSCommunityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCommunityVC.m; sourceTree = "<group>"; };
 		20BD73782248BE430020EA5D /* JSDeliverGoodsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDeliverGoodsVC.h; sourceTree = "<group>"; };
 		20BD73792248BE430020EA5D /* JSDeliverGoodsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDeliverGoodsVC.m; sourceTree = "<group>"; };
-		20BD737B2248BE430020EA5D /* JSMessageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMessageVC.h; sourceTree = "<group>"; };
-		20BD737C2248BE430020EA5D /* JSMessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMessageVC.m; sourceTree = "<group>"; };
+		20BD737B2248BE430020EA5D /* JSHomeMessageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSHomeMessageVC.h; sourceTree = "<group>"; };
+		20BD737C2248BE430020EA5D /* JSHomeMessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSHomeMessageVC.m; sourceTree = "<group>"; };
 		20BD737E2248BE430020EA5D /* JSMineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSMineVC.h; sourceTree = "<group>"; };
 		20BD737F2248BE430020EA5D /* JSMineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSMineVC.m; sourceTree = "<group>"; };
 		20BD73812248BE430020EA5D /* JSGardenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSGardenVC.m; sourceTree = "<group>"; };
@@ -813,8 +813,8 @@
 		20BD737A2248BE430020EA5D /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				20BD737B2248BE430020EA5D /* JSMessageVC.h */,
-				20BD737C2248BE430020EA5D /* JSMessageVC.m */,
+				20BD737B2248BE430020EA5D /* JSHomeMessageVC.h */,
+				20BD737C2248BE430020EA5D /* JSHomeMessageVC.m */,
 				2055C10F225C3B4D000E13C3 /* JSSystemMessageVC.h */,
 				2055C110225C3B4D000E13C3 /* JSSystemMessageVC.m */,
 			);
@@ -1276,7 +1276,7 @@
 				2055C111225C3B4D000E13C3 /* JSSystemMessageVC.m in Sources */,
 				20BD73C32248BE440020EA5D /* JSPaswdLoginVC.m in Sources */,
 				2012E5B622B33941001F8001 /* JSCityDeliveryDetaileVC.m in Sources */,
-				20BD73C02248BE440020EA5D /* JSMessageVC.m in Sources */,
+				20BD73C02248BE440020EA5D /* JSHomeMessageVC.m in Sources */,
 				203D8EF9224DFDE10066333A /* JSMyInfoVC.m in Sources */,
 				20CDDAFE22C0CB0D005432F3 /* JSSelectGoodsNameVC.m in Sources */,
 				20BD73B72248BE440020EA5D /* Config.m in Sources */,

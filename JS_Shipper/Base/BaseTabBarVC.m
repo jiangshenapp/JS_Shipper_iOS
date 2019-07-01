@@ -23,7 +23,7 @@
 
 - (void)createTabBar {
     //视图数组
-    NSArray *controllerArr = @[@"JSGardenVC",@"JSDeliverGoodsVC",@"JSMessageVC",@"JSCommunityVC",@"JSMineVC"];
+    NSArray *controllerArr = @[@"JSGardenVC",@"JSDeliverGoodsVC",@"JSHomeMessageVC",@"JSCommunityVC",@"JSMineVC"];
     //标题数组
     NSArray *titleArr = @[@"园区",@"发货",@"消息",@"社区",@"我的"];
     //图片数组

@@ -1,18 +1,18 @@
 //
-//  JSMessageVC.m
+//  JSHomeMessageVC.m
 //  JS_Driver
 //
 //  Created by Jason_zyl on 2019/3/6.
 //  Copyright © 2019 Jason_zyl. All rights reserved.
 //
 
-#import "JSMessageVC.h"
+#import "JSHomeMessageVC.h"
 
-@interface JSMessageVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface JSHomeMessageVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
-@implementation JSMessageVC
+@implementation JSHomeMessageVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
