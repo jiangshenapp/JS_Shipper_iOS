@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSEditAddressVC : BaseVC
+/** 是否是收货人 */
+@property (nonatomic,assign) BOOL isReceive;;
 /** 用户信息 */
 @property (nonatomic,retain) NSDictionary *addressInfo;
 @property (weak, nonatomic) IBOutlet UILabel *titleAddressLab;

@@ -45,6 +45,7 @@
     _searchTF.text = @"";
     [_searchTF endEditing:YES];
     [_searchAddressArr removeAllObjects];
+    [self.baseTabView reloadData];
     self.baseTabView.hidden = YES;
 }
 - (void)viewDidLoad {
@@ -206,7 +207,15 @@
     
     JSEditAddressVC *vc = (JSEditAddressVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSEditAddressVC"];
     BMKPoiInfo *poiInfo = _searchAddressArr[indexPath.row];
-    vc.addressInfo = @{@"title":poiInfo.name,@"address":poiInfo.address};
+    NSString *title = @"";
+    if (![NSString isEmpty:poiInfo.name]) {
+        title = poiInfo.name;
+    }
+    NSString *address = @"";;
+    if (![NSString isEmpty:poiInfo.address]) {
+        address = poiInfo.address;
+    }
+    vc.addressInfo = @{@"title":title,@"address":address};
     [self.navigationController pushViewController:vc animated:YES];
     _ceterAddressLab.text =[NSString stringWithFormat:@"%@",poiInfo.name];
     _addressNameLab.text =[NSString stringWithFormat:@"%@",poiInfo.name];
@@ -220,7 +229,9 @@
     JSSelectCityVC *vc = [Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectCityVC"];
     vc.getSelectDic = ^(NSDictionary * _Nonnull dic) {
         [sender setTitle:dic[@"address"] forState:UIControlStateNormal];
-        [weakSelf.bdMapView setCenterCoordinate:CLLocationCoordinate2DMake([dic[@"lat"] floatValue], [dic[@"lng"] floatValue])];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.bdMapView setCenterCoordinate:CLLocationCoordinate2DMake([dic[@"lat"] floatValue], [dic[@"lng"] floatValue])];
+        });
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -261,6 +272,7 @@
     if ([segue.identifier isEqualToString:@"address"]) {
         __weak typeof(self) weakSelf = self;
         JSEditAddressVC *vc = segue.destinationViewController;
+        vc.isReceive = _sourceType;
         vc.addressInfo = @{@"title":_addressNameLab.text,@"address":_addressInfoLab.text};
         vc.getAddressIgfo = ^(NSDictionary * _Nonnull getAddressIgfo) {
             weakSelf.dataModel.mobile = getAddressIgfo[@"mobel"];

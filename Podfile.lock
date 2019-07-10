@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - AlipaySDK-iOS (15.5.5)
   - FXToast (1.1.4)
+  - HyphenateLite (3.5.1)
   - IQKeyboardManager (6.2.0)
   - JPush-iOS-SDK (3.0.5)
   - JSONModel (1.8.0)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - AFNetworking
   - AlipaySDK-iOS
   - FXToast
+  - HyphenateLite
   - IQKeyboardManager
   - JPush-iOS-SDK
   - JSONModel
@@ -64,6 +66,7 @@ SPEC REPOS:
     - AFNetworking
     - AlipaySDK-iOS
     - FXToast
+    - HyphenateLite
     - IQKeyboardManager
     - JPush-iOS-SDK
     - JSONModel
@@ -84,6 +87,7 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   AlipaySDK-iOS: 7b700342e71cb3b626603ce96f9d2fb158acbcfb
   FXToast: 981bd9826b0cf9ce1838603ff08c00a1415efcd4
+  HyphenateLite: 9b33a3eb72a28ec53e10bf5894e6f15a9774561c
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JPush-iOS-SDK: f80e435b524449fd5101e247b044d4e48174ef5f
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
@@ -100,6 +104,6 @@ SPEC CHECKSUMS:
   XLGCategory: b93fda8378ccd3e04deb87033c02ad3e6dee3c4a
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 6bb02c57823328ba6f3c73ec72afcfec2e92f430
+PODFILE CHECKSUM: 97d3d9e785eb5364bf150de0860a812152ef2f0d
 
 COCOAPODS: 1.7.0.beta.2

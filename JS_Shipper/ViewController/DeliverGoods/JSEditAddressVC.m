@@ -9,16 +9,28 @@
 #import "JSEditAddressVC.h"
 
 @interface JSEditAddressVC ()<UITextFieldDelegate>
-
+{
+    NSString *keyName;
+}
 @end
 
 @implementation JSEditAddressVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"收货人";
+    self.title = @"发货人";
+    keyName = @"sendInfo";
+    if (_isReceive) {
+        self.title = @"收货人";
+        keyName = @"receiveInfo";
+    }
     _titleAddressLab.text = _addressInfo[@"title"];
     _addressLab.text = _addressInfo[@"address"];
+    NSDictionary *info = [[NSUserDefaults standardUserDefaults]objectForKey:keyName];
+    if (info.allKeys.count>0) {
+        _userNameLab.text = info[@"name"];
+        _iphoneLab.text = info[@"iphone"];
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -60,6 +72,8 @@
     if (self.getAddressIgfo) {
         self.getAddressIgfo(addressDic);
     }
+    NSDictionary *dic = @{@"name":_userNameLab.text,@"iphone":_iphoneLab.text};
+    [[NSUserDefaults standardUserDefaults]setObject:dic forKey:keyName];;
     [self backAction];
 }
 @end

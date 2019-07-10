@@ -1093,6 +1093,7 @@
 				20BD731E2248BDC20020EA5D /* Frameworks */,
 				20BD731F2248BDC20020EA5D /* Resources */,
 				19A756E275EC7F72A04660CE /* [CP] Copy Pods Resources */,
+				3546051D85BF165677B7477A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1208,6 +1209,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3546051D85BF165677B7477A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JS_Shipper/Pods-JS_Shipper-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AF8217D20F5A62D8A7074805 /* [CP] Check Pods Manifest.lock */ = {
@@ -1539,6 +1557,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JS_Shipper/Vendor/BaiduMap/thirdlibs",
+					"$(PROJECT_DIR)/JS_Shipper/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/JS_Shipper/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.js.shipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1571,6 +1591,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/JS_Shipper/Vendor/BaiduMap/thirdlibs",
+					"$(PROJECT_DIR)/JS_Shipper/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/JS_Shipper/Vendor/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.js.shipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
