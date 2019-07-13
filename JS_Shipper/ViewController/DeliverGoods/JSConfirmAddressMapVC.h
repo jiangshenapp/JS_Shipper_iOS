@@ -16,7 +16,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JSConfirmAddressMapVC : BaseVC
-/** 0装货  1卸货 */
+/** 0发货  1收货 */
 @property (nonatomic,assign) NSInteger sourceType;
 /** <#object#> */
 @property (nonatomic,copy) void (^getAddressinfo)(AddressInfoModel *info);

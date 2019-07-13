@@ -12,16 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JSEditAddressVC : BaseVC
 /** 是否是收货人 */
-@property (nonatomic,assign) BOOL isReceive;;
+@property (nonatomic,assign) BOOL isReceive;
 /** 用户信息 */
 @property (nonatomic,retain) NSDictionary *addressInfo;
 @property (weak, nonatomic) IBOutlet UILabel *titleAddressLab;
 @property (weak, nonatomic) IBOutlet UILabel *addressLab;
 @property (weak, nonatomic) IBOutlet UITextField *detailAddressLab;
-@property (weak, nonatomic) IBOutlet UITextField *userNameLab;
-@property (weak, nonatomic) IBOutlet UITextField *iphoneLab;
+@property (weak, nonatomic) IBOutlet UITextField *nameLab;
+@property (weak, nonatomic) IBOutlet UITextField *phoneLab;
 /** 获取到收货人信息 */
-@property (nonatomic,copy) void (^getAddressIgfo)(NSDictionary *getAddressIgfo);
+@property (nonatomic,copy) void (^getAddressInfo)(NSDictionary *getAddressInfo);
 - (IBAction)confirmAddressAction:(UIButton *)sender;
 @end
 

@@ -7,30 +7,33 @@
 //
 
 #import "JSEditAddressVC.h"
+#import "AddressInfoModel.h"
 
 @interface JSEditAddressVC ()<UITextFieldDelegate>
-{
-    NSString *keyName;
-}
+
+/** 地址模型 */
+@property (nonatomic,retain) AddressInfoModel *dataModel;
+
 @end
 
 @implementation JSEditAddressVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"发货人";
-    keyName = @"sendInfo";
+    self.dataModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kSendAddressArchiver];
+    
     if (_isReceive) {
         self.title = @"收货人";
-        keyName = @"receiveInfo";
+        self.dataModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kReceiveAddressArchiver];
+        _nameLab.placeholder = @"收货人姓名";
+        _phoneLab.placeholder = @"收货人手机号";
     }
     _titleAddressLab.text = _addressInfo[@"title"];
     _addressLab.text = _addressInfo[@"address"];
-    NSDictionary *info = [[NSUserDefaults standardUserDefaults]objectForKey:keyName];
-    if (info.allKeys.count>0) {
-        _userNameLab.text = info[@"name"];
-        _iphoneLab.text = info[@"iphone"];
-    }
+    _nameLab.text = self.dataModel.name;
+    _phoneLab.text = self.dataModel.phone;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -45,22 +48,12 @@
     return YES;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)confirmAddressAction:(UIButton *)sender {
-    if (_userNameLab.text.length==0) {
+    if (_nameLab.text.length==0) {
         [Utils showToast:@"请填写收货人姓名"];
         return;
     }
-    if (_iphoneLab.text.length==0||_iphoneLab.text.length!=11) {
+    if (_phoneLab.text.length==0||_phoneLab.text.length!=11) {
         [Utils showToast:@"请填写正确的手机号码"];
         return;
     }
@@ -68,12 +61,21 @@
     if (_detailAddressLab.text.length>0) {
         text = _detailAddressLab.text;
     }
-    NSDictionary *addressDic = @{@"mobel":_iphoneLab.text,@"userName":_userNameLab.text,@"detaileAddress":text};
-    if (self.getAddressIgfo) {
-        self.getAddressIgfo(addressDic);
+    NSDictionary *addressDic = @{@"phone":_phoneLab.text,@"name":_nameLab.text,@"detailAddress":text};
+    if (self.getAddressInfo) {
+        self.getAddressInfo(addressDic);
     }
-    NSDictionary *dic = @{@"name":_userNameLab.text,@"iphone":_iphoneLab.text};
-    [[NSUserDefaults standardUserDefaults]setObject:dic forKey:keyName];;
     [self backAction];
 }
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
 @end

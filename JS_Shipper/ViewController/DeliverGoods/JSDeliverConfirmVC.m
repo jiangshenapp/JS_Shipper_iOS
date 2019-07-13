@@ -131,18 +131,20 @@
         _info1 = [[AddressInfoModel alloc] init];
         _info1.address = self.model.sendAddress;
         _info1.areaCode = self.model.sendAddressCode;
-        _info1.mobile = self.model.sendMobile;
-        _info1.userName = self.model.sendName;
+        _info1.phone = self.model.sendMobile;
+        _info1.name = self.model.sendName;
         NSString *sendPosition = self.model.sendPosition;
         NSDictionary *sendPositionDic = [Utils dictionaryWithJsonString:sendPosition];
-        _info1.pt = CLLocationCoordinate2DMake([[sendPositionDic valueForKey:@"latitude"] floatValue],[[sendPositionDic valueForKey:@"longitude"] floatValue]);
+        _info1.lat = [[sendPositionDic valueForKey:@"latitude"] floatValue];
+        _info1.lng = [[sendPositionDic valueForKey:@"longitude"] floatValue];
         _info2.address = self.model.receiveAddress;
         _info2.areaCode = self.model.receiveAddressCode;
-        _info2.mobile = self.model.receiveMobile;
-        _info2.userName = self.model.receiveName;
+        _info2.phone = self.model.receiveMobile;
+        _info2.name = self.model.receiveName;
         NSString *receivePosition = self.model.receivePosition;
         NSDictionary *receivePositionDic = [Utils dictionaryWithJsonString:receivePosition];
-        _info2.pt = CLLocationCoordinate2DMake([[receivePositionDic valueForKey:@"latitude"] floatValue],[[receivePositionDic valueForKey:@"longitude"] floatValue]);
+        _info2.lat = [[receivePositionDic valueForKey:@"latitude"] floatValue];
+        _info2.lng = [[receivePositionDic valueForKey:@"longitude"] floatValue];
         
         _weightTF.text = self.model.goodsWeight;
         _goodAreaTF.text = self.model.goodsVolume;
@@ -163,7 +165,7 @@
         [_startAddressBtn setTitle:self.model.sendAddress forState:UIControlStateNormal];
         [_endAddressBtn setTitle:self.model.receiveAddress forState:UIControlStateNormal];
         if (_info1&&_info2) {
-            NSString *disStr = [Utils distanceBetweenOrderBy:_info1.pt.latitude :_info2.pt.latitude :_info1.pt.longitude :_info2.pt.longitude];
+            NSString *disStr = [Utils distanceBetweenOrderBy:_info1.lat :_info2.lat :_info1.lng :_info2.lng];
             _distanceLab.text = [NSString stringWithFormat:@"总里程:%@",disStr];
         }
         if (![Utils isBlankString:self.model.carLengthName]) {
@@ -202,6 +204,19 @@
         } else {
             _depositSwitchBtn.selected = NO;
             _depositFeeTF.hidden = YES;
+        }
+    } else {
+        _info1 = [NSKeyedUnarchiver unarchiveObjectWithFile:kSendAddressArchiver];
+        _info2 = [NSKeyedUnarchiver unarchiveObjectWithFile:kReceiveAddressArchiver];
+        if (_info1) {
+            [self.startAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info1.address,_info1.detailAddress] forState:UIControlStateNormal];
+        }
+        if (_info2) {
+            [self.endAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info2.address,_info2.detailAddress] forState:UIControlStateNormal];
+        }
+        if (_info1&&_info2) {
+            NSString *disStr = [Utils distanceBetweenOrderBy:_info1.lat :_info2.lat :_info1.lng :_info2.lng];
+            self.distanceLab.text = [NSString stringWithFormat:@"总里程:%@",disStr];
         }
     }
 }
@@ -265,7 +280,7 @@
             [weakSelf.startAddressBtn setTitle:info.address forState:UIControlStateNormal];
             weakSelf.info1 = info;
             if (weakSelf.info1&&weakSelf.info2) {
-                NSString *disStr = [Utils distanceBetweenOrderBy:weakSelf.info1.pt.latitude :weakSelf.info2.pt.latitude :weakSelf.info1.pt.longitude :weakSelf.info2.pt.longitude];
+                NSString *disStr = [Utils distanceBetweenOrderBy:weakSelf.info1.lat :weakSelf.info2.lat :weakSelf.info1.lng :weakSelf.info2.lng];
                 weakSelf.distanceLab.text = [NSString stringWithFormat:@"总里程:%@",disStr];
             }
         };
@@ -277,7 +292,7 @@
             [weakSelf.endAddressBtn setTitle:info.address forState:UIControlStateNormal];
             weakSelf.info2 = info;
             if (weakSelf.info1&&weakSelf.info2) {
-                NSString *disStr = [Utils distanceBetweenOrderBy:weakSelf.info1.pt.latitude :weakSelf.info2.pt.latitude :weakSelf.info1.pt.longitude :weakSelf.info2.pt.longitude];
+                NSString *disStr = [Utils distanceBetweenOrderBy:weakSelf.info1.lat :weakSelf.info2.lat :weakSelf.info1.lng :weakSelf.info2.lng];
                 weakSelf.distanceLab.text = [NSString stringWithFormat:@"总里程:%@",disStr];
             }
         };
@@ -522,21 +537,21 @@
         if (_info1.address.length>0) {
             [dic setObject:_info1.address forKey:@"sendAddress"];
             [dic setObject:_info1.areaCode forKey:@"sendAddressCode"];
-            if (_info1.mobile) {
-                [dic setObject:_info1.mobile forKey:@"sendMobile"];
-                [dic setObject:_info1.userName forKey:@"sendName"];
+            if (_info1.phone) {
+                [dic setObject:_info1.phone forKey:@"sendMobile"];
+                [dic setObject:_info1.name forKey:@"sendName"];
             }
-            NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
+            NSDictionary *locDic = @{@"latitude":@(_info1.lat),@"longitude":@(_info1.lng)};
             [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
         }
         if (_info2.address.length>0) {
             [dic setObject:_info2.address forKey:@"receiveAddress"];
             [dic setObject:_info2.areaCode forKey:@"receiveAddressCode"];
-            if (_info2.mobile.length>0) {
-                [dic setObject:_info2.mobile forKey:@"receiveMobile"];
-                [dic setObject:_info2.userName forKey:@"receiveName"];
+            if (_info2.phone.length>0) {
+                [dic setObject:_info2.phone forKey:@"receiveMobile"];
+                [dic setObject:_info2.name forKey:@"receiveName"];
             }
-            NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
+            NSDictionary *locDic = @{@"latitude":@(_info2.lat),@"longitude":@(_info2.lng)};
             [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];
         }
     }

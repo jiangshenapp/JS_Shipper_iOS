@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE8B77B28F7066A693942C766F29762E"
+               BlueprintIdentifier = "91FB4616463FA539F55A0D0CFCCF1D12"
                BuildableName = "libXLGCategory.a"
                BlueprintName = "XLGCategory"
                ReferencedContainer = "container:Pods.xcodeproj">

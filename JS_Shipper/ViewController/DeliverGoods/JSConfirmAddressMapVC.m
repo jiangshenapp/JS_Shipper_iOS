@@ -14,7 +14,6 @@
 @interface JSConfirmAddressMapVC ()<BMKLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,BMKMapViewDelegate,BMKGeoCodeSearchDelegate,BMKPoiSearchDelegate>
 {
     NSString *areaCode;
-    
 }
 /** 地址模型 */
 @property (nonatomic,retain) AddressInfoModel *dataModel;
@@ -42,37 +41,53 @@
     [super viewWillDisappear:NO];
     //当mapView即将被隐藏的时候调用，存储当前mapView的状态
     [_bdMapView viewWillDisappear];
-    _searchTF.text = @"";
-    [_searchTF endEditing:YES];
     [_searchAddressArr removeAllObjects];
     [self.baseTabView reloadData];
     self.baseTabView.hidden = YES;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self initView];
     [self createTitleView];
-    // Do any additional setup after loading the view.
 }
 
 - (void)initView {
-    _dataModel = [[AddressInfoModel alloc]init];
+
+    if (self.sourceType==1) {
+        _dataModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kReceiveAddressArchiver];
+    } else {
+        _dataModel = [NSKeyedUnarchiver unarchiveObjectWithFile:kSendAddressArchiver];
+    }
+    if (!_dataModel) {
+        _dataModel = [[AddressInfoModel alloc] init];
+    }
+    if (_dataModel.lat>0) {
+        MKCoordinateRegion region;
+        CLLocationCoordinate2D centerCoordinate = CLLocationCoordinate2DMake(_dataModel.lat, _dataModel.lng);
+        region.center= centerCoordinate;
+        [self fetchNearbyInfo:centerCoordinate.latitude andT:centerCoordinate.longitude];
+        [self.bdMapView setCenterCoordinate:centerCoordinate animated:YES];
+    } else {
+        [self.locationService startUpdatingLocation];
+    }
+    
+    //判断当前设备定位服务是否打开
+    if (![CLLocationManager locationServicesEnabled]) {
+        NSLog(@"设备尚未打开定位服务");
+    }
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        NSString *message = @"您的手机目前未开启定位服务，如欲开启定位服务，请至设定开启定位服务功能";
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法定位" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alertView show];
+    }
+
     _searchAddressArr = [NSMutableArray array];
     _bdMapView.delegate = self;
     _bdMapView.showsUserLocation = YES;
     _bdMapView.zoomLevel = 15;
     areaCode = @"";
-    //判断当前设备定位服务是否打开
-    if (![CLLocationManager locationServicesEnabled]) {
-        NSLog(@"设备尚未打开定位服务");
-    }
-    [self.locationService startUpdatingLocation];
-    if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied) {
-        NSString *message = @"您的手机目前未开启定位服务，如欲开启定位服务，请至设定开启定位服务功能";
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法定位" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alertView show];
-        
-    }
     UIImage *image = [UIImage imageNamed:@"delivergoods_map_bg_location"];
     _centerView.layer.contents = (__bridge id)image.CGImage;
     self.baseTabView.hidden = YES;
@@ -100,6 +115,8 @@
     reverseGeocodeSearchOption.location = CLLocationCoordinate2DMake(latitude, longitude);
     BOOL flag = [geocodesearch reverseGeoCode:reverseGeocodeSearchOption];
     if(flag) {
+        _dataModel.lat = latitude;
+        _dataModel.lng = longitude;
         NSLog(@"反geo检索发送成功");
     }
     else {
@@ -107,7 +124,7 @@
     }
 }
 
--(void)onGetGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKGeoCodeSearchResult *)result errorCode:(BMKSearchErrorCode)error {
+- (void)onGetGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKGeoCodeSearchResult *)result errorCode:(BMKSearchErrorCode)error {
     
 }
 
@@ -138,7 +155,10 @@
         areaCode = result.addressDetail.adCode;
         _dataModel.addressName = _addressNameLab.text;
         _dataModel.address = _addressInfoLab.text;
-        _dataModel.pt = result.location;
+        if (result.location.latitude>0) {
+            _dataModel.lat = result.location.latitude;
+            _dataModel.lng = result.location.longitude;
+        }
     }
 }
 
@@ -188,7 +208,6 @@
     [self.baseTabView reloadData];
 }
 
-
 #pragma mark - tablewView代理
 /**  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -226,7 +245,7 @@
 
 - (void)selectCityBtn:(UIButton *)sender {
     __weak typeof(self) weakSelf = self;
-    JSSelectCityVC *vc = [Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectCityVC"];
+    JSSelectCityVC *vc = (JSSelectCityVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSSelectCityVC"];
     vc.getSelectDic = ^(NSDictionary * _Nonnull dic) {
         [sender setTitle:dic[@"address"] forState:UIControlStateNormal];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -236,9 +255,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
 - (void)createTitleView {
-    _titleView = [[UIView alloc]initWithFrame:CGRectMake(50, kStatusBarH+2, WIDTH-100, 40)];
+    _titleView = [[UIView alloc]initWithFrame:CGRectMake(40, kStatusBarH+2, WIDTH-80, 40)];
     _titleView.cornerRadius = 2;
     _titleView.borderColor = PageColor;
     _titleView.borderWidth = 1;
@@ -251,17 +269,22 @@
     [_cityBtn setTitleColor:kBlackColor forState:UIControlStateNormal];
     [_titleView addSubview:_cityBtn];
     
-    _iconImgView = [[UIImageView alloc]initWithFrame:CGRectMake(_cityBtn.right, (_titleView.height-5)/2.0, 5, 5)];
+    _iconImgView = [[UIImageView alloc]initWithFrame:CGRectMake(_cityBtn.right, (_titleView.height-8)/2.0, 8, 8)];
     _iconImgView.image = [UIImage imageNamed:@"app_more_city_arrow_black"];
     [_titleView addSubview:_iconImgView];
     
-    _searchTF = [[UITextField alloc]initWithFrame:CGRectMake(_iconImgView.right+5, 0, _titleView.width-_iconImgView.right-5, _titleView.height)];
+    _searchTF = [[UITextField alloc]initWithFrame:CGRectMake(_iconImgView.right+10, 0, _titleView.width-_iconImgView.right-10, _titleView.height)];
+    
+    if (_sourceType==1) {
+        _searchTF.placeholder = @"选择收货地址";
+    }
+    else {
+        _searchTF.placeholder = @"选择发货地址";
+    }
     _searchTF.delegate = self;
     _searchTF.font = [UIFont systemFontOfSize:14];
     [_titleView addSubview:_searchTF];
-    
 }
-
 
 #pragma mark - Navigation
 
@@ -274,28 +297,38 @@
         JSEditAddressVC *vc = segue.destinationViewController;
         vc.isReceive = _sourceType;
         vc.addressInfo = @{@"title":_addressNameLab.text,@"address":_addressInfoLab.text};
-        vc.getAddressIgfo = ^(NSDictionary * _Nonnull getAddressIgfo) {
-            weakSelf.dataModel.mobile = getAddressIgfo[@"mobel"];
-            weakSelf.dataModel.userName = getAddressIgfo[@"userName"];
-            weakSelf.dataModel.detailAddress = getAddressIgfo[@"detaileAddress"];
+        vc.getAddressInfo = ^(NSDictionary * _Nonnull getAddressInfo) {
+            weakSelf.dataModel.phone = getAddressInfo[@"phone"];
+            weakSelf.dataModel.name = getAddressInfo[@"name"];
+            weakSelf.dataModel.detailAddress = getAddressInfo[@"detailAddress"];
+            
+            if (weakSelf.sourceType==1) {
+                [NSKeyedArchiver archiveRootObject:weakSelf.dataModel toFile:kReceiveAddressArchiver];
+            } else {
+                [NSKeyedArchiver archiveRootObject:weakSelf.dataModel toFile:kSendAddressArchiver];
+            }
         };
     }
 }
 
-
 - (IBAction)getAddressInfoAction:(UIButton *)sender {
-        if(self.dataModel.mobile.length==0||self.dataModel.userName.length==0) {
-            if (_sourceType==1) {
-                [Utils showToast:@"请填写收货人信息"];
-            }
-            else {
-                [Utils showToast:@"请填写发货人信息"];
-            }
-            return;
+    if(_dataModel.phone.length==0||_dataModel.name.length==0) {
+        if (_sourceType==1) {
+            [Utils showToast:@"请填写收货人信息"];
+        } else {
+            [Utils showToast:@"请填写发货人信息"];
         }
-    if (_getAddressinfo) {
+        return;
+    }
+    if (self.getAddressinfo) {
         if (_dataModel!=nil) {
             _dataModel.areaCode = areaCode;
+            
+            if (_sourceType==1) {
+                [NSKeyedArchiver archiveRootObject:_dataModel toFile:kReceiveAddressArchiver];
+            } else {
+                [NSKeyedArchiver archiveRootObject:_dataModel toFile:kSendAddressArchiver];
+            }
             self.getAddressinfo(_dataModel);
         }
     }
@@ -335,8 +368,8 @@
     }
     return _locationService;
 }
-@end
 
+@end
 
 @implementation SearchTabcell
 

@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "292CA95C01EBB8A79975A747BFD28491"
-               BuildableName = "libPods-JS_Shipper.a"
-               BlueprintName = "Pods-JS_Shipper"
+               BlueprintIdentifier = "1DAACFD3C7DBAFD79F0BC194768C9424"
+               BuildableName = "AlipaySDK-iOS"
+               BlueprintName = "AlipaySDK-iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -61,7 +61,18 @@
     [sender addTarget:self action:@selector(showMyOrderAction) forControlEvents:UIControlEventTouchUpInside];
     sender.titleLabel.font = [UIFont systemFontOfSize:12];
     self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:sender];
-    _carLengthView =  [[FilterCustomView alloc]init];
+    
+    _info1 = [NSKeyedUnarchiver unarchiveObjectWithFile:kSendAddressArchiver];
+    _info2 = [NSKeyedUnarchiver unarchiveObjectWithFile:kReceiveAddressArchiver];
+    if (_info1) {
+        [self.startAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info1.address,_info1.detailAddress] forState:UIControlStateNormal];
+    }
+    if (_info2) {
+        [self.endAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info2.address,_info2.detailAddress] forState:UIControlStateNormal];
+    }
+    [self getDistance];
+    
+    _carLengthView =  [[FilterCustomView alloc] init];
     _carLengthView.viewHeight = HEIGHT-kNavBarH-kTabBarSafeH;;
     _carLengthView.top = kNavBarH;
     __weak typeof(self) weakSelf = self;
@@ -116,7 +127,7 @@
     if ([segue.identifier isEqualToString:@"start"]) {
         vc.sourceType = 0;
         vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
-            [weakSelf.startAddressBtn setTitle:info.address forState:UIControlStateNormal];
+            [weakSelf.startAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",info.address,info.detailAddress] forState:UIControlStateNormal];
             weakSelf.info1 = info;
             [weakSelf getDistance];
         };
@@ -124,7 +135,7 @@
     else if ([segue.identifier isEqualToString:@"end"]) {
         vc.sourceType = 1;
         vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
-            [weakSelf.endAddressBtn setTitle:info.address forState:UIControlStateNormal];
+            [weakSelf.endAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",info.address,info.detailAddress] forState:UIControlStateNormal];
             weakSelf.info2 = info;
             [weakSelf getDistance];
         };
@@ -135,8 +146,8 @@
     if (!_info1||!_info2) {
         return;
     }
-    BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_info1.pt.latitude,_info1.pt.longitude));
-    BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_info2.pt.latitude,_info2.pt.longitude));
+    BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_info1.lat,_info1.lng));
+    BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_info2.lat,_info2.lng));
   float  dist = BMKMetersBetweenMapPoints(point1,point2);
     if (dist<1000) {
         _distanceLab.text = [NSString stringWithFormat:@"总里程：%.2fm",dist];
@@ -172,24 +183,23 @@
         return;
     }
     if (_info1.address.length>0) {
-        [dic setObject:_info1.address forKey:@"sendAddress"];
+        [dic setObject:[NSString stringWithFormat:@"%@%@",_info1.address,_info1.detailAddress] forKey:@"sendAddress"];
         [dic setObject:_info1.areaCode forKey:@"sendAddressCode"];
-        if (_info1.mobile) {
-            [dic setObject:_info1.mobile forKey:@"sendMobile"];
-            [dic setObject:_info1.userName forKey:@"sendName"];
+        if (_info1.phone) {
+            [dic setObject:_info1.phone forKey:@"sendMobile"];
+            [dic setObject:_info1.name forKey:@"sendName"];
         }
-        NSDictionary *locDic = @{@"latitude":@(_info1.pt.latitude),@"longitude":@(_info1.pt.longitude)};
+        NSDictionary *locDic = @{@"latitude":@(_info1.lat),@"longitude":@(_info1.lng)};
         [dic setObject:[locDic jsonStringEncoded] forKey:@"sendPosition"];
-
     }
     if (_info2.address.length>0) {
-        [dic setObject:_info2.address forKey:@"receiveAddress"];
+        [dic setObject:[NSString stringWithFormat:@"%@%@",_info2.address,_info2.detailAddress] forKey:@"receiveAddress"];
         [dic setObject:_info2.areaCode forKey:@"receiveAddressCode"];
-        if (_info2.mobile.length>0) {
-            [dic setObject:_info2.mobile forKey:@"receiveMobile"];
-            [dic setObject:_info2.userName forKey:@"receiveName"];
+        if (_info2.phone.length>0) {
+            [dic setObject:_info2.phone forKey:@"receiveMobile"];
+            [dic setObject:_info2.name forKey:@"receiveName"];
         }
-        NSDictionary *locDic = @{@"latitude":@(_info2.pt.latitude),@"longitude":@(_info2.pt.longitude)};
+        NSDictionary *locDic = @{@"latitude":@(_info2.lat),@"longitude":@(_info2.lng)};
         [dic setObject:[locDic jsonStringEncoded] forKey:@"receivePosition"];
     }
     [[NetworkManager sharedManager] postJSON:URL_AddStepOne parameters:dic completion:^(id responseData, RequestState status, NSError *error) {

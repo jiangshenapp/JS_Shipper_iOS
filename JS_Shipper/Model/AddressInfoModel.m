@@ -7,6 +7,7 @@
 //
 
 #import "AddressInfoModel.h"
+#import <objc/message.h>
 
 @implementation AddressInfoModel
 

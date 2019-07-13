@@ -22,5 +22,6 @@ source 'https://github.com/CocoaPods/Specs.git'
    pod 'AlipaySDK-iOS'
    pod 'libWeChatSDK'
    pod 'HyphenateLite'
+   pod 'XYFModel' #字典转模型, 模型转字典, 模型归档接档
 #   pod 'easemob', :git =>'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
 end
