@@ -511,4 +511,27 @@ static Utils *_utils = nil;
     return size;
 }
 
+/** 时间戳转字符串 */
++ (NSString *)timeStampToString:(NSString *)timeStamp {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[timeStamp longLongValue]/1000];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateStr = [formatter stringFromDate:date];
+    return dateStr;
+}
+
+/** 时间转时间戳 */
++ (NSString *)dateToTimeStamp:(NSDate *)date {
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[date timeIntervalSince1970]*1000];
+    return timeSp;
+}
+
+/** 字符串转时间 */
++ (NSDate *)stringToDate:(NSString *)dateStr {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSDate *datestr = [dateFormatter dateFromString:dateStr];
+    return datestr;
+}
+
 @end

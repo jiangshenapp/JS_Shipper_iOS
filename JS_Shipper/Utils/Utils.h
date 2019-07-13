@@ -115,4 +115,13 @@
 /** 计算经纬度 */
 + (NSString *)distanceBetweenOrderBy:(double) lat1 :(double) lat2 :(double) lng1 :(double) lng2;
 
+/** 时间戳转字符串 */
++ (NSString *)timeStampToString:(NSString *)timeStamp;
+
+/** 时间转时间戳 */
++ (NSString *)dateToTimeStamp:(NSDate *)date;
+
+/** 字符串转时间 */
++ (NSDate *)stringToDate:(NSString *)dateStr;
+
 @end

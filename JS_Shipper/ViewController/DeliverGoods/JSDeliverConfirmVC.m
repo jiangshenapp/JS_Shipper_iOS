@@ -567,6 +567,15 @@
         [Utils showToast:@"请选择装货时间"];
         return;
     }
+    //日期比较
+    NSDateFormatter *dateFromatter = [[NSDateFormatter alloc] init];
+    [dateFromatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *nowDate = [NSDate date];
+    NSDate *selectDate = [dateFromatter dateFromString:_loadingTime];
+    if ([nowDate compare:selectDate] == NSOrderedAscending){
+        [Utils showToast:@"装货时间需要大于当前时间"];
+        return;
+    }
     if ([NSString isEmpty:_useCarType]) {
         [Utils showToast:@"请选择用车类型"];
         return;
