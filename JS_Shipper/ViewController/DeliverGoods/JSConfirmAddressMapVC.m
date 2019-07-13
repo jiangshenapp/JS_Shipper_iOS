@@ -224,23 +224,27 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    JSEditAddressVC *vc = (JSEditAddressVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSEditAddressVC"];
+//    JSEditAddressVC *vc = (JSEditAddressVC *)[Utils getViewController:@"DeliverGoods" WithVCName:@"JSEditAddressVC"];
     BMKPoiInfo *poiInfo = _searchAddressArr[indexPath.row];
-    NSString *title = @"";
-    if (![NSString isEmpty:poiInfo.name]) {
-        title = poiInfo.name;
-    }
-    NSString *address = @"";;
-    if (![NSString isEmpty:poiInfo.address]) {
-        address = poiInfo.address;
-    }
-    vc.addressInfo = @{@"title":title,@"address":address};
-    [self.navigationController pushViewController:vc animated:YES];
+//    NSString *title = @"";
+//    if (![NSString isEmpty:poiInfo.name]) {
+//        title = poiInfo.name;
+//    }
+//    NSString *address = @"";;
+//    if (![NSString isEmpty:poiInfo.address]) {
+//        address = poiInfo.address;
+//    }
+//    vc.addressInfo = @{@"title":title,@"address":address};
+//    [self.navigationController pushViewController:vc animated:YES];
     _ceterAddressLab.text =[NSString stringWithFormat:@"%@",poiInfo.name];
     _addressNameLab.text =[NSString stringWithFormat:@"%@",poiInfo.name];
     _addressInfoLab.text =[NSString stringWithFormat:@"%@",poiInfo.address];
     [_bdMapView setCenterCoordinate:poiInfo.pt animated:YES];
     areaCode = @"";
+    
+    [_searchAddressArr removeAllObjects];
+    [self.baseTabView reloadData];
+    self.baseTabView.hidden = YES;
 }
 
 - (void)selectCityBtn:(UIButton *)sender {
