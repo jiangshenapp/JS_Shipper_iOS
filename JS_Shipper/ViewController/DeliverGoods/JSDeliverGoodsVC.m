@@ -65,10 +65,10 @@
     _info1 = [NSKeyedUnarchiver unarchiveObjectWithFile:kSendAddressArchiver];
     _info2 = [NSKeyedUnarchiver unarchiveObjectWithFile:kReceiveAddressArchiver];
     if (_info1) {
-        [self.startAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info1.address,_info1.detailAddress] forState:UIControlStateNormal];
+        [self.startAddressBtn setTitle:_info1.address forState:UIControlStateNormal];
     }
     if (_info2) {
-        [self.endAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info2.address,_info2.detailAddress] forState:UIControlStateNormal];
+        [self.endAddressBtn setTitle:_info2.address forState:UIControlStateNormal];
     }
     [self getDistance];
     
@@ -127,7 +127,7 @@
     if ([segue.identifier isEqualToString:@"start"]) {
         vc.sourceType = 0;
         vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
-            [weakSelf.startAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",info.address,info.detailAddress] forState:UIControlStateNormal];
+            [weakSelf.startAddressBtn setTitle:info.address forState:UIControlStateNormal];
             weakSelf.info1 = info;
             [weakSelf getDistance];
         };
@@ -135,7 +135,7 @@
     else if ([segue.identifier isEqualToString:@"end"]) {
         vc.sourceType = 1;
         vc.getAddressinfo = ^(AddressInfoModel * _Nonnull info) {
-            [weakSelf.endAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",info.address,info.detailAddress] forState:UIControlStateNormal];
+            [weakSelf.endAddressBtn setTitle:info.address forState:UIControlStateNormal];
             weakSelf.info2 = info;
             [weakSelf getDistance];
         };

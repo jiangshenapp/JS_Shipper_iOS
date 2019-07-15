@@ -209,10 +209,10 @@
         _info1 = [NSKeyedUnarchiver unarchiveObjectWithFile:kSendAddressArchiver];
         _info2 = [NSKeyedUnarchiver unarchiveObjectWithFile:kReceiveAddressArchiver];
         if (_info1) {
-            [self.startAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info1.address,_info1.detailAddress] forState:UIControlStateNormal];
+            [self.startAddressBtn setTitle:_info1.address forState:UIControlStateNormal];
         }
         if (_info2) {
-            [self.endAddressBtn setTitle:[NSString stringWithFormat:@"%@%@",_info2.address,_info2.detailAddress] forState:UIControlStateNormal];
+            [self.endAddressBtn setTitle:_info2.address forState:UIControlStateNormal];
         }
         if (_info1&&_info2) {
             NSString *disStr = [Utils distanceBetweenOrderBy:_info1.lat :_info2.lat :_info1.lng :_info2.lng];
