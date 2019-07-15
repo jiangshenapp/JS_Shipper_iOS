@@ -42,7 +42,7 @@
 @property (nonatomic,copy) NSString *areaCode1;
 /** 区域编码2 */
 @property (nonatomic,copy) NSString *areaCode2;
-/** 区域编码2 */
+/** 区域编码3(城市配送) */
 @property (nonatomic,copy) NSString *areaCode3;
 
 /** 数据源 */
@@ -196,8 +196,6 @@
     titleViewArr1 = @[cityView1,cityView2,mySortView1,_myfilteView];
     titleViewArr2 = @[cityView3,mySortView2,mySortView1];
     _postUrlDic = @{@(0):URL_Find,@(1):URL_CityParkList,@(2):URL_Classic};
-    _areaCode1 = @"";
-    _areaCode2 = @"";
     _allDicKey = @{@"useCarType":@"",@"carLength":@"",@"carModel":@"",@"goodsType":@""};
     self.baseTabView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         weakSelf.page = 1;
@@ -211,13 +209,36 @@
 - (void)getData {
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
-    [dic setObject:_areaCode1 forKey:@"startAddressCode"];
-    if (self.pageFlag==1) {
-        [dic setObject:_companyType forKey:@"companyType"];
+    if (![NSString isEmpty:_areaCode1] && ![_areaCode1 isEqualToString:@"0"]) {
+        [dic setObject:_areaCode1 forKey:@"startAddressCode"];
     }
-    [dic setObject:_sort1 forKey:@"sort"];
-    [dic addEntriesFromDictionary:self.allDicKey];
+    if (![NSString isEmpty:_areaCode2] && ![_areaCode2 isEqualToString:@"0"]) {
+        [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
+    }
+    if (![NSString isEmpty:_areaCode3] && ![_areaCode3 isEqualToString:@"0"]) {
+        [dic setObject:_areaCode3 forKey:@"addressCode"];
+    }
+    if (self.pageFlag==1) {
+        if (![NSString isEmpty:_companyType]) {
+            [dic setObject:_companyType forKey:@"companyType"];
+        }
+    }
+    if (![NSString isEmpty:_sort1]) {
+        [dic setObject:_sort1 forKey:@"sort"];
+    }
+    if (![NSString isEmpty:self.allDicKey[@"useCarType"]]) {
+        [dic setObject:self.allDicKey[@"useCarType"] forKey:@"useCarType"];
+    }
+    if (![NSString isEmpty:self.allDicKey[@"carLength"]]) {
+        [dic setObject:self.allDicKey[@"carLength"] forKey:@"carLength"];
+    }
+    if (![NSString isEmpty:self.allDicKey[@"carModel"]]) {
+        [dic setObject:self.allDicKey[@"carModel"] forKey:@"carModel"];
+    }
+    if (![NSString isEmpty:self.allDicKey[@"goodsType"]]) {
+        [dic setObject:self.allDicKey[@"goodsType"] forKey:@"goodsType"];
+    }
+//    [dic addEntriesFromDictionary:self.allDicKey];
     NSString *url = [NSString stringWithFormat:@"%@?current=%ld&size=%@",_postUrlDic[@(_pageFlag)],_page,PageSize];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (weakSelf.page==1) {
