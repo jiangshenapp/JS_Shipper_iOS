@@ -48,7 +48,7 @@
 /** 数据源 */
 @property (nonatomic,retain) HomeDataModel *dataModels;
 /** 筛选视图 */
-@property (nonatomic,retain) FilterCustomView *myfilteView;;
+@property (nonatomic,retain) FilterCustomView *myfilteView;
 /** 筛选条件 */
 @property (nonatomic,retain) NSDictionary *allDicKey;
 /** 数据源 */

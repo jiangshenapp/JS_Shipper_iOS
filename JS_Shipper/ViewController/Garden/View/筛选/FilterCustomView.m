@@ -111,6 +111,10 @@
     CGFloat maxViewBottom = 0;
     NSInteger index = 0;
     for (NSString *keys in _dataDic.allKeys) {
+        
+        if ([keys isEqualToString:@"goodsType"]) { //去掉货物名称筛选
+            continue;
+        }
         NSArray *arr = _dataDic[keys];
         BOOL isSingle = NO;
         NSString *titleStr = _allDicKey[keys];
@@ -118,7 +122,7 @@
             isSingle = YES;
         }
         else {
-            titleStr = [titleStr stringByAppendingString:@":(可多选)"];
+            titleStr = [titleStr stringByAppendingString:@"：(可多选)"];
         }
         MyCustomView *view = [[MyCustomView alloc]initWithdataSource:arr andTilte:titleStr];
         view.top = maxViewBottom;
@@ -330,5 +334,6 @@
         self.getSlectInfoStr(@"", @"");
     }
 }
+
 @end
 
