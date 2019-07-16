@@ -31,6 +31,13 @@
 #import <MJRefresh.h>
 #import "XLGAlertView.h"
 #import <FXToast.h>
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+//3.6.0
+#import <HyphenateLite/HyphenateLite.h>
+
 #endif
 
 // AppDelegate
@@ -50,6 +57,8 @@
 // 网络请求key
 #define kSignKey   @"ghOwfR7Wz44cbKU93KVSxwYXPGloNu"
 #define kNonceStr  [SignKeyUtil getNonceString]
+
+#define EaseMobKey @"1114190326030612#ios-shipper"
 
 // cache key
 #define kServerKey @"ServerKey"
@@ -166,6 +175,14 @@
 #define kVerifiedUnCommitColor RGBValue(0xB4B4B4)
 #define kVerifiedOnColor RGBValue(0x0091FF)
 #define kVerifiedFailColor RGBValue(0xE02020)
+
+//环信颜色
+#define kColor_LightGray [UIColor colorWithRed:245 / 255.0 green:245 / 255.0 blue:245 / 255.0 alpha:1.0]
+
+#define kColor_Gray [UIColor colorWithRed:229 / 255.0 green:229 / 255.0 blue:229 / 255.0 alpha:1.0]
+
+#define kColor_Blue [UIColor colorWithRed:45 / 255.0 green:116 / 255.0 blue:215 / 255.0 alpha:1.0]
+
 
 #define JSFontMin(size) [UIFont systemFontOfSize:MAX(size, autoScaleW(size))]
 
