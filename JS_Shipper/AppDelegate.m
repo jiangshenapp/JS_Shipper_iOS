@@ -197,8 +197,8 @@
     EMOptions *options = [EMOptions optionsWithAppkey:EaseMobKey];
     options.apnsCertName = @"";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
-    
-    [[EMClient sharedClient] loginWithUsername:@"8001" password:@"111111" completion:^(NSString *aUsername, EMError *aError) {
+//    [[EMClient sharedClient] registerWithUsername:@"8001" password:@"8001"];
+    [[EMClient sharedClient] loginWithUsername:@"8001" password:@"8001" completion:^(NSString *aUsername, EMError *aError) {
         if (!aError) {
             NSLog(@"登录成功");
         } else {
