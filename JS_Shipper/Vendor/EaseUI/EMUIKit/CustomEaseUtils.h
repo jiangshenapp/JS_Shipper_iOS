@@ -13,7 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^loginFinishBlock)(NSString *aName,EMError *error);
 
 @interface CustomEaseUtils : NSObject
+
+/** 注册环信 用户名和密码均为手机号*/
++ (void)EaseMobRegisteWithUser:(NSString *)name completion:(loginFinishBlock)completion;
+
+/** 登录环信 用户名和密码均为用户手机号 */
 + (void)EaseMobLoginWithUser:(NSString *)name completion:(loginFinishBlock)completion;
+
+/** 退出登录 */
++ (void)EaseMobLogout;;
+
 @end
 
 NS_ASSUME_NONNULL_END

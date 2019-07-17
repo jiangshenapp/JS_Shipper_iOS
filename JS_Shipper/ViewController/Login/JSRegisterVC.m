@@ -57,6 +57,7 @@
         if (status == Request_Success) {
             [Utils showToast:@"注册成功"];
             [Utils isLoginWithJump:YES];
+            [CustomEaseUtils EaseMobRegisteWithUser:self.phoneTF.text completion:nil];
         }
     }];
 }

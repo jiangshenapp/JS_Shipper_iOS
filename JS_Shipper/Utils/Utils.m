@@ -14,6 +14,7 @@
 #import "TZImageManager.h"
 #import <AddressBook/AddressBook.h>
 #import "JSPaswdLoginVC.h"
+#import "CustomEaseUtils.h"
 
 @interface Utils ()
 {
@@ -172,7 +173,7 @@ static Utils *_utils = nil;
 + (void)logout:(BOOL)isJumpLoginVC {
     
     [[UserInfo share] setUserInfo:nil]; //清除用户信息
-    
+    [CustomEaseUtils EaseMobLogout];
     if (isJumpLoginVC==YES) {
         UIViewController *vc = [Utils getViewController:@"Login" WithVCName:@"JSPaswdLoginVC"];
         vc.hidesBottomBarWhenPushed = YES;

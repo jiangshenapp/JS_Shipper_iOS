@@ -10,6 +10,7 @@
 #import "JSAuthenticationVC.h"
 #import "AEFilePath.h"
 
+
 @interface JSMyInfoVC ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
@@ -185,7 +186,6 @@
 - (IBAction)logoutAction:(id)sender {
     
     [Utils logout:YES];
-    
 //    [Utils showToast:@"安全退出成功"];
 //    NSDictionary *dic = [NSDictionary dictionary];
 //    [[NetworkManager sharedManager] postJSON:URL_Logout parameters:dic completion:^(id responseData, RequestState status, NSError *error) {

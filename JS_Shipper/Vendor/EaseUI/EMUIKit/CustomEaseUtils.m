@@ -9,6 +9,12 @@
 #import "CustomEaseUtils.h"
 
 @implementation CustomEaseUtils
+
++ (void)EaseMobRegisteWithUser:(NSString *)name completion:(loginFinishBlock)completion {
+    [[EMClient sharedClient] registerWithUsername:name password:name completion:completion];
+}
+
+
 + (void)EaseMobLoginWithUser:(NSString *)name completion:(loginFinishBlock)completion {
     [[EMClient sharedClient] loginWithUsername:name password:name completion:^(NSString *aUsername, EMError *aError) {
         if (!aError) {
@@ -58,6 +64,8 @@
 }
 
 
-
++ (void)EaseMobLogout {
+    [[EMClient sharedClient] logout:YES];
+}
 
 @end
