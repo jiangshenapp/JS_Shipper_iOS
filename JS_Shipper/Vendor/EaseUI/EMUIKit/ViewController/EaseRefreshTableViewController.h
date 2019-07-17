@@ -11,13 +11,14 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "BaseVC.h"
 
 /** @brief tabeleView的cell高度 */
 #define KCELLDEFAULTHEIGHT 50
 
 /** @brief 带加载、刷新的Controller(包含UITableView) */
 
-@interface EaseRefreshTableViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface EaseRefreshTableViewController : BaseVC<UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_rightItems;
 }
@@ -27,7 +28,7 @@
 /** @brief 默认的tableFooterView */
 @property (strong, nonatomic) UIView *defaultFooterView;
 
-@property (strong, nonatomic) UITableView *tableView;
+//@property (strong, nonatomic) UITableView *tableView;
 
 /** @brief tableView的数据源，用户UI显示 */
 @property (strong, nonatomic) NSMutableArray *dataArray;

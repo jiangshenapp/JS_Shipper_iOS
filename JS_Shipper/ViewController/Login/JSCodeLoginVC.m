@@ -7,6 +7,7 @@
 //
 
 #import "JSCodeLoginVC.h"
+#import "CustomEaseUtils.h"
 
 @interface JSCodeLoginVC ()<UITextFieldDelegate>
 
@@ -71,6 +72,9 @@
             
             NSString *token = responseData;
             [CacheUtil saveCacher:@"token" withValue:token];
+            [CustomEaseUtils EaseMobLoginWithUser:self.phoneTF.text completion:^(NSString * _Nonnull aName, EMError * _Nonnull error) {
+            }];
+
             
             [self getUserInfo]; //获取用户信息
             

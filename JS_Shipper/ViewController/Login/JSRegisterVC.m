@@ -8,6 +8,7 @@
 
 #import "JSRegisterVC.h"
 #import "JSPaswdLoginVC.h"
+#import "CustomEaseUtils.h"
 
 @interface JSRegisterVC ()<UITextFieldDelegate>
 

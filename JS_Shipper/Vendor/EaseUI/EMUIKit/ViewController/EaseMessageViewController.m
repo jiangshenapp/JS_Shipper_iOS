@@ -59,6 +59,7 @@ typedef enum : NSUInteger {
     
     dispatch_queue_t _messageQueue;
     BOOL _isRecording;
+    NSString *_conversationChatter;
 }
 
 @property (strong, nonatomic) id<IMessageModel> playingVoiceModel;
@@ -86,7 +87,7 @@ typedef enum : NSUInteger {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         _conversation = [[EMClient sharedClient].chatManager getConversation:conversationChatter type:conversationType createIfNotExist:YES];
-        
+        _conversationChatter = conversationChatter;
         _messageCountOfPage = 10;
         _timeCellHeight = 30;
         _deleteConversationIfNull = YES;
@@ -101,6 +102,7 @@ typedef enum : NSUInteger {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = _conversationChatter;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:248 / 255.0 green:248 / 255.0 blue:248 / 255.0 alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -151,6 +153,7 @@ typedef enum : NSUInteger {
     
     [self tableViewDidTriggerHeaderRefresh];
     [self setupEmotion];
+    [self _setupNavigationBarRightItem];
     
     self.tableView.estimatedRowHeight = 0;
     self.tableView.estimatedSectionHeaderHeight = 0;
@@ -201,6 +204,7 @@ typedef enum : NSUInteger {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
     
     self.isViewDidAppear = YES;
     [[EaseSDKHelper shareHelper] setIsShowingimagePicker:NO];
@@ -214,7 +218,7 @@ typedef enum : NSUInteger {
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
+    self.navigationController.navigationBar.hidden = YES;
     self.isViewDidAppear = NO;
     [[EMCDDeviceManager sharedInstance] disableProximitySensor];
 }
@@ -371,7 +375,7 @@ typedef enum : NSUInteger {
     }
     
     CGRect tableFrame = self.tableView.frame;
-    tableFrame.size.height = self.view.frame.size.height - _chatToolbar.frame.size.height - iPhoneX_BOTTOM_HEIGHT;
+    tableFrame.size.height = self.view.frame.size.height - _chatToolbar.frame.size.height - iPhoneX_BOTTOM_HEIGHT-kTabBarSafeH-kNavBarH;
     self.tableView.frame = tableFrame;
     if ([chatToolbar isKindOfClass:[EaseChatToolbar class]]) {
         [(EaseChatToolbar *)self.chatToolbar setDelegate:self];
@@ -393,7 +397,34 @@ typedef enum : NSUInteger {
     _delegate = delegate;
 }
 
+- (void)deleteAllMessageAction
+{
+    EMError *error = nil;
+//    [self.conversationModel.emModel deleteAllMessages:&error];
+    if (!error) {
+        [self.dataArray removeAllObjects];
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - private helper
+- (void)_setupNavigationBarRightItem
+{
+    if (self.conversation.type == EMConversationTypeChat) {
+        UIImage *image = [[UIImage imageNamed:@"EaseUIResource.bundle/chat_clear"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.navItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllMessageAction)];
+    } else {
+//        if (self.conversationModel.emModel.type == EMConversationTypeGroupChat && (NSClassFromString(@"EMGroupInfoViewController")) == nil) {
+//            return;
+//        }
+//        if (self.conversationModel.emModel.type == EMConversationTypeChatRoom && (NSClassFromString(@"EMChatroomInfoViewController")) == nil) {
+//            return;
+//        }
+//
+//        UIImage *image = [[UIImage imageNamed:@"chat_info"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(groupOrChatroomInfoAction)];
+    }
+}
 
 /*!
  @method
@@ -1115,6 +1146,9 @@ typedef enum : NSUInteger {
     }
     
     id<IMessageModel> model = object;
+    if (model.isSender) {
+        model.avatarURLPath = [UserInfo share].avatar;
+    }
     if (_delegate && [_delegate respondsToSelector:@selector(messageViewController:cellForMessageModel:)]) {
         UITableViewCell *cell = [_delegate messageViewController:tableView cellForMessageModel:model];
         if (cell) {
@@ -1363,8 +1397,8 @@ typedef enum : NSUInteger {
 {
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect = self.tableView.frame;
-        rect.origin.y = 0;
-        rect.size.height = self.view.frame.size.height - toHeight - iPhoneX_BOTTOM_HEIGHT;
+        rect.origin.y = kNavBarH;
+        rect.size.height = self.view.frame.size.height - toHeight - iPhoneX_BOTTOM_HEIGHT-kNavBarH-kTabBarSafeH;
         self.tableView.frame = rect;
     }];
     
@@ -1656,7 +1690,7 @@ typedef enum : NSUInteger {
     // Hide the keyboard
     [self.chatToolbar endEditing:YES];
     
-//    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_MAKE1V1CALL object:@{@"chatter":self.conversation.conversationId, @"type":@(EMCallTypeVoice)}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_MAKE1V1CALL object:@{@"chatter":self.conversation.conversationId, @"type":@(0)}];
 }
 
 - (void)moreViewVideoCallAction:(EaseChatBarMoreView *)moreView
@@ -1664,7 +1698,7 @@ typedef enum : NSUInteger {
     // Hide the keyboard
     [self.chatToolbar endEditing:YES];
     
-//    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_MAKE1V1CALL object:@{@"chatter":self.conversation.conversationId, @"type":@(EMCallTypeVideo)}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_MAKE1V1CALL object:@{@"chatter":self.conversation.conversationId, @"type":@(1)}];
 }
 
 #pragma mark - EMLocationViewDelegate
@@ -2013,6 +2047,9 @@ typedef enum : NSUInteger {
                 ext = @{kGroupMessageAtList: targets};
             }
         }
+    }
+    else {
+        ext = @{@"hxid":@"hxid",@"pic":[UserInfo share].avatar,@"name":@"啦啦啦",};
     }
     [self sendTextMessage:text withExt:ext];
 }

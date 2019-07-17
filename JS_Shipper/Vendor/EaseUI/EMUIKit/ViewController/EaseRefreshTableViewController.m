@@ -47,13 +47,13 @@
         self.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, iPhoneX_BOTTOM_HEIGHT, 0);
     }
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:self.style];
-    _tableView.accessibilityIdentifier = @"table_view";
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.tableFooterView = self.defaultFooterView;
-    [self.view addSubview:_tableView];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavBarH, self.view.frame.size.width, self.view.frame.size.height-kNavBarH-kTabBarSafeH) style:self.style];
+    self.tableView.accessibilityIdentifier = @"table_view";
+    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.tableFooterView = self.defaultFooterView;
+    [self.view addSubview:self.tableView];
     
     _page = 0;
     _showRefreshHeader = NO;

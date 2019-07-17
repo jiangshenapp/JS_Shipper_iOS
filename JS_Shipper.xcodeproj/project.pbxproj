@@ -95,6 +95,8 @@
 		200E96992271B7F800498E78 /* JSConfirmAddressMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 200E96982271B7F800498E78 /* JSConfirmAddressMapVC.m */; };
 		201040BA229E662900B7B258 /* AddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 201040B9229E662900B7B258 /* AddressInfoModel.m */; };
 		201040BD229E7C6A00B7B258 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 201040BC229E7C6A00B7B258 /* ZHPickView.m */; };
+		20118CBD22DEBAD600A195D1 /* EMEmojiHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 20118CBC22DEBAD600A195D1 /* EMEmojiHelper.m */; };
+		20118CC522DEC10F00A195D1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20118CC722DEC10F00A195D1 /* Localizable.strings */; };
 		2012E5B322B33904001F8001 /* JSLineDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B222B33904001F8001 /* JSLineDetaileVC.m */; };
 		2012E5B622B33941001F8001 /* JSCityDeliveryDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B522B33941001F8001 /* JSCityDeliveryDetaileVC.m */; };
 		2012E5B922B37643001F8001 /* JSHomeDetaileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2012E5B822B37643001F8001 /* JSHomeDetaileVC.m */; };
@@ -125,6 +127,7 @@
 		209B6AD22273097A0060F509 /* JSEditAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209B6AD12273097A0060F509 /* JSEditAddressVC.m */; };
 		209D7DEF224C617D00409EA2 /* JSAllOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */; };
 		20A83ED5229CE01E001304A8 /* MyCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A83ED4229CE01E001304A8 /* MyCustomButton.m */; };
+		20A8C22622DEB35F008E10EB /* CustomEaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8C22522DEB35F008E10EB /* CustomEaseUtils.m */; };
 		20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BD73252248BDC20020EA5D /* AppDelegate.m */; };
 		20BD732E2248BDC30020EA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732D2248BDC30020EA5D /* Assets.xcassets */; };
 		20BD73312248BDC30020EA5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */; };
@@ -441,6 +444,10 @@
 		201040B9229E662900B7B258 /* AddressInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressInfoModel.m; sourceTree = "<group>"; };
 		201040BB229E7C6A00B7B258 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
 		201040BC229E7C6A00B7B258 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
+		20118CBB22DEBAD600A195D1 /* EMEmojiHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMEmojiHelper.h; sourceTree = "<group>"; };
+		20118CBC22DEBAD600A195D1 /* EMEmojiHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMEmojiHelper.m; sourceTree = "<group>"; };
+		20118CC622DEC10F00A195D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		20118CC822DEC1A600A195D1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2012E5B122B33904001F8001 /* JSLineDetaileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSLineDetaileVC.h; sourceTree = "<group>"; };
 		2012E5B222B33904001F8001 /* JSLineDetaileVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSLineDetaileVC.m; sourceTree = "<group>"; };
 		2012E5B422B33941001F8001 /* JSCityDeliveryDetaileVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSCityDeliveryDetaileVC.h; sourceTree = "<group>"; };
@@ -492,6 +499,8 @@
 		209D7DEE224C617D00409EA2 /* JSAllOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSAllOrderVC.m; sourceTree = "<group>"; };
 		20A83ED3229CE01E001304A8 /* MyCustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCustomButton.h; sourceTree = "<group>"; };
 		20A83ED4229CE01E001304A8 /* MyCustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCustomButton.m; sourceTree = "<group>"; };
+		20A8C22422DEB35F008E10EB /* CustomEaseUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomEaseUtils.h; sourceTree = "<group>"; };
+		20A8C22522DEB35F008E10EB /* CustomEaseUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomEaseUtils.m; sourceTree = "<group>"; };
 		20BD73212248BDC20020EA5D /* JS_Shipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JS_Shipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BD73242248BDC20020EA5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		20BD73252248BDC20020EA5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -743,6 +752,8 @@
 			isa = PBXGroup;
 			children = (
 				200515CE22DDCE3F0061AE4A /* EaseUI.h */,
+				20A8C22422DEB35F008E10EB /* CustomEaseUtils.h */,
+				20A8C22522DEB35F008E10EB /* CustomEaseUtils.m */,
 				200515CF22DDCE3F0061AE4A /* Util */,
 				200515EC22DDCE3F0061AE4A /* Model */,
 				200515F822DDCE3F0061AE4A /* 3rdparty */,
@@ -919,16 +930,16 @@
 			isa = PBXGroup;
 			children = (
 				2005161F22DDCE3F0061AE4A /* EaseRefreshTableViewController.h */,
-				2005162022DDCE3F0061AE4A /* EaseLocationViewController.m */,
-				2005162122DDCE3F0061AE4A /* EaseConversationListViewController.m */,
-				2005162222DDCE3F0061AE4A /* EaseViewController.h */,
-				2005162322DDCE3F0061AE4A /* EaseMessageViewController.h */,
-				2005162422DDCE3F0061AE4A /* EaseUsersListViewController.m */,
-				2005162522DDCE3F0061AE4A /* EaseConversationListViewController.h */,
-				2005162622DDCE3F0061AE4A /* EaseLocationViewController.h */,
 				2005162722DDCE3F0061AE4A /* EaseRefreshTableViewController.m */,
-				2005162822DDCE3F0061AE4A /* EaseUsersListViewController.h */,
+				2005162522DDCE3F0061AE4A /* EaseConversationListViewController.h */,
+				2005162122DDCE3F0061AE4A /* EaseConversationListViewController.m */,
+				2005162322DDCE3F0061AE4A /* EaseMessageViewController.h */,
 				2005162922DDCE3F0061AE4A /* EaseMessageViewController.m */,
+				2005162822DDCE3F0061AE4A /* EaseUsersListViewController.h */,
+				2005162422DDCE3F0061AE4A /* EaseUsersListViewController.m */,
+				2005162622DDCE3F0061AE4A /* EaseLocationViewController.h */,
+				2005162022DDCE3F0061AE4A /* EaseLocationViewController.m */,
+				2005162222DDCE3F0061AE4A /* EaseViewController.h */,
 				2005162A22DDCE3F0061AE4A /* EaseViewController.m */,
 			);
 			path = ViewController;
@@ -975,14 +986,14 @@
 		2005163322DDCE3F0061AE4A /* MessageCell */ = {
 			isa = PBXGroup;
 			children = (
-				2005163422DDCE3F0061AE4A /* EaseMessageTimeCell.m */,
-				2005163522DDCE3F0061AE4A /* EaseCustomMessageCell.m */,
-				2005163622DDCE3F0061AE4A /* EaseMessageCell.m */,
-				2005163722DDCE3F0061AE4A /* EaseBaseMessageCell.m */,
 				2005163822DDCE3F0061AE4A /* EaseMessageTimeCell.h */,
+				2005163422DDCE3F0061AE4A /* EaseMessageTimeCell.m */,
 				2005163922DDCE3F0061AE4A /* EaseCustomMessageCell.h */,
-				2005163A22DDCE3F0061AE4A /* EaseBaseMessageCell.h */,
+				2005163522DDCE3F0061AE4A /* EaseCustomMessageCell.m */,
 				2005163B22DDCE3F0061AE4A /* EaseMessageCell.h */,
+				2005163622DDCE3F0061AE4A /* EaseMessageCell.m */,
+				2005163A22DDCE3F0061AE4A /* EaseBaseMessageCell.h */,
+				2005163722DDCE3F0061AE4A /* EaseBaseMessageCell.m */,
 			);
 			path = MessageCell;
 			sourceTree = "<group>";
@@ -1062,6 +1073,8 @@
 			children = (
 				2005170722DDD6380061AE4A /* EMNotificationHelper.h */,
 				2005170822DDD6390061AE4A /* EMNotificationHelper.m */,
+				20118CBB22DEBAD600A195D1 /* EMEmojiHelper.h */,
+				20118CBC22DEBAD600A195D1 /* EMEmojiHelper.m */,
 				2005166222DDCE3F0061AE4A /* EaseSDKHelper.m */,
 				2005166322DDCE3F0061AE4A /* EaseSDKHelper.h */,
 			);
@@ -1071,6 +1084,7 @@
 		2005166422DDCE3F0061AE4A /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				20118CC722DEC10F00A195D1 /* Localizable.strings */,
 				2005166522DDCE3F0061AE4A /* EaseUIResource.bundle */,
 			);
 			path = resources;
@@ -1854,6 +1868,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 20BD73182248BDC20020EA5D;
 			productRefGroup = 20BD73222248BDC20020EA5D /* Products */;
@@ -1905,6 +1920,7 @@
 				A0263526228C234900C924E2 /* ic_refresh_image_022@2x.png in Resources */,
 				A026350F228C234900C924E2 /* ic_refresh_image_001@2x.png in Resources */,
 				A026351B228C234900C924E2 /* ic_refresh_image_005@2x.png in Resources */,
+				20118CC522DEC10F00A195D1 /* Localizable.strings in Resources */,
 				A0263518228C234900C924E2 /* ic_refresh_image_031@2x.png in Resources */,
 				A0263528228C234900C924E2 /* ic_refresh_image_018@2x.png in Resources */,
 				A0263511228C234900C924E2 /* ic_refresh_image_027@2x.png in Resources */,
@@ -2040,6 +2056,7 @@
 				201040BA229E662900B7B258 /* AddressInfoModel.m in Sources */,
 				2005169E22DDCE400061AE4A /* EaseSDKHelper.m in Sources */,
 				20BD73262248BDC20020EA5D /* AppDelegate.m in Sources */,
+				20118CBD22DEBAD600A195D1 /* EMEmojiHelper.m in Sources */,
 				20BD73C12248BE440020EA5D /* JSMineVC.m in Sources */,
 				2005166822DDCE3F0061AE4A /* NSString+Valid.m in Sources */,
 				200516ED22DDD4C00061AE4A /* PSTGridLayoutSection.m in Sources */,
@@ -2088,6 +2105,7 @@
 				A00A227822A5FA57002E2E0C /* JSOrderDetailsVC.m in Sources */,
 				A096484322B8815D000FDBE6 /* BaseCustomView.m in Sources */,
 				2005166B22DDCE3F0061AE4A /* FixFopen.c in Sources */,
+				20A8C22622DEB35F008E10EB /* CustomEaseUtils.m in Sources */,
 				A096484022B8815D000FDBE6 /* SortView.m in Sources */,
 				20BD73B32248BE440020EA5D /* XLGLottie.m in Sources */,
 				2005167D22DDCE400061AE4A /* EMCDDeviceManager+Media.m in Sources */,
@@ -2174,6 +2192,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		20118CC722DEC10F00A195D1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20118CC622DEC10F00A195D1 /* en */,
+				20118CC822DEC1A600A195D1 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		20BD732F2248BDC30020EA5D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2237,6 +2264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2296,6 +2324,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

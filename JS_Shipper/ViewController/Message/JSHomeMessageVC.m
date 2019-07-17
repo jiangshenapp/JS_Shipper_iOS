@@ -7,6 +7,7 @@
 //
 
 #import "JSHomeMessageVC.h"
+#import "EaseMessageViewController.h"
 
 @interface JSHomeMessageVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -29,6 +30,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MessageHomeTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageHomeTabCell2"];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //环信ID:@"8001"
+    //聊天类型:EMConversationTypeChat
+    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"15737936517" conversationType:EMConversationTypeChat];
+    [self.navigationController pushViewController:chatController animated:YES];
 }
 
 

@@ -143,6 +143,8 @@
         [_audioCallButton setTitle:@"多人会议" forState:UIControlStateNormal];
         [_videoCallButton setTitle:@"互动会议" forState:UIControlStateNormal];
     }
+    _audioCallButton.hidden = YES;
+    _videoCallButton.hidden = YES;
     self.frame = frame;
     _scrollview.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
     _pageControl.frame = CGRectMake(0, CGRectGetHeight(frame) - 20, CGRectGetWidth(frame), 20);
@@ -158,7 +160,7 @@
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize: 12.0];
     btn.imageEdgeInsets = UIEdgeInsetsMake(-10, 0, 20, 0);
-    btn.titleEdgeInsets = UIEdgeInsetsMake(14, -60, -20, 0);
+    btn.titleEdgeInsets = UIEdgeInsetsMake(14, -50, -20, 0);
     return btn;
 }
 
