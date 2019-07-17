@@ -215,10 +215,10 @@
     if (![NSString isEmpty:_areaCode2] && ![_areaCode2 isEqualToString:@"0"]) {
         [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
     }
-    if (![NSString isEmpty:_areaCode3] && ![_areaCode3 isEqualToString:@"0"]) {
-        [dic setObject:_areaCode3 forKey:@"addressCode"];
-    }
     if (self.pageFlag==1) {
+        if (![NSString isEmpty:_areaCode3] && ![_areaCode3 isEqualToString:@"0"]) {
+            [dic setObject:_areaCode3 forKey:@"addressCode"];
+        }
         if (![NSString isEmpty:_companyType]) {
             [dic setObject:_companyType forKey:@"companyType"];
         }

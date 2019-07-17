@@ -32,6 +32,7 @@
     }
     _titleAddressLab.text = _addressInfo[@"title"];
     _addressLab.text = _addressInfo[@"address"];
+    _detailAddressLab.text = self.dataModel.detailAddress;
     _nameLab.text = self.dataModel.name;
     _phoneLab.text = self.dataModel.phone;
 }
