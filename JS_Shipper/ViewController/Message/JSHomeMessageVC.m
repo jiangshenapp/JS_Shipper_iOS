@@ -7,6 +7,7 @@
 //
 
 #import "JSHomeMessageVC.h"
+#import "EMChatViewController.h"
 
 @interface JSHomeMessageVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -29,6 +30,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MessageHomeTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageHomeTabCell2"];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.baseTabView deselectRowAtIndexPath:indexPath animated:YES];
+    //环信ID:@"8001"
+    //聊天类型:EMConversationTypeChat
+    EMChatViewController *chatController = [[EMChatViewController alloc] initWithConversationId:@"15737936517" type:EMConversationTypeChat createIfNotExist:YES];
+    [self.navigationController pushViewController:chatController animated:YES];
 }
 
 

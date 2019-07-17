@@ -14,12 +14,13 @@
 #import <BaiduMapAPI_Base/BMKMapManager.h>
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
-#import <HyphenateLite/HyphenateLite.h>
-
+#import <UserNotifications/UserNotifications.h>
+//#import "EaseSDKHelper.h"
+#import "EMNotificationHelper.h"
 
 #define MapKey @"lgrnXXszi8tp8KLsjo3LGjnO9USnydId"
 
-@interface AppDelegate ()<BMKLocationAuthDelegate, WXApiDelegate>
+@interface AppDelegate ()<BMKLocationAuthDelegate, WXApiDelegate,UNUserNotificationCenterDelegate>
 @property (nonatomic, strong) BMKMapManager *mapManager; //主引擎类
 
 @end
@@ -187,11 +188,17 @@
 }
 
 - (void)initEmData {
-    EMOptions *options = [EMOptions optionsWithAppkey:@"1114190326030612#ios-shipper"];
+    //注册登录状态监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:kLoginSuccNotification object:nil];
+    
+    //注册推送
+    [self _registerRemoteNotification];
+    
+    EMOptions *options = [EMOptions optionsWithAppkey:EaseMobKey];
     options.apnsCertName = @"";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
-    
-    [[EMClient sharedClient] loginWithUsername:@"8001" password:@"111111" completion:^(NSString *aUsername, EMError *aError) {
+//    [[EMClient sharedClient] registerWithUsername:@"8001" password:@"8001"];
+    [[EMClient sharedClient] loginWithUsername:@"8001" password:@"8001" completion:^(NSString *aUsername, EMError *aError) {
         if (!aError) {
             NSLog(@"登录成功");
         } else {
@@ -199,6 +206,60 @@
         }
     }];
 }
+
+//注册远程通知
+- (void)_registerRemoteNotification
+{
+    UIApplication *application = [UIApplication sharedApplication];
+    application.applicationIconBadgeNumber = 0;
+    
+    if (NSClassFromString(@"UNUserNotificationCenter")) {
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert completionHandler:^(BOOL granted, NSError *error) {
+            if (granted) {
+#if !TARGET_IPHONE_SIMULATOR
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [application registerForRemoteNotifications];
+                });
+#endif
+            }
+        }];
+        return;
+    }
+    
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+#if !TARGET_IPHONE_SIMULATOR
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+    } else {
+        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    }
+#endif
+}
+
+- (void)loginStateChange:(NSNotification *)aNotif
+{
+    UINavigationController *navigationController = nil;
+    
+    BOOL loginSuccess = [aNotif.object boolValue];
+    if (loginSuccess) {//登录成功加载主窗口控制器
+        navigationController = (UINavigationController *)self.window.rootViewController;
+
+//        [EaseSDKHelper shareHelper];
+        [EMNotificationHelper shared];
+    } else {//登录失败加载登录页面控制器
+
+    }
+    
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

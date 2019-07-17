@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UITabBarControllerDelegate>
+{
+//    EMConnectionState _connectionState;
+}
 /**  */
 @property (nonatomic,retain) UITabBarController *tabVC;
 @property (strong, nonatomic) UIWindow *window;
