@@ -15,7 +15,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import <UserNotifications/UserNotifications.h>
-#import "EaseSDKHelper.h"
+//#import "EaseSDKHelper.h"
 #import "EMNotificationHelper.h"
 
 #define MapKey @"lgrnXXszi8tp8KLsjo3LGjnO9USnydId"
@@ -252,7 +252,7 @@
     if (loginSuccess) {//登录成功加载主窗口控制器
         navigationController = (UINavigationController *)self.window.rootViewController;
 
-        [EaseSDKHelper shareHelper];
+//        [EaseSDKHelper shareHelper];
         [EMNotificationHelper shared];
     } else {//登录失败加载登录页面控制器
 

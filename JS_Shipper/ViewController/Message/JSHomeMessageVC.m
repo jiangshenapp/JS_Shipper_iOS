@@ -7,7 +7,7 @@
 //
 
 #import "JSHomeMessageVC.h"
-#import "EaseMessageViewController.h"
+#import "EMChatViewController.h"
 
 @interface JSHomeMessageVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -33,9 +33,10 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.baseTabView deselectRowAtIndexPath:indexPath animated:YES];
     //环信ID:@"8001"
     //聊天类型:EMConversationTypeChat
-    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"15737936517" conversationType:EMConversationTypeChat];
+    EMChatViewController *chatController = [[EMChatViewController alloc] initWithConversationId:@"15737936517" type:EMConversationTypeChat createIfNotExist:YES];
     [self.navigationController pushViewController:chatController animated:YES];
 }
 

@@ -37,6 +37,7 @@
 
 //3.6.0
 #import <HyphenateLite/HyphenateLite.h>
+#import "EMDefines.h"
 
 #endif
 
