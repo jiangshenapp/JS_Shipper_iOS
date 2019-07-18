@@ -209,18 +209,19 @@
 - (void)getData {
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    if (![NSString isEmpty:_areaCode1] && ![_areaCode1 isEqualToString:@"0"]) {
-        [dic setObject:_areaCode1 forKey:@"startAddressCode"];
-    }
-    if (![NSString isEmpty:_areaCode2] && ![_areaCode2 isEqualToString:@"0"]) {
-        [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
-    }
-    if (self.pageFlag==1) {
+    if (self.pageFlag==1) { //城市配送
         if (![NSString isEmpty:_areaCode3] && ![_areaCode3 isEqualToString:@"0"]) {
             [dic setObject:_areaCode3 forKey:@"addressCode"];
         }
         if (![NSString isEmpty:_companyType]) {
             [dic setObject:_companyType forKey:@"companyType"];
+        }
+    } else { //车源、精品路线
+        if (![NSString isEmpty:_areaCode1] && ![_areaCode1 isEqualToString:@"0"]) {
+            [dic setObject:_areaCode1 forKey:@"startAddressCode"];
+        }
+        if (![NSString isEmpty:_areaCode2] && ![_areaCode2 isEqualToString:@"0"]) {
+            [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
         }
     }
     if (![NSString isEmpty:_sort1]) {

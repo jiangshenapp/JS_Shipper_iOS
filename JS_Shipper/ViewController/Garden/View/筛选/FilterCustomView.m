@@ -112,7 +112,7 @@
     NSInteger index = 0;
     for (NSString *keys in _dataDic.allKeys) {
         
-        if ([keys isEqualToString:@"goodsType"]) { //去掉货物名称筛选
+        if ([keys isEqualToString:@"goodsType"] || [keys isEqualToString:@"useCarType"]) { //去掉货物名称、用车类型筛选
             continue;
         }
         NSArray *arr = _dataDic[keys];
