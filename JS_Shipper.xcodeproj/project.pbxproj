@@ -1407,10 +1407,10 @@
 		20118D8622DEE95F00A195D1 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
-				20118D8722DEE95F00A195D1 /* EMConversationsViewController.m */,
-				20118D8822DEE95F00A195D1 /* EMConversationCell.m */,
 				20118D8922DEE95F00A195D1 /* EMConversationsViewController.h */,
+				20118D8722DEE95F00A195D1 /* EMConversationsViewController.m */,
 				20118D8A22DEE95F00A195D1 /* EMConversationCell.h */,
+				20118D8822DEE95F00A195D1 /* EMConversationCell.m */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";

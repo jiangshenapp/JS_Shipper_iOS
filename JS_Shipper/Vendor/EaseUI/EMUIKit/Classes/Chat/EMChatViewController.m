@@ -331,6 +331,9 @@
             NSDictionary *dic = model.emModel.ext;
             model.userAvaterUrl = dic[@"avatar"];
             model.userNickName = dic[@"nickName"];
+            self.conversationModel.emModel.ext = dic;
+            self.conversationModel.name =model.userNickName;
+            self.conversationModel.avatar = model.userAvaterUrl;
         }
         cell.model = model;
         return cell;

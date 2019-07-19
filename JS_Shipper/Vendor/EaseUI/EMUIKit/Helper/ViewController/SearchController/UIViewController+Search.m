@@ -85,6 +85,7 @@ static const void *ResultNavigationControllerKey = &ResultNavigationControllerKe
         self.resultNavigationController = [[UINavigationController alloc] initWithRootViewController:self.resultController];
         [self.resultNavigationController.navigationBar setBackgroundImage:[[UIImage imageNamed:@"navBarBg"] stretchableImageWithLeftCapWidth:10 topCapHeight:10] forBarMetrics:UIBarMetricsDefault];
     }
+    self.searchButton.hidden = YES;
 }
 
 #pragma mark - disable

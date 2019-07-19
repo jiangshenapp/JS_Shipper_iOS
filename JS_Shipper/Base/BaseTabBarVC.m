@@ -8,6 +8,7 @@
 
 #import "BaseTabBarVC.h"
 #import "BaseNC.h"
+#import "EMConversationsViewController.h"
 
 @interface BaseTabBarVC ()
 @property (nonatomic,assign) NSInteger  indexFlag;　　//记录上一次点击tabbar，使用时，记得先在init或viewDidLoad里 初始化 = 0
@@ -35,7 +36,14 @@
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
     for(int i=0; i<picArr.count; i++) {
-        UIViewController *controller = [[UIStoryboard storyboardWithName:storyArr[i] bundle:nil] instantiateViewControllerWithIdentifier:controllerArr[i]];
+        NSString *stordyName = storyArr[i];
+        UIViewController *controller;
+        if (stordyName.length>0) {
+            controller = [[UIStoryboard storyboardWithName:storyArr[i] bundle:nil] instantiateViewControllerWithIdentifier:controllerArr[i]];
+        }
+        else {
+            controller = [[EMConversationsViewController alloc] init];;
+        }
         controller.title = titleArr[i];
         
         BaseNC *nv = [[BaseNC alloc] initWithRootViewController:controller];

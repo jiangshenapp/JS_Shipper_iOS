@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *name;
 
+@property (nonatomic, strong) NSString *avatar;
+
 - (instancetype)initWithEMModel:(EMConversation *)aModel;
 
 @end

@@ -158,16 +158,15 @@
 
 - (void)closeAction
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)sendAction
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (self.sendCompletion) {
-            self.sendCompletion(self.locationCoordinate, self.address);
-        }
-    }];
+    if (self.sendCompletion) {
+        self.sendCompletion(self.locationCoordinate, self.address);
+    }
+    [self closeAction];
 }
 
 @end

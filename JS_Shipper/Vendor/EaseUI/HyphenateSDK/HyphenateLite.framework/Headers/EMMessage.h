@@ -192,7 +192,7 @@ typedef enum {
  *
  *  Key type must be NSString. Value type must be NSString, or NSNumber object (including int, unsigned in, long long, double, use NSNumber (@YES/@NO) instead of BOOL).
  */
-@property (nonatomic, copy) NSDictionary *ext;
+@property (nonatomic, strong) NSDictionary *ext;
 
 /*!
  *  \~chinese

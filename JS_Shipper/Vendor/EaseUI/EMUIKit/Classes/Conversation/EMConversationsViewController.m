@@ -98,7 +98,7 @@
         make.height.equalTo(@35);
     }];
     
-    self.tableView.rowHeight = 60;
+    self.tableView.rowHeight = 80;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.searchButton.mas_bottom).offset(15);
         make.left.equalTo(self.view);

@@ -124,13 +124,157 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
-            timestampString = "585040231.50472"
+            timestampString = "585213928.559532"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "617"
-            endingLineNumber = "617"
+            startingLineNumber = "620"
+            endingLineNumber = "620"
             landmarkName = "-messageCellDidSelected:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/CustomEaseUtils.m"
+            timestampString = "585213928.559641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-_initHelper"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
+            timestampString = "585213928.56024"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1012"
+            endingLineNumber = "1012"
+            landmarkName = "-didLeaveGroup:reason:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
+            timestampString = "585213928.560304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1024"
+            endingLineNumber = "1024"
+            landmarkName = "-userDidJoinChatroom:user:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
+            timestampString = "585213928.5603549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1034"
+            endingLineNumber = "1034"
+            landmarkName = "-userDidLeaveChatroom:user:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
+            timestampString = "585213928.5604039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1044"
+            endingLineNumber = "1044"
+            landmarkName = "-didDismissFromChatroom:reason:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
+            timestampString = "585213928.5604481"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "893"
+            endingLineNumber = "893"
+            landmarkName = "-messagesDidReceive:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Conversation/EMConversationsViewController.m"
+            timestampString = "585213928.560496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
+            landmarkName = "-handleGroupSubjectUpdated:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EMConversationsViewController handleGroupSubjectUpdated:]"
+                  moduleName = "JS_Shipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hzb/Documents/GitHub/JS_Shipper_iOS/JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Conversation/EMConversationsViewController.m"
+                  timestampString = "585213928.6967241"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299"
+                  offsetFromSymbolStart = "182">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EMConversationsViewController handleGroupSubjectUpdated:]"
+                  moduleName = "JS_Shipper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hzb/Documents/GitHub/JS_Shipper_iOS/JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Conversation/EMConversationsViewController.m"
+                  timestampString = "585213928.699687"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299"
+                  offsetFromSymbolStart = "197">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

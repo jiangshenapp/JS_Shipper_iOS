@@ -18,26 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息";
-    self.baseTabView.delegate = self;
-    self.baseTabView.dataSource = self;
-    // Do any additional setup after loading the view.
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MessageHomeTabCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageHomeTabCell2"];
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.baseTabView deselectRowAtIndexPath:indexPath animated:YES];
-    //环信ID:@"8001"
-    //聊天类型:EMConversationTypeChat
-    EMChatViewController *chatController = [[EMChatViewController alloc] initWithConversationId:@"15737936517" type:EMConversationTypeChat createIfNotExist:YES];
-    [self.navigationController pushViewController:chatController animated:YES];
+    self.view.backgroundColor = PageColor;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.tableHeaderView = _tabHeadView;
+    [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(kNavBarH);
+    }];
 }
 
 
@@ -52,7 +38,8 @@
 }
 */
 
-@end
-@implementation MessageHomeTabCell
-
+- (IBAction)chatWithCustomAction:(UIButton *)sender {
+    EMChatViewController *chatController = [[EMChatViewController alloc] initWithConversationId:@"15737937177" type:EMConversationTypeChat createIfNotExist:YES];
+    [self.navigationController pushViewController:chatController animated:YES];
+}
 @end

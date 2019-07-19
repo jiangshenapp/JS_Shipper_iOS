@@ -41,11 +41,14 @@ static int kConversation_AtAll = 2;
     _avatarView = [[UIImageView alloc] init];
     [self.contentView addSubview:_avatarView];
     [_avatarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(5);
+        make.top.equalTo(self.contentView).offset(10);
         make.left.equalTo(self.contentView).offset(15);
-        make.bottom.equalTo(self.contentView).offset(-5);
+        make.bottom.equalTo(self.contentView).offset(-10);
         make.width.equalTo(self.avatarView.mas_height).multipliedBy(1);
     }];
+    [_avatarView layoutIfNeeded];
+    _avatarView.layer.cornerRadius = _avatarView.width/2.0;
+    _avatarView.layer.masksToBounds = YES;
     
     _timeLabel = [[UILabel alloc] init];
     _timeLabel.font = [UIFont systemFontOfSize:13];
@@ -179,7 +182,8 @@ static int kConversation_AtAll = 2;
     
     EMConversation *conversation = model.emModel;
     if (conversation.type == EMConversationTypeChat) {
-        self.avatarView.image = [UIImage imageNamed:@"user_avatar_blue"];
+//        NSString *avatar = conversation.ext[@"avatar"];
+        [self.avatarView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"user_avatar_blue"]];
     } else {
         self.avatarView.image = [UIImage imageNamed:@"group_avatar"];
     }

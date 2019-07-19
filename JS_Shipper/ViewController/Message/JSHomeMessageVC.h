@@ -7,17 +7,14 @@
 //
 
 #import "BaseVC.h"
+#import "EMConversationsViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JSHomeMessageVC : BaseVC
+@interface JSHomeMessageVC : EMConversationsViewController
+@property (weak, nonatomic) IBOutlet UIView *tabHeadView;
+- (IBAction)chatWithCustomAction:(UIButton *)sender;
 
-@end
-
-@interface MessageHomeTabCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *headImgView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLab;
-@property (weak, nonatomic) IBOutlet UILabel *contentLsb;
 @end
 
 NS_ASSUME_NONNULL_END

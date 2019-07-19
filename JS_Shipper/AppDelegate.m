@@ -15,7 +15,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "WXApi.h"
 #import <UserNotifications/UserNotifications.h>
-//#import "EaseSDKHelper.h"
+#import "CustomEaseUtils.h"
 #import "EMNotificationHelper.h"
 
 #define MapKey @"lgrnXXszi8tp8KLsjo3LGjnO9USnydId"
@@ -197,14 +197,9 @@
     EMOptions *options = [EMOptions optionsWithAppkey:EaseMobKey];
     options.apnsCertName = @"";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
-//    [[EMClient sharedClient] registerWithUsername:@"8001" password:@"8001"];
-    [[EMClient sharedClient] loginWithUsername:@"8001" password:@"8001" completion:^(NSString *aUsername, EMError *aError) {
-        if (!aError) {
-            NSLog(@"登录成功");
-        } else {
-            NSLog(@"登录失败");
-        }
-    }];
+    [CustomEaseUtils shareHelper];
+    [EMNotificationHelper shared];
+    
 }
 
 //注册远程通知
@@ -251,13 +246,9 @@
     BOOL loginSuccess = [aNotif.object boolValue];
     if (loginSuccess) {//登录成功加载主窗口控制器
         navigationController = (UINavigationController *)self.window.rootViewController;
-
-//        [EaseSDKHelper shareHelper];
-        [EMNotificationHelper shared];
     } else {//登录失败加载登录页面控制器
 
     }
-    
 }
 
 

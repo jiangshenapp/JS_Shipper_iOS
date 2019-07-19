@@ -95,7 +95,7 @@ typedef enum {
  *  \~english
  *  Conversation extension property
  */
-@property (nonatomic, copy) NSDictionary *ext;
+@property (nonatomic, strong) NSDictionary *ext;
 
 /*!
  *  \~chinese
