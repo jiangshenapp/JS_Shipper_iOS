@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     [self.backBtn setImage:[UIImage imageNamed:@"app_navigationbar_icon_close_black"] forState:UIControlStateNormal];
+    self.phoneTF.text = [CacheUtil getCacherWithKey:@"loginPhone"];
 }
 
 #pragma mark - methods
@@ -72,6 +73,7 @@
             
             NSString *token = responseData;
             [CacheUtil saveCacher:@"token" withValue:token];
+            [CacheUtil saveCacher:@"loginPhone" withValue:self.phoneTF.text];
             [CustomEaseUtils EaseMobLoginWithUser:self.phoneTF.text completion:^(NSString * _Nonnull aName, EMError * _Nonnull error) {
             }];
 
