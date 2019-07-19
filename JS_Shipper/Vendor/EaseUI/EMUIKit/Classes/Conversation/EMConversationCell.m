@@ -179,11 +179,9 @@ static int kConversation_AtAll = 2;
 - (void)setModel:(EMConversationModel *)model
 {
     _model = model;
-    
     EMConversation *conversation = model.emModel;
     if (conversation.type == EMConversationTypeChat) {
-//        NSString *avatar = conversation.ext[@"avatar"];
-        [self.avatarView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"user_avatar_blue"]];
+        [self.avatarView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:DefaultImage];
     } else {
         self.avatarView.image = [UIImage imageNamed:@"group_avatar"];
     }

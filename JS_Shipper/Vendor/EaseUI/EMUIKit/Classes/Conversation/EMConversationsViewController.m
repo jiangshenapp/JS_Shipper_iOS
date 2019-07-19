@@ -171,8 +171,18 @@
     
     NSInteger row = indexPath.row;
     EMConversationModel *model = [self.dataArray objectAtIndex:row];
+    NSDictionary *dic1 = model.emModel.ext;
+    if (dic1.count>0) {
+        NSString *nickName = dic1[@"nickName"];
+        NSString *avatar = dic1[@"avatar"];
+        if (![NSString isEmpty:nickName]) {
+            model.name = nickName;
+        }
+        if (![NSString isEmpty:avatar]) {
+            model.avatar = avatar;
+        }
+    }
     cell.model = model;
-    
     return cell;
 }
 

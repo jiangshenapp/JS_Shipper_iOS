@@ -124,7 +124,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
-            timestampString = "585213928.559532"
+            timestampString = "585222161.726879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "620"
@@ -140,7 +140,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/CustomEaseUtils.m"
-            timestampString = "585213928.559641"
+            timestampString = "585222161.727044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -156,7 +156,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
-            timestampString = "585213928.56024"
+            timestampString = "585222161.727141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1012"
@@ -172,7 +172,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
-            timestampString = "585213928.560304"
+            timestampString = "585222161.727217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1024"
@@ -188,7 +188,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
-            timestampString = "585213928.5603549"
+            timestampString = "585222161.727347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1034"
@@ -204,7 +204,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
-            timestampString = "585213928.5604039"
+            timestampString = "585222161.727422"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1044"
@@ -220,7 +220,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Chat/EMChatViewController.m"
-            timestampString = "585213928.5604481"
+            timestampString = "585222161.727483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "893"
@@ -236,11 +236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Conversation/EMConversationsViewController.m"
-            timestampString = "585213928.560496"
+            timestampString = "585222161.727547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "-handleGroupSubjectUpdated:"
             landmarkType = "7">
             <Locations>
@@ -252,11 +252,11 @@
                   moduleName = "JS_Shipper"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hzb/Documents/GitHub/JS_Shipper_iOS/JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Conversation/EMConversationsViewController.m"
-                  timestampString = "585213928.6967241"
+                  timestampString = "585222161.881326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "299"
-                  endingLineNumber = "299"
+                  startingLineNumber = "309"
+                  endingLineNumber = "309"
                   offsetFromSymbolStart = "182">
                </Location>
                <Location
@@ -267,14 +267,46 @@
                   moduleName = "JS_Shipper"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hzb/Documents/GitHub/JS_Shipper_iOS/JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Conversation/EMConversationsViewController.m"
-                  timestampString = "585213928.699687"
+                  timestampString = "585222161.888739"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "299"
-                  endingLineNumber = "299"
+                  startingLineNumber = "309"
+                  endingLineNumber = "309"
                   offsetFromSymbolStart = "197">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/EMUIKit/Classes/Conversation/EMConversationsViewController.m"
+            timestampString = "585222161.728635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JS_Shipper/Vendor/EaseUI/HyphenateSDK/HyphenateLite.framework/Headers/EMMessage.h"
+            timestampString = "585222161.72921"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "ext"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
