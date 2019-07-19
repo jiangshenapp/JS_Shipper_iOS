@@ -77,8 +77,8 @@
 
 /******************************通知****************************/
 
-#define kLoginSuccNotification  @"kLoginSuccNotification"
-#define kLogoutSuccNotification  @"kLogoutSuccNotification"
+#define kLoginStateChangeNotification  @"kLoginStateChangeNotification"
+
 #define kUserInfoChangeNotification  @"kUserInfoChangeNotification"
 
 #define kPaySuccNotification  @"kPaySuccNotification"

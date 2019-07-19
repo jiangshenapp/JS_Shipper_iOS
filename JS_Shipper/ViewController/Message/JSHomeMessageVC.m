@@ -24,8 +24,19 @@
     [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(kNavBarH);
     }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:ACCOUNT_LOGIN_CHANGED object:nil];
+
 }
 
+- (void)loginStateChange:(NSNotification *)aNotif
+{
+//    UINavigationController *navigationController = nil;
+//    
+//    BOOL loginSuccess = [aNotif.object boolValue];
+//    if (loginSuccess) {//登录成功加载主窗口控制器
+//    }
+    [self.tableView.mj_header beginRefreshing];
+}
 
 
 /*

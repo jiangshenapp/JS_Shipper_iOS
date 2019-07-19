@@ -83,7 +83,6 @@ static CustomEaseUtils *helper = nil;
 {
     if (error) {
         [self showAlertWithMessage:@"自动登录失败，请重新登录"];
-        
         [[NSNotificationCenter defaultCenter] postNotificationName:ACCOUNT_LOGIN_CHANGED object:@NO];
     }
 }
@@ -526,6 +525,7 @@ static CustomEaseUtils *helper = nil;
         if (!aError) {
             [[EMClient sharedClient].options setIsAutoLogin:YES];
             //发送自动登录状态通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:ACCOUNT_LOGIN_CHANGED object:@YES];
             completion(aUsername,aError);
             return ;
         }
@@ -569,9 +569,16 @@ static CustomEaseUtils *helper = nil;
     }];
 }
 
++ (void)EaseChatConversationID:(NSString *)aID {
+    EMChatViewController *controller = [[EMChatViewController alloc] initWithConversationId:aID type:EMConversationTypeChat createIfNotExist:YES];
+    UINavigationController *nav = JSAppDelegate.tabVC.selectedViewController;
+    [nav pushViewController:controller animated:YES];
+}
+
 
 + (void)EaseMobLogout {
     [[EMClient sharedClient] logout:YES];
 }
+
 
 @end

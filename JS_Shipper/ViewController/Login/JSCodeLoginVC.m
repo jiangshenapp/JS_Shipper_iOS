@@ -78,8 +78,8 @@
             
             [self getUserInfo]; //获取用户信息
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSuccNotification object:nil];
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginStateChangeNotification object:@YES];
+
             // 跳转到首页
             [self.navigationController popToRootViewControllerAnimated:YES];
         }

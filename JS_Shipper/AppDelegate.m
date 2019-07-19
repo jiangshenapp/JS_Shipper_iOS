@@ -188,9 +188,9 @@
 }
 
 - (void)initEmData {
-    //注册登录状态监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:kLoginSuccNotification object:nil];
     
+    //注册登录状态监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:ACCOUNT_LOGIN_CHANGED object:nil];
     //注册推送
     [self _registerRemoteNotification];
     
@@ -247,7 +247,8 @@
     if (loginSuccess) {//登录成功加载主窗口控制器
         navigationController = (UINavigationController *)self.window.rootViewController;
     } else {//登录失败加载登录页面控制器
-
+        [Utils logout:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginStateChangeNotification object:@NO];
     }
 }
 
