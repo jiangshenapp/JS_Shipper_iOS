@@ -210,36 +210,29 @@
     __weak typeof(self) weakSelf = self;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     if (self.pageFlag==1) { //城市配送
-        if (![NSString isEmpty:_areaCode3] && ![_areaCode3 isEqualToString:@"0"]) {
-            [dic setObject:_areaCode3 forKey:@"addressCode"];
-        }
+//        if (_areaCode3.length==6) {
+//            [dic setObject:_areaCode3 forKey:@"addressCode"];
+//        }
         if (![NSString isEmpty:_companyType]) {
             [dic setObject:_companyType forKey:@"companyType"];
         }
     } else { //车源、精品路线
-        if (![NSString isEmpty:_areaCode1] && ![_areaCode1 isEqualToString:@"0"]) {
+        if (_areaCode1.length==6) {
             [dic setObject:_areaCode1 forKey:@"startAddressCode"];
         }
-        if (![NSString isEmpty:_areaCode2] && ![_areaCode2 isEqualToString:@"0"]) {
+        if (_areaCode2.length==6) {
             [dic setObject:_areaCode2 forKey:@"arriveAddressCode"];
+        }
+        if (![NSString isEmpty:self.allDicKey[@"carLength"]]) {
+            [dic setObject:self.allDicKey[@"carLength"] forKey:@"carLength"];
+        }
+        if (![NSString isEmpty:self.allDicKey[@"carModel"]]) {
+            [dic setObject:self.allDicKey[@"carModel"] forKey:@"carModel"];
         }
     }
     if (![NSString isEmpty:_sort1]) {
         [dic setObject:_sort1 forKey:@"sort"];
     }
-    if (![NSString isEmpty:self.allDicKey[@"useCarType"]]) {
-        [dic setObject:self.allDicKey[@"useCarType"] forKey:@"useCarType"];
-    }
-    if (![NSString isEmpty:self.allDicKey[@"carLength"]]) {
-        [dic setObject:self.allDicKey[@"carLength"] forKey:@"carLength"];
-    }
-    if (![NSString isEmpty:self.allDicKey[@"carModel"]]) {
-        [dic setObject:self.allDicKey[@"carModel"] forKey:@"carModel"];
-    }
-    if (![NSString isEmpty:self.allDicKey[@"goodsType"]]) {
-        [dic setObject:self.allDicKey[@"goodsType"] forKey:@"goodsType"];
-    }
-//    [dic addEntriesFromDictionary:self.allDicKey];
     NSString *url = [NSString stringWithFormat:@"%@?current=%ld&size=%@",_postUrlDic[@(_pageFlag)],_page,PageSize];
     [[NetworkManager sharedManager] postJSON:url parameters:dic completion:^(id responseData, RequestState status, NSError *error) {
         if (weakSelf.page==1) {
@@ -269,8 +262,6 @@
         [weakSelf.baseTabView reloadData];
     }];
 }
-
-
 
 #pragma mark - 获取配置
 - (void)getDicList {
@@ -469,8 +460,6 @@
         btn.isSelect = NO;
     }
 }
-
-
 
 /*
  #pragma mark - Navigation

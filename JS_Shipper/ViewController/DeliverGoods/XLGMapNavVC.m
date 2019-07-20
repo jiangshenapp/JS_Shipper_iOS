@@ -35,7 +35,7 @@ static XLGMapNavVC *navi = nil;
 // 根据起点、终点导航
 + (void)startNavWithEndPt:(CLLocationCoordinate2D)endP {
     if (endP.latitude==0 || endP.longitude ==0) {
-        [Utils showToast:@"经纬度为空"];
+        [Utils showToast:@"位置错误"];
         return;
     }
     [[XLGMapNavVC share] doNavigationWithEndLocation:endP];
