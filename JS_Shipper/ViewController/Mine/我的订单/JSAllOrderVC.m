@@ -168,7 +168,20 @@
     self.orderStatusLab.text = model.stateNameConsignor;
     self.startAddressLab.text = model.sendAddress;
     self.endAddressLab.text = model.receiveAddress;
-    self.goodsDetaileLab.text = [NSString stringWithFormat:@"%@|%@米|%@方|%@吨",model.goodsType,model.carLength,model.goodsVolume,model.goodsWeight];
+    NSString *info = @"";
+    if (![NSString isEmpty:model.carModelName]) {
+        info = [info stringByAppendingString:model.carModelName];
+    }
+    if (![NSString isEmpty:model.carLengthName]) {
+        info = [info stringByAppendingString:model.carLengthName];
+    }
+    if (![NSString isEmpty:model.goodsVolume]) {
+        info = [info stringByAppendingString:[NSString stringWithFormat:@"/%@方",model.goodsVolume]];
+    }
+    if (![NSString isEmpty:model.goodsWeight]) {
+        info = [info stringByAppendingString:[NSString stringWithFormat:@"/%@吨",model.goodsWeight]];
+    }
+    self.goodsDetaileLab.text = info;
     if ([Utils isBlankString:model.fee]) {
         self.orderPriceLab.text = @"";
     } else {
