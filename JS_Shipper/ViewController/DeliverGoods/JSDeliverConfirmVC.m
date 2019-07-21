@@ -573,7 +573,7 @@
     NSDate *nowDate = [NSDate date];
     NSDate *selectDate = [dateFromatter dateFromString:_loadingTime];
     if ([nowDate compare:selectDate] == NSOrderedAscending){
-        [Utils showToast:@"装货时间需要大于当前时间"];
+        [Utils showToast:@"装货时间必须大于当前时间"];
         return;
     }
     if ([NSString isEmpty:_useCarType]) {
