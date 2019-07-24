@@ -63,6 +63,7 @@
     }
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:
+                         @"1", @"appType",
                          self.phoneTF.text, @"mobile",
                          self.codeTF.text, @"code",
                          nil];
