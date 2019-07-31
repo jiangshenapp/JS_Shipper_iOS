@@ -59,7 +59,7 @@
 #define kSignKey   @"ghOwfR7Wz44cbKU93KVSxwYXPGloNu"
 #define kNonceStr  [SignKeyUtil getNonceString]
 
-#define EaseMobKey @"1114190326030612#ios-shipper"
+#define EaseMobKey @"1114190326030612#android-driver"
 
 // cache key
 #define kServerKey @"ServerKey"

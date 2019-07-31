@@ -1508,8 +1508,16 @@
     //TODO: 处理表情
     //    NSString *sendText = [EaseConvertToCommonEmoticonsHelper convertToCommonEmoticons:aText];
     NSMutableDictionary *ext = [NSMutableDictionary dictionaryWithDictionary:aExt];
-    [ext setObject:[UserInfo share].avatar forKey:@"avatar"];
-    [ext setObject:[UserInfo share].nickName forKey:@"nickName"];
+    NSString *avatar = @"";
+    NSString *name = @"";
+    if (![NSString isEmpty:[UserInfo share].avatar]) {
+        avatar = [UserInfo share].avatar;
+    }
+    if (![NSString isEmpty:[UserInfo share].nickName]) {
+        name = [UserInfo share].nickName;
+    }
+    [ext setObject:avatar forKey:@"avatar"];
+    [ext setObject:name forKey:@"nickName"];
     EMTextMessageBody *body = [[EMTextMessageBody alloc] initWithText:aText];
     [self _sendMessageWithBody:body ext:ext isUpload:NO];
     

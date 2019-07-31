@@ -7,7 +7,7 @@
 //
 
 #import "JSHomeMessageVC.h"
-#import "EMChatViewController.h"
+#import "CustomEaseUtils.h"
 
 @interface JSHomeMessageVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -50,7 +50,6 @@
 */
 
 - (IBAction)chatWithCustomAction:(UIButton *)sender {
-    EMChatViewController *chatController = [[EMChatViewController alloc] initWithConversationId:@"15737937177" type:EMConversationTypeChat createIfNotExist:YES];
-    [self.navigationController pushViewController:chatController animated:YES];
+    [CustomEaseUtils EaseChatConversationID:@"15737937177"];
 }
 @end

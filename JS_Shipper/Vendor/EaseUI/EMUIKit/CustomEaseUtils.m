@@ -570,9 +570,11 @@ static CustomEaseUtils *helper = nil;
 }
 
 + (void)EaseChatConversationID:(NSString *)aID {
-    EMChatViewController *controller = [[EMChatViewController alloc] initWithConversationId:aID type:EMConversationTypeChat createIfNotExist:YES];
-    UINavigationController *nav = JSAppDelegate.tabVC.selectedViewController;
-    [nav pushViewController:controller animated:YES];
+    if ([Utils isLoginWithJump:YES]) {
+        EMChatViewController *controller = [[EMChatViewController alloc] initWithConversationId:aID type:EMConversationTypeChat createIfNotExist:YES];
+        UINavigationController *nav = JSAppDelegate.tabVC.selectedViewController;
+        [nav pushViewController:controller animated:YES];
+    }
 }
 
 
