@@ -572,7 +572,7 @@
     [dateFromatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *nowDate = [NSDate date];
     NSDate *selectDate = [dateFromatter dateFromString:_loadingTime];
-    if ([nowDate compare:selectDate] == NSOrderedAscending){
+    if ([nowDate compare:selectDate] == NSOrderedDescending){
         [Utils showToast:@"装货时间必须大于当前时间"];
         return;
     }
