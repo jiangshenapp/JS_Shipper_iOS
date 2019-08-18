@@ -3197,7 +3197,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = K3A6XD8P7R;
+				DEVELOPMENT_TEAM = P8463X2LVX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3224,7 +3224,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.js.shipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSCommon;
+				PROVISIONING_PROFILE_SPECIFIER = ShipperDev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3234,9 +3234,9 @@
 			baseConfigurationReference = 3F4AE2CD97BD2F091F4F87FD /* Pods-JS_Shipper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = K3A6XD8P7R;
+				DEVELOPMENT_TEAM = P8463X2LVX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3263,7 +3263,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.js.shipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = JSCommon;
+				PROVISIONING_PROFILE_SPECIFIER = ShipperDis;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
