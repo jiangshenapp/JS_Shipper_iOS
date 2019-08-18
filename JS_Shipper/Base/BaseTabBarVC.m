@@ -23,15 +23,25 @@
 }
 
 - (void)createTabBar {
+//    //视图数组
+//    NSArray *controllerArr = @[@"JSGardenVC",@"JSDeliverGoodsVC",@"JSHomeMessageVC",@"JSCommunityVC",@"JSMineVC"];
+//    //标题数组
+//    NSArray *titleArr = @[@"园区",@"发货",@"消息",@"社区",@"我的"];
+//    //图片数组
+//    NSArray *picArr = @[@"app_menubar_icon_searchcar_black",@"app_menubar_icon_goods_black",@"app_menubar_icon_news_black",@"app_menubar_icon_community_black",@"app_menubar_icon_my_black"];
+//
+//    //storyboard name 数组
+//    NSArray *storyArr = @[@"Garden",@"DeliverGoods",@"Message",@"Community",@"Mine"];
+    
     //视图数组
-    NSArray *controllerArr = @[@"JSGardenVC",@"JSDeliverGoodsVC",@"JSHomeMessageVC",@"JSCommunityVC",@"JSMineVC"];
+    NSArray *controllerArr = @[@"JSGardenVC",@"JSDeliverGoodsVC",@"JSMineVC"];
     //标题数组
-    NSArray *titleArr = @[@"园区",@"发货",@"消息",@"社区",@"我的"];
+    NSArray *titleArr = @[@"园区",@"发货",@"我的"];
     //图片数组
-    NSArray *picArr = @[@"app_menubar_icon_searchcar_black",@"app_menubar_icon_goods_black",@"app_menubar_icon_news_black",@"app_menubar_icon_community_black",@"app_menubar_icon_my_black"];
+    NSArray *picArr = @[@"app_menubar_icon_searchcar_black",@"app_menubar_icon_goods_black",@"app_menubar_icon_my_black"];
     
     //storyboard name 数组
-    NSArray *storyArr = @[@"Garden",@"DeliverGoods",@"Message",@"Community",@"Mine"];
+    NSArray *storyArr = @[@"Garden",@"DeliverGoods",@"Mine"];
     
     NSMutableArray *array = [[NSMutableArray alloc] init];
     
