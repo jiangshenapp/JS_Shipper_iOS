@@ -40,8 +40,10 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kUserInfoChangeNotification object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:kChangeMoneyNotification object:nil];
     
-    iconArr = @[@"personalcenter_icon_park",@"personalcenter_icon_service",@"personalcenter_icon_invoice",@"personalcenter_icon_collection",@"personalcenter_icon_customer"];
-    menuTileArr = @[@"我的园区",@"我的服务",@"我的发票",@"推广达人",@"我的客服"];
+//    iconArr = @[@"personalcenter_icon_park",@"personalcenter_icon_service",@"personalcenter_icon_invoice",@"personalcenter_icon_collection",@"personalcenter_icon_customer"];
+//    menuTileArr = @[@"我的园区",@"我的服务",@"我的发票",@"推广达人",@"我的客服"];
+    iconArr = @[@"personalcenter_icon_park"];
+    menuTileArr = @[@"我的园区"];
     [self createUI];
 }
 
@@ -58,6 +60,9 @@
                 title = menuTileArr[index];
                 imgName = iconArr[index];
             }
+//            if ([NSString isEmpty:title]) {
+//                break;
+//            }
             UIButton *sender = [self createMenuButton:title andIconName:imgName];
             sender.frame = CGRectMake(i*(menuBtnH+1), j*(menuBtnH+1), menuBtnH, menuBtnH);
             [_bottomVIew addSubview:sender];
@@ -73,7 +78,7 @@
         UIViewController *vc = [Utils getViewController:@"Garden" WithVCName:@"JSMyGardenVC"];
         [self.navigationController pushViewController:vc animated:YES];
     } else {
-        [Utils showToast:@"功能暂未开通，敬请期待"];
+//        [Utils showToast:@"功能暂未开通，敬请期待"];
     }
 }
 
